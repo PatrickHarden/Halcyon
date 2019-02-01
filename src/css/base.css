@@ -1,0 +1,68 @@
+/* Global Styles */
+@import "https://fonts.googleapis.com/css?family=Lato:300,400,900";
+body{font-family:'Lato',sans-serif;margin:0;font-size:20px;line-height:1.75rem;font-weight:100;letter-spacing:1px;color:#333}
+div#root{height:100vh}
+#site{box-sizing:border-box;position:relative;padding-bottom:50px;min-height:100%;width:100%;float:left}
+.content{padding:80px 0 0;margin-top:90px}
+.padded{padding:60px 0}
+
+img{max-width:100%}
+strong{font-weight:900}
+h2{text-transform:uppercase;font-weight:900;letter-spacing:1px;padding-bottom:40px;font-size:2.5rem}
+p{margin:0!important}
+#home{position:relative;top:-60px}
+.single-page .content,.contact .content,.blog .content,.single-blog .content{margin-top:110px;padding:0}
+
+@media (min-width: 1200px) {
+    .container{max-width:1200px}
+}
+
+
+
+
+
+/* Navigation styles */
+nav{position:relative}
+.logo{position:absolute;height:48px}
+nav > div > div{width:100%}
+.navbar-dark .navbar-nav .dropdown-menu{background:#fff}
+.navbar-dark .dropdown-item:focus,.navbar-dark .dropdown-item:hover{background-color:#212529;transition-duration:.5s}
+.navbar-expand-lg .navbar-nav .nav-link{padding:33px 1.5rem!important;color:#333!important;font-weight:400!important;text-transform:uppercase;font-size:.8rem;letter-spacing:1px;transition-duration:.5s;font-family:'Lato'}
+
+.navbar-dark .navbar-nav .nav-link:hover,.navbar-dark .navbar-nav .nav-link:active,.navbar-dark .navbar-nav .nav-link:focus{color:#209056!important;transition-duration:.5s}
+.navbar-expand-lg .navbar-nav .nav-link.nav-phone{color:#209056!important;text-decoration:none;font-weight:600}
+.navbar-expand-lg .navbar-nav .nav-link.nav-phone:hover{color:#333!important}
+.navbar-brand img{height:60px;position:relative;top:11px}
+.navbar-dark .navbar-toggler{border:none;padding:0}
+
+@media screen and (max-width:992px) {
+    .navbar-expand-md .navbar-nav .nav-link{font-size:.7rem}
+    .navWrapper .container{max-width:96%}
+}
+@media screen and (max-width:981px) {
+    .nav-phone{display:none}
+}
+
+
+
+
+
+/* Footer Styles */
+footer{width:100%;background:#4E5859;color:#fff;font-weight:100;font-size:.6em;letter-spacing:0;text-transform:uppercase;padding:15px 0;position:absolute;bottom:0;height:60px;margin-bottom:-10px}
+footer a,footer a:hover,footer a:active{color:#fff;font-weight:700}
+footer .row{opacity:.8}
+.sociallinks{text-align:right}
+footer .fab{font-size:20px!important;margin-left:5px;margin-top:6px;color:#fff}
+footer .fa:hover,footer a:hover{opacity:.9;text-decoration:none}
+
+@media screen and (max-width:480px) {
+    footer{height:90px}
+    footer .col-sm-6{text-align:center;margin-bottom:10px}
+    .sociallinks{text-align:center}
+}
+
+
+
+
+
+
