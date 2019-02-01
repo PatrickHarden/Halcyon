@@ -32,6 +32,5 @@ export default withSiteData(() => (
       <body className="home" />
     </Helmet>
     <img src={headerImg} style={fullWidth} alt="" />
-
   </article>
 ))
