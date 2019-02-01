@@ -7,7 +7,6 @@ import {
     DropdownMenu,
     DropdownItem,
 } from 'reactstrap'
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser'
 
 export default withSiteData(class MenuList extends React.Component {
 
@@ -33,7 +32,7 @@ export default withSiteData(class MenuList extends React.Component {
                                             return (
                                                 <DropdownItem key={'children-'+i}>
                                                     <NavItem>
-                                                        <Link to={"/" + children.object_slug} onClick={toggle} className="nav-link">{ReactHtmlParser(children.title)}</Link>
+                                                        <Link to={"/" + children.object + "/" + children.object_slug} onClick={toggle} className="nav-link">{children.title}</Link>
                                                     </NavItem>
                                                 </DropdownItem>
                                             )
