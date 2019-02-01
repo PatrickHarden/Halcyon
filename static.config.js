@@ -2,9 +2,8 @@ import axios from 'axios'
 
 export default {
   getSiteData: async () => {
-    const baseURL = 'http://www.attorneytemplate.dev.php72-38.lan3-1.websitetestlink.com'
     const { data: menus } = await axios.get('https://manhattan-village.dev.v3.imaginuitycenters.com/wp-json/wp-api-menus/v2/menus/2')
-    const { data: options } = await axios.get(baseURL + '/index.php/wp-json/wp/v2/options/')
+    const { data: options } = await axios.get(baseURL + 'http://www.attorneytemplate.dev.php72-38.lan3-1.websitetestlink.com/index.php/wp-json/wp/v2/options/')
     const { data: centerInfo } = await axios.get(baseURL + 'https://liberty-center.dev.v3.imaginuitycenters.com/wp-json/acf/v3/options/property_options')
     const { data: menuLocations } = await axios.get('https://manhattan-village.dev.v3.imaginuitycenters.com/wp-json/wp-api-menus/v2/menu-locations')
 
