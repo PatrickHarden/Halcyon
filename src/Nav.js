@@ -46,7 +46,7 @@ import {
                         <Collapse isOpen={this.state.isOpen} navbar>
                             <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <Link tag={Link} to="/" className="nav-link" onClick={this.toggle}>Home</Link>
+                                <Link to="/" className="nav-link" onClick={this.toggle}>Home</Link>
                             </NavItem>
                             <MenuList toggle={this.toggle} />
                             </Nav>

@@ -57,7 +57,7 @@ export default {
       },
       {
         path: '/sales',
-        component: 'src/pages/Stores',
+        component: 'src/pages/Sales',
         getData: () => ({
           sales,
         })
