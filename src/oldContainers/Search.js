@@ -11,12 +11,12 @@ import Loader from '../components/Loader';
 import InteriorHeader from '../components/InteriorHeader';
 
 // Endpoints
-let SiteURL = window.location.protocol + '//' + document.location.hostname;
+let SiteURL = 'https://halcyon.dev.v3.imaginuitycenters.com';
 let PropertyOptions = SiteURL + '/wp-json/acf/v3/options/property_options';
 let Pages = SiteURL + '/wp-json/wp/v2/pages';
 const BlogData = SiteURL + '/wp-json/wp/v2/posts?order=desc';
 
-class Search extends Component {
+export default class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -26,7 +26,7 @@ class Search extends Component {
             storeCount: 0,
             eventCount: 0,
             pageData: '',
-            searchString: this.props.location.query.s,
+            searchString: 'test',
         }
     }
 
@@ -198,5 +198,3 @@ class Search extends Component {
         return <Loader/>
     }
 }
-
-export default Search;

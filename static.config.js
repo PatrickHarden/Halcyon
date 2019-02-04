@@ -64,6 +64,10 @@ export default {
         })
       },
       {
+        path: '/search',
+        component: 'src/oldContainers/Search'
+      },
+      {
         path: '/shopping',
         component: 'src/pages/Stores',
         getData: () => ({
@@ -102,6 +106,9 @@ export default {
       {
         path: '/',
         component: 'src/pages/Home',
+        getData: () => ({
+          stores, events, pages
+        }),
         children: pages.map(page => ({
         path: `/${page.slug}`,
         component: 'src/singles/Page',

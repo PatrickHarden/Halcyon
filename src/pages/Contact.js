@@ -9,8 +9,8 @@ var lat = ''
 var long = ''
 
 function saveCord(options) {
-  lat = parseFloat(options.companyLocationLat)
-  long = parseFloat(options.companyLocationLong)
+  lat = parseFloat(32.824139)
+  long = parseFloat(-96.769943)
 }
 
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>
