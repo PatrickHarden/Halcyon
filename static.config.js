@@ -2,10 +2,11 @@ import axios from 'axios'
 
 export default {
   getSiteData: async () => {
-    const { data: menus } = await axios.get('https://manhattan-village.dev.v3.imaginuitycenters.com/wp-json/wp-api-menus/v2/menus/2')
+    const baseURL = 'https://halcyon.dev.v3.imaginuitycenters.com'
+    const { data: menus } = await axios.get(baseURL + '/wp-json/wp-api-menus/v2/menus/2')
     const { data: options } = await axios.get('http://www.attorneytemplate.dev.php72-38.lan3-1.websitetestlink.com/index.php/wp-json/wp/v2/options/')
-    const { data: centerInfo } = await axios.get('https://liberty-center.dev.v3.imaginuitycenters.com/wp-json/acf/v3/options/property_options')
-    const { data: menuLocations } = await axios.get('https://manhattan-village.dev.v3.imaginuitycenters.com/wp-json/wp-api-menus/v2/menu-locations')
+    const { data: centerInfo } = await axios.get(baseURL + '/wp-json/acf/v3/options/property_options')
+    const { data: menuLocations } = await axios.get(baseURL + '/wp-json/wp-api-menus/v2/menu-locations')
 
     return {
       title: 'Halcyon',
@@ -18,11 +19,12 @@ export default {
     }
   },
   getRoutes: async () => {
-    const baseURL = 'https://www.shopmanhattanvillage.com'
-    const { data: pages } = await axios.get('https://manhattan-village.dev.v3.imaginuitycenters.com/index.php/wp-json/wp/v2/pages?per_page=99')
+    const baseURL = 'https://halcyon.dev.v3.imaginuitycenters.com'
+    const { data: pages } = await axios.get(baseURL + '/index.php/wp-json/wp/v2/pages?per_page=99')
     const { data: posts } = await axios.get(baseURL + '/index.php/wp-json/wp/v2/posts?per_page=6')
     const { data: events } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100')
     const { data: stores } = await axios.get(baseURL + '/wp-json/wp/v2/stores/')
+    const { data: sales } = await axios.get(baseURL + '/wp-json/wp/v2/sales?per_page=100')
 
     return [
       {
@@ -40,7 +42,7 @@ export default {
         })),
       },
       {
-        path: '/events',
+        path: '/events-page',
         component: 'src/pages/Events',
         getData: () => ({
           events,
@@ -52,6 +54,13 @@ export default {
             event,
           }),
         })),
+      },
+      {
+        path: '/sales',
+        component: 'src/pages/Stores',
+        getData: () => ({
+          sales,
+        })
       },
       {
         path: '/stores',
@@ -70,6 +79,10 @@ export default {
       {
         path: '/contact',
         component: 'src/pages/Contact',
+      },
+      {
+        path: '/maps',
+        component: 'src/pages/Map',
       },
       {
         path: '/',

@@ -11,11 +11,12 @@ strong{font-weight:900}
 h2{text-transform:uppercase;font-weight:900;letter-spacing:1px;padding-bottom:40px;font-size:2.5rem}
 p{margin:0!important}
 #home{position:relative;top:-60px}
-.single-page .content,.contact .content,.blog .content,.single-blog .content{margin-top:110px;padding:0}
+.single-page .content,.contact .content,.blog .content,.single-blog .content{margin-top:140px;padding:0}
 
 @media (min-width: 1200px) {
     .container{max-width:1200px}
 }
+
 
 
 
@@ -26,7 +27,7 @@ nav{position:relative}
 .logo{position:absolute;height:48px}
 nav > div > div{width:100%}
 .navbar-dark .navbar-nav .dropdown-menu{background:#fff}
-.navbar-dark .dropdown-item:focus,.navbar-dark .dropdown-item:hover{background-color:#212529;transition-duration:.5s}
+.navbar-dark .dropdown-item:focus,.navbar-dark .dropdown-item:hover{filter:bightness(90%);transition-duration:.5s}
 .navbar-expand-lg .navbar-nav .nav-link{padding:33px 1.5rem!important;color:#333!important;font-weight:400!important;text-transform:uppercase;font-size:.8rem;letter-spacing:1px;transition-duration:.5s;font-family:'Lato'}
 
 .navbar-dark .navbar-nav .nav-link:hover,.navbar-dark .navbar-nav .nav-link:active,.navbar-dark .navbar-nav .nav-link:focus{color:#209056!important;transition-duration:.5s}
@@ -42,6 +43,7 @@ nav > div > div{width:100%}
 @media screen and (max-width:981px) {
     .nav-phone{display:none}
 }
+
 
 
 

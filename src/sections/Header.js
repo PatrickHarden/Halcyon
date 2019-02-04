@@ -14,6 +14,7 @@ export default withSiteData(class SiteHeader extends React.Component {
     render() {
         const siteTitle = this.props.title
         const siteRoot = this.props.siteRoot
+        const options = this.props.centerInfo
 
         return (
             <header>

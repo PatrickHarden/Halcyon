@@ -14,11 +14,11 @@ import Map from '../components/MapplicMap';
 import Loader from '../components/Loader';
 
 // Endpoints
-const SiteURL = window.location.protocol + '//' + document.location.hostname;
+const SiteURL = 'https://halcyon.dev.v3.imaginuitycenters.com';
 const Pages = SiteURL + '/wp-json/wp/v2/pages';
 const PropertyOptions = SiteURL + '/wp-json/acf/v3/options/property_options';
 
-class InteractiveMap extends Component{
+export default class InteractiveMap extends React.Component{
     constructor(props) {
         super(props);
 
@@ -86,4 +86,3 @@ class InteractiveMap extends Component{
     }
 }
 
-export default InteractiveMap;

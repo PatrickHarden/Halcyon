@@ -7,6 +7,8 @@ import {
     DropdownMenu,
     DropdownItem,
 } from 'reactstrap'
+import { LinkContainer } from 'react-router-bootstrap'
+import ReactHtmlParser from 'react-html-parser'
 
 export default withSiteData(class MenuList extends React.Component {
 
@@ -30,11 +32,13 @@ export default withSiteData(class MenuList extends React.Component {
                                     {
                                         menu.children.map((children, i) => {
                                             return (
+                                                <LinkContainer to={"/" + children.object_slug}>
                                                 <DropdownItem key={'children-'+i}>
                                                     <NavItem>
-                                                        <Link to={"/" + children.object + "/" + children.object_slug} onClick={toggle} className="nav-link">{children.title}</Link>
+                                                        <Link tag={Link} to={"/" + children.object_slug} onClick={toggle}  className="nav-link">{ReactHtmlParser(children.title)}</Link>
                                                     </NavItem>
                                                 </DropdownItem>
+                                                </LinkContainer>
                                             )
                                         })
                                     }
@@ -43,7 +47,7 @@ export default withSiteData(class MenuList extends React.Component {
 
                         ) :
                             <NavItem>
-                                <Link to={'/' + menu.object_slug} onClick={toggle} className="nav-link">{menu.title}</Link>
+                                <Link to={'/' + menu.object_slug} href={'/' + menu.object_slug} tag={Link} onClick={toggle}  className="nav-link">{ReactHtmlParser(menu.title)}</Link>
                             </NavItem>
                         }
                     </div>

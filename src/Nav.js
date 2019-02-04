@@ -12,7 +12,6 @@ import {
   Row,
   Col } from 'reactstrap';
 
-
  export default withSiteData(class Navigation extends React.Component {
   constructor(props) {
     super(props);
@@ -47,7 +46,7 @@ import {
                         <Collapse isOpen={this.state.isOpen} navbar>
                             <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <Link to="/" className="nav-link" onClick={this.toggle}>Home</Link>
+                                <Link tag={Link} to="/" className="nav-link" onClick={this.toggle}>Home</Link>
                             </NavItem>
                             <MenuList toggle={this.toggle} />
                             </Nav>
