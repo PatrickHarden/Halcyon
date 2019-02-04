@@ -35,7 +35,7 @@ export default withSiteData(class MenuList extends React.Component {
                                                 <LinkContainer to={"/" + children.object_slug}>
                                                 <DropdownItem key={'children-'+i}>
                                                     <NavItem>
-                                                        <Link tag={Link} to={"/" + children.object_slug} onClick={toggle}  className="nav-link">{ReactHtmlParser(children.title)}</Link>
+                                                        <Link to={"/" + children.object_slug} onClick={toggle}  className="nav-link">{ReactHtmlParser(children.title)}</Link>
                                                     </NavItem>
                                                 </DropdownItem>
                                                 </LinkContainer>
@@ -47,7 +47,7 @@ export default withSiteData(class MenuList extends React.Component {
 
                         ) :
                             <NavItem>
-                                <Link to={'/' + menu.object_slug} href={'/' + menu.object_slug} tag={Link} onClick={toggle}  className="nav-link">{ReactHtmlParser(menu.title)}</Link>
+                                <Link to={'/' + menu.object_slug} href={'/' + menu.object_slug} onClick={toggle}  className="nav-link">{ReactHtmlParser(menu.title)}</Link>
                             </NavItem>
                         }
                     </div>
