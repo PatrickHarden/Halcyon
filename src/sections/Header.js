@@ -19,6 +19,7 @@ export default withSiteData(class SiteHeader extends React.Component {
         return (
             <header>
                 <Helmet>
+                    <link rel="stylesheet" href="https://use.typekit.net/osv0bnv.css" />
                     <meta charSet="utf-8" />
                     <title>{siteTitle}</title>
                     <link rel="canonical" href={siteRoot} />

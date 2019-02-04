@@ -33,11 +33,11 @@ export default withSiteData(({options}) => (
       <meta description="rhjaewrhltioawerjt" />
     </Helmet>
     {saveCord(options)}
-    <div class="aboutt">
-      <h1>Contact</h1>
-    </div>
     <div id="features">
     <Container id="contactAddress">
+    <div className="aboutt">
+      <h1>Sign Up</h1>
+    </div>
       <Row>
         <Col cs="6">
           <p><strong>Address:</strong> <br />
@@ -46,7 +46,7 @@ export default withSiteData(({options}) => (
         </Col>
         <Col>
           <p><strong>Phone:</strong><br />
-          <a href="tel:9183799400" >(918) 379-9400 </a>
+          <a href="tel:9183799400" >(123) 456-6774 </a>
           </p>
         </Col>
       </Row>

@@ -9,13 +9,15 @@ import t_0 from '../../src/singles/Post'
 import t_1 from '../../src/pages/Blogs'
 import t_2 from '../../src/singles/Event'
 import t_3 from '../../src/pages/Events'
-import t_4 from '../../src/pages/Stores'
+import t_4 from '../../src/pages/Sales'
 import t_5 from '../../src/singles/Store'
-import t_6 from '../../src/pages/Contact'
-import t_7 from '../../src/pages/Map'
-import t_8 from '../../src/singles/Page'
-import t_9 from '../../src/pages/Home'
-import t_10 from '../../src/pages/404'
+import t_6 from '../../src/pages/Stores'
+import t_7 from '../../src/pages/Dining'
+import t_8 from '../../src/pages/Contact'
+import t_9 from '../../src/pages/Map'
+import t_10 from '../../src/singles/Page'
+import t_11 from '../../src/pages/Home'
+import t_12 from '../../src/pages/404'
 
 // Template Map
 global.componentsByTemplateID = global.componentsByTemplateID || [
@@ -29,12 +31,14 @@ t_6,
 t_7,
 t_8,
 t_9,
-t_10
+t_10,
+t_11,
+t_12
 ]
 
 // Template Tree
 global.templateIDsByPath = global.templateIDsByPath || {
-  '404': 10
+  '404': 12
 }
 
 // Get template for given path

@@ -42,7 +42,7 @@ export default {
         })),
       },
       {
-        path: '/events-page',
+        path: '/events',
         component: 'src/pages/Events',
         getData: () => ({
           events,
@@ -63,7 +63,7 @@ export default {
         })
       },
       {
-        path: '/stores',
+        path: '/shopping',
         component: 'src/pages/Stores',
         getData: () => ({
           stores,
@@ -77,7 +77,21 @@ export default {
         })),
       },
       {
-        path: '/contact',
+        path: '/dining',
+        component: 'src/pages/Dining',
+        getData: () => ({
+          stores,
+        }),
+        children: stores.map(store => ({
+          path: `/${store.slug}`,
+          component: 'src/singles/Store',
+          getData: () => ({
+            store,
+          }),
+        })),
+      },
+      {
+        path: '/sign-up',
         component: 'src/pages/Contact',
       },
       {

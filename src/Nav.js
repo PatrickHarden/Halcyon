@@ -45,9 +45,6 @@ import {
                         <NavbarToggler onClick={this.toggle} />
                         <Collapse isOpen={this.state.isOpen} navbar>
                             <Nav className="ml-auto" navbar>
-                            <NavItem>
-                                <Link to="/" className="nav-link" onClick={this.toggle}>Home</Link>
-                            </NavItem>
                             <MenuList toggle={this.toggle} />
                             </Nav>
                         </Collapse>

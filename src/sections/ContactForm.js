@@ -1,12 +1,15 @@
 import React from 'react'
 import { Container, Row, Col, Button, Form, FormGroup, Input } from 'reactstrap'
 
+const styles = {
+    marginBottom: '30px',
+}
 
  export default class ContactForm extends React.Component {
     render() {
         return (
             <Form action="https://formspree.io/patrick.harden@imaginuity.com"
-            method="POST">
+            method="POST" style={styles}>
                 <Row>
                     <Col md="6">
                     <FormGroup>
