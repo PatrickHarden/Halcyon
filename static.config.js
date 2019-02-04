@@ -24,6 +24,7 @@ export default {
     const { data: posts } = await axios.get(baseURL + '/index.php/wp-json/wp/v2/posts?per_page=6')
     const { data: events } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100')
     const { data: stores } = await axios.get(baseURL + '/wp-json/wp/v2/stores/')
+    const { data: dinings } = await axios.get(baseURL + '/wp-json/wp/v2/stores/')
     const { data: sales } = await axios.get(baseURL + '/wp-json/wp/v2/sales?per_page=100')
 
     return [
