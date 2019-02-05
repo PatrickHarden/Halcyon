@@ -1,16 +1,12 @@
 // Packages
 import React, { PropTypes, Component } from 'react';
-import { Link } from 'react-router';
-import $ from 'jquery';
-import { ReactBootstrap, Grid, Row, Col, Button } from 'react-bootstrap';
 import Script from 'react-load-script';
 let moment = require('moment');
 let momentRange = require('moment-range');
 moment = momentRange.extendMoment(moment);
 let Entities = require('html-entities').AllHtmlEntities;
-let entities = new Entities();
 
-class TintSocialFeed extends Component{
+export default class TintSocialFeed extends Component{
     constructor(props){
         super(props);
 
@@ -20,15 +16,11 @@ class TintSocialFeed extends Component{
     }
 
     componentWillMount(){
-
+        console.log(this.props.optionsData);
     }
 
     handleScriptCreate() {
         this.setState({ scriptLoaded: false })
-    }
-
-    handleScriptError() {
-        this.setState({ scriptError: true })
     }
 
     handleScriptLoad() {
@@ -50,7 +42,6 @@ class TintSocialFeed extends Component{
                 <Script
                     url={this.props.optionsData.acf.social_feed_script_url}
                     onCreate={this.handleScriptCreate.bind(this)}
-                    onError={this.handleScriptError.bind(this)}
                     onLoad={this.handleScriptLoad.bind(this)}
                 />
             </div>
@@ -58,5 +49,3 @@ class TintSocialFeed extends Component{
         )
     }
 }
-
-export default TintSocialFeed;

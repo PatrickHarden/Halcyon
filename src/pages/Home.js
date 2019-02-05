@@ -18,6 +18,7 @@ import PageSearch from '../sections/PageSearch';
 import EventSearch from '../sections/EventSearch';
 import StoreSearch from '../sections/StoreSearch';
 import SimpleSlider from '../sections/Slider';
+import TintSocialFeed from '../components/TintSocialFeed';
 
 var headerImg = 'https://i.imgur.com/D68KvFY.jpg';
 
@@ -36,12 +37,12 @@ export default withRouteData(class Home extends React.Component {
         pageExist: false,
         eventExist: false,
         storeExist: false,
-        imageArray: []
+        imageArray: [],
     };
   }
 
   componentWillMount(){
-    console.log(this.props.Home);
+    console.log(this.props.home);
   }
 
   render() {
@@ -66,7 +67,9 @@ export default withRouteData(class Home extends React.Component {
           }
           { (this.state.term != '') ? 
             <StoreSearch searchResult={this.state.term} /> : 
-            <p>Home Content</p>
+            <p>Home Content
+              <TintSocialFeed optionsData={this.props.centerInfo} />
+            </p>
           }
           </div>
         </article>
