@@ -5,3 +5,5 @@
 .slick-dots {bottom:65px !important;}
     .slick-dots li button::before {height:40px; width:40px;font-size:20px;}
     .slick-slide img {width:100%;}
+
+.card-columns {max-width:100%;}
