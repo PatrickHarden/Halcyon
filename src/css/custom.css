@@ -1,3 +1,7 @@
 /* Home */
-#searchBar {background:#8F1838; display:block; width:100%; float:left;}
+#searchBar {background:#8F1838; display:block; width:100%; float:left;margin-top:-6px;}
     #searchBar input {float:right;}
+
+.slick-dots {bottom:65px !important;}
+    .slick-dots li button::before {height:40px; width:40px;font-size:20px;}
+    .slick-slide img {width:100%;}

@@ -13,11 +13,11 @@ import {
   CarouselControl,
   CarouselIndicators,
   CarouselCaption, Card, CardBody, CardTitle, CardText } from 'reactstrap';
-import Slider from "react-slick";
 import ReactHtmlParser from 'react-html-parser';
 import PageSearch from '../sections/PageSearch';
 import EventSearch from '../sections/EventSearch';
-import StoreSearch from '../sections/StoreSearch'
+import StoreSearch from '../sections/StoreSearch';
+import SimpleSlider from '../sections/Slider';
 
 var headerImg = 'https://i.imgur.com/D68KvFY.jpg';
 
@@ -25,7 +25,7 @@ const fullWidth = {
   width: '100%'
 }
 
-var homeJSON = '';
+var homeJSON = [];
 
 export default withRouteData(class Home extends React.Component {
 
@@ -36,9 +36,13 @@ export default withRouteData(class Home extends React.Component {
         pageExist: false,
         eventExist: false,
         storeExist: false,
+        imageArray: []
     };
   }
 
+  componentWillMount(){
+    this.props.Home
+  }
 
   render() {
 
@@ -46,8 +50,10 @@ export default withRouteData(class Home extends React.Component {
         <article id="home">
           <Helmet>
             <body className="home" />
+            <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
           </Helmet>
-          <img src={headerImg} style={fullWidth} alt="" />
+          <SimpleSlider />
           <div id="searchBar">        
             <input value={this.state.term} onChange = {event => this.setState({term : event.target.value})}/>
           </div>
