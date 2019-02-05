@@ -81,7 +81,7 @@ export default withRouteData(class Search extends React.Component {
                   </CardBody>
               </Card>
               </div>
-            : ""))}</div> : <p>Content</p>
+            : ""))}</div> : <p>more content</p>
             }
           { (this.state.term != '') ? 
           <div>
