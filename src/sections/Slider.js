@@ -17,10 +17,10 @@ export default class SimpleSlider extends React.Component {
           <img src="https://i.imgur.com/D68KvFY.jpg" />
         </div>
         <div>
-            <img src="http://placekitten.com/g/1200/521" />
+            <img src="https://placekitten.com/g/1200/521" />
         </div>
         <div>
-            <img src="http://placekitten.com/g/1200/521" />
+            <img src="https://placekitten.com/g/1200/521" />
         </div>
       </Slider>
     );
