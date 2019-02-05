@@ -24,7 +24,7 @@ export default {
     const { data: posts } = await axios.get(baseURL + '/index.php/wp-json/wp/v2/posts?per_page=6')
     const { data: events } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100')
     const { data: stores } = await axios.get(baseURL + '/wp-json/wp/v2/stores/')
-    const { data: dinings } = await axios.get(baseURL + '/wp-json/wp/v2/stores/')
+    const { data: home } = await axios.get(baseURL + '/index.php/wp-json/wp/v2/pages?slug=home')
     const { data: sales } = await axios.get(baseURL + '/wp-json/wp/v2/sales?per_page=100')
 
     return [
@@ -107,7 +107,7 @@ export default {
         path: '/',
         component: 'src/pages/Home',
         getData: () => ({
-          stores, events, pages
+          stores, events, pages, home
         }),
         children: pages.map(page => ({
         path: `/${page.slug}`,
