@@ -41,7 +41,7 @@ export default withRouteData(class Home extends React.Component {
   }
 
   componentWillMount(){
-    this.props.Home
+    console.log(this.props.Home);
   }
 
   render() {
