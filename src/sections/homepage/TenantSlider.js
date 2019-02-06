@@ -4,6 +4,8 @@ import Slider from "react-slick";
 import ReactHtmlParser from 'react-html-parser';
 import Button from 'reactstrap';
 
+//  <TenantSlider stores={this.props.stores} />
+
 var storeArray = [];
 
 export default class TenantSlider extends React.Component {
