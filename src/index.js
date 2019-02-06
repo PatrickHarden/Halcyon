@@ -13,15 +13,7 @@ export default App
 
 // Render your app
 if (typeof document !== 'undefined') {
-  window.addEventListener('load', () => {
-    const ga = window.ga
-    ga('create', 'UA-34355268-1', 'auto')
 
-    ga('require', 'outboundLinkTracker')
-    ga('require', 'urlChangeTracker')
-
-    ga('send', 'pageview')
-  })
   const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate || ReactDOM.render
   const render = Comp => {
     renderMethod(<Comp />, document.getElementById('root'))

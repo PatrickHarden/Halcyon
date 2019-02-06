@@ -1,8 +1,7 @@
 import React from 'react'
 import { withSiteData, Link, withRouteData } from 'react-static'
 import {Helmet} from "react-helmet";
-
-//
+import ReactHtmlParser from 'react-html-parser';
 import { 
   Container,
   Row,
@@ -13,14 +12,13 @@ import {
   CarouselControl,
   CarouselIndicators,
   CarouselCaption, Card, CardBody, CardTitle, CardText } from 'reactstrap';
-import ReactHtmlParser from 'react-html-parser';
+
 import PageSearch from '../sections/PageSearch';
 import EventSearch from '../sections/EventSearch';
 import StoreSearch from '../sections/StoreSearch';
 import HeroSlider from '../sections/HeroSlider';
+import TenantSlider from '../sections/TenantSlider';
 import TintSocialFeed from '../components/TintSocialFeed';
-
-var headerImg = 'https://i.imgur.com/D68KvFY.jpg';
 
 const fullWidth = {
   width: '100%'
@@ -75,7 +73,7 @@ export default withRouteData(class Home extends React.Component {
             <div>{ReactHtmlParser(home.acf.content_area)}</div>
             <Link to={home.acf.button.url}><Button>{home.acf.button.title}</Button></Link>
             <h1>{home.acf.tenant_spotlight.heading}</h1>
-            <div><p>Tenant happenings slides</p></div>
+            <TenantSlider stores={this.props.stores} />
             <h1>{home.acf.halcyon_happenings.heading}</h1>
             {/* <TintSocialFeed optionsData={this.props.property_options} /> */}
           </div> 

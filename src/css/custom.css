@@ -9,3 +9,5 @@
     .slick-slide img {width:100%; max-width:100%;}
 
 .card-columns {max-width:100%;}
+
+#tenantSlider .slick-slide img {max-height:350px;}
