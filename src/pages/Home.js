@@ -20,8 +20,9 @@ import EventSearch from '../sections/EventSearch';
 import StoreSearch from '../sections/StoreSearch';
 import HeroSlider from '../sections/homepage/HeroSlider';
 import HappeningsSlider from '../sections/homepage/HappeningsSlider';
+import TenantSlider from '../sections/homepage/TenantSlider';
 import ImageGrid from '../sections/homepage/ImageGrid';
-import TintSocialFeed from '../components/TintSocialFeed';
+import TintSocialFeed from '../oldComponents/TintSocialFeed';
 
 const fullWidth = {
   width: '100%'
@@ -93,10 +94,12 @@ export default withRouteData(class Home extends React.Component {
            <div>{ReactHtmlParser(home.acf.content_area)}</div>
            <Link to={home.acf.button.url}><Button>{home.acf.button.title}</Button></Link>
            <h2>{home.acf.tenant_spotlight.heading}</h2>
-           <div><p>Tenant happenings slides</p></div>
+           <TenantSlider stores={this.props.stores} />
            <h2>{home.acf.halcyon_happenings.heading}</h2>
+           <HappeningsSlider events={this.props.events} />
+           <h2>@HALCYONFORSYTH</h2>
            {/* <TintSocialFeed optionsData={this.props.property_options} /> */}
-         </Container>
+          </Container>
           }
           </div>
         </article>

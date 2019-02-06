@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap';
-import InteractiveMap from '../oldContainers/InteractiveMap';
+// import InteractiveMap from '../oldCompontents/oldContainers/InteractiveMap';
 //
 
 export default () => (

@@ -5,6 +5,7 @@ import {Helmet} from "react-helmet";
 import { Container, Row, Col } from 'reactstrap';
 
 import FooterLogo from '../images/footerLogo.png';
+import AccessibilityIcon from '../images/footerAccessIcon.png';
 
 export default withSiteData(class SiteFooter extends React.Component {
 
@@ -21,7 +22,9 @@ export default withSiteData(class SiteFooter extends React.Component {
         return (
             <footer className="text-center">
                 {console.log(menu)}
+                <Container>
                 <Row>
+                    <h4>HALCYON</h4>
                 <Col xs="9">
                     {
                         menu.items.map((item, i) => {
@@ -39,7 +42,8 @@ export default withSiteData(class SiteFooter extends React.Component {
                     <img src={FooterLogo} />
                 </Col>
                 </Row>
-                <div>&copy; {(new Date().getFullYear())} {siteTitle}  |  Built By <a href={siteCreatorURL}>{siteCreator}</a></div>
+                </Container>
+                <div id="footerCopyright">&copy; {(new Date().getFullYear())} {siteTitle} HALCYON FORSYTH. ALL RIGHTS RESERVED. <img src={AccessibilityIcon} /></div>
             </footer>
         )
 

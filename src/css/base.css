@@ -14,13 +14,13 @@ strong{font-weight:900}
 h2{text-transform:uppercase;font-weight:900;letter-spacing:1px;padding-bottom:40px;font-size:2.5rem}
 p{margin:0!important}
 #home{position:relative;top:-60px}
-.single-page .content,.contact .content,.blog .content,.single-blog .content{margin-top:140px;padding:0}
+.single-page .content,.contact .content,.blog .content,.single-blog .content{margin-top:150px;padding:0}
 
 @media (min-width: 1200px) {
     .container{max-width:1200px}
 }
 
-
+.slick-slide img {max-height:400px;}
 
 
 
@@ -55,10 +55,11 @@ nav .container {max-width:95% !important; padding:0;}
 
 
 /* Footer Styles */
-footer{width:100%;background:#4E5859;color:#fff;font-weight:100;font-size:.6em;letter-spacing:0;text-transform:uppercase;padding:0 0 15px;position:relative;bottom:0;height:auto;margin-bottom:-10px}
-
+footer{width:100%;background:#EDECE2;color:#fff;font-weight:100;font-size:.6em;letter-spacing:0;text-transform:uppercase;padding:0;position:relative;bottom:0;height:auto;margin-bottom:-10px}
+#footerCopyright {background:#4E5859; font-family: 'Flama', serif}
+footer .row > h4 {color:#4E5859; width:100%; padding-left:30px;margin-bottom:0; margin-top:15px;}
 footer a,footer a:hover,footer a:active{color:#4F4B48;font-weight:700}
-footer .row{background:#EDECE2;}
+footer .row{background:#EDECE2; margin:0; background:url('../images/FEATHER.png'); text-align:left;min-height:191px;background-repeat:no-repeat;background-size:cover;}
 footer .col-9 > div {width:33%; float:left;}
 .sociallinks{text-align:right}
 footer .fab{font-size:20px!important;margin-left:5px;margin-top:6px;color:#fff}

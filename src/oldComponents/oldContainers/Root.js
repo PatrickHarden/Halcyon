@@ -20,7 +20,6 @@ import Home from './Home';
 import InteractiveMap from './InteractiveMap';
 import Main from './Main';
 import SalesOffers from './SalesOffers';
-import Search from './Search';
 import Stores from './StoreSingle';
 
 // Endpoints

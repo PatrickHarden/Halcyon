@@ -5,15 +5,13 @@ let entities = new Entities();
 import axios from "axios"
 
 // Components
-import Helmet from 'react-helmet';
-import {ReactBootstrap, Grid, Row, Col} from 'react-bootstrap';
 
 
 // Endpoints
 let SiteURL = 'https://halcyon.dev.v3.imaginuitycenters.com';
 let PropertyOptions = SiteURL + '/wp-json/acf/v3/options/property_options';
-let Pages = SiteURL + '/wp-json/wp/v2/pages';
-const BlogData = SiteURL + '/wp-json/wp/v2/posts?order=desc';
+// let Pages = SiteURL + '/wp-json/wp/v2/pages';
+// const BlogData = SiteURL + '/wp-json/wp/v2/posts?order=desc';
 
 export default class Search extends Component {
     constructor(props) {
@@ -161,7 +159,11 @@ export default class Search extends Component {
                             {'name': 'description', 'content': this.state.metaDescription},
                         ]}
                     />
-
+                    <InteriorHeader
+                        title={this.state.pageData.acf.title ? this.state.pageData.acf.title : this.state.pageData.title.rendered}
+                        imageMobile={this.state.pageData.acf.use_featured_image ? this.state.pageData.acf.header_featured_image_mobile : false}
+                        imageDesktop={this.state.pageData.acf.use_featured_image ? this.state.pageData.acf.header_featured_image_desktop : false}
+                    />
                     <Grid>
                         <Row>
                             <Col xs={12} className="col">
@@ -190,6 +192,6 @@ export default class Search extends Component {
                 </div>
             )
         }
-        return null
+        return <Loader/>
     }
 }
