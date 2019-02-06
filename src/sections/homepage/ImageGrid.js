@@ -82,30 +82,31 @@ export default class ImageGrid extends Component {
 
     mapImageArrays(imageArray) {
         return imageArray.map((image, index) =>
-            <figure key={index} style={{backgroundImage: 'url(' + image.image.url + ')'}}/>
+            <figure key={index} style={{backgroundImage: 'url(' + image.image + ')'}}/>
         );
     }
 
     render() {
         return (
             <div className="image-grid-container">
+            {console.log(this.state.images)}
                 <div className="module image_grid">
                     <div className="row">
-                        <div className="col-6">
-                            <img src={this.state.images.image_group_1} />
+                        <div className="col-6 image-group image-group-1">
+                            {this.mapImageArrays(this.state.images.image_group_1)}
                         </div>
                         <div className="col-6">
                             <div className="row">
-                                <div className="col-6">
-                                <img src={this.state.images.image_group_2} />
+                                <div className="col-6 image-group image-group-2">
+                                {this.mapImageArrays(this.state.images.image_group_2)}
                                 </div>
-                                <div className="col-6">
-                                <img src={this.state.images.image_group_3} />
+                                <div className="col-6 image-group image-group-3">
+                                {this.mapImageArrays(this.state.images.image_group_3)}
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-12">
-                                <img src={this.state.images.image_group_4} />
+                                <div className="col-12 image-group image-group-4">
+                                {this.mapImageArrays(this.state.images.image_group_4)}
                                 </div>
                             </div>
                         </div>
