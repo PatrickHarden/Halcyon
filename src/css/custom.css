@@ -2,11 +2,7 @@
 #home h1 {
     font-size: 1.25rem;
 }
-#searchBar {background:#8F1838; display:block; width:100%; float:left;margin-top:-6px;}
-    #searchBar input {float:right;}
-    #searchBar > div {
-        color:#fff;
-    }
+#searchBar {background:#8F1838; display:block; width:100%;}
     #searchBar .container {
         display: flex;
         justify-content: space-evenly;
@@ -25,3 +21,21 @@
     .slick-slide img {width:100%; max-width:100%;}
 
 .card-columns {max-width:100%;}
+
+#home .top-cta {
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    text-align: center;
+}
+
+#home .heading-container {
+    background: #CDE2E0;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    margin: 0 0 1rem;
+}
+
+#home .heading-container h2 {
+    margin: 0;
+}

@@ -79,7 +79,7 @@ export default withRouteData(class Home extends React.Component {
                    <div className='hidden-xs'>{this.props.property_options.acf.phone}</div>
                  </a>
                </div>
-               <input value={this.state.term} onChange = {event => this.setState({term : event.target.value})}/>
+               <input className='hidden-xs' value={this.state.term} onChange = {event => this.setState({term : event.target.value})}/>
          </Container>
          </div>
          <div id="results">
@@ -89,18 +89,37 @@ export default withRouteData(class Home extends React.Component {
            <EventSearch searchResult={this.state.term} />
            <StoreSearch searchResult={this.state.term} />
          </div>:
-         <Container>
-           <h1>{home.acf.title_h1}</h1>
-           <div>{ReactHtmlParser(home.acf.content_area)}</div>
-           <Link to={home.acf.button.url}><Button>{home.acf.button.title}</Button></Link>
-           <h2>{home.acf.tenant_spotlight.heading}</h2>
-           <TenantSlider stores={this.props.stores} />
-           
-           <h2>{home.acf.halcyon_happenings.heading}</h2>
-           <HappeningsSlider events={this.props.events} />
-           <h2>@HALCYONFORSYTH</h2>
-           {/* <TintSocialFeed optionsData={this.props.property_options} /> */}
-          </Container>
+          <div>
+            <Container className='top-cta'>
+              <h1>{home.acf.title_h1}</h1>
+              <div>{ReactHtmlParser(home.acf.content_area)}</div>
+              <Link className='halcyon-button' to={home.acf.button.url} target={home.acf.button.target}>{home.acf.button.title}</Link>
+            </Container>
+            <div className='tenant-spotlight'>
+              <div class='heading-container'>
+                <Container>
+                  <h2>{home.acf.tenant_spotlight.heading}</h2>
+                </Container>
+              </div>
+              <Container>
+                <TenantSlider stores={this.props.stores} />
+              </Container>
+            </div>
+            <div className='events-container'>
+              <div class='heading-container'>
+                <Container>
+                  <h2>{home.acf.halcyon_happenings.heading}</h2>
+                </Container>
+              </div>
+              <Container>
+                <HappeningsSlider events={this.props.events} />
+              </Container>
+            </div>
+            <Container className='social-feed-container'>
+            <h2>@HALCYONFORSYTH</h2>
+              {/* <TintSocialFeed optionsData={this.props.property_options} /> */}
+            </Container>
+          </div>
           }
           </div>
         </article>
