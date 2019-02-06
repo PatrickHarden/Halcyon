@@ -12,6 +12,8 @@ import {
   CarouselControl,
   CarouselIndicators,
   CarouselCaption, Card, CardBody, CardTitle, CardText } from 'reactstrap';
+  import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+  import { faPhone, faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 
 import PageSearch from '../sections/PageSearch';
 import EventSearch from '../sections/EventSearch';

@@ -2,8 +2,7 @@ import React from 'react'
 import { Link, SiteData, withSiteData } from 'react-static'
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser'
 import {Helmet} from "react-helmet";
-import Navigation from '../Nav'
-
+import Navigation from '../Nav';
 
 export default withSiteData(class SiteHeader extends React.Component {
 

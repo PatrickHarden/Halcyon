@@ -150,6 +150,11 @@
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.1.7.tgz#4336c4b06d0b5608ff1215464b66fcf9f4795284"
 
+"@fortawesome/fontawesome-common-types@^0.2.14":
+  version "0.2.14"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.14.tgz#0eb86a77ac88e8c12c48591735283f0bf0ea5606"
+  integrity sha512-LOcvERCI96KioXSIfOYN4IATv2ROJOyf72dYnpoWfOIkuyLp45oMej1kL03kYdzvktLCzYhykgHwiu6nkg9Xbw==
+
 "@fortawesome/fontawesome-free-brands@^5.0.13":
   version "5.0.13"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free-brands/-/fontawesome-free-brands-5.0.13.tgz#4d15ff4e1e862d5e4a4df3654f8e8acbd47e9c09"
@@ -162,18 +167,33 @@
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.1.7"
 
+"@fortawesome/fontawesome-svg-core@^1.2.14":
+  version "1.2.14"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.14.tgz#48fde5fbfa223cffd5fac9c0402cfbe87605a7d0"
+  integrity sha512-T1qCqkwm9PuvK53J64D1ovfrOTa1kG+SrHNj5cFst/rrskhCnbxpRdbqFIdc/thmXC0ebBX8nOUyja2/mrxe4g==
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.14"
+
 "@fortawesome/fontawesome@^1.1.8":
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome/-/fontawesome-1.1.8.tgz#75fe66a60f95508160bb16bd781ad7d89b280f5b"
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.1.7"
 
-"@fortawesome/react-fontawesome@^0.0.20":
-  version "0.0.20"
-  resolved "https://registry.yarnpkg.com/@fortawesome/react-fontawesome/-/react-fontawesome-0.0.20.tgz#5ec711f3a032c13643e454b360112b6346a276d6"
+"@fortawesome/free-solid-svg-icons@^5.7.1":
+  version "5.7.1"
+  resolved "https://registry.yarnpkg.com/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.7.1.tgz#df41b8643383862a2af93456e7129e5ffc0fb7ae"
+  integrity sha512-5V/Q+JoPzuiIHW2JwmZGvE9bHguvNJKa7611DPo51uIvYv9LweX/SnDF+HC23X2W5T3myHhnGi+EZJTmidAmyg==
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.14"
+
+"@fortawesome/react-fontawesome@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@fortawesome/react-fontawesome/-/react-fontawesome-0.1.4.tgz#18d61d9b583ca289a61aa7dccc05bd164d6bc9ad"
+  integrity sha512-GwmxQ+TK7PEdfSwvxtGnMCqrfEm0/HbRHArbUudsYiy9KzVCwndxa2KMcfyTQ8El0vROrq8gOOff09RF1oQe8g==
   dependencies:
     humps "^2.0.1"
-    prop-types "^15.5.7"
+    prop-types "^15.5.10"
 
 "@react-bootstrap/react-popper@1.2.1":
   version "1.2.1"
@@ -6053,7 +6073,7 @@ prop-types-extra@^1.1.0:
     react-is "^16.3.2"
     warning "^3.0.0"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1:
   version "15.6.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.1.tgz#36644453564255ddda391191fb3a125cbdf654ca"
   dependencies:

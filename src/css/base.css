@@ -5,7 +5,7 @@
   }
 body{font-family:'Flama',sans-serif;margin:0;font-size:20px;line-height:1.75rem;font-weight:100;letter-spacing:1px;color:#333}
 div#root{height:100vh}
-#site{box-sizing:border-box;position:relative;padding-bottom:50px;min-height:100%;width:100%;float:left}
+#site{box-sizing:border-box;position:relative;min-height:100%;width:100%;float:left}
 .content{padding:80px 0 0;margin-top:90px}
 .padded{padding:60px 0}
 
@@ -39,6 +39,8 @@ nav > div > div{width:100%}
 .navbar-dark .navbar-toggler{border:none;padding:0}
 nav .container {max-width:95% !important; padding:0;}
 
+#eventsIcon {filter:invert(60%)}
+
 @media screen and (max-width:992px) {
     .navbar-expand-md .navbar-nav .nav-link{font-size:.7rem}
     .navWrapper .container{max-width:96%}
@@ -53,9 +55,11 @@ nav .container {max-width:95% !important; padding:0;}
 
 
 /* Footer Styles */
-footer{width:100%;background:#4E5859;color:#fff;font-weight:100;font-size:.6em;letter-spacing:0;text-transform:uppercase;padding:15px 0;position:absolute;bottom:0;height:60px;margin-bottom:-10px}
-footer a,footer a:hover,footer a:active{color:#fff;font-weight:700}
-footer .row{opacity:.8}
+footer{width:100%;background:#4E5859;color:#fff;font-weight:100;font-size:.6em;letter-spacing:0;text-transform:uppercase;padding:0 0 15px;position:relative;bottom:0;height:auto;margin-bottom:-10px}
+
+footer a,footer a:hover,footer a:active{color:#4F4B48;font-weight:700}
+footer .row{background:#EDECE2;}
+footer .col-9 > div {width:33%; float:left;}
 .sociallinks{text-align:right}
 footer .fab{font-size:20px!important;margin-left:5px;margin-top:6px;color:#fff}
 footer .fa:hover,footer a:hover{opacity:.9;text-decoration:none}

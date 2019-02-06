@@ -7,6 +7,7 @@ export default {
     const { data: options } = await axios.get('http://www.attorneytemplate.dev.php72-38.lan3-1.websitetestlink.com/index.php/wp-json/wp/v2/options/')
     const { data: centerInfo } = await axios.get(baseURL + '/wp-json/acf/v3/options/property_options')
     const { data: menuLocations } = await axios.get(baseURL + '/wp-json/wp-api-menus/v2/menu-locations')
+    const { data: footerMenu } = await axios.get(baseURL + '/wp-json/wp-api-menus/v2/menus/3')
 
     return {
       title: 'Halcyon',
@@ -15,7 +16,8 @@ export default {
       menus,
       options,
       centerInfo,
-      menuLocations
+      menuLocations,
+      footerMenu
     }
   },
   getRoutes: async () => {
