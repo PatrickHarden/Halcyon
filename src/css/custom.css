@@ -1,13 +1,27 @@
 /* Home */
+#home h1 {
+    font-size: 1.25rem;
+}
 #searchBar {background:#8F1838; display:block; width:100%; float:left;margin-top:-6px;}
     #searchBar input {float:right;}
-    #searchBar > div {color:#fff;max-width:25%; float:left; font-size:13px; margin-left:25px;}
-
+    #searchBar > div {
+        color:#fff;
+    }
+    #searchBar .container {
+        display: flex;
+        justify-content: space-evenly;
+        height: 42px;
+        align-items: center;
+    }
+    #searchBar a {
+        color: #fff;
+    }
+    #searchBar .icon {
+        font-size: 1.5rem;
+    }
 .slick-slider {overflow:hidden;}
 .slick-dots {bottom:65px !important;}
     .slick-dots li button::before {height:40px; width:40px;font-size:20px;}
     .slick-slide img {width:100%; max-width:100%;}
 
 .card-columns {max-width:100%;}
-
-#tenantSlider .slick-slide img {max-height:350px;}

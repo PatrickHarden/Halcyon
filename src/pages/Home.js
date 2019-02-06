@@ -56,27 +56,45 @@ export default withRouteData(class Home extends React.Component {
             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
           </Helmet>
           <HeroSlider />
-          <div id="searchBar">  
-            <div id="searchAddress">{(this.props.property_options.acf.address_1) ? <p>{this.props.property_options.acf.address_1} {(this.props.property_options.acf.address_2)? <span>{this.props.property_options.acf.address_2}</span>: ""} </p>: ""} </div>
-            <div id="searchEmail">{this.props.property_options.acf.email}</div>
-            <div id="searchPhone">{this.props.property_options.acf.phone}</div>
-            <input value={this.state.term} onChange = {event => this.setState({term : event.target.value})}/>
-          </div>
-          <div id="results">
-          { (this.state.term != '') ? 
-          <div>
-            <PageSearch searchResult={this.state.term} />
-            <EventSearch searchResult={this.state.term} /> 
-            <StoreSearch searchResult={this.state.term} />
-          </div>: 
-          <div>
-            <h1>{home.acf.title_h1}</h1>
-            <div>{ReactHtmlParser(home.acf.content_area)}</div>
-            <Link to={home.acf.button.url}><Button>{home.acf.button.title}</Button></Link>
-            <h1>{home.acf.tenant_spotlight.heading}</h1>
-            <h1>{home.acf.halcyon_happenings.heading}</h1>
-            {/* <TintSocialFeed optionsData={this.props.property_options} /> */}
-          </div> 
+          <div id="searchBar">
+         <Container>
+               <div id="searchAddress">
+                 <a href={'//maps.google.com/?q='+ this.props.property_options.acf.address_1 + '+' + this.props.property_options.acf.address_2 } target='_blank'>
+                 <FontAwesomeIcon icon={faMapMarkerAlt} className='icon' />
+                 <div className='hidden-xs'>{(this.props.property_options.acf.address_1) ? <p>{this.props.property_options.acf.address_1} {(this.props.property_options.acf.address_2)? <span>{this.props.property_options.acf.address_2}</span>: ""} </p>: ""} </div>
+                 </a>
+               </div>
+               <div id="searchEmail">
+                 <a href={'mailto:'+this.props.property_options.acf.email}>
+                   <FontAwesomeIcon icon={faEnvelope} className='icon' />
+                   <div className='hidden-xs'>{this.props.property_options.acf.email}</div>
+                 </a>
+               </div>
+               <div id="searchPhone">
+                 <a href={'tel:'+ this.props.property_options.acf.phone}>
+                   <FontAwesomeIcon icon={faPhone} className='icon' />
+                   <div className='hidden-xs'>{this.props.property_options.acf.phone}</div>
+                 </a>
+               </div>
+               <input value={this.state.term} onChange = {event => this.setState({term : event.target.value})}/>
+         </Container>
+         </div>
+         <div id="results">
+         { (this.state.term != '') ?
+         <div>
+           <PageSearch searchResult={this.state.term} />
+           <EventSearch searchResult={this.state.term} />
+           <StoreSearch searchResult={this.state.term} />
+         </div>:
+         <Container>
+           <h1>{home.acf.title_h1}</h1>
+           <div>{ReactHtmlParser(home.acf.content_area)}</div>
+           <Link to={home.acf.button.url}><Button>{home.acf.button.title}</Button></Link>
+           <h2>{home.acf.tenant_spotlight.heading}</h2>
+           <div><p>Tenant happenings slides</p></div>
+           <h2>{home.acf.halcyon_happenings.heading}</h2>
+           {/* <TintSocialFeed optionsData={this.props.property_options} /> */}
+         </Container>
           }
           </div>
         </article>
