@@ -43,8 +43,23 @@ export default withRouteData(class Home extends React.Component {
     };
   }
 
-  componentDidMount(){
+  componentWillMount(){
     console.log(this.props.home);
+    let component = this;
+    let imageData = [];
+    let _home = this.props.home[0];
+
+    _home.acf.image_grid ?
+    imageData = {
+        image_group_1: _home.acf.image_group_1,
+        image_group_2: _home.acf.image_group_2,
+        image_group_3: _home.acf.image_group_3,
+        image_group_4: _home.acf.image_group_4
+    } : null;
+
+    component.setState({
+      imageGridData: imageData,
+    });
   }
 
   render() {
@@ -105,6 +120,7 @@ export default withRouteData(class Home extends React.Component {
                 <TenantSlider stores={this.props.stores} />
               </Container>
             </div>
+            <ImageGrid images={this.state.imageGridData} />
             <div className='events-container'>
               <div class='heading-container'>
                 <Container>

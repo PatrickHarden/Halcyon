@@ -27,10 +27,10 @@ export default class ImageGrid extends Component {
         this.state = {
             mergeCounter: 1,
             images: this.props.images,
-            image_group_1: "http://placekitten.com/100/150",
-            image_group_2: "http://placekitten.com/100/150",
-            image_group_3: "http://placekitten.com/100/150",
-            image_group_4: "http://placekitten.com/100/150",
+            image_group_1: "",
+            image_group_2: "",
+            image_group_3: "",
+            image_group_4: "",
         }
     }
 
@@ -81,10 +81,9 @@ export default class ImageGrid extends Component {
     }
 
     mapImageArrays(imageArray) {
-        // return imageArray.map((image, index) =>
-        //     <figure key={index} style={{backgroundImage: 'url(' + image.image.url + ')'}}/>
-        // );
-        return
+        return imageArray.map((image, index) =>
+            <figure key={index} style={{backgroundImage: 'url(' + image.image.url + ')'}}/>
+        );
     }
 
     render() {
