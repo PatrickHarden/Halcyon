@@ -21,7 +21,6 @@ export default withSiteData(class SiteFooter extends React.Component {
 
         return (
             <footer className="text-center">
-                {console.log(menu)}
                 <Container>
                 <Row>
                     <h4>HALCYON</h4>

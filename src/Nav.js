@@ -11,6 +11,7 @@ import {
   Container,
   Row,
   Col } from 'reactstrap';
+import navLogo from './images/HalcyonNavLogo.png';
 
  export default withSiteData(class Navigation extends React.Component {
   constructor(props) {
@@ -39,7 +40,7 @@ import {
             <Container>
                 <Row className="navRow">
                     <Col xs="2">
-                        <NavbarBrand href="/"><img src="https://i.imgur.com/BNwNrP9.png" /></NavbarBrand>                      
+                        <NavbarBrand href="/"><img src={navLogo} /></NavbarBrand>                      
                     </Col>
                     <Col xs="10" className="text-right">
                         <NavbarToggler onClick={this.toggle} />

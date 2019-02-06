@@ -95,6 +95,7 @@ export default withRouteData(class Home extends React.Component {
            <Link to={home.acf.button.url}><Button>{home.acf.button.title}</Button></Link>
            <h2>{home.acf.tenant_spotlight.heading}</h2>
            <TenantSlider stores={this.props.stores} />
+           
            <h2>{home.acf.halcyon_happenings.heading}</h2>
            <HappeningsSlider events={this.props.events} />
            <h2>@HALCYONFORSYTH</h2>
