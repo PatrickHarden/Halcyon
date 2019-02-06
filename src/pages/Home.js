@@ -74,7 +74,6 @@ export default withRouteData(class Home extends React.Component {
             <div>{ReactHtmlParser(home.acf.content_area)}</div>
             <Link to={home.acf.button.url}><Button>{home.acf.button.title}</Button></Link>
             <h1>{home.acf.tenant_spotlight.heading}</h1>
-            <HappeningsSlider events={this.props.events} />
             <h1>{home.acf.halcyon_happenings.heading}</h1>
             {/* <TintSocialFeed optionsData={this.props.property_options} /> */}
           </div> 

@@ -2,7 +2,6 @@
 import React, {PropTypes, Component} from 'react';
 import {Link} from 'react-router';
 import $ from 'jquery';
-import {ReactBootstrap, Grid, Row, Col, Button} from 'react-bootstrap';
 
 let moment = require('moment');
 let momentRange = require('moment-range');
@@ -11,7 +10,7 @@ moment = momentRange.extendMoment(moment);
 
 // let entities = new Entities();
 
-class ImageGrid extends Component {
+export default class ImageGrid extends Component {
     constructor(props) {
         super(props);
 
