@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 
 
-export default class SimpleSlider extends React.Component {
+export default class HeroSlider extends React.Component {
   render() {
     var settings = {
       dots: true,
@@ -17,10 +17,10 @@ export default class SimpleSlider extends React.Component {
           <img src="https://i.imgur.com/D68KvFY.jpg" />
         </div>
         <div>
-            <img src="https://placekitten.com/g/1200/521" />
+            <img src="https://placekitten.com/g/1200/525" />
         </div>
         <div>
-            <img src="https://placekitten.com/g/1200/521" />
+            <img src="https://placekitten.com/g/1200/525" />
         </div>
       </Slider>
     );

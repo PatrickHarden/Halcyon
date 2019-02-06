@@ -17,7 +17,7 @@ import ReactHtmlParser from 'react-html-parser';
 import PageSearch from '../sections/PageSearch';
 import EventSearch from '../sections/EventSearch';
 import StoreSearch from '../sections/StoreSearch';
-import SimpleSlider from '../sections/Slider';
+import HeroSlider from '../sections/HeroSlider';
 import TintSocialFeed from '../components/TintSocialFeed';
 
 var headerImg = 'https://i.imgur.com/D68KvFY.jpg';
@@ -41,11 +41,13 @@ export default withRouteData(class Home extends React.Component {
     };
   }
 
-  componentWillMount(){
+  componentDidMount(){
     console.log(this.props.home);
   }
 
   render() {
+
+    const home = this.props.home[0];
 
       return (
         <article id="home">
@@ -54,22 +56,26 @@ export default withRouteData(class Home extends React.Component {
             <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
           </Helmet>
-          <SimpleSlider />
-          <div id="searchBar">        
+          <HeroSlider />
+          <div id="searchBar">  
+            <div id="searchAddress">{(this.props.property_options.acf.address_1) ? <p>{this.props.property_options.acf.address_1} {(this.props.property_options.acf.address_2)? <span>{this.props.property_options.acf.address_2}</span>: ""} </p>: ""} </div>
+            <div id="searchEmail">{this.props.property_options.acf.email}</div>
+            <div id="searchPhone">{this.props.property_options.acf.phone}</div>
             <input value={this.state.term} onChange = {event => this.setState({term : event.target.value})}/>
           </div>
           <div id="results">
           { (this.state.term != '') ? 
-            <PageSearch searchResult={this.state.term} /> : "" 
-          }
-          { (this.state.term != '') ? 
-            <EventSearch searchResult={this.state.term} /> : ""
-          }
-          { (this.state.term != '') ? 
-            <StoreSearch searchResult={this.state.term} /> : 
-            <p>Home Content
-              <TintSocialFeed optionsData={this.props.centerInfo} />
-            </p>
+          <div>
+            <PageSearch searchResult={this.state.term} />
+            <EventSearch searchResult={this.state.term} /> 
+            <StoreSearch searchResult={this.state.term} />
+          </div>: 
+          <div>
+            <h1>{home.acf.title_h1}</h1>
+            <div>{ReactHtmlParser(home.acf.content_area)}</div>
+            <Link to={home.acf.button.url}><Button>{home.acf.button.title}</Button></Link>
+            {/* <TintSocialFeed optionsData={this.props.property_options} /> */}
+          </div> 
           }
           </div>
         </article>

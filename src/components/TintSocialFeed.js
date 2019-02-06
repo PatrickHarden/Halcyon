@@ -4,7 +4,6 @@ import Script from 'react-load-script';
 let moment = require('moment');
 let momentRange = require('moment-range');
 moment = momentRange.extendMoment(moment);
-let Entities = require('html-entities').AllHtmlEntities;
 
 export default class TintSocialFeed extends Component{
     constructor(props){
