@@ -16,6 +16,7 @@ import diningIcon from './images/dining_icon.png';
 import eventsIcon from './images/events_icon.png';
 import shoppingIcon from './images/shopping_icon.png';
 import signupIcon from './images/signup_icon.png';
+import navLogo from './images/HalcyonNavLogo.png';
 
 export default withSiteData(class MenuList extends React.Component {
 
@@ -63,7 +64,7 @@ export default withSiteData(class MenuList extends React.Component {
                                 {(menu.object_slug == 'sign-up') ? <img id="sign-upIcon" src={signupIcon} /> : ""}
                                 {ReactHtmlParser(menu.title)}</Link>
                             </NavItem>
-                        }
+                        }                     
                     </div>
             )
         })

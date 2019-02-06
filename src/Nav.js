@@ -11,7 +11,7 @@ import {
   Container,
   Row,
   Col } from 'reactstrap';
-import navLogo from './images/HalcyonNavLogo.png';
+  import navLogo from './images/HalcyonNavLogo.png';
 
  export default withSiteData(class Navigation extends React.Component {
   constructor(props) {
@@ -39,14 +39,12 @@ import navLogo from './images/HalcyonNavLogo.png';
         <Navbar color="white" dark fixed="top" expand="lg">
             <Container>
                 <Row className="navRow">
-                    <Col xs="2">
-                        <NavbarBrand href="/"><img src={navLogo} /></NavbarBrand>                      
-                    </Col>
-                    <Col xs="10" className="text-right">
+                    <Col xs="12" className="text-right">
                         <NavbarToggler onClick={this.toggle} />
                         <Collapse isOpen={this.state.isOpen} navbar>
                             <Nav className="ml-auto" navbar>
                             <MenuList toggle={this.toggle} />
+                            <NavItem href="/"><img src={navLogo} /></NavItem> 
                             </Nav>
                         </Collapse>
                     </Col>
