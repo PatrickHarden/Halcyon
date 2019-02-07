@@ -17,6 +17,10 @@ import {
   import { faSearch } from '@fortawesome/free-solid-svg-icons'
   import AccessibilityIcon from './images/eyeball-dark.png';
 
+  const hide = {
+    display: 'none'
+  }
+
  export default withSiteData(class Navigation extends React.Component {
   constructor(props) {
     super(props);
@@ -45,7 +49,7 @@ import {
                 <div className="navRow">
                     <div className='nav-inner'>
                         <div className='left visible-xs'>
-                          <div className='search-toggle'><FontAwesomeIcon icon={faSearch}/></div>
+                          <div className='search-toggle' style={hide}><FontAwesomeIcon icon={faSearch}/></div>
                           <img className='eyeball' src={AccessibilityIcon} />
                         </div>
                         <div className='nav-logo visible-xs'><img src={navLogo} alt='halcyon logo'/></div>
