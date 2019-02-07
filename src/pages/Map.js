@@ -1,11 +1,14 @@
 import React from 'react'
 import { Link, SiteData, withSiteData } from 'react-static'
-import '../css/components/whiteOut.css'
 
 export default withSiteData(class Map extends React.Component {
 
     constructor(props) {
         super(props);
+    }
+
+    componentWillMount(){
+        document.body.style.display = "none";
     }
 
     render() {
