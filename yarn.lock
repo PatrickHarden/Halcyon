@@ -6240,6 +6240,13 @@ react-bootstrap@^1.0.0-beta.5:
     uncontrollable "^6.0.0"
     warning "^4.0.1"
 
+react-clamp-lines@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-clamp-lines/-/react-clamp-lines-2.2.0.tgz#c14b7f6d8b6f31e5fd7182a3f1b2e9daae1e998a"
+  integrity sha512-yvgnU0Y6H9i3jomlyx8ZE0GeKxAWJnx/bNnagVP1MW45wI+dgx9I+VtDmAetbGsCj91kaO/esCW4RpjuCCdxEA==
+  dependencies:
+    prop-types "^15.6.2"
+
 react-context-toolbox@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/react-context-toolbox/-/react-context-toolbox-2.0.2.tgz#35637287cb23f801e6ed802c2bb7a97e1f04e3fb"

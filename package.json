@@ -26,6 +26,7 @@
     "moment-range": "^4.0.1",
     "react": "^16.0.0",
     "react-bootstrap": "^1.0.0-beta.5",
+    "react-clamp-lines": "^2.2.0",
     "react-device-detect": "^1.4.5",
     "react-dom": "^16.0.0",
     "react-google-maps": "^9.4.5",

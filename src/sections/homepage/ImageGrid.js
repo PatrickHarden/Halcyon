@@ -54,21 +54,24 @@ export default class ImageGrid extends Component {
 
         let sliderEffect = function () {
             let figure = group.find('figure').last(); //find current last figure to animate
+            let next = group.find('figure').first();
 
             if (randomNumber % 2 === 0) {
-                $(figure).animate({
-                    left: "-100%",
-                }, 500).promise().done(function () {
+                next.show();
+                $(figure).fadeOut(1500, function(){
+                    figure.css('z-index',1).show();
+                    next.css('z-index', 3);
+                }).promise().done(function () {
                     figure.prependTo(group.children().first());
-                    figure.css('left', '0');
                 });
             }
             else {
-                $(figure).animate({
-                    top: "-100%",
-                }, 500).promise().done(function () {
+                next.show();
+                $(figure).fadeOut(1500, function(){
+                    figure.css('z-index',1).show();
+                    next.css('z-index', 3);
+                }).promise().done(function () {
                     figure.prependTo(group.children().first());
-                    figure.css('top', '0');
                 });
             }
 
@@ -89,24 +92,31 @@ export default class ImageGrid extends Component {
     render() {
         return (
             <div className="image-grid-container">
-            {console.log(this.state.images)}
                 <div className="module image_grid">
                     <div className="row">
-                        <div className="col-6 image-group image-group-1">
-                            {this.mapImageArrays(this.state.images.image_group_1)}
+                        <div className="col-xs-6 image-group image-group-1">
+                            <div>
+                               {this.mapImageArrays(this.state.images.image_group_1)}
+                            </div>
                         </div>
-                        <div className="col-6">
+                        <div className="col-xs-6">
                             <div className="row">
-                                <div className="col-6 image-group image-group-2">
-                                {this.mapImageArrays(this.state.images.image_group_2)}
+                                <div className="col-xs-6 image-group image-group-2">
+                                    <div>
+                                    {this.mapImageArrays(this.state.images.image_group_2)}
+                                    </div>
                                 </div>
-                                <div className="col-6 image-group image-group-3">
-                                {this.mapImageArrays(this.state.images.image_group_3)}
+                                <div className="col-xs-6 image-group image-group-3">
+                                    <div>
+                                    {this.mapImageArrays(this.state.images.image_group_3)}
+                                    </div>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-12 image-group image-group-4">
-                                {this.mapImageArrays(this.state.images.image_group_4)}
+                                <div className="col-xs-12 image-group image-group-4">
+                                    <div>
+                                    {this.mapImageArrays(this.state.images.image_group_4)}
+                                    </div>
                                 </div>
                             </div>
                         </div>

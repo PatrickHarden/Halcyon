@@ -23,7 +23,6 @@ export default class HappeningsSlider extends React.Component {
                 return (null)
             }
         })
-        console.log(eventArray);
     }
 
     render() {
