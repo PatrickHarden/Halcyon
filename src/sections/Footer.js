@@ -23,10 +23,10 @@ export default withSiteData(class SiteFooter extends React.Component {
             <footer>
                 <Container>
                 <Row>
-                    <Col xs='12'>
+                    <Col xs={12}>
                         <h4 className='footer-heading'>HALCYON</h4>
                     </Col>
-                    <Col xs="12" sm='9' className='footer-nav'>
+                    <Col xs={12} sm={9} className='footer-nav'>
                         {
                             menu.items.map((item, i) => {
                                 return (
@@ -39,7 +39,7 @@ export default withSiteData(class SiteFooter extends React.Component {
                             })
                         }
                     </Col>
-                    <Col sm="3"className='hidden-xs'>
+                    <Col sm={3} className='hidden-xs'>
                         <img src={FooterLogo} />
                     </Col>
                 </Row>
