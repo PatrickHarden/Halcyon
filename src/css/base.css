@@ -17,9 +17,8 @@ div#root{
     min-height:100%;
     width:100%;
 }
-.content{
-    padding:80px 0 0;
-    margin-top:90px
+.container {
+    width: 100%;
 }
 .padded{
     padding:60px 0
@@ -44,9 +43,6 @@ h4 {
     font-family: 'Flama', sans-serif;
 }
 
-#home{
-    position:relative;top:-60px
-}
 .single-page .content,
 .contact .content,
 .blog .content,
@@ -63,10 +59,11 @@ h4 {
     padding: .5rem 2rem;
     border-radius: 20px;
     text-transform: uppercase;
-    font-size: .1.4rem;
+    font-size: 1.4rem;
     max-width: 250px;
     font-family: 'Flama', sans-serif;
     border: 2px solid;
+    text-align: center;
 }
 .halcyon-button:hover {
     color: #4E5859;
@@ -74,35 +71,42 @@ h4 {
     background: #fff;
 }
 
-@media screen and (min-width: 576px) and (max-width: 992px) {
-    #site .container {
-        max-width: 100%;
+@media screen and (min-width: 768px) {
+    body {
+        font-size: 1.4rem;
     }
-}
-
-@media screen and (min-width: 640px) {
-    
+    h2 {
+        font-size: 2.2rem;
+    }
 }
 
 @media (min-width: 1200px) {
     .container{max-width:1200px}
+    h2 {
+        font-size: 3.6rem;
+    }
+    .halcyon-button {
+        font-size: 1.6rem;
+    }
 }
 
 .slick-slide img {max-height:400px;}
 
-
-
 /* Navigation styles */
+.navWrapper {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    background: #fff;
+    top:0;
+}
+
 nav{
     position:relative
 }
-.logo{
-    position:absolute;
-    height:48px
-}
 
-nav > div > div{
-    width:100%
+.navWrapper .navbar {
+    margin: 0;
 }
 .navbar-dark .navbar-nav .dropdown-menu{
     background:#fff
@@ -112,9 +116,7 @@ nav > div > div{
     transition-duration:.5s
 }
 .navbar-expand-lg .navbar-nav .nav-link{
-    padding:33px 1.5rem!important;
     color:#333!important;
-    font-weight:400!important;
     text-transform:uppercase;
     font-size:1.4rem;
     letter-spacing:1px;
@@ -134,11 +136,7 @@ nav > div > div{
 .navbar-expand-lg .navbar-nav .nav-link.nav-phone:hover{
     color:#333!important
 }
-.navbar-brand img{
-    height:60px;
-    position:relative;
-    top:11px
-}
+
 .navbar {
     box-shadow: rgba(0,0,0,0.28) 0px 3px 3px;
 }
@@ -150,11 +148,139 @@ nav .container {
     max-width:95% !important; 
     padding:0;
 }
+.navWrapper .navRow .nav-inner .nav-logo {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    z-index: 15;
+}
 
+.navWrapper .navRow .nav-inner .nav-logo img {
+    max-width: 140px;
+}
+
+.navWrapper .navRow .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 50px;
+}
+.navWrapper .navRow .nav-inner .left {
+    display: flex !important;
+    align-items: center;
+}
+
+.navWrapper .navRow .nav-inner .left .search-toggle {
+    font-size: 2rem;
+    padding-right: 1.5rem;
+}
+.navWrapper .navRow .nav-inner .navbar-collapse {
+    width: 100%;
+    position: fixed;
+    left: 0px;
+    background:#fff;
+    top: 40px;
+    padding: 4rem 0 0;
+    z-index: 1;
+    box-shadow: rgba(0, 0, 0, 0.28) 0px 3px 3px;
+}
+.navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item {
+    border-bottom: 1px solid #707070;
+    padding: 1rem 3rem;
+}
+.navWrapper .navRow .nav-inner .navbar-toggler {
+    background: transparent;
+    display: flex !important;
+    align-items: center;
+}
+
+.navWrapper .navRow .nav-inner .navbar-toggler span {
+    padding-right: 1rem;
+    border: 0;
+    font-family: 'Flama', sans-serif;
+}
+
+.navWrapper .navRow .nav-inner .navbar-toggler:focus {
+    outline: none;
+}
 #eventsIcon {
     filter:invert(60%)
 }
+main.content {
+    padding-top: 50px;
+}
+@media screen and (min-width: 768px) {
+    .navWrapper .navRow .nav-inner .navbar-collapse {
+        top: 0;
+        padding: 0;
+    }
+    
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav {
+        display: flex;
+        align-items: baseline;
+        margin-bottom: -20px;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item {
+        padding: 0;
+        border-bottom: 0;
+    }
+    
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-link {
+        flex-wrap: wrap;
+        justify-content: center;
+        font-size: 1rem;
+    }
+    
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav > div:nth-child(1n+4) {
+        order: 4;
+    }
 
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo) {
+        max-width: 70px;
+        margin: 0 1rem;
+    }
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo) img {
+        max-height: 40px;
+    }
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item.logo img {
+        max-width: 200px;
+    }
+    main.content {
+        padding-top: 72px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-link {
+        font-size: 1.2rem;
+    }
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo) {
+        max-width: 85px;
+        margin: 0 1.5rem;
+    }
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item.logo img {
+        max-width: 220px;
+    }
+    main.content {
+        padding-top: 80px;
+    }
+}
 
 /* Footer Styles */
 footer{
@@ -187,9 +313,10 @@ footer .footer-nav {
     padding-bottom: 1rem;
 }
 footer .footer-nav .nav-link {
-    padding: 0 0 1rem;
+    padding: 0 0 1.5rem;
     font-family: 'Flama', sans-serif;
     font-size: 1.2rem;
+    display: block;
 }
 .sociallinks{
     text-align:right
@@ -205,7 +332,7 @@ footer .fa:hover,footer a:hover{
     text-decoration:none
 }
 
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 768px) {
     footer {
         background-position: center top 40%; 
     }
@@ -216,20 +343,21 @@ footer .fa:hover,footer a:hover{
     footer .footer-nav {
         column-count: 3;
         padding-bottom: 2rem;
+        padding-left: 0;
     }
     footer .footer-nav .nav-link {
-        font-size: 1.8rem;
+        font-size: 1.4rem;
     }
 }
 
 @media screen and (min-width: 1200px) {
     footer .footer-heading {
-        font-size: 2.5rem;
+        font-size: 4rem;
     }
 }
 /* Visibility Classes */
 
-@media screen and (max-width: 639px) {
+@media screen and (max-width: 767px) {
     .hidden-xs {
         display: none;
     }

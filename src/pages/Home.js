@@ -79,7 +79,8 @@ export default withRouteData(class Home extends React.Component {
                <div id="searchAddress">
                  <a href={'//maps.google.com/?q='+ this.props.property_options.acf.address_1 + '+' + this.props.property_options.acf.address_2 } target='_blank'>
                  <FontAwesomeIcon icon={faMapMarkerAlt} className='icon' />
-                 <div className='hidden-xs'>{(this.props.property_options.acf.address_1) ? <p>{this.props.property_options.acf.address_1} {(this.props.property_options.acf.address_2)? <span>{this.props.property_options.acf.address_2}</span>: ""} </p>: ""} </div>
+                 <div className='hidden-xs hidden-lg'>Directions</div>
+                 <div className='hidden-xs hidden-sm'>{(this.props.property_options.acf.address_1) ? <p>{this.props.property_options.acf.address_1} {(this.props.property_options.acf.address_2)? <span>{this.props.property_options.acf.address_2}</span>: ""} </p>: ""} </div>
                  </a>
                </div>
                <div id="searchEmail">
@@ -94,7 +95,7 @@ export default withRouteData(class Home extends React.Component {
                    <div className='hidden-xs'>{this.props.property_options.acf.phone}</div>
                  </a>
                </div>
-               <input className='hidden-xs' value={this.state.term} onChange = {event => this.setState({term : event.target.value})}/>
+               <input className='search-bar hidden-xs' value={this.state.term} onChange = {event => this.setState({term : event.target.value})}/>
          </Container>
          </div>
          <div id="results">

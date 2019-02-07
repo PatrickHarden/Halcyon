@@ -1,7 +1,5 @@
 /* Home */
-#home h1 {
-    font-size: 1.25rem;
-}
+
 #searchBar {
     background:#8F1838;
      display:block; 
@@ -17,7 +15,7 @@
     color: #fff;
 }
 #searchBar .icon {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
 }
 .slick-slider {
     overflow:hidden;
@@ -37,9 +35,12 @@
 .card-columns {
     max-width:100%;
 }
+#home h1 {
+    font-size: 2rem;
+}
 #home .top-cta {
-    padding-top: 3rem;
-    padding-bottom: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     text-align: center;
 }
 #home .heading-container {
@@ -51,4 +52,47 @@
 }
 #home .heading-container h2 {
     margin: 0;
+}
+.image-grid-container {
+    overflow: hidden;
+}
+@media screen and (min-width: 768px) {
+
+    #searchBar .container a {
+        display: flex;
+        align-items: center;
+        font-family: 'Flama', sans-serif;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+    }
+    
+    #searchBar .container a .icon {
+        margin-right: 1rem;
+    }
+    
+    #searchBar .container a p {
+        margin: 0;
+    }
+
+    #searchBar .search-bar {
+        border-radius: 5px;
+        border: 0;
+    }
+
+    #home h1 {
+        font-size: 2.4rem;
+    }
+    #home .top-cta {
+        padding-bottom: 2rem;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #home .heading-container {
+        height: 72px;
+    }
+    #home .top-cta {
+        padding-top: 2rem;
+        padding-bottom: 3rem;
+    }
 }

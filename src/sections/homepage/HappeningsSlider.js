@@ -35,7 +35,7 @@ export default class HappeningsSlider extends React.Component {
         };
 
     return (
-        <div id="tenantSlider">
+        <div id="happeningsSlider">
             <Slider {...settings}>
                 {eventArray}
             </Slider>

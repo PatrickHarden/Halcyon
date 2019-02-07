@@ -1,35 +1,5 @@
-/* .image_grid figure {
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50%;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-.image-group {
-    overflow: hidden;
-    position: relative;
-}
-.image-group > div {position:relative;}
-.image_grid {    overflow: hidden;
-    margin-left: -15px;
-    margin-right: -15px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-} */
-/* .image_grid > .row > div {height:300px;} */
 
 .image_grid .col-xs-6, .image_grid .col-xs-12 {padding:0;    display: block;}
-#tenantText {font-size:1.6rem}
 
 .image_grid figure {background-size:cover;position:absolute;top:0; bottom:0; left:0; right:0;}
 .image_group > div {position:relative;}

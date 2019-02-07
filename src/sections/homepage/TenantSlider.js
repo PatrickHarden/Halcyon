@@ -93,7 +93,7 @@ export default class TenantSlider extends React.Component {
                             <div id="tenantText">
                             {ReactHtmlParser(store.acf.store_copy)}
                             </div>
-                            <a href={`/shopping/${store.slug}/`}>Learn More</a>
+                            <a className='halcyon-button' href={`/shopping/${store.slug}/`}>Learn More</a>
                         </div>
                 )
             } else {
