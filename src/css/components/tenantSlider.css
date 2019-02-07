@@ -1,0 +1,14 @@
+#tenantSlider .slick-prev,
+#tenantSlider .slick-next {
+  position: absolute;
+  top: 90%;
+  z-index: 1;
+  font-size:1.4rem;
+  line-height:1rem;
+  width:auto;
+}
+#tenantSlider .slick-prev {left:0;}
+#tenantSlider .slick-next {right:0;}
+.slick-arrow p {color:#333;margin:0;}
+.slick-next p {float:left;}
+.slick-prev p {float:right;}
