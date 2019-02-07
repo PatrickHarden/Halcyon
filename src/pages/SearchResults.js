@@ -29,7 +29,7 @@ export default withRouteData(class SearchResults extends React.Component {
   }
 
   componentWillMount(){
-    let urlResult = location.search.substring(2);
+    let urlResult = window.location.search.substring(2);
 
     this.setState({
       term: urlResult,
