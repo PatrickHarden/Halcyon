@@ -125,14 +125,6 @@ export default {
         is404: true,
         component: 'src/pages/404',
       },
-      {
-        path: '/wp-admin',
-        component: 'src/pages/Map'
-      },
-      {
-        path: '/admin',
-        component: 'src/pages/Map'
-      }
     ]
   },
 }

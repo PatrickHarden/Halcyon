@@ -1,9 +1,24 @@
 import React from 'react'
 import { withSiteData } from 'react-static'
 
-export default withSiteData(({ redirectURL }) => (
+export default withSiteData(class Map extends React.Component {
 
-    <section>
-        {window.location.replace(redirectURL)}
-    </section>
-  ))
+    constructor(props) {
+        super(props);
+    }
+
+    componentWillMount(){
+        document.body.style.display = "none";
+    }
+
+    render() {
+        const url = this.props.redirectURL
+
+        return (
+            <div>
+                {window.location.replace(url)}
+            </div>
+        )
+
+    }
+})
