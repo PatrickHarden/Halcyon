@@ -104,8 +104,11 @@ export default {
         component: 'src/pages/Contact',
       },
       {
-        path: '/maps',
-        component: 'src/pages/Map',
+        path: '/search-results',
+        component: 'src/pages/SearchResults',
+        getData: () => ({
+          stores, events, pages,
+        }),
       },
       {
         path: '/',
@@ -125,10 +128,6 @@ export default {
         is404: true,
         component: 'src/pages/404',
       },
-      {
-        path: '/search',
-        component: 'src/pages/Search'
-      }
     ]
   },
 }

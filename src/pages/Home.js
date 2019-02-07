@@ -15,9 +15,6 @@ import {
   import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
   import { faPhone, faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 
-import PageSearch from '../sections/PageSearch';
-import EventSearch from '../sections/EventSearch';
-import StoreSearch from '../sections/StoreSearch';
 import HeroSlider from '../sections/homepage/HeroSlider';
 import HappeningsSlider from '../sections/homepage/HappeningsSlider';
 import TenantSlider from '../sections/homepage/TenantSlider';
@@ -65,7 +62,7 @@ export default withRouteData(class Home extends React.Component {
   keyPress(e){
     if(e.keyCode == 13){
        console.log(e.target.value);
-       // put the login here
+       window.location.href = window.location.href + 'search-results?=' + e.target.value;
     }
  }
 
@@ -106,12 +103,6 @@ export default withRouteData(class Home extends React.Component {
          </Container>
          </div>
          <div id="results">
-         { (this.state.term != '') ?
-         <div>
-           <PageSearch searchResult={this.state.term} />
-           <EventSearch searchResult={this.state.term} />
-           <StoreSearch searchResult={this.state.term} />
-         </div>:
           <div>
             <Container className='top-cta'>
               <h1>{home.acf.title_h1}</h1>
@@ -144,7 +135,6 @@ export default withRouteData(class Home extends React.Component {
               {/* <TintSocialFeed optionsData={this.props.property_options} /> */}
             </Container>
           </div>
-          }
           </div>
         </article>
       )
