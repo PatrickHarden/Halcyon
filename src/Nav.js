@@ -20,9 +20,8 @@ import { library, config } from '@fortawesome/fontawesome-svg-core'
 config.autoAddCss = false
 import '@fortawesome/fontawesome-svg-core/styles.css'
 
-  const hide = {
-    display: 'none'
-  }
+
+var isContrast = false;
 
  export default withSiteData(class Navigation extends React.Component {
   constructor(props) {
@@ -32,6 +31,21 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
     this.state = {
       isOpen: false
     };
+  }
+  changeContrast(){
+    if (!isContrast) {
+        document.getElementById("footerCopyright").style.background = "#000"
+        document.getElementsByTagName("footer")[0].style.backgroundColor = "#fff"
+        document.getElementsByTagName("footer")[0].style.borderTop = "1px inset #000"
+        document.getElementsByClassName("navWrapper")[0].style.webkitFilter = "grayscale(100%)"
+        isContrast = true;
+    } else {
+        document.getElementById("footerCopyright").style.background = "#4E5859"
+        document.getElementsByTagName("footer")[0].style.backgroundColor = "#EDECE2"
+        document.getElementsByTagName("footer")[0].style.borderTop = "none"
+        document.getElementsByClassName("navWrapper")[0].style.webkitFilter = "none"
+        isContrast = false;
+    }
   }
   toggle() {
     var width = document.body.clientWidth;
@@ -52,8 +66,8 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
                 <div className="navRow">
                     <div className='nav-inner'>
                         <div className='left visible-xs'>
-                          <div className='search-toggle' style={hide}><FontAwesomeIcon icon={faSearch}/></div>
-                          <img className='eyeball' src={AccessibilityIcon} />
+                          <div className='search-toggle'><FontAwesomeIcon icon={faSearch}/></div>
+                          <img className='eyeball' src={AccessibilityIcon} onClick={this.changeContrast} />
                         </div>
                         <div className='nav-logo visible-xs'><img src={navLogo} alt='halcyon logo'/></div>
                         <NavbarToggler className='visible-xs' onClick={this.toggle}><span>MENU</span><img src={navToggle} /></NavbarToggler>

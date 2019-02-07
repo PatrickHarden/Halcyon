@@ -1,12 +1,21 @@
 import React from 'react'
-import { Container, Row, Col } from 'reactstrap';
-// import InteractiveMap from '../oldCompontents/oldContainers/InteractiveMap';
-//
+import { Link, SiteData, withSiteData } from 'react-static'
+import '../css/components/whiteOut.css'
 
-export default () => (
-  <div>
-    <Container>
-       
-    </Container>
-  </div>
-)
+export default withSiteData(class Map extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        const url = this.props.redirectURL
+
+        return (
+            <div>
+                {window.location.replace(url)}
+            </div>
+        )
+
+    }
+})

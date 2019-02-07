@@ -13,6 +13,7 @@ export default {
       title: 'Halcyon',
       siteCreator: 'Imaginuity',
       siteCreatorURL: 'https://www.imaginuity.com/',
+      redirectURL: 'https://halcyon.dev.v3.imaginuitycenters.com/wp-admin',
       menus,
       options,
       centerInfo,
@@ -124,6 +125,14 @@ export default {
         is404: true,
         component: 'src/pages/404',
       },
+      {
+        path: '/wp-admin',
+        component: 'src/pages/Map'
+      },
+      {
+        path: '/admin',
+        component: 'src/pages/Map'
+      }
     ]
   },
 }

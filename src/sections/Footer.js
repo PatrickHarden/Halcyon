@@ -7,10 +7,28 @@ import { Container, Row, Col } from 'reactstrap';
 import FooterLogo from '../images/footerLogo.png';
 import AccessibilityIcon from '../images/footerAccessIcon.png';
 
+var isContrast = false;
+
 export default withSiteData(class SiteFooter extends React.Component {
 
     constructor(props) {
         super(props);
+    }
+
+    changeContrast(){
+        if (!isContrast) {
+            document.getElementById("footerCopyright").style.background = "#000"
+            document.getElementsByTagName("footer")[0].style.backgroundColor = "#fff"
+            document.getElementsByTagName("footer")[0].style.borderTop = "1px inset #000"
+            document.getElementsByClassName("navWrapper")[0].style.webkitFilter = "grayscale(100%)"
+            isContrast = true;
+        } else {
+            document.getElementById("footerCopyright").style.background = "#4E5859"
+            document.getElementsByTagName("footer")[0].style.backgroundColor = "#EDECE2"
+            document.getElementsByTagName("footer")[0].style.borderTop = "none"
+            document.getElementsByClassName("navWrapper")[0].style.webkitFilter = "none"
+            isContrast = false;
+        }
     }
 
     render() {
@@ -47,7 +65,7 @@ export default withSiteData(class SiteFooter extends React.Component {
                 <div id="footerCopyright">
                     <Container>
                         &copy; {(new Date().getFullYear())} {siteTitle} HALCYON FORSYTH. ALL RIGHTS RESERVED. 
-                        <img className='hidden-xs' src={AccessibilityIcon} />
+                        <img className='hidden-xs' src={AccessibilityIcon} onClick={this.changeContrast} />
                     </Container>
                 </div>
             </footer>
