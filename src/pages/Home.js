@@ -62,6 +62,13 @@ export default withRouteData(class Home extends React.Component {
     });
   }
 
+  keyPress(e){
+    if(e.keyCode == 13){
+       console.log(e.target.value);
+       // put the login here
+    }
+ }
+
   render() {
 
     const home = this.props.home[0];
@@ -95,7 +102,7 @@ export default withRouteData(class Home extends React.Component {
                    <div className='hidden-xs'>{this.props.property_options.acf.phone}</div>
                  </a>
                </div>
-               <input className='search-bar hidden-xs' value={this.props.term} onChange = {event => this.setState({term : event.target.value})}/>
+               <input className='search-bar hidden-xs' value={this.state.term} onChange = {event => this.setState({term : event.target.value})} onKeyDown={this.keyPress}/>
          </Container>
          </div>
          <div id="results">

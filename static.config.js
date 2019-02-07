@@ -125,6 +125,10 @@ export default {
         is404: true,
         component: 'src/pages/404',
       },
+      {
+        path: '/search',
+        component: 'src/pages/Search'
+      }
     ]
   },
 }
