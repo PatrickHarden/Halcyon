@@ -12,7 +12,7 @@ export default class HeroSlider extends React.Component {
       slidesToScroll: 1
     };
     return (
-      <Slider {...settings}>
+      <Slider className='hero-slider' {...settings}>
         <div>
           <img src="https://i.imgur.com/D68KvFY.jpg" />
         </div>

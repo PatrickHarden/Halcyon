@@ -35,7 +35,7 @@ export default class TenantSlider extends React.Component {
                                 buttons={false}
                                 ellipsis="..." /> */}
                             </div>
-                            <a href={`/shopping/${store.slug}/`}>Learn More</a>
+                            <a className='halcyon-button' href={`/shopping/${store.slug}/`}>Learn More</a>
                         </div>
                 )
             } else {

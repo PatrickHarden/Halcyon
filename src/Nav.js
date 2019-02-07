@@ -11,7 +11,11 @@ import {
   Container,
   Row,
   Col } from 'reactstrap';
-  import navLogo from './images/HalcyonNavLogo.png';
+  import navLogo from './images/halcyon-nav-logo.png';
+  import navToggle from './images/nav-toggle.png';
+  import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+  import { faSearch } from '@fortawesome/free-solid-svg-icons'
+  import AccessibilityIcon from './images/eyeball-dark.png';
 
  export default withSiteData(class Navigation extends React.Component {
   constructor(props) {
@@ -24,7 +28,7 @@ import {
   }
   toggle() {
     var width = document.body.clientWidth;
-    if (width <= 993) {
+    if (width <= 767) {
       this.setState({
         isOpen: !this.state.isOpen
       });
@@ -38,18 +42,22 @@ import {
       <div className="navWrapper">
         <Navbar color="white" dark fixed="top" expand="lg">
             <Container>
-                <Row className="navRow">
-                    <Col xs="12">
-                        <div className='nav-logo'><img src={navLogo} alt='halcyon logo'/></div>
-                        <NavbarToggler onClick={this.toggle} />
+                <div className="navRow">
+                    <div className='nav-inner'>
+                        <div className='left visible-xs'>
+                          <div className='search-toggle'><FontAwesomeIcon icon={faSearch}/></div>
+                          <img className='eyeball' src={AccessibilityIcon} />
+                        </div>
+                        <div className='nav-logo visible-xs'><img src={navLogo} alt='halcyon logo'/></div>
+                        <NavbarToggler className='visible-xs' onClick={this.toggle}><span>MENU</span><img src={navToggle} /></NavbarToggler>
                         <Collapse isOpen={this.state.isOpen} navbar>
                             <Nav className="ml-auto" navbar>
                             <MenuList toggle={this.toggle} />
-                            <NavItem href="/"><img className='hidden-xs' src={navLogo} /></NavItem> 
+                            <NavItem className='hidden-xs logo' href="/"><Link to='/'><img src={navLogo} /></Link></NavItem> 
                             </Nav>
                         </Collapse>
-                    </Col>
-                </Row>
+                    </div>
+                </div>
             </Container>
         </Navbar>
       </div>
