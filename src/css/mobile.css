@@ -1,5 +1,4 @@
 @media screen and (max-width:992px) {
-    .row {width: auto !important;}
     .navRow {width: 100vw !important;}
     .navRow .col-9 {
     width: 100% !important;
@@ -92,10 +91,5 @@
             font-size: 2rem;
             padding-bottom: 15px;
         }
-    
-    
-        footer {
-            font-size: 0.65rem;
-            line-height: 2em;
-        }
+   
     }

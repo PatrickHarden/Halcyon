@@ -39,12 +39,13 @@ import {
         <Navbar color="white" dark fixed="top" expand="lg">
             <Container>
                 <Row className="navRow">
-                    <Col xs="12" className="text-right">
+                    <Col xs="12">
+                        <div className='nav-logo'><img src={navLogo} alt='halcyon logo'/></div>
                         <NavbarToggler onClick={this.toggle} />
                         <Collapse isOpen={this.state.isOpen} navbar>
                             <Nav className="ml-auto" navbar>
                             <MenuList toggle={this.toggle} />
-                            <NavItem href="/"><img src={navLogo} /></NavItem> 
+                            <NavItem href="/"><img className='hidden-xs' src={navLogo} /></NavItem> 
                             </Nav>
                         </Collapse>
                     </Col>

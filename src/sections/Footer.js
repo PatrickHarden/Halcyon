@@ -20,29 +20,36 @@ export default withSiteData(class SiteFooter extends React.Component {
         const menu = this.props.footerMenu
 
         return (
-            <footer className="text-center">
+            <footer>
                 <Container>
                 <Row>
-                    <h4>HALCYON</h4>
-                <Col xs="9">
-                    {
-                        menu.items.map((item, i) => {
-                            return (
-                                <div>         
-                                <Link to={'/' + item.object_slug} href={'/' + item.object_slug} className="nav-link">
-                                    {ReactHtmlParser(item.title)}
-                                </Link>     
-                                </div> 
-                            )
-                        })
-                    }
-                </Col>
-                <Col xs="3">
-                    <img src={FooterLogo} />
-                </Col>
+                    <Col xs='12'>
+                        <h4 className='footer-heading'>HALCYON</h4>
+                    </Col>
+                    <Col xs="12" sm='9' className='footer-nav'>
+                        {
+                            menu.items.map((item, i) => {
+                                return (
+                                    <div>         
+                                    <Link to={'/' + item.object_slug} href={'/' + item.object_slug} className="nav-link">
+                                        {ReactHtmlParser(item.title)}
+                                    </Link>     
+                                    </div> 
+                                )
+                            })
+                        }
+                    </Col>
+                    <Col sm="3"className='hidden-xs'>
+                        <img src={FooterLogo} />
+                    </Col>
                 </Row>
                 </Container>
-                <div id="footerCopyright">&copy; {(new Date().getFullYear())} {siteTitle} HALCYON FORSYTH. ALL RIGHTS RESERVED. <img src={AccessibilityIcon} /></div>
+                <div id="footerCopyright">
+                    <Container>
+                        &copy; {(new Date().getFullYear())} {siteTitle} HALCYON FORSYTH. ALL RIGHTS RESERVED. 
+                        <img className='hidden-xs' src={AccessibilityIcon} />
+                    </Container>
+                </div>
             </footer>
         )
 
