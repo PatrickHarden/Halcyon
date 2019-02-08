@@ -8,16 +8,7 @@ import '../../css/components/imageGrid.css'
 let moment = require('moment');
 let momentRange = require('moment-range');
 moment = momentRange.extendMoment(moment);
-// let Entities = require('html-entities').AllHtmlEntities;
 
-// imageGridData: {
-//     image_group_1: 'http://placekitten.com/100/200',
-//     image_group_2: 'http://placekitten.com/200/300',
-//     image_group_3: 'http://placekitten.com/200/300',
-//     image_group_4: 'http://placekitten.com/200/300',
-//   }
-
-// let entities = new Entities();
 // <ImageGrid images={this.state.imageGridData} />
 
 export default class ImageGrid extends Component {

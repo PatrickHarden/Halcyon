@@ -159,6 +159,11 @@ export default class Search extends Component {
                             {'name': 'description', 'content': this.state.metaDescription},
                         ]}
                     />
+                    <InteriorHeader
+                        title={this.state.pageData.acf.title ? this.state.pageData.acf.title : this.state.pageData.title.rendered}
+                        imageMobile={this.state.pageData.acf.use_featured_image ? this.state.pageData.acf.header_featured_image_mobile : false}
+                        imageDesktop={this.state.pageData.acf.use_featured_image ? this.state.pageData.acf.header_featured_image_desktop : false}
+                    />
                     <Grid>
                         <Row>
                             <Col xs={12} className="col">
@@ -187,6 +192,6 @@ export default class Search extends Component {
                 </div>
             )
         }
-        return null;
+        return null
     }
 }

@@ -16,6 +16,8 @@ import {
 import LazyHero from 'react-lazy-hero';
 import ReactHtmlParser from 'react-html-parser';
 
+var counter = 0;
+var cards;
 
 export default withRouteData(class pageSearch extends React.Component {
 
@@ -30,22 +32,30 @@ export default withRouteData(class pageSearch extends React.Component {
     };
   }
 
+//   componentDidMount(){
+//       this.componentDidUpdate();
+//   }
+
+//   componentWillUpdate(){
+//       cards = document.getElementsByClassName("counter");
+//       counter = cards.length;
+//   }
+
   render() {
 
 
       return (
         <article id="searchPage">
-        <h4>Pages:</h4>
+        <h4>Pages: </h4>
         {(this.props.searchResult != '') ? 
           <div>
             {this.props.pages.map(page => (
               (page.slug.includes(this.props.searchResult.toLowerCase())) ? 
               <div>
-            {/* {this.setState({pageCounter : event.target.value})}} */}
               <Card key={page.id} className={"card-" + page.id}>
                 <Link to={`/pages/${page.slug}/`}>
                 </Link>
-                  <CardBody>
+                  <CardBody className="counter">
                     <Link to={`/pages/${page.slug}/`}>
                       <CardTitle>{(page.title.rendered) ? <div>{page.title.rendered}</div>: ""}</CardTitle>
                     </Link>
@@ -54,7 +64,7 @@ export default withRouteData(class pageSearch extends React.Component {
                   </CardBody>
               </Card>
               </div>
-            : ""))}</div> : <p>Test</p>
+            : ""))}</div> : <div></div>
             }
         </article>
       )
