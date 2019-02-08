@@ -13,7 +13,6 @@ import EventSearch from '../sections/EventSearch';
 import PageSearch from '../sections/PageSearch';
 import StoreSearch from '../sections/StoreSearch';
 
-var pageCounter = 0;
 var eventCounter = 0;
 var storeCounter = 0;
 
