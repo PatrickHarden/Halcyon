@@ -4,16 +4,10 @@ import {Helmet} from "react-helmet";
 import ReactHtmlParser from 'react-html-parser';
 import { 
   Container,
-  Row,
-  Col,
-  Button,
-  Carousel,
-  CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
-  CarouselCaption, Card, CardBody, CardTitle, CardText } from 'reactstrap';
+} from 'reactstrap';
   import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
   import { faPhone, faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
+  import { Redirect } from 'react-router-dom'
 
 import HeroSlider from '../sections/homepage/HeroSlider';
 import HappeningsSlider from '../sections/homepage/HappeningsSlider';
@@ -38,6 +32,7 @@ export default withRouteData(class Home extends React.Component {
         storeExist: false,
         imageArray: [],
     };
+    this.keyPress = this.keyPress.bind(this);
   }
 
   componentWillMount(){
@@ -61,8 +56,7 @@ export default withRouteData(class Home extends React.Component {
 
   keyPress(e){
     if(e.keyCode == 13){
-       console.log(e.target.value);
-       window.location.href = window.location.href + 'search-results?=' + e.target.value;
+      this.props.history.push("/search-results?=" + e.target.value)
     }
  }
 

@@ -26,6 +26,7 @@ export default withRouteData(class pageSearch extends React.Component {
         pageExist: false,
         pageExist: false,
         storeExist: false,
+        pageCounter: 0
     };
   }
 
@@ -40,6 +41,7 @@ export default withRouteData(class pageSearch extends React.Component {
             {this.props.pages.map(page => (
               (page.slug.includes(this.props.searchResult.toLowerCase())) ? 
               <div>
+            {/* {this.setState({pageCounter : event.target.value})}} */}
               <Card key={page.id} className={"card-" + page.id}>
                 <Link to={`/pages/${page.slug}/`}>
                 </Link>
