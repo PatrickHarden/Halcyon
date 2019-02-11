@@ -1,7 +1,5 @@
 /* Home */
 .search-page-bar {margin-top:30px;}
-#tenantSlider .slick-slide img {max-height:400px;}
-#happeningsSlider .slick-slide img {max-height:300px;}
 
 .hero-slider .slick-slide {
     position: relative;
@@ -126,6 +124,9 @@
     overflow: hidden;
 }
 @media screen and (min-width: 768px) {
+    .hero-slider .slick-slide .hero-heading {
+        font-size: 9rem;
+    }
 
     #searchBar .container a {
         display: flex;
@@ -158,6 +159,11 @@
 }
 
 @media screen and (min-width: 1200px) {
+    .hero-slider .slick-slide .hero-heading {
+        font-size: 14rem;
+        letter-spacing: 1.5rem;
+    }
+
     #home .heading-container {
         height: 72px;
     }

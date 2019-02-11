@@ -1,4 +1,4 @@
-#tenantSlider .slick-prev,
+/* #tenantSlider .slick-prev,
 #tenantSlider .slick-next {
   position: absolute;
   top: 90%;
@@ -6,9 +6,42 @@
   font-size:1.4rem;
   line-height:1rem;
   width:auto;
-}
-#tenantSlider .slick-prev {left:0;}
+} */
+/* #tenantSlider .slick-prev {left:0;}
 #tenantSlider .slick-next {right:0;}
 .slick-arrow p {color:#333;margin:0;}
 .slick-next p {float:left;}
-.slick-prev p {float:right;}
+.slick-prev p {float:right;} */
+
+#tenantSlider {
+  margin: 2rem 0;
+}
+
+#tenantSlider .slick-slide {
+  padding: 0 3rem;
+}
+
+#tenantSlider .slick-arrow {
+  content: '';
+  border: solid #4F4B48;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  top: 25%
+}
+
+#tenantSlider .slick-arrow.slick-next {
+  transform: rotate(-45deg);
+  right: 1rem;
+  z-index: 1;
+}
+
+#tenantSlider .slick-arrow.slick-prev {
+  transform: rotate(135deg);
+  left: 1rem;
+  z-index: 1;
+}
+
+#tenantSlider .slick-arrow:before {
+  content: '';
+}
