@@ -14,6 +14,7 @@ export default {
       siteCreator: 'Imaginuity',
       siteCreatorURL: 'https://www.imaginuity.com/',
       redirectURL: 'https://halcyon.dev.v3.imaginuitycenters.com/wp-admin',
+      siteRoot: 'https://halycon.netlify.com/',
       menus,
       options,
       centerInfo,
@@ -30,19 +31,22 @@ export default {
     const { data: home } = await axios.get(baseURL + '/index.php/wp-json/wp/v2/pages?slug=home')
     const { data: sales } = await axios.get(baseURL + '/wp-json/wp/v2/sales?per_page=100')
     const { data: property_options } = await axios.get(baseURL + '/wp-json/acf/v3/options/property_options')
+    const metaDescription = property_options.acf.meta_description
+    const siteRoot = 'https://halycon.netlify.com/'
+    const title = 'Halcyon'
 
     return [
       {
         path: '/blogs',
         component: 'src/pages/Blogs',
         getData: () => ({
-          posts,
+          posts, siteRoot, title, metaDescription
         }),
         children: posts.map(post => ({
           path: `/${post.slug}`,
           component: 'src/singles/Post',
           getData: () => ({
-            post,
+            post, siteRoot, title, metaDescription
           }),
         })),
       },
@@ -50,13 +54,13 @@ export default {
         path: '/events',
         component: 'src/pages/Events',
         getData: () => ({
-          events,
+          events, siteRoot, title, metaDescription
         }),
         children: events.map(event => ({
           path: `/${event.slug}`,
           component: 'src/singles/Event',
           getData: () => ({
-            event,
+            event, siteRoot, title, metaDescription
           }),
         })),
       },
@@ -64,7 +68,7 @@ export default {
         path: '/sales',
         component: 'src/pages/Sales',
         getData: () => ({
-          sales,
+          sales, siteRoot, title, metaDescription
         })
       },
       {
@@ -75,13 +79,13 @@ export default {
         path: '/shopping',
         component: 'src/pages/Stores',
         getData: () => ({
-          stores,
+          stores, siteRoot, title, metaDescription
         }),
         children: stores.map(store => ({
           path: `/${store.slug}`,
           component: 'src/singles/Store',
           getData: () => ({
-            store,
+            store, siteRoot, title, metaDescription
           }),
         })),
       },
@@ -89,13 +93,13 @@ export default {
         path: '/dining',
         component: 'src/pages/Dining',
         getData: () => ({
-          stores,
+          stores, siteRoot, title, metaDescription
         }),
         children: stores.map(store => ({
           path: `/${store.slug}`,
           component: 'src/singles/Store',
           getData: () => ({
-            store,
+            store, siteRoot, title, metaDescription
           }),
         })),
       },
@@ -107,7 +111,7 @@ export default {
         path: '/search-results',
         component: 'src/pages/SearchResults',
         getData: () => ({
-          stores, events, pages,
+          stores, events, pages, metaDescription
         }),
       },
       {
@@ -120,7 +124,7 @@ export default {
         path: `/${page.slug}`,
         component: 'src/singles/Page',
           getData: () => ({
-            page,
+            page, siteRoot, title, metaDescription
           }),
         })),
       },

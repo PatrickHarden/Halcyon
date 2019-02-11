@@ -5,13 +5,15 @@ import { Container,
          Col,} from 'reactstrap';
 
 import ReactHtmlParser from 'react-html-parser'
-import {Helmet} from "react-helmet";
 //
 
-export default withRouteData(({ store }) => (
+export default withRouteData(({ store, siteRoot, title, metaDescription }) => (
   <section>
     <Helmet>
       <body className={'single-blog blog-id-'+store.id + ' ' + store.slug} />
+      {(store.yoast_meta.yoast_wpseo_title) ? <title>{store.yoast_meta.yoast_wpseo_title}</title> : <title>{title}</title>}
+      {(store.yoast_meta.yoast_wpseo_metadesc) ? <meta name="description" content={store.yoast_meta.yoast_wpseo_metadesc} /> : <meta name="description" content={metaDescription} />}
+      {(store.yoast_meta.yoast_wpseo_canonical) ? <link rel="canonical" href={store.yoast_meta.yoast_wpseo_canonical} /> : <link rel="canonical" href={siteRoot} /> }
     </Helmet>
     <Container>
       <Row>

@@ -1,18 +1,20 @@
 import React from 'react'
-import { withRouteData, Link } from 'react-static'
+import { withRouteData, Link, Head } from 'react-static'
 import { Container,
          Row,
          Col,} from 'reactstrap';
 
 import ReactHtmlParser from 'react-html-parser'
-import {Helmet} from "react-helmet";
 //
 
-export default withRouteData(({ event }) => (
+export default withRouteData(({ event, siteRoot, title, metaDescription }) => (
   <section>
-    <Helmet>
+    <Head>
       <body className={'single-blog blog-id-'+event.id + ' ' + event.slug} />
-    </Helmet>
+      {(event.yoast_meta.yoast_wpseo_title) ? <title>{event.yoast_meta.yoast_wpseo_title}</title> : <title>{title}</title>}
+      {(event.yoast_meta.yoast_wpseo_metadesc) ? <meta name="description" content={event.yoast_meta.yoast_wpseo_metadesc} /> : <meta name="description" content={metaDescription} />}
+      {(event.yoast_meta.yoast_wpseo_canonical) ? <link rel="canonical" href={event.yoast_meta.yoast_wpseo_canonical} /> : <link rel="canonical" href={siteRoot} /> }
+    </Head>
     <Container>
       <Row>
         <Col xs="12">

@@ -15,7 +15,7 @@ import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from
 import {Helmet} from "react-helmet";
 //
 
-export default withRouteData(({ events }) => (
+export default withRouteData(({ events, siteRoot, title, metaDescription }) => (
 
   <section>
     <Helmet>
