@@ -69,7 +69,7 @@ var isContrast = false;
                           <div className='search-toggle'><FontAwesomeIcon icon={faSearch}/></div>
                           <img className='eyeball' src={AccessibilityIcon} onClick={this.changeContrast} />
                         </div>
-                        <div className='nav-logo visible-xs'><img src={navLogo} alt='halcyon logo'/></div>
+                        <Link to='/'><div className='nav-logo visible-xs'><img src={navLogo} alt='halcyon logo'/></div></Link>
                         <NavbarToggler className='visible-xs' onClick={this.toggle}><span>MENU</span><img src={navToggle} /></NavbarToggler>
                         <Collapse isOpen={this.state.isOpen} navbar>
                             <Nav className="ml-auto" navbar>

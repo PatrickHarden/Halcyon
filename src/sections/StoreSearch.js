@@ -17,7 +17,7 @@ import LazyHero from 'react-lazy-hero';
 import ReactHtmlParser from 'react-html-parser';
 
 
-export default withRouteData(class storeSearch extends React.Component {
+export default withSiteData(class storeSearch extends React.Component {
 
   constructor(props) {
       super(props);

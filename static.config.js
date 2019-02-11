@@ -9,6 +9,9 @@ export default {
     const { data: menuLocations } = await axios.get(baseURL + '/wp-json/wp-api-menus/v2/menu-locations')
     const { data: footerMenu } = await axios.get(baseURL + '/wp-json/wp-api-menus/v2/menus/3')
     const { data: pages } = await axios.get(baseURL + '/index.php/wp-json/wp/v2/pages?per_page=99')
+    const { data: posts } = await axios.get(baseURL + '/index.php/wp-json/wp/v2/posts?per_page=6')
+    const { data: events } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100')
+    const { data: stores } = await axios.get(baseURL + '/wp-json/wp/v2/stores/')
 
     return {
       title: 'Halcyon',
@@ -21,7 +24,10 @@ export default {
       centerInfo,
       menuLocations,
       footerMenu,
-      pages
+      pages,
+      posts,
+      events,
+      stores
     }
   },
   getRoutes: async () => {

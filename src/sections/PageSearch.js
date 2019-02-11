@@ -19,7 +19,7 @@ import ReactHtmlParser from 'react-html-parser';
 var counter = 0;
 var cards;
 
-export default withRouteData(class pageSearch extends React.Component {
+export default withSiteData(class pageSearch extends React.Component {
 
   constructor(props) {
       super(props);
@@ -31,15 +31,6 @@ export default withRouteData(class pageSearch extends React.Component {
         pageCounter: 0
     };
   }
-
-//   componentDidMount(){
-//       this.componentDidUpdate();
-//   }
-
-//   componentWillUpdate(){
-//       cards = document.getElementsByClassName("counter");
-//       counter = cards.length;
-//   }
 
   render() {
 

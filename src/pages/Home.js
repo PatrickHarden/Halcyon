@@ -32,7 +32,7 @@ export default withRouteData(class Home extends React.Component {
         storeExist: false,
         imageArray: [],
     };
-    this.keyPress = this.keyPress.bind(this);
+    // this.keyPress = this.keyPress.bind(this);
   }
 
   componentWillMount(){
@@ -54,11 +54,11 @@ export default withRouteData(class Home extends React.Component {
     });
   }
 
-  keyPress(e){
-    if(e.keyCode == 13){
-      this.props.history.push("/search-results?=" + e.target.value)
-    }
- }
+//   keyPress(e){
+//     if(e.keyCode == 13){
+//       this.props.history.push("/search-results?=" + e.target.value)
+//     }
+//  }
 
   render() {
 
@@ -96,7 +96,7 @@ export default withRouteData(class Home extends React.Component {
                    <div className='hidden-xs'>{this.props.property_options.acf.phone}</div>
                  </a>
                </div>
-               <input className='search-bar hidden-xs' value={this.state.term} onChange = {event => this.setState({term : event.target.value})} onKeyDown={this.keyPress}/>
+               {/* <input className='search-bar hidden-xs' value={this.state.term} onChange = {event => this.setState({term : event.target.value})} onKeyDown={this.keyPress}/> */}
          </Container>
          </div>
          <div id="results">
