@@ -9,6 +9,7 @@
 @media screen and (max-width: 767px) {
   #tenantSlider .slick-slide {
     padding: 0 3rem;
+    text-align: center;
   }
   
   #tenantSlider .slick-arrow {
@@ -67,7 +68,8 @@
     margin-bottom: 5rem;
   }
   #tenantSlider .halcyon-button {
-    margin: 1rem 0;
+    margin: 2rem 0 1rem;
+    max-width: 145px;
   }
   #tenantSlider .store .image-wrapper {
       width: 50%;
@@ -85,7 +87,7 @@
   #tenantSlider .store .content-wrapper .inner-wrapper {
       width: 75%;
       float: right;
-      background: #fff;
+      background: rgba(255,255,255,.8);
       padding: 1rem 2rem;
   }
 }

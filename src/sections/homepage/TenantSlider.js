@@ -144,7 +144,7 @@ export default class TenantSlider extends React.Component {
             {
               breakpoint: 767,
               settings: {
-                dots: true,
+                // dots: true,
                 nextArrow: "",
                 prevArrow: ""
               }

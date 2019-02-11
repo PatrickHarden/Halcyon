@@ -80,7 +80,7 @@ export default withRouteData(class Home extends React.Component {
                <div id="searchAddress">
                  <a href={'//maps.google.com/?q='+ this.props.property_options.acf.address_1 + '+' + this.props.property_options.acf.address_2 } target='_blank'>
                  <FontAwesomeIcon icon={faMapMarkerAlt} className='icon' />
-                 <div className='hidden-xs hidden-lg'>Directions</div>
+                 <div className='visible-xs visible-sm'>Directions</div>
                  <div className='hidden-xs hidden-sm'>{(this.props.property_options.acf.address_1) ? <p>{this.props.property_options.acf.address_1} {(this.props.property_options.acf.address_2)? <span>{this.props.property_options.acf.address_2}</span>: ""} </p>: ""} </div>
                  </a>
                </div>
