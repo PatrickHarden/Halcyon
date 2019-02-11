@@ -7,7 +7,7 @@ import { Container,
 import ReactHtmlParser from 'react-html-parser'
 //
 
-export default withRouteData(({ post, siteRoot, title, metaDescription }) => (
+export default withRouteData(({ post }) => (
   <section>
     <Head>
       <body className={'single-blog blog-id-'+post.id + ' ' + post.slug} />

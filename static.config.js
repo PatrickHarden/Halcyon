@@ -54,7 +54,7 @@ export default {
           path: `/${post.slug}`,
           component: 'src/singles/Post',
           getData: () => ({
-            post, siteRoot, title, metaDescription
+            post
           }),
         })),
       },
