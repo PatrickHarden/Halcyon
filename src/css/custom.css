@@ -1,21 +1,76 @@
 /* Home */
 .search-page-bar {margin-top:30px;}
-#tenantSlider .slick-slide img {max-height:400px;}
-#happeningsSlider .slick-slide img {max-height:300px;}
-.hero-slider h1 {
-    margin: 0;
-    position:relative;
-    top:-80px;
-    color: #fff;
-    text-align: center;
+
+.hero-slider .slick-slide {
+    position: relative;
 }
+.hero-slider .slick-slide .hero-heading {
+    position: absolute;
+    bottom: 1rem;
+    color: rgba(255,255,255,.8);
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    font-size: 6rem;
+    letter-spacing: 5px;
+}
+.hero-slider ul.slick-dots {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    width: 20px;
+    bottom: inherit !important;
+    transform: translateY(-50%);
+    padding: 0;
+}
+.hero-slider .slick-dots li {
+    margin: 0 0.75rem;
+    width: 26px;
+    padding-left: inherit;
+    padding-bottom: 2rem;
+}
+.hero-slider .slick-dots li:before {
+    content: "";
+    display: block;
+}
+.hero-slider .slick-dots button {
+    padding: 0;
+}
+.hero-slider .slick-dots li button::before {
+    content: "";
+    opacity: 1;
+    left: 0px;
+    line-height: 20px;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    content: "";
+    border: 2px solid #fff;
+    border-radius: 10px;
+    height: 15px;
+    width: 15px;
+    opacity: 1;
+}
+.hero-slider .slick-dots li.slick-active button::before {
+    content: "";
+    opacity: 1;
+    height: 15px;
+    width: 15px;
+    background: #8F1838;
+    left: 0px;
+    line-height: 15px;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+}
+
 #searchBar {
     background:#8F1838;
      display:block; 
      width:100%;
-     margin-top: -30px;
     position: relative;
     z-index: 1;
+    margin-top: -6px;
 }
 #searchBar .container {
     display: flex;
@@ -43,7 +98,6 @@
 .slick-slide img {
     width:100%; 
     max-width:100%;
-    max-height:620px;
 }
 .card-columns {
     max-width:100%;
@@ -70,6 +124,9 @@
     overflow: hidden;
 }
 @media screen and (min-width: 768px) {
+    .hero-slider .slick-slide .hero-heading {
+        font-size: 9rem;
+    }
 
     #searchBar .container a {
         display: flex;
@@ -102,6 +159,11 @@
 }
 
 @media screen and (min-width: 1200px) {
+    .hero-slider .slick-slide .hero-heading {
+        font-size: 14rem;
+        letter-spacing: 1.5rem;
+    }
+
     #home .heading-container {
         height: 72px;
     }
