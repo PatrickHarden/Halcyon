@@ -8,6 +8,7 @@ export default {
     const { data: centerInfo } = await axios.get(baseURL + '/wp-json/acf/v3/options/property_options')
     const { data: menuLocations } = await axios.get(baseURL + '/wp-json/wp-api-menus/v2/menu-locations')
     const { data: footerMenu } = await axios.get(baseURL + '/wp-json/wp-api-menus/v2/menus/3')
+    const { data: pages } = await axios.get(baseURL + '/index.php/wp-json/wp/v2/pages?per_page=99')
 
     return {
       title: 'Halcyon',
@@ -19,7 +20,8 @@ export default {
       options,
       centerInfo,
       menuLocations,
-      footerMenu
+      footerMenu,
+      pages
     }
   },
   getRoutes: async () => {
@@ -40,7 +42,7 @@ export default {
         path: '/blogs',
         component: 'src/pages/Blogs',
         getData: () => ({
-          posts, siteRoot, title, metaDescription
+          posts, siteRoot, title, metaDescription, pages
         }),
         children: posts.map(post => ({
           path: `/${post.slug}`,
@@ -54,7 +56,7 @@ export default {
         path: '/events',
         component: 'src/pages/Events',
         getData: () => ({
-          events, siteRoot, title, metaDescription
+          events, siteRoot, title, metaDescription, pages
         }),
         children: events.map(event => ({
           path: `/${event.slug}`,
@@ -68,7 +70,7 @@ export default {
         path: '/sales',
         component: 'src/pages/Sales',
         getData: () => ({
-          sales, siteRoot, title, metaDescription
+          sales, siteRoot, title, metaDescription, pages
         })
       },
       {
@@ -79,7 +81,7 @@ export default {
         path: '/shopping',
         component: 'src/pages/Stores',
         getData: () => ({
-          stores, siteRoot, title, metaDescription
+          stores, siteRoot, title, metaDescription, pages
         }),
         children: stores.map(store => ({
           path: `/${store.slug}`,
@@ -93,7 +95,7 @@ export default {
         path: '/dining',
         component: 'src/pages/Dining',
         getData: () => ({
-          stores, siteRoot, title, metaDescription
+          stores, siteRoot, title, metaDescription, pages
         }),
         children: stores.map(store => ({
           path: `/${store.slug}`,

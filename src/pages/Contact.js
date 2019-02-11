@@ -1,7 +1,6 @@
 import React from 'react'
-import { withSiteData } from 'react-static'
+import { withSiteData, Head } from 'react-static'
 import { Container, Row, Col } from 'reactstrap'
-import {Helmet} from "react-helmet";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 import ContactForm from '../sections/ContactForm'
 
@@ -25,13 +24,28 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>
   </GoogleMap>
 ))
 
+var newTitle;
+var newMeta;
+var newCanonical;
+function setMetaData(pages){
+  pages.map(page => {
+    if (page.slug == 'contact-us'){
+      newTitle = page.yoast_meta.yoast_wpseo_title;
+      newMeta = page.yoast_meta.yoast_wpseo_metadesc;
+      newCanonical = page.yoast_meta.yoast_wpseo_canonical;
+    } 
+  })
+}
 
-export default withSiteData(({options}) => (
+export default withSiteData(({options, siteRoot, title, metaDescription, pages }) => (
   <article id="contact">
-    <Helmet>
+  {setMetaData(pages)}
+    <Head>
       <body className="contact" />
-      <meta description="rhjaewrhltioawerjt" />
-    </Helmet>
+      {(newTitle) ? <title>{newTitle}</title> : <title>{title}</title>}
+      {(newMeta) ? <meta name="description" content={newMeta} /> : <meta name="description" content={metaDescription} />}
+      {(newCanonical) ? <link rel="canonical" href={newCanonical} /> : <link rel="canonical" href={siteRoot} /> }
+    </Head>
     {saveCord(options)}
     <div id="features">
     <Container id="contactAddress">
