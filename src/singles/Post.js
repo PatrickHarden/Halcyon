@@ -11,9 +11,9 @@ export default withRouteData(({ post, siteRoot, title, metaDescription }) => (
   <section>
     <Head>
       <body className={'single-blog blog-id-'+post.id + ' ' + post.slug} />
-      {(post.yoast_meta.yoast_wpseo_title) ? <title>{post.yoast_meta.yoast_wpseo_title}</title> : <title>{title}</title>}
+      {/* {(post.yoast_meta.yoast_wpseo_title) ? <title>{post.yoast_meta.yoast_wpseo_title}</title> : <title>{title}</title>}
       {(post.yoast_meta.yoast_wpseo_metadesc) ? <meta name="description" content={post.yoast_meta.yoast_wpseo_metadesc} /> : <meta name="description" content={metaDescription} />}
-      {(post.yoast_meta.yoast_wpseo_canonical) ? <link rel="canonical" href={post.yoast_meta.yoast_wpseo_canonical} /> : <link rel="canonical" href={siteRoot} /> }
+      {(post.yoast_meta.yoast_wpseo_canonical) ? <link rel="canonical" href={post.yoast_meta.yoast_wpseo_canonical} /> : <link rel="canonical" href={siteRoot} /> } */}
     </Head>
     <Container>
       <Row>
