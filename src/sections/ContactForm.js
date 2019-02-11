@@ -5,10 +5,15 @@ const styles = {
     marginBottom: '30px',
 }
 
- export default class ContactForm extends React.Component {
+ export default withSiteData(class ContactForm extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
-            <Form action="https://formspree.io/patrick.harden@imaginuity.com"
+            <Form action={"https://formspree.io/" + this.props.property_options.acf.email}
             method="POST" style={styles}>
                 <Row>
                     <Col md="6">
@@ -44,4 +49,4 @@ const styles = {
                 <Button>Submit</Button>
             </Form>
         )}
- }
+ })
