@@ -54,11 +54,11 @@ function getTitleArray(){
 function setClickEvent(){
     $('#tenantSlider .slick-arrow').click(function(){
         console.log('arrow clicked');
-        setTimeout(getTitleArray, 500);
+        setTimeout(getTitleArray, 200);
     })
     $('#tenantSlider .slick-dots > li').click(function(){
         console.log('dot clicked');
-        setTimeout(getTitleArray, 500);
+        setTimeout(getTitleArray, 200);
     })
 }
 
@@ -97,26 +97,32 @@ export default class TenantSlider extends React.Component {
         console.log('props', this.props);
 
         const stores = this.props.stores;
+        const selectedStores = this.props.selectedStores;
+
         storeArray = stores.map(store => {
-            if (store.acf.featured_image != null && store.acf.featured_image.length > 0){
-                return (<div className='store'>
-                            <div className='image-wrapper'>
-                                <img key={store.acf.featured_image} src={store.acf.featured_image} />
-                            </div>
-                            <div className='content-wrapper'>
-                                <div className='inner-wrapper'>
-                                    <h4 key={store.slug}>{ReactHtmlParser(store.title.rendered)}</h4>
-                                    <div id="tenantText">
-                                    {ReactHtmlParser(this.compressText(store.acf.store_copy))}
-                                    {/* {ReactHtmlParser(store.acf.store_copy)} */}
+            for (var i = 0; i< selectedStores.length; i++){
+                if (store.slug == selectedStores[i]){
+                    if (store.acf.featured_image != null && store.acf.featured_image.length > 0){
+                        return (<div className='store'>
+                                    <div className='image-wrapper'>
+                                        <img key={store.acf.featured_image} src={store.acf.featured_image} />
                                     </div>
-                                    <a className='halcyon-button' href={`/shopping/${store.slug}/`}>Learn More</a>
+                                    <div className='content-wrapper'>
+                                        <div className='inner-wrapper'>
+                                            <h4 key={store.slug}>{ReactHtmlParser(store.title.rendered)}</h4>
+                                            <div className="tenantText">
+                                            {ReactHtmlParser(this.compressText(store.acf.store_copy))}
+                                            {/* {ReactHtmlParser(store.acf.store_copy)} */}
+                                            </div>
+                                            <a className='halcyon-button' href={`/shopping/${store.slug}/`}>Learn More</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                )
-            } else {
-                return (null)
+                        )
+                    } else {
+                        return (null)
+                    }
+                }
             }
         })
     }

@@ -20,6 +20,7 @@ const fullWidth = {
 }
 
 var homeJSON = [];
+var selectedStores = [];
 
 export default withRouteData(class Home extends React.Component {
 
@@ -52,6 +53,11 @@ export default withRouteData(class Home extends React.Component {
     component.setState({
       imageGridData: imageData,
     });
+
+    selectedStores = _home.acf.tenant_spotlight.stores.map(store => {
+      return store.post_name;
+    })
+
   }
 
 //   keyPress(e){
@@ -113,7 +119,7 @@ export default withRouteData(class Home extends React.Component {
                 </Container>
               </div>
               <Container>
-                <TenantSlider stores={this.props.stores} />
+                <TenantSlider stores={this.props.stores} selectedStores={selectedStores} />
               </Container>
             </div>
             <ImageGrid images={this.state.imageGridData} />
