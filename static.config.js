@@ -31,6 +31,7 @@ export default {
     const { data: sales } = await axios.get(baseURL + '/wp-json/wp/v2/sales?per_page=100')
     const { data: property_options } = await axios.get(baseURL + '/wp-json/acf/v3/options/property_options')
 
+    
     return [
       {
         path: '/blogs',
