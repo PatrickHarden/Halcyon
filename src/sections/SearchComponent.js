@@ -46,6 +46,7 @@ export default withSiteData(class SearchComponent extends React.Component {
 
   render() {
 
+    if (typeof document !== 'undefined') {
       return (
         <div id="searchComponent">
             <input className='search-bar' placeholder="Search..." value={this.state.term} onChange = {event => this.setState({term : event.target.value})} />
@@ -61,6 +62,9 @@ export default withSiteData(class SearchComponent extends React.Component {
             </div>
         </div>
       )
+    } else {
+        return null
+    }
 
   }
 })
