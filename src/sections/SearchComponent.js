@@ -65,6 +65,5 @@ export default withSiteData(class SearchComponent extends React.Component {
     } else {
         return null
     }
-
   }
 })
