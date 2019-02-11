@@ -1,4 +1,5 @@
 import React from 'react'
+import {withSiteData} from 'react-static'
 import { Container, Row, Col, Button, Form, FormGroup, Input } from 'reactstrap'
 
 const styles = {
