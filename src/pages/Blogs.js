@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { withRouteData, Link } from 'react-static'
+import { withRouteData, Link, Head } from 'react-static'
 import { Container,
          Row,
          Col,
@@ -12,15 +12,31 @@ import { Container,
          CardSubtitle } from 'reactstrap';
 
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser'
-import {Helmet} from "react-helmet";
 //
 
-export default withRouteData(({ posts }) => (
+var newTitle;
+var newMeta;
+var newCanonical;
+function setMetaData(pages){
+  pages.map(page => {
+    if (page.slug == 'blog'){
+      newTitle = page.yoast_meta.yoast_wpseo_title;
+      newMeta = page.yoast_meta.yoast_wpseo_metadesc;
+      newCanonical = page.yoast_meta.yoast_wpseo_canonical;
+    } 
+  })
+}
+
+export default withRouteData(({ posts, siteRoot, title, metaDescription, pages  }) => (
 
   <section>
-    <Helmet>
+    {setMetaData(pages)}
+    <Head>
       <body className="blog" />
-    </Helmet>
+      {(newTitle) ? <title>{newTitle}</title> : <title>{title}</title>}
+      {(newMeta) ? <meta name="description" content={newMeta} /> : <meta name="description" content={metaDescription} />}
+      {(newCanonical) ? <link rel="canonical" href={newCanonical} /> : <link rel="canonical" href={siteRoot} /> }
+    </Head>
     <Container>
       <Row>
         <Col xs="12">
