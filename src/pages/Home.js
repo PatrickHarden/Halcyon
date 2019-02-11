@@ -129,9 +129,6 @@ export default withRouteData(class Home extends React.Component {
                   <h2>{home.acf.halcyon_happenings.heading}</h2>
                 </Container>
               </div>
-              <Container>
-                <HappeningsSlider events={this.props.events} />
-              </Container>
             </div>
             <Container className='social-feed-container'>
             <h2>@HALCYONFORSYTH</h2>

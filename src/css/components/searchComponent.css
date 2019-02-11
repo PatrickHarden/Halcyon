@@ -1,2 +1,10 @@
 #searchComponent {position:relative; top:90px;}
 #searchComponent .search-bar {position:relative; z-index:5;}
+#theResults img{max-width:100%;}
+#theResults {overflow:hidden}
+
+@media screen and (max-width:767px) {
+    #searchComponent {display:none; position:absolute; top:0; right: 0; left:0; bottom:0;background-color:#fff; z-index:4;}
+    #searchComponent .search-bar {top:80px; border:solid 1px #333}
+    #theResults {top:80px; position:relative;}
+}
