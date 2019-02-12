@@ -6,10 +6,16 @@ const styles = {
 }
 
  export default class ContactForm extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
-            <Form action="https://formspree.io/patrick.harden@imaginuity.com"
+            <Form action={"https://formspree.io/" + this.props.centerInfo.acf.email}
             method="POST" style={styles}>
+            {console.log(this.props.centerInfo)}
                 <Row>
                     <Col md="6">
                     <FormGroup>

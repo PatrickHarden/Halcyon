@@ -26,23 +26,31 @@ export default withSiteData(class SearchComponent extends React.Component {
   }
 
   hideContent(){
+    var width = document.body.clientWidth;
+    if (width >= 768) {
     document.getElementsByClassName('content')[0].style.display = 'none';
+    }
   }
 
   showContent(){
+    var width = document.body.clientWidth;
     theContent = document.getElementsByClassName('content')[0]
-    if (theContent == undefined || theContent == null){
-        return
-    } else {
-        theContent.style.display = '';
+    if (width >= 768){
+        if (theContent == undefined || theContent == null){
+            return
+        } else {
+            theContent.style.display = '';
+        }
     }
   }
 
   render() {
 
+    if (typeof document !== 'undefined') {
       return (
         <div id="searchComponent">
-            <input className='search-bar hidden-xs' value={this.state.term} onChange = {event => this.setState({term : event.target.value})} />
+        <Container>
+            <input className='search-bar' placeholder="Search..." value={this.state.term} onChange = {event => this.setState({term : event.target.value})} />
             <div id="theResults">
             { (this.state.term != '') ?
                 <div>
@@ -50,11 +58,14 @@ export default withSiteData(class SearchComponent extends React.Component {
                 <PageSearch searchResult={this.state.term} />
                 <EventSearch searchResult={this.state.term} />
                 <StoreSearch searchResult={this.state.term} />
-                </div> : <div>{this.showContent()}</div>
+                </div> : <div>{this.showContent()} </div>
             }
             </div>
+            </Container>
         </div>
       )
-
+    } else {
+        return null
+    }
   }
 })

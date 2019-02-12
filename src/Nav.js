@@ -56,6 +56,15 @@ var isContrast = false;
     }
   }
 
+  searchToggle() {
+    var x = document.getElementById("searchComponent");
+    if (x.style.display === "none" || x.style.display == '') {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+
   render() {
     const logo = this.props.options.companyLogo
 
@@ -66,7 +75,7 @@ var isContrast = false;
                 <div className="navRow">
                     <div className='nav-inner'>
                         <div className='left visible-xs'>
-                          <div className='search-toggle'><FontAwesomeIcon icon={faSearch}/></div>
+                          <div className='search-toggle' onClick={this.searchToggle}><FontAwesomeIcon icon={faSearch}/></div>
                           <img className='eyeball' src={AccessibilityIcon} onClick={this.changeContrast} />
                         </div>
                         <Link to='/'><div className='nav-logo visible-xs'><img src={navLogo} alt='halcyon logo'/></div></Link>

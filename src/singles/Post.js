@@ -18,8 +18,8 @@ export default withRouteData(({ post, siteRoot, title, metaDescription }) => (
     <Container>
       <Row>
         <Col xs="12">
-          <h1>{post.title.rendered}</h1>
-          {ReactHtmlParser(post.content.rendered)}
+        <h1>{(post.title.rendered)? <div>{ReactHtmlParser(post.title.rendered)}</div>: ""}</h1>
+          {(post.content.rendered) ? <div>{ReactHtmlParser(post.content.rendered)}</div>: ""}
         </Col>
       </Row>
     </Container>
