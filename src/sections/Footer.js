@@ -65,7 +65,7 @@ export default withSiteData(class SiteFooter extends React.Component {
                 <div id="footerCopyright">
                     <Container>
                         &copy; {(new Date().getFullYear())} {siteTitle} HALCYON FORSYTH. ALL RIGHTS RESERVED. 
-                        <img className='hidden-xs' src={AccessibilityIcon} onClick={this.changeContrast} />
+                        <img className='hidden-xs eyeball' src={AccessibilityIcon} onClick={this.changeContrast} />
                     </Container>
                 </div>
             </footer>
