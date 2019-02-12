@@ -1,12 +1,11 @@
 import React from 'react'
-import { withSiteData, Link, } from 'react-static'
 import { Container, Row, Col, Button, Form, FormGroup, Input } from 'reactstrap'
 
 const styles = {
     marginBottom: '30px',
 }
 
- export default withSiteData(class ContactForm extends React.Component {
+ export default class ContactForm extends React.Component {
 
     constructor(props) {
         super(props);
@@ -14,7 +13,7 @@ const styles = {
 
     render() {
         return (
-            <Form action={"https://formspree.io/" + this.props.property_options.acf.email}
+            <Form action={"https://formspree.io/"}
             method="POST" style={styles}>
                 <Row>
                     <Col md="6">
@@ -50,4 +49,4 @@ const styles = {
                 <Button>Submit</Button>
             </Form>
         )}
- })
+ }
