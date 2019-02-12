@@ -58,11 +58,7 @@ export default withSiteData(class MenuList extends React.Component {
                                 <Link to={'/' + menu.object_slug} href={'/' + menu.object_slug} onClick={toggle}  className="nav-link">
                                 {(menu.object_slug == 'hours-directions') ? <img id="hours-directionsIcon" src={directionsIcon} /> : ""}
                                 {(menu.object_slug == 'cinebistro') ? <img id="cinebistroIcon" src={cinebistroIcon} /> : ""}
-<<<<<<< HEAD
-                                {(menu.object_slug == 'dining') ? <div className='nav-icon dining'><ReactSVG src='./images/Dining.svg'/></div> : ""}
-=======
                                 {(menu.object_slug == 'dining') ? <div className='nav-icon dining'><diningSVG /></div> : ""}
->>>>>>> 831970eb4ca8ca15bd3cb77b1572722376ecbd9e
                                 {(menu.object_slug == 'events') ? <img id="eventsIcon" src={eventsIcon} /> : ""}
                                 {(menu.object_slug == 'shopping') ? <img id="shoppingIcon" src={shoppingIcon} /> : ""}
                                 {(menu.object_slug == 'sign-up') ? <img id="sign-upIcon" src={signupIcon} /> : ""}
