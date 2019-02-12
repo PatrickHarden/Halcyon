@@ -80,12 +80,6 @@ export default class TenantSlider extends React.Component {
         this.onClick = this.handleClick.bind(this);
     }
 
-    extractText(text){
-        var tmp = document.createElement("DIV");
-        tmp.innerHTML = text;
-        return tmp.textContent || tmp.innerText || "";
-    }
-
     compressText(store){
         excerpt = store.replace(regex, "").substr(0, 200)
         excerpt = excerpt.substr(0, excerpt.lastIndexOf(" "))

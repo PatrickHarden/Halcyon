@@ -3,7 +3,7 @@ import { withSiteData, Link, withRouteData, Head } from 'react-static'
 import {Helmet} from "react-helmet";
 import ReactHtmlParser from 'react-html-parser';
 import { 
-  Container,
+  Container, Row, Col
 } from 'reactstrap';
   import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
   import { faPhone, faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
@@ -12,14 +12,16 @@ import {
 import HeroSlider from '../sections/homepage/HeroSlider';
 import TenantSlider from '../sections/homepage/TenantSlider';
 import ImageGrid from '../sections/homepage/ImageGrid';
-import TintSocialFeed from '../oldComponents/TintSocialFeed';
+import TintSocialFeed from '../sections/homepage/TenantSlider';
 
 const fullWidth = {
   width: '100%'
 }
 
-var homeJSON = [];
+var excerpt;
+var regex = /(<([^>]+)>)/ig;
 var selectedStores = [];
+var featuredStores = [];
 
 export default withRouteData(class Home extends React.Component {
 
@@ -32,10 +34,20 @@ export default withRouteData(class Home extends React.Component {
         storeExist: false,
         imageArray: [],
     };
-    // this.keyPress = this.keyPress.bind(this);
+  }
+
+  compressText(store){
+    if (store.length > 198){
+      excerpt = store.replace(regex, "").substr(0, 200)
+      excerpt = excerpt.substr(0, excerpt.lastIndexOf(" "))
+      return excerpt + "...";
+    } else {
+      return store;
+    }
   }
 
   componentWillMount(){
+    console.log('Home JSON:')
     console.log(this.props.home);
     let component = this;
     let imageData = [];
@@ -56,14 +68,26 @@ export default withRouteData(class Home extends React.Component {
     selectedStores = _home.acf.tenant_spotlight.stores.map(store => {
       return store.post_name;
     })
-
+    // Generate featured events from events json
+    featuredStores = this.props.events.map(store => {
+      if (store.acf.featured_image){
+        return <div className="featuredEvent">
+          <img src={store.acf.featured_image} className="featuredEventImage" />
+          <div className="eventOverlay">
+            <h4>{store.title.rendered}</h4>
+            <p>{ReactHtmlParser(this.compressText(store.acf.post_copy))}</p>
+          </div>
+        </div>
+      }
+    })
+    // Remove all nulls/undefined from array
+    featuredStores = featuredStores.filter(function (el) {
+      return el != null;
+    });
+    // Pull only 3 featured events per design
+    featuredStores = featuredStores.slice(0,3)
   }
 
-//   keyPress(e){
-//     if(e.keyCode == 13){
-//       this.props.history.push("/search-results?=" + e.target.value)
-//     }
-//  }
 
   render() {
 
@@ -130,10 +154,26 @@ export default withRouteData(class Home extends React.Component {
                   </Container>
                 </div>
               }
+              <Container>
+                <Row>
+                  <Col md={4}>
+                    {featuredStores[0]}
+                  </Col>
+                  <Col md={4}>
+                    {featuredStores[1]}
+                  </Col>
+                  <Col md={4}>
+                    {featuredStores[2]}
+                  </Col>
+                </Row>
+                <Link to="/events" className="pull-right">View All -></Link>
+              </Container>
             </div>
             <Container className='social-feed-container'>
-            <h2>@HALCYONFORSYTH</h2>
-              {/* <TintSocialFeed optionsData={this.props.property_options} /> */}
+            {(this.props.property_options.acf.social_feed_data_id) ? <div>
+              <h2>@HALCYONFORSYTH</h2>
+              <TintSocialFeed optionsData={this.props.property_options} />
+            </div> : ""}
             </Container>
           </div>
           </div>

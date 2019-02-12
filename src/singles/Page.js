@@ -3,6 +3,7 @@ import React from 'react'
 import { withRouteData, Link, Head } from 'react-static'
 import { Container, Row, Col } from 'reactstrap';
 import Slider from "react-slick";
+import '../css/components/pageContent.css'
 
 //
 

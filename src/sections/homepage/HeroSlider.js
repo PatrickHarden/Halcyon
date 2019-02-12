@@ -11,7 +11,7 @@ export default class HeroSlider extends React.Component {
 
   componentWillMount(){
     let home = this.props.home[0];
-    console.log(home);
+    
     heroArray = home.acf.hero_slider.map(hero => {
       if (hero.link){
           return <div>
