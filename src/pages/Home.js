@@ -123,11 +123,13 @@ export default withRouteData(class Home extends React.Component {
             </div>
             <ImageGrid images={this.state.imageGridData} />
             <div className='events-container'>
-              <div class='heading-container'>
-                <Container>
-                  <h2>{home.acf.halcyon_happenings.heading}</h2>
-                </Container>
-              </div>
+              {home.acf.halcyon_happenings.heading &&
+                <div class='heading-container'>
+                  <Container>
+                    <h2>{home.acf.halcyon_happenings.heading}</h2>
+                  </Container>
+                </div>
+              }
             </div>
             <Container className='social-feed-container'>
             <h2>@HALCYONFORSYTH</h2>

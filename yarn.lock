@@ -73,7 +73,7 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
-"@babel/runtime@^7.1.2", "@babel/runtime@^7.2.0":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.2.0", "@babel/runtime@^7.3.1":
   version "7.3.1"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.3.1.tgz#574b03e8e8a9898eaf4a872a92ea20b7846f6f2a"
   integrity sha512-7jGW8ppV0ant637pIqAcFfQDDH1orEPGJb8aXfUozuCU3QqX7rX4DA8iwrbPrR1hcH0FTTHz47yQnk+bl5xHQA==
@@ -206,6 +206,11 @@
     prop-types "^15.6.1"
     typed-styles "^0.0.5"
     warning "^3.0.0"
+
+"@tanem/svg-injector@^2.1.4":
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/@tanem/svg-injector/-/svg-injector-2.1.4.tgz#b804f1c78b5179365ae21061f119263acccbeb13"
+  integrity sha512-//NIrFl8G59OCHWEeMUcI/UI05/xtkHOu0kVrfJe3Zh13gtKKSkkSdlr2kZSJthFal2JvdMm3T3XBm8grbbRbw==
 
 "@types/history@*":
   version "4.6.2"
@@ -6557,6 +6562,15 @@ react-static@^5.9.1:
     webpack-dev-server "^2.8.2"
     webpack-flush-chunks "^1.2.3"
     webpack-node-externals "^1.6.0"
+
+react-svg@^7.2.6:
+  version "7.2.6"
+  resolved "https://registry.yarnpkg.com/react-svg/-/react-svg-7.2.6.tgz#e5f8dfe1adef11a7e91e3c5da4eb03a417ba6639"
+  integrity sha512-SnEmlHyMCyfpSFxSqbNlCIEyZyZdP/+Dvtr8lPxVRflMw5YtW/tECetx6/M4t8Llcz6rSIQGPn2xHptmaDIP8Q==
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    "@tanem/svg-injector" "^2.1.4"
+    prop-types "^15.6.2"
 
 react-transition-group@^2.3.1:
   version "2.3.1"
