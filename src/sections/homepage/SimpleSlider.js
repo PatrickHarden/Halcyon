@@ -4,11 +4,11 @@ import Slider from "react-slick";
 import ReactHtmlParser from 'react-html-parser';
 import Button from 'reactstrap';
 
-//  <HappeningsSlider events={this.props.events} />
+//  <SimpleSlider events={this.props.events} />
 
 var eventArray = [];
 
-export default class HappeningsSlider extends React.Component {
+export default class SimpleSlider extends React.Component {
 
     constructor(props) {
         super(props);
@@ -35,7 +35,7 @@ export default class HappeningsSlider extends React.Component {
         };
 
     return (
-        <div id="happeningsSlider">
+        <div id="simpleSlider">
             <Slider {...settings}>
                 {eventArray}
             </Slider>

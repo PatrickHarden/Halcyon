@@ -10,7 +10,6 @@ import {
   import { Redirect } from 'react-router-dom'
 
 import HeroSlider from '../sections/homepage/HeroSlider';
-import HappeningsSlider from '../sections/homepage/HappeningsSlider';
 import TenantSlider from '../sections/homepage/TenantSlider';
 import ImageGrid from '../sections/homepage/ImageGrid';
 import TintSocialFeed from '../oldComponents/TintSocialFeed';
@@ -86,7 +85,7 @@ export default withRouteData(class Home extends React.Component {
                <div id="searchAddress">
                  <a href={'//maps.google.com/?q='+ this.props.property_options.acf.address_1 + '+' + this.props.property_options.acf.address_2 } target='_blank'>
                  <FontAwesomeIcon icon={faMapMarkerAlt} className='icon' />
-                 <div className='visible-xs visible-sm'>Directions</div>
+                 <div className='visible-sm'>Directions</div>
                  <div className='hidden-xs hidden-sm'>{(this.props.property_options.acf.address_1) ? <p>{this.props.property_options.acf.address_1} {(this.props.property_options.acf.address_2)? <span>{this.props.property_options.acf.address_2}</span>: ""} </p>: ""} </div>
                  </a>
                </div>
@@ -130,7 +129,7 @@ export default withRouteData(class Home extends React.Component {
                 </Container>
               </div>
               <Container>
-                <HappeningsSlider events={this.props.events} />
+
               </Container>
             </div>
             <Container className='social-feed-container'>

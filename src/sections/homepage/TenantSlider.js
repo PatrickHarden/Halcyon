@@ -94,8 +94,6 @@ export default class TenantSlider extends React.Component {
 
     componentWillMount(){
 
-        console.log('props', this.props);
-
         const stores = this.props.stores;
         const selectedStores = this.props.selectedStores;
 
