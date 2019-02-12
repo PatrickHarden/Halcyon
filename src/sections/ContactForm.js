@@ -13,8 +13,9 @@ const styles = {
 
     render() {
         return (
-            <Form action={"https://formspree.io/"}
+            <Form action={"https://formspree.io/" + this.props.centerInfo.acf.email}
             method="POST" style={styles}>
+            {console.log(this.props.centerInfo)}
                 <Row>
                     <Col md="6">
                     <FormGroup>

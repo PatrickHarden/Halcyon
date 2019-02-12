@@ -37,16 +37,16 @@ function setMetaData(pages){
   })
 }
 
-export default withSiteData(({options, siteRoot, title, metaDescription, pages }) => (
+export default withSiteData(({centerInfo, siteRoot, title, metaDescription, pages }) => (
   <article id="contact">
   {setMetaData(pages)}
+  {saveCord(title)}
     <Head>
       <body className="contact" />
       {(newTitle) ? <title>{newTitle}</title> : <title>{title}</title>}
       {(newMeta) ? <meta name="description" content={newMeta} /> : <meta name="description" content={metaDescription} />}
       {(newCanonical) ? <link rel="canonical" href={newCanonical} /> : <link rel="canonical" href={siteRoot} /> }
     </Head>
-    {saveCord(options)}
     <div id="features">
     <Container id="contactAddress">
     <div className="aboutt">
@@ -69,7 +69,7 @@ export default withSiteData(({options, siteRoot, title, metaDescription, pages }
       <Row>
         <Col xs="12">
           <h1>Contact</h1>
-          <ContactForm />
+          <ContactForm centerInfo={centerInfo}/>
         </Col>
       </Row>
     </Container>
