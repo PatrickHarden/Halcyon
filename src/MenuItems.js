@@ -13,12 +13,10 @@ import ReactSVG from 'react-svg'
 
 import directionsIcon from './images/directions_icon.png';
 import cinebistroIcon from './images/cinebistro_icon.png';
-import diningIcon from './images/Dining.svg';
+import DiningIcon from './images/Dining.svg';
 import eventsIcon from './images/events_icon.png';
 import shoppingIcon from './images/shopping_icon.png';
 import signupIcon from './images/signup_icon.png';
-
-// diningIcon = diningIcon;
 
 export default withSiteData(class MenuList extends React.Component {
 

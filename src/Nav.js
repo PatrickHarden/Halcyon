@@ -66,7 +66,7 @@ var isContrast = false;
   }
 
   render() {
-    const logo = this.props.options.companyLogo
+    const logo = this.props.centerInfo.companyLogo
 
     return (
       <div className="navWrapper">

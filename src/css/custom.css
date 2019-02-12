@@ -120,14 +120,12 @@
 #home .heading-container h2 {
     margin: 0;
 }
-.image-grid-container {
-    overflow: hidden;
-}
+
 @media screen and (min-width: 768px) {
     #home h1 {
         font-size: 2.4rem;
     }
-    
+
     .hero-slider .slick-slide .hero-heading {
         font-size: 9rem;
     }

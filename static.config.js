@@ -4,7 +4,6 @@ export default {
   getSiteData: async () => {
     const baseURL = 'https://halcyon.dev.v3.imaginuitycenters.com'
     const { data: menus } = await axios.get(baseURL + '/wp-json/wp-api-menus/v2/menus/2')
-    const { data: options } = await axios.get(baseURL + '/wp-json/acf/v3/options/property_options')
     const { data: centerInfo } = await axios.get(baseURL + '/wp-json/acf/v3/options/property_options')
     const { data: menuLocations } = await axios.get(baseURL + '/wp-json/wp-api-menus/v2/menu-locations')
     const { data: footerMenu } = await axios.get(baseURL + '/wp-json/wp-api-menus/v2/menus/3')
@@ -20,7 +19,6 @@ export default {
       redirectURL: 'https://halcyon.dev.v3.imaginuitycenters.com/wp-admin',
       siteRoot: 'https://halycon.netlify.com/',
       menus,
-      options,
       centerInfo,
       menuLocations,
       footerMenu,
