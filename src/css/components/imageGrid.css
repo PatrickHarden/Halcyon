@@ -1,4 +1,7 @@
-
+.image-grid-container {
+    overflow: hidden;
+    margin-bottom: 3rem;
+}
 .image_grid .col-xs-6, .image_grid .col-xs-12 {padding:0;    display: block;}
 
 .image_grid figure {background-size:cover;position:absolute;top:0; bottom:0; left:0; right:0;}
@@ -11,3 +14,9 @@
 /* .image-group-2 figure, .image-group3 figure, .image-group-4 figure {z-index:2 !important;} */
 
 .image_grid * {overflow: hidden;}
+
+@media screen and (min-width: 1200px) {
+    .image-grid-container {
+        margin-bottom: 4.5rem;
+    }
+}
