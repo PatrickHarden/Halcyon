@@ -1,8 +1,8 @@
 import React from 'react'
-import { Link, SiteData, withSiteData, Head } from 'react-static'
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser'
-import {Helmet} from "react-helmet";
+import { withSiteData, Head } from 'react-static'
 import Navigation from '../Nav';
+import TagManager from 'react-gtm-module'
+
 
 export default withSiteData(class SiteHeader extends React.Component {
 
@@ -11,9 +11,10 @@ export default withSiteData(class SiteHeader extends React.Component {
     }
 
     render() {
-        const siteTitle = this.props.title
-        const siteRoot = this.props.siteRoot
         const options = this.props.centerInfo
+        const tagManagerArgs = {
+            gtmId: this.props.centerInfo.acf.google_tag_manager_ID
+        }
 
         return (
             <header>
@@ -22,6 +23,7 @@ export default withSiteData(class SiteHeader extends React.Component {
                     <meta charSet="utf-8" />
                     <link rel="shortcut icon" type="image/png" href={options.acf.favicon.url}/>
                 </Head>
+                {(tagManagerArgs) ? TagManager.initialize(tagManagerArgs) : ""}
                 <Navigation />
             </header>
         )

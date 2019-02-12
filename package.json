@@ -30,6 +30,8 @@
     "react-device-detect": "^1.4.5",
     "react-dom": "^16.0.0",
     "react-google-maps": "^9.4.5",
+    "react-google-tag-manager": "^2.2.1",
+    "react-gtm-module": "^2.0.2",
     "react-helmet": "^5.2.0",
     "react-html-parser": "^2.0.2",
     "react-lazy-hero": "^0.4.0",
