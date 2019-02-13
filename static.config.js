@@ -75,7 +75,14 @@ export default {
         component: 'src/pages/Sales',
         getData: () => ({
           sales, siteRoot, title, metaDescription, pages
-        })
+        }),
+        children: sales.map(sale => ({
+          path: `/${sale.slug}`,
+          component: 'src/singles/Sale',
+          getData: () => ({
+            sale, siteRoot, title, metaDescription
+          }),
+        })),
       },
       {
         path: '/search',
@@ -85,7 +92,7 @@ export default {
         path: '/shopping',
         component: 'src/pages/Stores',
         getData: () => ({
-          stores, siteRoot, title, metaDescription, pages
+          stores, siteRoot, title, metaDescription, pages, sales
         }),
         children: stores.map(store => ({
           path: `/${store.slug}`,

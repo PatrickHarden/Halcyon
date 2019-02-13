@@ -27,9 +27,11 @@ export default withSiteData(class SiteHeader extends React.Component {
             </header>
         )
         if (typeof document !== 'undefined') {
-            <Head>
+            return (
+                <Head>
                 {(tagManagerArgs) ? TagManager.initialize(tagManagerArgs) : ""}
             </Head>
+            )
         } else {
             return null
         }

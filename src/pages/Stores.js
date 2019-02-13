@@ -27,10 +27,11 @@ function setMetaData(pages){
   })
 }
 
-export default withRouteData(({ stores, siteRoot, title, metaDescription, pages  }) => (
+export default withRouteData(({ stores, siteRoot, title, metaDescription, pages, sales  }) => (
 
   <section>
     {setMetaData(pages)}
+    {console.log(sales)}
     <Head>
       <body className="shopping" />
       {(newTitle) ? <title>{newTitle}</title> : <title>{title}</title>}
@@ -44,22 +45,27 @@ export default withRouteData(({ stores, siteRoot, title, metaDescription, pages 
         </Col>
       </Row>
       <Row>
-        <div className="card-columns">
+      <div className="card-columns">
+        <table className="table table-striped">
+          <tbody>
             {stores.map(store => (
-            (store.acf.store_type == "retailer") ? 
-              <Card key={store.id} className={"card-" + store.id}>
-                <Link to={`/shopping/${store.slug}/`}>
+              (store.acf.store_type == "retailer") ? 
+              <tr key={store.id} className={store.id}>
+              <td>
+                <Link to={`/dining/${store.slug}/`}>
+                  <h4>{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div>: ""}</h4>
                 </Link>
-                  <CardBody>
-                    <Link to={`/shopping/${store.slug}/`}>
-                      <CardTitle>{(store.title.rendered) ? <div>{store.title.rendered}</div>: ""}</CardTitle>
-                    </Link>
-                    <CardText>{ReactHtmlParser(store.acf.post_copy)}</CardText>
-                    <CardText><small>{store.date}</small></CardText>
-                  </CardBody>
-              </Card>
-              : ""
+              </td>
+              <td>{(store.acf.flags[0] == "Coming Soon") ? <div>Coming Soon!</div> : <div>&nbsp;</div>}</td>
+              <td>{(store.acf.phone_number) ? <div>{store.acf.phone_number}</div>:""}</td>
+              <td><small>{store.date.substring(0, 10)}</small></td>
+              <td>Store Location</td>
+              <td>Offer Available?</td>
+              </tr>
+            : "" 
             ))}
+            </tbody>
+          </table>
         </div>
       </Row>
     </Container>

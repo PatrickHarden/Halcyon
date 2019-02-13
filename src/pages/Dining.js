@@ -45,26 +45,21 @@ export default withRouteData(({ stores, pages, siteRoot, title, metaDescription 
       </Row>
       <Row>
         <div className="card-columns">
-        <table className="table table-striped">
-          <tbody>
             {stores.map(store => (
               (store.acf.store_type == "restaurant") ? 
-              <tr key={store.id} className={store.id}>
-              <td>
+              <Card key={store.id} className={"card-" + store.id}>
                 <Link to={`/dining/${store.slug}/`}>
-                  <h4>{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div>: ""}</h4>
                 </Link>
-              </td>
-              <td>Coming Soon!</td>
-              <td>{(store.acf.phone_number) ? <div>{store.acf.phone_number}</div>:""}</td>
-              <td><small>{store.date.substring(0, 10)}</small></td>
-              <td>Store Location</td>
-              <td>Offer Available?</td>
-              </tr>
+                  <CardBody>
+                    <Link to={`/dining/${store.slug}/`}>
+                      <CardTitle>{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div>: ""}</CardTitle>
+                    </Link>
+                    <CardText>{ReactHtmlParser(store.acf.post_copy)}</CardText>
+                    <CardText><small>{store.date}</small></CardText>
+                  </CardBody>
+              </Card>
             : "" 
             ))}
-            </tbody>
-          </table>
         </div>
       </Row>
     </Container>
