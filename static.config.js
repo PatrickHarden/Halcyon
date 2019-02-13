@@ -42,20 +42,20 @@ export default {
     const title = 'Halcyon'
 
     return [
-      {
-        path: '/blogs',
-        component: 'src/pages/Blogs',
-        getData: () => ({
-          posts, siteRoot, title, metaDescription, pages
-        }),
-        children: posts.map(post => ({
-          path: `/${post.slug}`,
-          component: 'src/singles/Post',
-          getData: () => ({
-            post
-          }),
-        })),
-      },
+      // {
+      //   path: '/blogs',
+      //   component: 'src/pages/Blogs',
+      //   getData: () => ({
+      //     posts, siteRoot, title, metaDescription, pages
+      //   }),
+      //   children: posts.map(post => ({
+      //     path: `/${post.slug}`,
+      //     component: 'src/singles/Post',
+      //     getData: () => ({
+      //       post
+      //     }),
+      //   })),
+      // },
       {
         path: '/events',
         component: 'src/pages/Events',
