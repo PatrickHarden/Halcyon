@@ -46,6 +46,7 @@ export default withRouteData(({ stores, siteRoot, title, metaDescription, pages 
       <Row>
         <div className="card-columns">
             {stores.map(store => (
+            (store.acf.store_type == "retailer") ? 
               <Card key={store.id} className={"card-" + store.id}>
                 <Link to={`/shopping/${store.slug}/`}>
                 </Link>
@@ -57,6 +58,7 @@ export default withRouteData(({ stores, siteRoot, title, metaDescription, pages 
                     <CardText><small>{store.date}</small></CardText>
                   </CardBody>
               </Card>
+              : ""
             ))}
         </div>
       </Row>

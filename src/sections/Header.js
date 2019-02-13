@@ -23,9 +23,15 @@ export default withSiteData(class SiteHeader extends React.Component {
                     <meta charSet="utf-8" />
                     <link rel="shortcut icon" type="image/png" href={options.acf.favicon.url}/>
                 </Head>
-                {(tagManagerArgs) ? TagManager.initialize(tagManagerArgs) : ""}
                 <Navigation />
             </header>
         )
+        if (typeof document !== 'undefined') {
+            <Head>
+                {(tagManagerArgs) ? TagManager.initialize(tagManagerArgs) : ""}
+            </Head>
+        } else {
+            return null
+        }
     }
 })
