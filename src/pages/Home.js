@@ -13,6 +13,7 @@ import HeroSlider from '../sections/homepage/HeroSlider';
 import TenantSlider from '../sections/homepage/TenantSlider';
 import ImageGrid from '../sections/homepage/ImageGrid';
 import TintSocialFeed from '../sections/homepage/TenantSlider';
+import rightArrow from '../images/rightArrow.png';
 
 const fullWidth = {
   width: '100%'
@@ -37,8 +38,8 @@ export default withRouteData(class Home extends React.Component {
   }
 
   compressText(store){
-    if (store.length > 198){
-      excerpt = store.replace(regex, "").substr(0, 200)
+    if (store.length > 80){
+      excerpt = store.replace(regex, "").substr(0, 80)
       excerpt = excerpt.substr(0, excerpt.lastIndexOf(" "))
       return excerpt + "...";
     } else {
@@ -65,18 +66,17 @@ export default withRouteData(class Home extends React.Component {
       imageGridData: imageData,
     });
 
-    selectedStores = _home.acf.tenant_spotlight.stores.map(store => {
-      return store.post_name;
-    })
     // Generate featured events from events json
     featuredStores = this.props.events.map(store => {
       if (store.acf.featured_image){
         return <div className="featuredEvent">
+        <Link to={store.slug}>
           <img src={store.acf.featured_image} className="featuredEventImage" />
           <div className="eventOverlay">
             <h4>{store.title.rendered}</h4>
             <p>{ReactHtmlParser(this.compressText(store.acf.post_copy))}</p>
           </div>
+          </Link>
         </div>
       }
     })
@@ -135,16 +135,9 @@ export default withRouteData(class Home extends React.Component {
               <div>{ReactHtmlParser(home.acf.content_area)}</div>
               <Link className='halcyon-button' to={home.acf.button.url} target={home.acf.button.target}>{home.acf.button.title}</Link>
             </Container>
-            <div className='tenant-spotlight'>
-              <div class='heading-container'>
-                <Container>
-                  <h2>{home.acf.tenant_spotlight.heading}</h2>
-                </Container>
-              </div>
-              <Container>
-                <TenantSlider stores={this.props.stores} selectedStores={selectedStores} />
-              </Container>
-            </div>
+      
+                <TenantSlider stores={this.props.stores} pageData={this.props.home}/>
+
             <ImageGrid images={this.state.imageGridData} />
             <div className='events-container'>
               {home.acf.halcyon_happenings.heading &&
@@ -156,17 +149,17 @@ export default withRouteData(class Home extends React.Component {
               }
               <Container>
                 <Row>
-                  <Col md={4}>
+                  <Col sm={4} className='event-wrapper'>
                     {featuredStores[0]}
                   </Col>
-                  <Col md={4}>
+                  <Col sm={4} className='event-wrapper'>
                     {featuredStores[1]}
                   </Col>
-                  <Col md={4}>
+                  <Col sm={4} className='event-wrapper'>
                     {featuredStores[2]}
                   </Col>
                 </Row>
-                <Link to="/events" className="pull-right">View All -></Link>
+                <Link to="/events" className="pull-right">View All<img className='arrow' src={rightArrow} alt='right-arrow'/></Link>
               </Container>
             </div>
             <Container className='social-feed-container'>
