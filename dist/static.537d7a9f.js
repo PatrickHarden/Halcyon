@@ -3045,7 +3045,7 @@ var _Header = __webpack_require__(68);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _Footer = __webpack_require__(84);
+var _Footer = __webpack_require__(85);
 
 var _Footer2 = _interopRequireDefault(_Footer);
 
@@ -5049,6 +5049,10 @@ var _Nav = __webpack_require__(69);
 
 var _Nav2 = _interopRequireDefault(_Nav);
 
+var _reactGtmModule = __webpack_require__(84);
+
+var _reactGtmModule2 = _interopRequireDefault(_reactGtmModule);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -5070,6 +5074,9 @@ exports.default = (0, _reactStatic.withSiteData)(function (_React$Component) {
         key: 'render',
         value: function render() {
             var options = this.props.centerInfo;
+            var tagManagerArgs = {
+                gtmId: this.props.centerInfo.acf.google_tag_manager_ID
+            };
 
             return _react2.default.createElement(
                 'header',
@@ -5083,6 +5090,15 @@ exports.default = (0, _reactStatic.withSiteData)(function (_React$Component) {
                 ),
                 _react2.default.createElement(_Nav2.default, null)
             );
+            if (typeof document !== 'undefined') {
+                _react2.default.createElement(
+                    _reactStatic.Head,
+                    null,
+                    tagManagerArgs ? _reactGtmModule2.default.initialize(tagManagerArgs) : ""
+                );
+            } else {
+                return null;
+            }
         }
     }]);
 
@@ -5399,11 +5415,7 @@ exports.default = (0, _reactStatic.withSiteData)(function (_React$Component) {
                             { to: '/' + menu.object_slug, href: '/' + menu.object_slug, onClick: toggle, className: 'nav-link' },
                             menu.object_slug == 'hours-directions' ? _react2.default.createElement('img', { id: 'hours-directionsIcon', src: _directions_icon2.default }) : "",
                             menu.object_slug == 'cinebistro' ? _react2.default.createElement('img', { id: 'cinebistroIcon', src: _cinebistro_icon2.default }) : "",
-                            menu.object_slug == 'dining' ? _react2.default.createElement(
-                                'div',
-                                { className: 'nav-icon dining' },
-                                _react2.default.createElement('diningSVG', null)
-                            ) : "",
+                            menu.object_slug == 'dining' ? _react2.default.createElement('div', { className: 'nav-icon dining' }) : "",
                             menu.object_slug == 'events' ? _react2.default.createElement('img', { id: 'eventsIcon', src: _events_icon2.default }) : "",
                             menu.object_slug == 'shopping' ? _react2.default.createElement('img', { id: 'shoppingIcon', src: _shopping_icon2.default }) : "",
                             menu.object_slug == 'sign-up' ? _react2.default.createElement('img', { id: 'sign-upIcon', src: _signup_icon2.default }) : "",
@@ -5498,6 +5510,12 @@ module.exports = require("@fortawesome/fontawesome-svg-core/styles.css");
 
 /***/ }),
 /* 84 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-gtm-module");
+
+/***/ }),
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5523,11 +5541,11 @@ var _reactHelmet = __webpack_require__(5);
 
 var _reactstrap = __webpack_require__(2);
 
-var _footerLogo = __webpack_require__(85);
+var _footerLogo = __webpack_require__(86);
 
 var _footerLogo2 = _interopRequireDefault(_footerLogo);
 
-var _footerAccessIcon = __webpack_require__(86);
+var _footerAccessIcon = __webpack_require__(87);
 
 var _footerAccessIcon2 = _interopRequireDefault(_footerAccessIcon);
 
@@ -5637,13 +5655,13 @@ exports.default = (0, _reactStatic.withSiteData)(function (_React$Component) {
 }(_react2.default.Component));
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,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"
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAMCAYAAACEJVa/AAAAAXNSR0IArs4c6QAAAilJREFUKBWVkT1oFFEQx2fe282eCdx5WSUhyQkBCdhcJSh2VsZCsLOxiQgKEkFFsbM1kggKoiCi+NWIEZMUFsFC0FqtVLhc7rxbDt3dSw4Jyd2+mczz2CtS6RTv7cyb+e1/ZgD+06IoOBaG1cfMrNNSJ/1I7yD4vqe/f6BIBicBzQQAZplhgzl5iOj2IZt7gDCPiCat6UGEjHH8c0qKppOEM8CmrrQKgOAbA41qrX02fJMAFoHhUQqwt7JHuVzOhGFtSQouIsKs49CRzS19CkA0KBgB0MtMOMPIogBeSXxmfT2YtLXWlCjo2511nwstaP0xhwcHCy+07rieR2+MoUqnQ8sKeZYB3vr+vvO+X3hnjL7U6STXw3D1goU4UVR7KfQVf2/hmg1Ya7d3HVVoMtpxvpLh+wiwIBDTarX8bDYbDQ2NfWk0StOu4zxoNqt1pRSURfRBO5MuwjbR3kTF8xZgFcjLa3k7JDnids3z3HFi8KSZVSXyryJSHMe1xbW1xrhN0dpDYHWFgZcAiGRWdwV9J5fLxfY9DCunJSrK3XP5/Njn3t+j39U5RlWUnKcyg9u2hYTgmSg9KaBPzOqjA3TAoLrMTBNau2fy+ZEPFtqDWCeK6lMIdMu2IHPyRfwoMm/IWgckVbYMRmLv2+2tueHh/b9sjbW/EDuPZrNxHCh5Iv0vyAbOxnH9BJEpyoaU6+oVIv7hurlS2lK3fMcZx6VcFFVu7Aj/k7sNs5YJFK83d74AAAAASUVORK5CYII="
@@ -5651,4 +5669,4 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAMCAYAAACE
 /***/ })
 /******/ ]);
 });
-//# sourceMappingURL=static.e45f018d.js.map
+//# sourceMappingURL=static.537d7a9f.js.map

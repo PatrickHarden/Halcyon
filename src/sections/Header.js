@@ -1,6 +1,7 @@
 import React from 'react'
 import { withSiteData, Head } from 'react-static'
 import Navigation from '../Nav';
+import TagManager from 'react-gtm-module'
 
 
 export default withSiteData(class SiteHeader extends React.Component {
@@ -11,7 +12,9 @@ export default withSiteData(class SiteHeader extends React.Component {
 
     render() {
         const options = this.props.centerInfo
-
+        const tagManagerArgs = {
+            gtmId: this.props.centerInfo.acf.google_tag_manager_ID
+        }
 
         return (
             <header>
@@ -23,5 +26,12 @@ export default withSiteData(class SiteHeader extends React.Component {
                 <Navigation />
             </header>
         )
+        if (typeof document !== 'undefined') {
+            <Head>
+                {(tagManagerArgs) ? TagManager.initialize(tagManagerArgs) : ""}
+            </Head>
+        } else {
+            return null
+        }
     }
 })
