@@ -28,7 +28,6 @@ export default {
       stores
     }
   },
-  
   getRoutes: async () => {
     const baseURL = 'https://halcyon.dev.v3.imaginuitycenters.com'
     const { data: pages } = await axios.get(baseURL + '/index.php/wp-json/wp/v2/pages?per_page=99')
@@ -138,7 +137,7 @@ export default {
         path: `/${page.slug}`,
         component: 'src/singles/Page',
           getData: () => ({
-            page, siteRoot, title, metaDescription, STO
+            page, siteRoot, title, metaDescription, 
           }),
         })),
       },

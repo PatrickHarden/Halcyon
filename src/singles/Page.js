@@ -4,7 +4,7 @@ import { withRouteData, Link, Head } from 'react-static'
 import { Container, Row, Col } from 'reactstrap';
 import Slider from "react-slick";
 import '../css/components/pageContent.css'
-
+import ImageCarousel from '../sections/ImageCarousel.js';
 //
 
 import ReactHtmlParser from 'react-html-parser'
@@ -49,12 +49,7 @@ export default withRouteData(class Page extends React.Component {
               </div>
             } else if (section.acf_fc_layout == 'image_carousel'){
               return <div>
-              <h1>Carousel</h1>
-              <Slider className='pageCotentCarousel' {...settings}>
-                {section.carousel.map((slide, index) => {
-                  return <div data-index={index} key={index}><img src={slide.image.url} /></div>
-                })}
-              </Slider>
+              <ImageCarousel section={section} />
               </div>
             }
           })}

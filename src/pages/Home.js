@@ -136,7 +136,7 @@ export default withRouteData(class Home extends React.Component {
               <Link className='halcyon-button' to={home.acf.button.url} target={home.acf.button.target}>{home.acf.button.title}</Link>
             </Container>
       
-                <TenantSlider stores={this.props.stores} pageData={this.props.home}/>
+                {/* <TenantSlider stores={this.props.stores} pageData={this.props.home}/> */}
 
             <ImageGrid images={this.state.imageGridData} />
             <div className='events-container'>
