@@ -17,6 +17,7 @@ import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from
 var newTitle;
 var newMeta;
 var newCanonical;
+var salesArray;
 function setMetaData(pages){
   pages.map(page => {
     if (page.slug == 'shopping'){

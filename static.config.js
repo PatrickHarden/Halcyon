@@ -137,7 +137,7 @@ export default {
         path: `/${page.slug}`,
         component: 'src/singles/Page',
           getData: () => ({
-            page, siteRoot, title, metaDescription
+            page, siteRoot, title, metaDescription, STO
           }),
         })),
       },
