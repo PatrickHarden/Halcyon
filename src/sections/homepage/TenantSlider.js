@@ -3,12 +3,15 @@ import Link from 'react-static';
 import Slider from "react-slick";
 import ReactHtmlParser from 'react-html-parser';
 import Button from 'reactstrap';
+import { 
+    Container, Row, Col
+  } from 'reactstrap';
 import '../../css/components/tenantSlider.css';
 import leftArrow from '../../images/leftArrow.png';
 import rightArrow from '../../images/rightArrow.png';
 import $ from 'jquery';
 
-//  <TenantSlider stores={this.props.stores} />
+//  <TenantSlider stores={this.props.stores} selectedStores={selectedStores} />
 
 var storeArray = [];
 var prevTitle;
@@ -72,6 +75,7 @@ function updateArrows(){
 }
 var excerpt;
 var regex = /(<([^>]+)>)/ig;
+var selectedStores;
 
 export default class TenantSlider extends React.Component {
 
@@ -88,9 +92,14 @@ export default class TenantSlider extends React.Component {
 
     componentWillMount(){
 
-
         const stores = this.props.stores;
-        const selectedStores = this.props.selectedStores;
+        // const selectedStores = this.props.selectedStores;
+
+        selectedStores = this.props.home.acf.layout.map(theModule => {
+            theModule.stores.map(layout => {
+                return layout.post_name;
+                })
+          })
 
         storeArray = stores.map(store => {
             for (var i = 0; i< selectedStores.length; i++){
@@ -153,11 +162,21 @@ export default class TenantSlider extends React.Component {
         };
 
     return (
-        <div id="tenantSlider">
-            <Slider {...settings}>
-                {storeArray}
-            </Slider>
+        <div className='tenant-spotlight'>
+            <div class='heading-container'>
+            <Container>
+                {/* <h2>{this.props.acf.tenant_spotlight.heading}</h2> */}
+            </Container>
+            </div>
+            <Container>
+            <div id="tenantSlider">
+                <Slider {...settings}>
+                    {storeArray}
+                </Slider>
+            </div>
+            </Container>
         </div>
+        
     );
   }
 }
