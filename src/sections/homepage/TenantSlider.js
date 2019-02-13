@@ -75,13 +75,12 @@ function updateArrows(){
 }
 var excerpt;
 var regex = /(<([^>]+)>)/ig;
-var selectedStores;
+var selectedStores = [];
 
 export default class TenantSlider extends React.Component {
 
     constructor(props) {
         super(props);
-        this.onClick = this.handleClick.bind(this);
     }
 
     compressText(store){
@@ -94,12 +93,14 @@ export default class TenantSlider extends React.Component {
 
         const stores = this.props.stores;
         // const selectedStores = this.props.selectedStores;
-
-        selectedStores = this.props.home.acf.layout.map(theModule => {
-            theModule.stores.map(layout => {
-                return layout.post_name;
+        this.props.pageData[0].acf.layout.map(test=> {
+            if (test.acf_fc_layout == 'featured_stores'){
+                test.stores.map(store => {
+                    selectedStores.push(store.post_name)
                 })
-          })
+            }
+        })
+        console.log(selectedStores)
 
         storeArray = stores.map(store => {
             for (var i = 0; i< selectedStores.length; i++){
@@ -129,9 +130,6 @@ export default class TenantSlider extends React.Component {
         })
     }
 
-    handleClick(event) {
-        console.log('test')
-      }
 
     componentDidMount(){
         getTitleArray();
