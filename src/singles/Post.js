@@ -9,8 +9,6 @@ import ReactHtmlParser from 'react-html-parser'
 
 export default withRouteData(({ post, siteRoot, title, metaDescription }) => (
   <section>
-    {(document != 'undefined') ? 
-    <div>
     <Head>
       <body className={'single-blog blog-id-'+post.id + ' ' + post.slug} />
       {(post.yoast_meta.yoast_wpseo_title) ? <title>{post.yoast_meta.yoast_wpseo_title}</title> : <title>{title}</title>}
@@ -25,7 +23,5 @@ export default withRouteData(({ post, siteRoot, title, metaDescription }) => (
         </Col>
       </Row>
     </Container>
-    </div> : ""
-  }
   </section>
 ))
