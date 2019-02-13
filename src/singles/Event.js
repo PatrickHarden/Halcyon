@@ -7,8 +7,21 @@ import { Container,
 import ReactHtmlParser from 'react-html-parser'
 //
 
-export default withRouteData(({ event, siteRoot, title, metaDescription }) => (
-  <section>
+export default withRouteData(class Page extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  render(){
+    const event = this.props.event
+    const siteRoot = this.props.siteRoot
+    const title = this.props.title
+    const metaDescription = this.props.metaDescription
+
+  if (typeof document !== 'undefined') {
+  return (
+    <section>
     <Head>
       <body className={'single-blog blog-id-'+event.id + ' ' + event.slug} />
       {(event.yoast_meta.yoast_wpseo_title) ? <title>{event.yoast_meta.yoast_wpseo_title}</title> : <title>{title}</title>}
@@ -24,4 +37,8 @@ export default withRouteData(({ event, siteRoot, title, metaDescription }) => (
       </Row>
     </Container>
   </section>
-))
+  )
+  } else {
+    return null
+  }
+}})
