@@ -9,8 +9,7 @@ import ReactHtmlParser from 'react-html-parser'
 
 export default withRouteData(({ event, siteRoot, title, metaDescription }) => (
   <section>
-     {(typeof window !== 'undefined') ? <div>
-     <Head>
+    <Head>
       <body className={'single-blog blog-id-'+event.id + ' ' + event.slug} />
       {(event.yoast_meta.yoast_wpseo_title) ? <title>{event.yoast_meta.yoast_wpseo_title}</title> : <title>{title}</title>}
       {(event.yoast_meta.yoast_wpseo_metadesc) ? <meta name="description" content={event.yoast_meta.yoast_wpseo_metadesc} /> : <meta name="description" content={metaDescription} />}
@@ -24,6 +23,5 @@ export default withRouteData(({ event, siteRoot, title, metaDescription }) => (
         </Col>
       </Row>
     </Container>
-     </div> : ""}
   </section>
 ))

@@ -62,13 +62,13 @@ export default {
         getData: () => ({
           events, siteRoot, title, metaDescription, pages
         }),
-        children: events.map(event => ({
-          path: `/${event.slug}`,
-          component: 'src/singles/Event',
-          getData: () => ({
-            event, siteRoot, title, metaDescription
-          }),
-        })),
+        // children: events.map(event => ({
+        //   path: `/${event.slug}`,
+        //   component: 'src/singles/Event',
+        //   getData: () => ({
+        //     event, siteRoot, title, metaDescription
+        //   }),
+        // })),
       },
       {
         path: '/sales',
