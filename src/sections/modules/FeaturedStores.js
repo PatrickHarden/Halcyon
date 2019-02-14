@@ -1,5 +1,5 @@
 import React from "react";
-import Link from 'react-static';
+import { Link, withSiteData} from 'react-static';
 import Slider from "react-slick";
 import ReactHtmlParser from 'react-html-parser';
 import Button from 'reactstrap';
@@ -10,8 +10,6 @@ import '../../css/components/tenantSlider.css';
 import leftArrow from '../../images/leftArrow.png';
 import rightArrow from '../../images/rightArrow.png';
 import $ from 'jquery';
-
-//  <TenantSlider stores={this.props.stores} selectedStores={selectedStores} />
 
 var storeArray = [];
 var prevTitle;
@@ -77,7 +75,7 @@ var excerpt;
 var regex = /(<([^>]+)>)/ig;
 var selectedStores = [];
 
-export default class FeaturesStores extends React.Component {
+export default withSiteData(class FeaturesStores extends React.Component {
 
     constructor(props) {
         super(props);
@@ -93,13 +91,23 @@ export default class FeaturesStores extends React.Component {
 
         const stores = this.props.stores;
         // const selectedStores = this.props.selectedStores;
-        this.props.pageData[0].acf.layout.map(test=> {
-            if (test.acf_fc_layout == 'featured_stores'){
-                test.stores.map(store => {
-                    selectedStores.push(store.post_name)
-                })
-            }
-        })
+        if (this.props.pageData[0]){
+            this.props.pageData[0].acf.layout.map(test=> {
+                if (test.acf_fc_layout == 'featured_stores'){
+                    test.stores.map(store => {
+                        selectedStores.push(store.post_name)
+                    })
+                }
+            })
+        } else {
+            this.props.pageData.acf.layout.map(test=> {
+                if (test.acf_fc_layout == 'featured_stores'){
+                    test.stores.map(store => {
+                        selectedStores.push(store.post_name)
+                    })
+                }
+            })
+        }
         console.log(selectedStores)
 
         storeArray = stores.map(store => {
@@ -162,9 +170,7 @@ export default class FeaturesStores extends React.Component {
     return (
         <div className='tenant-spotlight'>
             <div class='heading-container'>
-            <Container>
-                {/* <h2>{this.props.acf.tenant_spotlight.heading}</h2> */}
-            </Container>
+                <h2>{this.props.section.heading}</h2>
             </div>
             <Container>
             <div id="tenantSlider">
@@ -177,4 +183,4 @@ export default class FeaturesStores extends React.Component {
         
     );
   }
-}
+})

@@ -17,9 +17,11 @@ import ReactHtmlParser from 'react-html-parser'
 var newTitle;
 var newMeta;
 var newCanonical;
+var pageData;
 function setMetaData(pages){
   pages.map(page => {
     if (page.slug == 'events'){
+      pageData = page;
       newTitle = page.yoast_meta.yoast_wpseo_title;
       newMeta = page.yoast_meta.yoast_wpseo_metadesc;
       newCanonical = page.yoast_meta.yoast_wpseo_canonical;
@@ -32,7 +34,7 @@ export default withRouteData(({ events, pages, siteRoot, title, metaDescription 
   <section>
     {setMetaData(pages)}
     <Head>
-      <body className="events" />
+      <body className={'events ' + pageData.acf.global_page_color} />
       {(newTitle) ? <title>{newTitle}</title> : <title>{title}</title>}
       {(newMeta) ? <meta name="description" content={newMeta} /> : <meta name="description" content={metaDescription} />}
       {(newCanonical) ? <link rel="canonical" href={newCanonical} /> : <link rel="canonical" href={siteRoot} /> }
@@ -40,7 +42,7 @@ export default withRouteData(({ events, pages, siteRoot, title, metaDescription 
     <Container>
       <Row>
         <Col xs="12">
-          <h1>Events</h1>
+          <h1 className="mt-3">Events</h1>
         </Col>
       </Row>
       <Row>

@@ -7,15 +7,19 @@ import { Container,
 import ReactHtmlParser from 'react-html-parser'
 //
 
-export default withRouteData(class Page extends React.Component {
+export default withRouteData(class Post extends React.Component {
 
   constructor(props) {
     super(props);
   }
 
   render(){
+    const post = this.props.post
+    const siteRoot = this.props.siteRoot
+    const title = this.props.title
+    const metaDescription = this.props.metaDescription
 
-
+    
     if (typeof document !== 'undefined') {
       return (
         <section>

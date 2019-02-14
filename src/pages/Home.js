@@ -10,9 +10,12 @@ import {
   import { Redirect } from 'react-router-dom'
 
 import HeroSlider from '../sections/homepage/HeroSlider';
-import TenantSlider from '../sections/homepage/TenantSlider';
-import ImageGrid from '../sections/homepage/ImageGrid';
-import TintSocialFeed from '../sections/homepage/TenantSlider';
+import ImageCarousel from '../sections/modules/ImageCarousel.js'
+import GlobalImageGrid from '../sections/modules/GlobalImageGrid.js'
+import FeaturedEvents from '../sections/modules/FeaturedEvents.js'
+import ContentArea from '../sections/modules/ContentArea.js'
+import FeaturedStores from '../sections/modules/FeaturedStores.js'
+import TintSocialFeed from '../sections/homepage/TintSocialFeed.js';
 import rightArrow from '../images/rightArrow.png';
 
 const fullWidth = {
@@ -44,6 +47,32 @@ export default withRouteData(class Home extends React.Component {
       return excerpt + "...";
     } else {
       return store;
+    }
+  }
+
+    convertLink(url){
+    var words = url.split('/');
+    if (words[4] == ""){
+      return words[3]
+    } else {
+      if (words[3] == "events") {
+        return "/events/" + words[4]
+      } else if (words[3] == "sales"){
+        return "/sales/" + words[4]
+      }  else if (words[3] == "stores"){
+        return "/stores/" + words[4]
+      } else if (words[3] == "blog"){
+        return "/blogs/" + words[4]
+      }
+    }
+  }
+
+  getTitleFromUrl(url){
+    var words = url.split('/');
+    if (words[4] == ""){
+      return words[3].replace(/-/g, ' ')
+    } else {
+      return words[4].replace(/-/g, ' ')
     }
   }
 
@@ -94,8 +123,15 @@ export default withRouteData(class Home extends React.Component {
 
       return (
         <article id="home">
+        {console.log(home)}
           <Head>
+<<<<<<< HEAD
             <body className="home" />
+=======
+            <body className={'home ' + home.acf.global_page_color} />
+            <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+>>>>>>> 531b467d76685518b6678a198dcfc1048fe70743
             {(home.yoast_meta.yoast_wpseo_title) ? <title>{home.yoast_meta.yoast_wpseo_title}</title> : ""}
             {(home.yoast_meta.yoast_wpseo_metadesc) ? <meta name="description" content={home.yoast_meta.yoast_wpseo_metadesc} /> : ""}
             {(home.yoast_meta.yoast_wpseo_canonical) ? <link rel="canonical" href={home.yoast_meta.yoast_wpseo_canonical} /> : "" }
@@ -130,35 +166,28 @@ export default withRouteData(class Home extends React.Component {
             <Container className='top-cta'>
               <h1>{home.acf.title_h1}</h1>
               <div>{ReactHtmlParser(home.acf.content_area)}</div>
-              <Link className='halcyon-button' to={home.acf.button.url} target={home.acf.button.target}>{home.acf.button.title}</Link>
+                {(home.acf.button_1) ? <Link className="halcyon-button" to={this.convertLink(home.acf.button_1.url)}>{ReactHtmlParser(home.acf.button_1.title)}</Link> : ""}           
             </Container>
       
-                <TenantSlider stores={this.props.stores} pageData={this.props.home}/>
+            {(home.acf.layout) ? 
+              <div>
+                {home.acf.layout.map((section, index) => {
+                  if (section.acf_fc_layout == 'content_area'){
+                    return <Container key={index}><ContentArea section={section} /></Container>
+                  } else if (section.acf_fc_layout == 'image_carousel'){
+                    return <Container key={index}><ImageCarousel section={section} /></Container>
+                  } else if (section.acf_fc_layout == 'image_grid') {
+                    return <div key={index}><GlobalImageGrid section={section} /></div>
+                  } else if (section.acf_fc_layout == 'featured_events') {
+                    return <Container key={index}><FeaturedEvents section={section} /></Container>
+                  } else if (section.acf_fc_layout == 'featured_stores') {
+                    return <div key={index}><FeaturedStores pageData={home} section={section} /></div>
+                  }
+                })}
+              </div> : "" }
 
-            <ImageGrid images={this.state.imageGridData} />
-            <div className='events-container'>
-              {home.acf.halcyon_happenings.heading &&
-                <div className='heading-container'>
-                  <Container>
-                    <h2>{home.acf.halcyon_happenings.heading}</h2>
-                  </Container>
-                </div>
-              }
-              <Container>
-                <Row>
-                  <Col sm={4} className='event-wrapper'>
-                    {featuredStores[0]}
-                  </Col>
-                  <Col sm={4} className='event-wrapper'>
-                    {featuredStores[1]}
-                  </Col>
-                  <Col sm={4} className='event-wrapper'>
-                    {featuredStores[2]}
-                  </Col>
-                </Row>
-                <Link to="/events" className="pull-right">View All<img className='arrow' src={rightArrow} alt='right-arrow'/></Link>
-              </Container>
-            </div>
+            
+
             <Container className='social-feed-container'>
             {(this.props.property_options.acf.social_feed_data_id) ? <div>
               <h2>@HALCYONFORSYTH</h2>
