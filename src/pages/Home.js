@@ -48,8 +48,7 @@ export default withRouteData(class Home extends React.Component {
   }
 
   componentWillMount(){
-    console.log('Home JSON:')
-    console.log(this.props.home);
+
     let component = this;
     let imageData = [];
     let _home = this.props.home[0];
@@ -74,7 +73,7 @@ export default withRouteData(class Home extends React.Component {
           <img src={store.acf.featured_image} className="featuredEventImage" />
           <div className="eventOverlay">
             <h4>{store.title.rendered}</h4>
-            <p>{ReactHtmlParser(this.compressText(store.acf.post_copy))}</p>
+            <div>{ReactHtmlParser(this.compressText(store.acf.post_copy))}</div>
           </div>
           </Link>
         </div>
@@ -136,12 +135,12 @@ export default withRouteData(class Home extends React.Component {
               <Link className='halcyon-button' to={home.acf.button.url} target={home.acf.button.target}>{home.acf.button.title}</Link>
             </Container>
       
-                {/* <TenantSlider stores={this.props.stores} pageData={this.props.home}/> */}
+                <TenantSlider stores={this.props.stores} pageData={this.props.home}/>
 
             <ImageGrid images={this.state.imageGridData} />
             <div className='events-container'>
               {home.acf.halcyon_happenings.heading &&
-                <div class='heading-container'>
+                <div className='heading-container'>
                   <Container>
                     <h2>{home.acf.halcyon_happenings.heading}</h2>
                   </Container>

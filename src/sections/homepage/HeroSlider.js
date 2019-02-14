@@ -11,10 +11,10 @@ export default class HeroSlider extends React.Component {
 
   componentWillMount(){
     let home = this.props.home[0];
-    
-    heroArray = home.acf.hero_slider.map(hero => {
+
+    heroArray = home.acf.hero_slider.map((hero, index) => {
       if (hero.link){
-          return <div>
+          return <div key={index}>
                     <a href={hero.link.url} target={hero.link.target}>
                       <img className='visible-xs' key={hero.mobile_image.link} src={hero.mobile_image.link} />
                       <img className='hidden-xs' key={hero.desktop_image.link} src={hero.desktop_image.link} />
@@ -22,7 +22,7 @@ export default class HeroSlider extends React.Component {
                     </a>
                   </div>
       } else if(!hero.link) {
-          return  <div>
+          return  <div key={index}>
                     <img className='visible-xs' key={hero.mobile_image.link} src={hero.mobile_image.link} />
                     <img className='hidden-xs' key={hero.desktop_image.link} src={hero.desktop_image.link} />
                     <h2 className='hero-heading'>{hero.heading}</h2>

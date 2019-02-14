@@ -1,11 +1,13 @@
 
 import React from 'react'
 import { withRouteData, Link, Head } from 'react-static'
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap'
 import Slider from "react-slick";
 import '../css/components/pageContent.css'
-import ImageCarousel from '../sections/ImageCarousel.js';
-//
+import ImageCarousel from '../sections/modules/ImageCarousel.js'
+import GlobalImageGrid from '../sections/modules/GlobalImageGrid.js'
+import FeaturedEvents from '../sections/modules/FeaturedEvents.js'
+import ContentArea from '../sections/modules/ContentArea.js'
 
 import ReactHtmlParser from 'react-html-parser'
 
@@ -40,20 +42,23 @@ export default withRouteData(class Page extends React.Component {
           {(page.acf.layout) ? <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" /> : ""}
         </Head>
         {(page.acf.layout) ? 
-        <Container>
-          {page.acf.layout.map(section => {
+        <div>
+          {page.acf.layout.map((section, index) => {
             if (section.acf_fc_layout == 'content_area'){
-              return <div className="pageContentArea">
-                <h1>{ReactHtmlParser(section.heading)}</h1>
-                <div>{ReactHtmlParser(section.content)}</div>
-              </div>
+              return <Container className="pageContentArea" key={index}>
+                  <ContentArea section={section} />
+              </Container>
             } else if (section.acf_fc_layout == 'image_carousel'){
-              return <div>
-              <ImageCarousel section={section} />
-              </div>
+              return <Container key={index}><ImageCarousel section={section} /></Container>
+            } else if (section.acf_fc_layout == 'image_grid') {
+              return <div key={index}><GlobalImageGrid section={section} /></div>
+            } else if (section.acf_fc_layout == 'featured_events') {
+              return <Container key={index}><FeaturedEvents section={section} /></Container>
+            } else if (section.acf_fc_layout == 'featured_stores') {
+              return <Container key={index}>featured stores</Container>
             }
           })}
-        </Container> : 
+        </div> : 
           <Container>
           <Row>
             <Col xs="12">

@@ -32,7 +32,6 @@ export default withRouteData(({ stores, siteRoot, title, metaDescription, pages,
 
   <section>
     {setMetaData(pages)}
-    {console.log(sales)}
     <Head>
       <body className="shopping" />
       {(newTitle) ? <title>{newTitle}</title> : <title>{title}</title>}
@@ -47,18 +46,14 @@ export default withRouteData(({ stores, siteRoot, title, metaDescription, pages,
       </Row>
       <Row>
       <div className="card-columns">
-        <table className="table table-striped">
+        <table className="table table-hover">
           <tbody>
             {stores.map(store => (
               (store.acf.store_type == "retailer") ? 
               <tr key={store.id} className={store.id}>
-              <td>
-                <Link to={`/dining/${store.slug}/`}>
-                  <h4>{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div>: ""}</h4>
-                </Link>
-              </td>
-              <td>{(store.acf.flags[0] == "Coming Soon") ? <div>Coming Soon!</div> : <div>&nbsp;</div>}</td>
-              <td>{(store.acf.phone_number) ? <div>{store.acf.phone_number}</div>:""}</td>
+              <td><Link to={`/dining/${store.slug}/`}><h4>{(store.title.rendered)?<div>{ReactHtmlParser(store.title.rendered)}</div>:null}</h4></Link></td>
+              <td>{(store.acf.flags[0] == "Coming Soon")?<div>Coming Soon!</div>:null}</td>
+              <td>{(store.acf.phone_number)?<div>{store.acf.phone_number}</div>:null}</td>
               <td><small>{store.date.substring(0, 10)}</small></td>
               <td>Store Location</td>
               <td>Offer Available?</td>
