@@ -89,7 +89,7 @@ export default withRouteData(class Page extends React.Component {
             } else if (section.acf_fc_layout == 'image_grid') {
               return <div key={index}><GlobalImageGrid section={section} /></div>
             } else if (section.acf_fc_layout == 'featured_events') {
-              return <Container key={index}><FeaturedEvents section={section} /></Container>
+              return <div key={index}><FeaturedEvents section={section} /></div>
             } else if (section.acf_fc_layout == 'featured_stores') {
               return <Container key={index}><FeaturedStores pageData={page} section={section} /></Container>
             }
