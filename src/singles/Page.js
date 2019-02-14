@@ -29,6 +29,9 @@ export default withRouteData(class Page extends React.Component {
   convertLink(url){
     var words = url.split('/');
     console.log(words)
+    if (words[4] == ""){
+      
+    }
   }
 
   render(){
