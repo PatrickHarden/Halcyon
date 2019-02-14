@@ -1,0 +1,100 @@
+#tenantSlider {
+    margin: 2rem 0;
+  }
+  #tenantSlider .slick-arrow:before {
+    content: none;
+  }
+  #tenantSlider .store:focus {
+    outline: none;
+  }
+  @media screen and (max-width: 767px) {
+    #tenantSlider .slick-slide {
+      padding: 0 3rem;
+      text-align: center;
+    }
+    #tenantSlider .slick-arrow {
+      content: '';
+      border: solid #4F4B48;
+      border-width: 0 2px 2px 0;
+      display: inline-block;
+      padding: 3px;
+      top: 25%
+    }
+    #tenantSlider .slick-arrow.slick-next {
+      transform: rotate(-45deg);
+      right: 1rem;
+      z-index: 1;
+    }
+    #tenantSlider .slick-arrow.slick-prev {
+      transform: rotate(135deg);
+      left: 1rem;
+      z-index: 1;
+    }
+  }
+  
+  @media screen and (min-width: 768px) {
+  #tenantSlider .slick-prev,
+    #tenantSlider .slick-next {
+      position: absolute;
+      top: 92%;
+      z-index: 1;
+      font-size:1.4rem;
+      line-height:1rem;
+      width:auto;
+    }
+    #tenantSlider .slick-prev {
+      left:0;
+    }
+    #tenantSlider .slick-next {
+      right:0;
+    }
+    #tenantSlider .slick-arrow p {
+      color:#333;
+      margin:0;
+      padding: .125rem 1rem;
+      text-transform: uppercase;
+    }
+    #tenantSlider .slick-next p {
+      float:left;
+    }
+    #tenantSlider .slick-prev p {
+      float:right;
+    }
+    #tenantSlider .slick-list {
+      margin-bottom: 5rem;
+    }
+    #tenantSlider .halcyon-button {
+      margin: 2rem 0 1rem;
+      max-width: 145px;
+    }
+    #tenantSlider .store .image-wrapper {
+        width: 50%;
+        position: relative;
+    }
+    #tenantSlider .store .content-wrapper {
+        width: 60%;
+        float: right;
+        margin-top: -200px;
+        padding: 3rem 0;
+        background: #EDECE2;
+    }
+    #tenantSlider .store .content-wrapper .inner-wrapper {
+        width: 75%;
+        float: right;
+        background: rgba(255,255,255,.8);
+        padding: 1rem 2rem;
+    }
+  }
+  
+  @media screen and (min-width: 1200px) {
+    #tenantSlider .store .content-wrapper{
+      margin-top: -340px;
+      padding: 10rem 0;
+    }
+    #tenantSlider .slick-prev, #tenantSlider .slick-next {
+      top: 94%;
+    }
+    #tenantSlider .slick-prev, #tenantSlider .slick-next {
+      font-size: 1.8rem;
+    }
+  }

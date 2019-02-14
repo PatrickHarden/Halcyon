@@ -1,8 +1,9 @@
 import React from "react";
 import {Link, withSiteData} from 'react-static';
 import ReactHtmlParser from 'react-html-parser';
-import {Row, Col} from 'reactstrap';
+import {Container, Row, Col} from 'reactstrap';
 import rightArrow from '../../images/rightArrow.png';
+import '../../css/modules/featuredEvents.css';
 
 //  <SimpleSlider events={this.props.events} />
 
@@ -58,23 +59,25 @@ export default withSiteData(class FeaturedEvents extends React.Component {
             {console.log(this.props.section)}
             {this.props.section.heading &&
             <div className='heading-container'>
-                <h2>{this.props.section.heading}</h2>
+                <Container>
+                    <h2>{this.props.section.heading}</h2>
+                </Container>
             </div>
             }
-            <div>
-            <Row>
-                <Col sm={4} className='event-wrapper'>
-                {featuredStores[0]}
-                </Col>
-                <Col sm={4} className='event-wrapper'>
-                {featuredStores[1]}
-                </Col>
-                <Col sm={4} className='event-wrapper'>
-                {featuredStores[2]}
-                </Col>
-            </Row>
-            <Link to="/events" className="pull-right">View All<img className='arrow' src={rightArrow} alt='right-arrow'/></Link>
-            </div>
+            <Container>
+                <Row>
+                    <Col sm={4} className='event-wrapper'>
+                    {featuredStores[0]}
+                    </Col>
+                    <Col sm={4} className='event-wrapper'>
+                    {featuredStores[1]}
+                    </Col>
+                    <Col sm={4} className='event-wrapper'>
+                    {featuredStores[2]}
+                    </Col>
+                </Row>
+                <Link to="/events" className="pull-right">View All<img className='arrow' src={rightArrow} alt='right-arrow'/></Link>
+            </Container>
         </div>
         );
   }
