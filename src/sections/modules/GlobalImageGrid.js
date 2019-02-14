@@ -5,7 +5,7 @@ import '../../css/components/imageGrid.css'
 
 // <ImageGrid images={this.state.imageGridData} />
 
-export default class ImageGrid extends Component {
+export default class GlobalImageGrid extends Component {
     constructor(props) {
         super(props);
 

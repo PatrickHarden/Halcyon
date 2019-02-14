@@ -4,7 +4,7 @@ import { withRouteData, Link, Head } from 'react-static'
 import { Container, Row, Col } from 'reactstrap';
 import Slider from "react-slick";
 import '../css/components/pageContent.css'
-import ImageCarousel from '../sections/ImageCarousel.js';
+import ImageCarousel from '../sections/modules/ImageCarousel.js';
 //
 
 import ReactHtmlParser from 'react-html-parser'
@@ -41,16 +41,20 @@ export default withRouteData(class Page extends React.Component {
         </Head>
         {(page.acf.layout) ? 
         <Container>
-          {page.acf.layout.map(section => {
+          {page.acf.layout.map((section, index) => {
             if (section.acf_fc_layout == 'content_area'){
-              return <div className="pageContentArea">
+              return <div className="pageContentArea" key={index}>
                 <h1>{ReactHtmlParser(section.heading)}</h1>
                 <div>{ReactHtmlParser(section.content)}</div>
               </div>
             } else if (section.acf_fc_layout == 'image_carousel'){
-              return <div>
-              <ImageCarousel section={section} />
-              </div>
+              return <div key={index}><ImageCarousel section={section} /></div>
+            } else if (section.acf_fc_layout == 'image_grid') {
+              return <div>image grid</div>
+            } else if (section.acf_fc_layout == 'featured_events') {
+              return <div>featured events</div>
+            } else if (section.acf_fc_layout == 'featured_stores') {
+              return <div>featured stores</div>
             }
           })}
         </Container> : 

@@ -6,6 +6,7 @@ import { Container, Row, Col } from 'reactstrap';
 
 import FooterLogo from '../images/footerLogo.png';
 import AccessibilityIcon from '../images/footerAccessIcon.png';
+import TagManager from 'react-gtm-module'
 
 var isContrast = false;
 
@@ -36,40 +37,47 @@ export default withSiteData(class SiteFooter extends React.Component {
         const siteCreator = this.props.siteCreator
         const siteCreatorURL = this.props.siteCreatorURL
         const menu = this.props.footerMenu
+        const tagManagerArgs = {
+            gtmId: this.props.centerInfo.acf.google_tag_manager_ID
+        }
 
-        return (
-            <footer>
-                <Container>
-                <Row>
-                    <Col xs={12}>
-                        <h4 className='footer-heading'>HALCYON</h4>
-                    </Col>
-                    <Col xs={12} sm={9} className='footer-nav'>
-                        {
-                            menu.items.map((item, i) => {
-                                return (
-                                    <div>         
-                                    <Link to={'/' + item.object_slug} href={'/' + item.object_slug} className="nav-link">
-                                        {ReactHtmlParser(item.title)}
-                                    </Link>     
-                                    </div> 
-                                )
-                            })
-                        }
-                    </Col>
-                    <Col sm={3} className='hidden-xs'>
-                        <img src={FooterLogo} />
-                    </Col>
-                </Row>
-                </Container>
-                <div id="footerCopyright">
+        if (typeof document === 'undefined') {
+            return null
+        } else {
+            return (
+                <footer>
                     <Container>
-                        &copy; {(new Date().getFullYear())} {siteTitle} HALCYON FORSYTH. ALL RIGHTS RESERVED. 
-                        <img className='hidden-xs eyeball' src={AccessibilityIcon} onClick={this.changeContrast} />
+                    <Row>
+                        <Col xs={12}>
+                            <h4 className='footer-heading'>HALCYON</h4>
+                        </Col>
+                        <Col xs={12} sm={9} className='footer-nav'>
+                            {
+                                menu.items.map((item, i) => {
+                                    return (
+                                        <div key={i}>         
+                                        <Link to={'/' + item.object_slug} href={'/' + item.object_slug} className="nav-link">
+                                            {ReactHtmlParser(item.title)}
+                                        </Link>     
+                                        </div> 
+                                    )
+                                })
+                            }
+                        </Col>
+                        <Col sm={3} className='hidden-xs'>
+                            <img src={FooterLogo} />
+                        </Col>
+                    </Row>
                     </Container>
-                </div>
-            </footer>
-        )
-
+                    <div id="footerCopyright">
+                        <Container>
+                            &copy; {(new Date().getFullYear())} {siteTitle} HALCYON FORSYTH. ALL RIGHTS RESERVED. 
+                            <img className='hidden-xs eyeball' src={AccessibilityIcon} onClick={this.changeContrast} />
+                        </Container>
+                    </div>
+                    {(tagManagerArgs) ? TagManager.initialize(tagManagerArgs) : ""}
+                </footer>
+            )
+        }
     }
 })

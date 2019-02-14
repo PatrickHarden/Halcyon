@@ -35,7 +35,7 @@ export default class ImageCarousel extends React.Component {
 
     return (
         <div className='imageCarousel'>
-            <div class='heading-container'>
+            <div className='heading-container'>
                 <Container>
                      <h2>{this.props.section.heading}</h2>
                 </Container>
