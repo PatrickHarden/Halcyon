@@ -1,6 +1,8 @@
 import React from "react";
 import Slider from "react-slick";
 import { Container } from 'reactstrap';
+import '../../css/modules/imageCarousel.css';
+import sliderArrow from '../../images/gallery-slider-arrow.png';
 
 //  <ImageCarousel section={section} />
 
@@ -24,15 +26,26 @@ export default class ImageCarousel extends React.Component {
         infinite: true,
         speed: 500,
         slidesToShow: 3,
-        slidesToScroll: 3
+        slidesToScroll: 1,
+        nextArrow: <div><img src={sliderArrow} alt='arrow left' /></div>,
+        prevArrow: <div><img src={sliderArrow} alt='arrow right' /></div>,
+        responsive: [
+            {
+              breakpoint: 767,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                nextArrow: "",
+                prevArrow: ""
+              }
+            },
+            
+          ]
         };
-        var backgroundTexture = this.props.section.background_texture.url;
+        var backgroundTexture = this.props.section.background_texture;
         var style = {
             backgroundImage: `url(${backgroundTexture})`,
-            width: '100%'
         };
-
-        console.log('texture',this.props.section.background_texture.url);
 
     return (
         <div className='imageCarousel'>
@@ -42,9 +55,11 @@ export default class ImageCarousel extends React.Component {
                 </Container>
             </div>
             <div className='slider-container' style={style}>
-                <Slider className='pageCotentCarousel' {...settings}>
-                    {imageArray}
-                </Slider>
+                <Container>
+                    <Slider className='pageCotentCarousel' {...settings}>
+                        {imageArray}
+                    </Slider>
+                </Container>
             </div>
         </div>
      

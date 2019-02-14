@@ -1,0 +1,27 @@
+@media screen and (max-width: 767px) {
+    .imageCarousel .slick-slide {
+      padding: 0 3rem;
+      text-align: center;
+    }
+    .imageCarousel .slick-arrow {
+      content: '';
+      border: solid #4F4B48;
+      border-width: 0 2px 2px 0;
+      display: inline-block;
+      padding: 3px;
+      top: 50%
+    }
+    .imageCarousel .slick-arrow.slick-next {
+      transform: rotate(-45deg);
+      right: 1rem;
+      z-index: 1;
+    }
+    .imageCarousel .slick-arrow.slick-prev {
+      transform: rotate(135deg);
+      left: 1rem;
+      z-index: 1;
+    }
+  }
+  .imageCarousel .slick-arrow:before {
+    content: none;
+  }
