@@ -156,25 +156,25 @@ export default class TenantSlider extends React.Component {
               }
             },
             
-//           ]
-//         };
+          ]
+        };
 
-//     return (
-//         <div className='tenant-spotlight'>
-//             <div class='heading-container'>
-//             <Container>
-//                 {/* <h2>{this.props.acf.tenant_spotlight.heading}</h2> */}
-//             </Container>
-//             </div>
-//             <Container>
-//             <div id="tenantSlider">
-//                 <Slider {...settings}>
-//                     {storeArray}
-//                 </Slider>
-//             </div>
-//             </Container>
-//         </div>
+    return (
+        <div className='tenant-spotlight'>
+            <div class='heading-container'>
+            <Container>
+                {/* <h2>{this.props.acf.tenant_spotlight.heading}</h2> */}
+            </Container>
+            </div>
+            <Container>
+            <div id="tenantSlider">
+                <Slider {...settings}>
+                    {storeArray}
+                </Slider>
+            </div>
+            </Container>
+        </div>
         
-//     );
-//   }
-// }
+    );
+  }
+}
