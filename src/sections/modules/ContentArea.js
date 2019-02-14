@@ -17,7 +17,9 @@ export default class ContentArea extends React.Component {
 
         return (
             <div className='contentArea'>
-                {(section.display_options == "fullwidth") ? <div>Full width</div>: ""}
+                {(section.display_options == "fullwidth") ? 
+                <div>Full width</div>
+                : ""}
             </div>
         
         );
