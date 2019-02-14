@@ -1,33 +1,66 @@
 import React from "react";
-import Link from 'react-static';
+import {Link, withSiteData} from 'react-static';
 import ReactHtmlParser from 'react-html-parser';
-import Button from 'reactstrap';
+import {Row, Col} from 'reactstrap';
+import rightArrow from '../../images/rightArrow.png';
 
 //  <SimpleSlider events={this.props.events} />
 
 var eventArray = [];
+var excerpt;
+var regex = /(<([^>]+)>)/ig;
+var featuredStores = [];
 
-export default class SimpleSlider extends React.Component {
+export default withSiteData(class FeaturedEvents extends React.Component {
 
     constructor(props) {
         super(props);
     }
 
+    compressText(store){
+        if (store.length > 80){
+          excerpt = store.replace(regex, "").substr(0, 80)
+          excerpt = excerpt.substr(0, excerpt.lastIndexOf(" "))
+          return excerpt + "...";
+        } else {
+          return store;
+        }
+    }
+
     componentWillMount(){
+        // Generate featured events from events json
+        featuredStores = this.props.events.map(store => {
+            if (store.acf.featured_image){
+            return <div className="featuredEvent">
+                <Link to={store.slug}>
+                    <img src={store.acf.featured_image} className="featuredEventImage" />
+                    <div className="eventOverlay">
+                    <h4>{store.title.rendered}</h4>
+                    <div>{ReactHtmlParser(this.compressText(store.acf.post_copy))}</div>
+                    </div>
+                </Link>
+            </div>
+            }
+        })
+        // Remove all nulls/undefined from array
+        featuredStores = featuredStores.filter(function (el) {
+            return el != null;
+        });
+        // Pull only 3 featured events per design
+        featuredStores = featuredStores.slice(0,3)
     }
 
     render() {
 
         return (
         <div className='events-container'>
-            {home.acf.halcyon_happenings.heading &&
+            {console.log(this.props.section)}
+            {this.props.section.heading &&
             <div className='heading-container'>
-                <Container>
-                <h2>{home.acf.halcyon_happenings.heading}</h2>
-                </Container>
+                <h2>{this.props.section.heading}</h2>
             </div>
             }
-            <Container>
+            <div>
             <Row>
                 <Col sm={4} className='event-wrapper'>
                 {featuredStores[0]}
@@ -40,8 +73,8 @@ export default class SimpleSlider extends React.Component {
                 </Col>
             </Row>
             <Link to="/events" className="pull-right">View All<img className='arrow' src={rightArrow} alt='right-arrow'/></Link>
-            </Container>
+            </div>
         </div>
         );
   }
-}
+})

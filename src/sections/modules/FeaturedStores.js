@@ -77,7 +77,7 @@ var excerpt;
 var regex = /(<([^>]+)>)/ig;
 var selectedStores = [];
 
-export default class TenantSlider extends React.Component {
+export default class FeaturesStores extends React.Component {
 
     constructor(props) {
         super(props);

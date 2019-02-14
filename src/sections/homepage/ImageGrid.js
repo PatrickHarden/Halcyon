@@ -21,6 +21,7 @@ export default class ImageGrid extends Component {
 
     componentDidMount() {
         this.startSliderEffect();
+        console.log(this.state.images)
     }
 
     startSliderEffect() {

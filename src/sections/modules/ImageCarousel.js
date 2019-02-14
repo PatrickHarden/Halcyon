@@ -1,11 +1,8 @@
 import React from "react";
-import Link from 'react-static';
 import Slider from "react-slick";
 import { Container } from 'reactstrap';
-import ReactHtmlParser from 'react-html-parser';
-import Button from 'reactstrap';
 
-//  <ImageCarousel pageData={this.props.pages} />
+//  <ImageCarousel section={section} />
 
 var imageArray = []
 
@@ -17,11 +14,8 @@ export default class ImageCarousel extends React.Component {
 
     componentWillMount(){
         imageArray = this.props.section.carousel.map((image, index) => {
-            console.log(image);
-              return <div data-index={index} key={index}><img src={image.image.url} alt={image.image.alt}/></div>
-        
+              return <div data-index={index} key={index}><img src={image.image.url} alt={image.image.alt}/></div> 
           })
-          console.log(imageArray);
     }
 
     render() {
@@ -44,7 +38,7 @@ export default class ImageCarousel extends React.Component {
                 {imageArray}
             </Slider>
         </div>
-        
+     
     );
   }
 }
