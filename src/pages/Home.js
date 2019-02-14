@@ -125,13 +125,9 @@ export default withRouteData(class Home extends React.Component {
         <article id="home">
         {console.log(home)}
           <Head>
-<<<<<<< HEAD
-            <body className="home" />
-=======
             <body className={'home ' + home.acf.global_page_color} />
             <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
->>>>>>> 531b467d76685518b6678a198dcfc1048fe70743
             {(home.yoast_meta.yoast_wpseo_title) ? <title>{home.yoast_meta.yoast_wpseo_title}</title> : ""}
             {(home.yoast_meta.yoast_wpseo_metadesc) ? <meta name="description" content={home.yoast_meta.yoast_wpseo_metadesc} /> : ""}
             {(home.yoast_meta.yoast_wpseo_canonical) ? <link rel="canonical" href={home.yoast_meta.yoast_wpseo_canonical} /> : "" }
