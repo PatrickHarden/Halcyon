@@ -26,6 +26,11 @@ export default withRouteData(class Page extends React.Component {
     super(props);
   }
 
+  convertLink(url){
+    var words = url.split('/');
+    console.log(words)
+  }
+
   render(){
     const page = this.props.page
     const siteRoot = this.props.siteRoot
@@ -41,13 +46,16 @@ export default withRouteData(class Page extends React.Component {
           {(page.yoast_meta.yoast_wpseo_canonical) ? <link rel="canonical" href={page.yoast_meta.yoast_wpseo_canonical} /> : <link rel="canonical" href={siteRoot} /> }
           {(page.acf.layout) ? <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" /> : ""}
         </Head>
+          {(page.acf.additional_content) ? <Container>
+            {(page.acf.subheading) ? <h2>{ReactHtmlParser(page.acf.subheading)}</h2> : ""}
+            {(page.acf.content) ? <div>{ReactHtmlParser(page.acf.content)}</div> : ""}
+            {(page.acf.button_1) ? <Link className="halcyon-button" to={this.convertLink(page.acf.button_1.url)} target={page.acf.button_1.url}>{ReactHtmlParser(page.acf.button_1.title)}</Link> : ""}
+          </Container> : ""}
         {(page.acf.layout) ? 
         <div>
           {page.acf.layout.map((section, index) => {
             if (section.acf_fc_layout == 'content_area'){
-              return <Container className="pageContentArea" key={index}>
-                  <ContentArea section={section} />
-              </Container>
+              return <Container key={index}><ContentArea section={section} /></Container>
             } else if (section.acf_fc_layout == 'image_carousel'){
               return <Container key={index}><ImageCarousel section={section} /></Container>
             } else if (section.acf_fc_layout == 'image_grid') {

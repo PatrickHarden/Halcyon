@@ -28,6 +28,7 @@ export default withSiteData(class FeaturedEvents extends React.Component {
     }
 
     componentWillMount(){
+        console.log(this.props.section)
         // Generate featured events from events json
         featuredStores = this.props.events.map(store => {
             if (store.acf.featured_image){
