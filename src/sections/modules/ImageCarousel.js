@@ -26,6 +26,13 @@ export default class ImageCarousel extends React.Component {
         slidesToShow: 3,
         slidesToScroll: 3
         };
+        var backgroundTexture = this.props.section.background_texture.url;
+        var style = {
+            backgroundImage: `url(${backgroundTexture})`,
+            width: '100%'
+        };
+
+        console.log('texture',this.props.section.background_texture.url);
 
     return (
         <div className='imageCarousel'>
@@ -34,9 +41,11 @@ export default class ImageCarousel extends React.Component {
                      <h2>{this.props.section.heading}</h2>
                 </Container>
             </div>
-            <Slider className='pageCotentCarousel' {...settings}>
-                {imageArray}
-            </Slider>
+            <div className='slider-container' style={style}>
+                <Slider className='pageCotentCarousel' {...settings}>
+                    {imageArray}
+                </Slider>
+            </div>
         </div>
      
     );
