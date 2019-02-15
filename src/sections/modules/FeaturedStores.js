@@ -108,7 +108,6 @@ export default withSiteData(class FeaturesStores extends React.Component {
                 }
             })
         }
-        console.log(selectedStores)
 
         storeArray = stores.map(store => {
             for (var i = 0; i< selectedStores.length; i++){
@@ -169,7 +168,7 @@ export default withSiteData(class FeaturesStores extends React.Component {
 
     return (
         <div className='tenant-spotlight'>
-            <div class='heading-container'>
+            <div className='heading-container'>
                 <h2>{this.props.section.heading}</h2>
             </div>
             <Container>
