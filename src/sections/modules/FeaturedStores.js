@@ -6,7 +6,7 @@ import Button from 'reactstrap';
 import { 
     Container, Row, Col
   } from 'reactstrap';
-import '../../css/components/tenantSlider.css';
+import '../../css/modules/featuredStores.css';
 import leftArrow from '../../images/leftArrow.png';
 import rightArrow from '../../images/rightArrow.png';
 import $ from 'jquery';
@@ -168,8 +168,15 @@ export default withSiteData(class FeaturesStores extends React.Component {
 
     return (
         <div className='tenant-spotlight'>
+<<<<<<< HEAD
             <div className='heading-container'>
                 <h2>{this.props.section.heading}</h2>
+=======
+            <div class='heading-container'>
+                <Container>
+                    <h2>{this.props.section.heading}</h2>
+                </Container>
+>>>>>>> 40ded3990f1f7d09bb1c46e8510d9afe2326a619
             </div>
             <Container>
             <div id="tenantSlider">

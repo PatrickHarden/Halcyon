@@ -169,11 +169,11 @@ export default withRouteData(class Home extends React.Component {
                   if (section.acf_fc_layout == 'content_area'){
                     return <Container key={index}><ContentArea section={section} /></Container>
                   } else if (section.acf_fc_layout == 'image_carousel'){
-                    return <Container key={index}><ImageCarousel section={section} /></Container>
+                    return <div key={index}><ImageCarousel section={section} /></div>
                   } else if (section.acf_fc_layout == 'image_grid') {
                     return <div key={index}><GlobalImageGrid section={section} /></div>
                   } else if (section.acf_fc_layout == 'featured_events') {
-                    return <Container key={index}><FeaturedEvents section={section} /></Container>
+                    return <div key={index}><FeaturedEvents section={section} /></div>
                   } else if (section.acf_fc_layout == 'featured_stores') {
                     return <div key={index}><FeaturedStores pageData={home} section={section} /></div>
                   }
