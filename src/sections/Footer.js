@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, SiteData, withSiteData } from 'react-static'
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser'
+import ReactHtmlParser from 'react-html-parser'
 import {Helmet} from "react-helmet";
 import { Container, Row, Col } from 'reactstrap';
 

@@ -142,6 +142,14 @@ export default {
         })),
       },
       {
+        path: '/admin',
+        component: 'src/pages/Redirect',
+      },
+      {
+        path: '/wp-admin',
+        component: 'src/pages/Redirect',
+      },
+      {
         is404: true,
         component: 'src/pages/404',
       },

@@ -1,21 +1,11 @@
 import React from 'react'
-import { withSiteData, Link, withRouteData } from 'react-static'
-import {Helmet} from "react-helmet";
+import { withSiteData, Link } from 'react-static'
 
 //
-import { 
-  Container,
-  Row,
-  Col,
-  Button,
-  Carousel,
-  CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
-  CarouselCaption, Card, CardBody, CardTitle, CardText } from 'reactstrap';
-import LazyHero from 'react-lazy-hero';
+import { Card, CardBody, CardTitle, CardText } from 'reactstrap';
 import ReactHtmlParser from 'react-html-parser';
 
+var eventResults = [];
 
 export default withSiteData(class EventSearch extends React.Component {
 
@@ -29,14 +19,14 @@ export default withSiteData(class EventSearch extends React.Component {
     };
   }
 
-  render() {
 
+  render() {
 
       return (
         <article id="searchPage">
         <h4>Events:</h4>
         {(this.props.searchResult != '') ? 
-          <div>
+          <div className="eventCount">
             {this.props.events.map(event => (
               (event.slug.includes(this.props.searchResult.toLowerCase())) ? 
               <div>
