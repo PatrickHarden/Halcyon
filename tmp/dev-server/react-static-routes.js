@@ -19,7 +19,8 @@ import t_10 from '../../src/pages/Contact'
 import t_11 from '../../src/pages/SearchResults'
 import t_12 from '../../src/singles/Page'
 import t_13 from '../../src/pages/Home'
-import t_14 from '../../src/pages/404'
+import t_14 from '../../src/pages/Redirect'
+import t_15 from '../../src/pages/404'
 
 // Template Map
 global.componentsByTemplateID = global.componentsByTemplateID || [
@@ -37,12 +38,13 @@ t_10,
 t_11,
 t_12,
 t_13,
-t_14
+t_14,
+t_15
 ]
 
 // Template Tree
 global.templateIDsByPath = global.templateIDsByPath || {
-  '404': 14
+  '404': 15
 }
 
 // Get template for given path
