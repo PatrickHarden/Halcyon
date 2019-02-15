@@ -157,8 +157,6 @@ body.dark-brown #heroSection .hero-heading {
 }
 #heroSection {
     position: relative;
-    background-image: url(../images/FEATHER.png);
-    background-position: center top 12px;
 }
 #heroSection .hero-heading {
     position: absolute;
@@ -169,9 +167,20 @@ body.dark-brown #heroSection .hero-heading {
     text-align: center;
     text-transform: uppercase;
 }
+#heroSection .hero-heading:before {
+    background-image: url(../images/FEATHER.png);
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 40px;
+    width: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 #heroSection .hero-heading h1 {
     font-family: 'FreightText Pro', sans-serif;
     opacity: 1;
+    margin: 1rem 0;
 }
 @media screen and (min-width: 768px) {
     #home h1 {
@@ -202,12 +211,15 @@ body.dark-brown #heroSection .hero-heading {
         border-radius: 5px;
         border: 0;
     }
-
-   
     #home .top-cta {
         padding-bottom: 2rem;
     }
     .search-toggle {display:block !important;}
+
+    #heroSection .hero-heading {
+        left: auto;
+        padding: 0 2rem;
+    }
 }
 
 @media screen and (min-width: 1200px) {

@@ -11,7 +11,6 @@ import FeaturedStores from '../sections/modules/FeaturedStores.js'
 
 import ReactHtmlParser from 'react-html-parser'
 
-
 export default withRouteData(class Page extends React.Component {
 
   constructor(props) {
