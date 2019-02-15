@@ -8,6 +8,7 @@ import GlobalImageGrid from '../sections/modules/GlobalImageGrid.js'
 import FeaturedEvents from '../sections/modules/FeaturedEvents.js'
 import ContentArea from '../sections/modules/ContentArea.js'
 import FeaturedStores from '../sections/modules/FeaturedStores.js'
+import ContentWithFeaturedImage from '../sections/modules/ContentWithFeaturedImage.js'
 
 import ReactHtmlParser from 'react-html-parser'
 
@@ -93,7 +94,9 @@ export default withRouteData(class Page extends React.Component {
             } else if (section.acf_fc_layout == 'featured_events') {
               return <div key={index}><FeaturedEvents section={section} /></div>
             } else if (section.acf_fc_layout == 'featured_stores') {
-              return <Container key={index}><FeaturedStores pageData={page} section={section} /></Container>
+              return <div key={index}><FeaturedStores pageData={page} section={section} /></div>
+            } else if (section.acf_fc_layout == 'content_with_featured_image'){
+              return <div key={index}><ContentWithFeaturedImage section={section} /></div>
             }
           })}
         </div> : 
