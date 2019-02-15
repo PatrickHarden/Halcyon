@@ -169,7 +169,9 @@ export default withSiteData(class FeaturesStores extends React.Component {
     return (
         <div className='tenant-spotlight'>
             <div className='heading-container'>
-                <h2>{this.props.section.heading}</h2>
+                <Container>
+                    <h2>{this.props.section.heading}</h2>
+                </Container>
             </div>
             <Container>
             <div id="tenantSlider">
