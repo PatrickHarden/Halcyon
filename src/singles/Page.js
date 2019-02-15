@@ -59,7 +59,6 @@ export default withRouteData(class Page extends React.Component {
           {(page.yoast_meta.yoast_wpseo_canonical) ? <link rel="canonical" href={page.yoast_meta.yoast_wpseo_canonical} /> : <link rel="canonical" href={siteRoot} />}
           {(page.acf.layout) ? <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" /> : ""}
         </Head>
-<<<<<<< HEAD
         {(page.acf.desktop_image) ?
           <div id="heroSection">
             <img className="hidden-xs" src={page.acf.desktop_image.url} alt={page.acf.desktop_image.alt} />
@@ -67,20 +66,10 @@ export default withRouteData(class Page extends React.Component {
             <div className="hero-heading">{(page.acf.title_h1) ? <h1>{page.acf.title_h1}</h1> : <h1>{page.title.rendered}</h1>}</div>
           </div>
           : ""}
-        {(page.acf.additional_content) ? <Container>
+        {(page.acf.additional_content) ? 
+        <Container>
           {(page.acf.subheading) ? <h2>{ReactHtmlParser(page.acf.subheading)}</h2> : ""}
           {(page.acf.content) ? <div>{ReactHtmlParser(page.acf.content)}</div> : ""}
-=======
-        {(page.acf.desktop_image)?
-                <div id="heroSection">
-                <img className="hidden-xs" src={page.acf.desktop_image.url} alt={page.acf.desktop_image.alt} />
-                <img className="visible-xs" src={page.acf.mobile_image.url} alt={page.acf.mobile_image.alt} />
-                <h1>{(page.acf.title_h1) ? <div>{page.acf.title_h1}</div> : <div>{page.title.rendered}</div>}</h1>
-              </div>
-        : ""}
-          {(page.acf.additional_content) ? <Container>
-            {(page.acf.subheading) ? <h2>{ReactHtmlParser(page.acf.subheading)}</h2> : ""}
-            {(page.acf.content) ? <div>{ReactHtmlParser(page.acf.content)}</div> : ""}
             <Row>
               <Col sm={4}>
                 {(page.acf.button_1) ? <Link className="halcyon-button" to={this.convertLink(page.acf.button_1.url)}>{(page.acf.button_1.title) ? <div>{ReactHtmlParser(page.acf.button_1.title)}</div>: <div>{this.getTitleFromUrl(page.acf.button_1.url)}</div>}</Link> : ""}           
@@ -112,7 +101,6 @@ export default withRouteData(class Page extends React.Component {
           })}
         </div> : 
           <Container>
->>>>>>> e7ec28edef6c167d350cca1b207c4504ef9a3f25
           <Row>
             <Col sm={4}>
               {(page.acf.button_1) ? <Link className="halcyon-button" to={this.convertLink(page.acf.button_1.url)}>{(page.acf.button_1.title) ? <div>{ReactHtmlParser(page.acf.button_1.title)}</div> : <div>{this.getTitleFromUrl(page.acf.button_1.url)}</div>}</Link> : ""}
@@ -124,7 +112,7 @@ export default withRouteData(class Page extends React.Component {
               {(page.acf.button_3) ? <Link className="halcyon-button" to={this.convertLink(page.acf.button_3.url)}>{(page.acf.button_3.title) ? <div>{ReactHtmlParser(page.acf.button_3.title)}</div> : <div>{this.getTitleFromUrl(page.acf.button_3.url)}</div>}</Link> : ""}
             </Col>
           </Row>
-        </Container> : ""}
+        </Container>}
         {(page.acf.layout) ?
           <div>
             {page.acf.layout.map((section, index) => {
