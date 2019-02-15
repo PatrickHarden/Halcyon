@@ -38,7 +38,7 @@ export default withSiteData(class FeaturedEvents extends React.Component {
                 for (var i = 0; i < eventArray.length; i++){
                     if (store.slug == eventArray[i]){
                         return <div className="featuredEvent">
-                            <Link to={store.slug}>
+                            <Link to={'/events/' + store.slug}>
                                 {(store.acf.featured_image)?
                                 <img src={store.acf.featured_image} className="featuredEventImage" /> :
                                 <img src="https://halcyon.dev.v3.imaginuitycenters.com/wp-content/uploads/sites/31/2019/01/572x310.png" className="featuredEventImage" />}                              
