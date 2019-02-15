@@ -79,7 +79,6 @@ export default withSiteData(class FeaturedEvents extends React.Component {
 
         return (
         <div className='events-container'>
-            {console.log(this.props.section)}
             {this.props.section.heading &&
             <div className='heading-container'>
                 <Container>

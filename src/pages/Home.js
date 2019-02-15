@@ -123,7 +123,6 @@ export default withRouteData(class Home extends React.Component {
 
       return (
         <article id="home">
-        {console.log(home)}
           <Head>
             <body className={'home ' + home.acf.global_page_color} />
             {(home.yoast_meta.yoast_wpseo_title) ? <title>{home.yoast_meta.yoast_wpseo_title}</title> : ""}
