@@ -157,6 +157,7 @@ body.dark-brown #heroSection .hero-heading {
 }
 #heroSection {
     position: relative;
+    overflow: hidden;
 }
 #heroSection .hero-heading {
     position: absolute;
