@@ -68,7 +68,7 @@ export default withRouteData(class Page extends React.Component {
           </div>
           : ""}
         {(page.acf.additional_content) ? 
-        <Container>
+        <Container className='additional-content text-center'>
           {(page.acf.subheading) ? <h2>{ReactHtmlParser(page.acf.subheading)}</h2> : ""}
           {(page.acf.content) ? <div>{ReactHtmlParser(page.acf.content)}</div> : ""}
             <Row>
