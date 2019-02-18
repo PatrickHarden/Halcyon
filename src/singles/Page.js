@@ -64,53 +64,86 @@ export default withRouteData(class Page extends React.Component {
           <div id="heroSection">
             <img className="hidden-xs" src={page.acf.desktop_image.url} alt={page.acf.desktop_image.alt} />
             <img className="visible-xs" src={page.acf.mobile_image.url} alt={page.acf.mobile_image.alt} />
-            <div className="hero-heading">{(page.acf.title_h1) ? <h1>{page.acf.title_h1}</h1> : <h1>{page.title.rendered}</h1>}</div>
+            {page.acf.additional_content &&
+            <div className='button-container hidden-xs'>
+              {page.acf.button_1 &&
+                <div class='button-wrap'>
+                  <Link className="halcyon-button" to={this.convertLink(page.acf.button_1.url)}>{(page.acf.button_1.title) ? <div>{ReactHtmlParser(page.acf.button_1.title)}</div> : <div>{this.getTitleFromUrl(page.acf.button_1.url)}</div>}</Link>
+                </div>
+              }
+              {page.acf.button_2 &&
+                <div class='button-wrap'>
+                  <Link className="halcyon-button" to={this.convertLink(page.acf.button_2.url)}>{(page.acf.button_2.title) ? <div>{ReactHtmlParser(page.acf.button_2.title)}</div> : <div>{this.getTitleFromUrl(page.acf.button_2.url)}</div>}</Link>
+                </div>
+              }
+              {page.acf.button_3 &&
+                <div class='button-wrap'>
+                  <Link className="halcyon-button" to={this.convertLink(page.acf.button_3.url)}>{(page.acf.button_3.title) ? <div>{ReactHtmlParser(page.acf.button_3.title)}</div> : <div>{this.getTitleFromUrl(page.acf.button_3.url)}</div>}</Link>
+                </div>
+              }
+            </div>
+            }
+            <div className="hero-container">
+              {page.acf.additional_content &&
+                <div className="hero-content hidden-xs">
+                  {(page.acf.subheading) ? <h2>{ReactHtmlParser(page.acf.subheading)}</h2> : ""}
+                  {(page.acf.content) ? <div>{ReactHtmlParser(page.acf.content)}</div> : ""}
+                </div>
+              }
+              <div className="hero-heading">{(page.acf.title_h1) ? <h1>{page.acf.title_h1}</h1> : <h1>{page.title.rendered}</h1>}</div>
+            </div>
           </div>
           : ""}
-        {(page.acf.additional_content) ? 
-        <Container className='additional-content text-center'>
-          {(page.acf.subheading) ? <h2>{ReactHtmlParser(page.acf.subheading)}</h2> : ""}
-          {(page.acf.content) ? <div>{ReactHtmlParser(page.acf.content)}</div> : ""}
+        {(page.acf.additional_content) ?
+          <Container className='additional-content text-center'>
+            {(page.acf.subheading) ? <h2 className='visible-xs hero-subhead'>{ReactHtmlParser(page.acf.subheading)}</h2> : ""}
+            {(page.acf.content) ? <div className='visible-xs'>{ReactHtmlParser(page.acf.content)}</div> : ""}
+            <div className='button-container visible-xs'>
+              {page.acf.button_1 &&
+                <div class='button-wrap'>
+                  <Link className="halcyon-button" to={this.convertLink(page.acf.button_1.url)}>{(page.acf.button_1.title) ? <div>{ReactHtmlParser(page.acf.button_1.title)}</div> : <div>{this.getTitleFromUrl(page.acf.button_1.url)}</div>}</Link>
+                </div>
+              }
+              {page.acf.button_2 &&
+                <div class='button-wrap'>
+                  <Link className="halcyon-button" to={this.convertLink(page.acf.button_2.url)}>{(page.acf.button_2.title) ? <div>{ReactHtmlParser(page.acf.button_2.title)}</div> : <div>{this.getTitleFromUrl(page.acf.button_2.url)}</div>}</Link>
+                </div>
+              }
+              {page.acf.button_3 &&
+                <div class='button-wrap'>
+                  <Link className="halcyon-button" to={this.convertLink(page.acf.button_3.url)}>{(page.acf.button_3.title) ? <div>{ReactHtmlParser(page.acf.button_3.title)}</div> : <div>{this.getTitleFromUrl(page.acf.button_3.url)}</div>}</Link>
+                </div>
+              }
+            </div>
+          </Container> : ""}
+        {(page.acf.layout) ?
+          <div>
+            {page.acf.layout.map((section, index) => {
+              if (section.acf_fc_layout == 'content_area') {
+                return <Container key={index}><ContentArea section={section} /></Container>
+              } else if (section.acf_fc_layout == 'image_carousel') {
+                return <div key={index}><ImageCarousel section={section} /></div>
+              } else if (section.acf_fc_layout == 'image_grid') {
+                return <div key={index}><GlobalImageGrid section={section} /></div>
+              } else if (section.acf_fc_layout == 'featured_events') {
+                return <div key={index}><FeaturedEvents section={section} /></div>
+              } else if (section.acf_fc_layout == 'featured_stores') {
+                return <div key={index}><FeaturedStores pageData={page} section={section} /></div>
+              } else if (section.acf_fc_layout == 'content_with_featured_image') {
+                return <div key={index}><ContentWithFeaturedImage section={section} /></div>
+              } else if (section.acf_fc_layout == 'form') {
+                return <div key={index}><Forms section={section} /></div>
+              }
+            })}
+          </div> :
+          <Container>
             <Row>
-              <Col sm={4}>
-                {(page.acf.button_1) ? <Link className="halcyon-button" to={this.convertLink(page.acf.button_1.url)}>{(page.acf.button_1.title) ? <div>{ReactHtmlParser(page.acf.button_1.title)}</div>: <div>{this.getTitleFromUrl(page.acf.button_1.url)}</div>}</Link> : ""}           
-              </Col>
-              <Col sm={4}>
-                {(page.acf.button_2) ? <Link className="halcyon-button" to={this.convertLink(page.acf.button_2.url)}>{(page.acf.button_2.title) ? <div>{ReactHtmlParser(page.acf.button_2.title)}</div>: <div>{this.getTitleFromUrl(page.acf.button_2.url)}</div>}</Link> : ""}              
-              </Col>
-              <Col sm={4}>
-                {(page.acf.button_3) ? <Link className="halcyon-button" to={this.convertLink(page.acf.button_3.url)}>{(page.acf.button_3.title) ? <div>{ReactHtmlParser(page.acf.button_3.title)}</div>: <div>{this.getTitleFromUrl(page.acf.button_3.url)}</div>}</Link> : ""}        
+              <Col xs="12">
+                <h1>{ReactHtmlParser(page.title.rendered)}</h1>
+                {ReactHtmlParser(page.content.rendered)}
               </Col>
             </Row>
-          </Container> : ""}
-        {(page.acf.layout) ? 
-        <div>
-          {page.acf.layout.map((section, index) => {
-            if (section.acf_fc_layout == 'content_area'){
-              return <Container key={index}><ContentArea section={section} /></Container>
-            } else if (section.acf_fc_layout == 'image_carousel'){
-              return <div key={index}><ImageCarousel section={section} /></div>
-            } else if (section.acf_fc_layout == 'image_grid') {
-              return <div key={index}><GlobalImageGrid section={section} /></div>
-            } else if (section.acf_fc_layout == 'featured_events') {
-              return <div key={index}><FeaturedEvents section={section} /></div>
-            } else if (section.acf_fc_layout == 'featured_stores') {
-              return <div key={index}><FeaturedStores pageData={page} section={section} /></div>
-            } else if (section.acf_fc_layout == 'content_with_featured_image'){
-              return <div key={index}><ContentWithFeaturedImage section={section} /></div>
-            } else if (section.acf_fc_layout == 'form'){
-              return <div key={index}><Forms section={section}/></div>
-            }
-          })}
-        </div> : 
-          <Container>
-          <Row>
-            <Col xs="12">
-              <h1>{ReactHtmlParser(page.title.rendered)}</h1>
-              {ReactHtmlParser(page.content.rendered)}
-            </Col>
-          </Row>
-        </Container>}
+          </Container>}
       </section>
     )
   }

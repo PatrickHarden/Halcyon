@@ -159,11 +159,14 @@ body.dark-brown #heroSection .hero-heading {
     position: relative;
     overflow: hidden;
 }
-#heroSection .hero-heading {
+#heroSection .hero-container {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;    
+    text-align: center;
+}
+#heroSection .hero-heading {
     opacity: .8;
     text-align: center;
     text-transform: uppercase;
@@ -181,7 +184,11 @@ body.dark-brown #heroSection .hero-heading {
 #heroSection .hero-heading h1 {
     font-family: 'FreightText Pro', sans-serif;
     opacity: 1;
-    margin: 1rem 0;
+    margin: 1rem 0 0;
+    padding: 1rem;
+}
+.additional-content .hero-subhead {
+    font-family: 'Flama', sans-serif;
 }
 @media screen and (min-width: 768px) {
     #home h1 {
@@ -216,10 +223,40 @@ body.dark-brown #heroSection .hero-heading {
         padding-bottom: 2rem;
     }
     .search-toggle {display:block !important;}
-
-    #heroSection .hero-heading {
+    #heroSection .hero-container {
+        max-width: 60%;
         left: auto;
+        text-align: left;
+    }
+    #heroSection .hero-container .hero-content {
+        background-color: rgba(255,255,255,.8);
+        padding: 1rem;
+    }
+    #heroSection .hero-container .hero-content h2 {
+        font-size: 2rem;
+        font-family: 'Flama', sans-serif;
+    }
+    #heroSection .hero-container .hero-content h2 {
+        margin: 0 0 .5rem;
+    }
+    #heroSection .hero-container .hero-content p {
+        margin: 0;
+    }
+    #heroSection .hero-heading {
         padding: 0 2rem;
+    }
+    #heroSection .hero-heading h1 {
+        margin: 0;
+        padding: 1rem 0;
+    }
+    #heroSection .button-container {
+        position: absolute;
+        bottom: 2rem;
+        left: 2rem;
+    }
+    #heroSection .button-container .button-wrap .halcyon-button {
+        width: 100%;
+        border: 0;
     }
 }
 
@@ -238,5 +275,14 @@ body.dark-brown #heroSection .hero-heading {
     #home .top-cta {
         padding-top: 2rem;
         padding-bottom: 3rem;
+    }
+    #heroSection .hero-container {
+        max-width: 500px;
+    }
+    #heroSection .hero-container .hero-content {
+        padding: 4rem 6rem 2rem 4rem;
+    }
+    #heroSection .hero-container .hero-content h2 {
+        font-size: 3rem;
     }
 }

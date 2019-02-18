@@ -33,3 +33,9 @@
         top: -30px;
     }
 }
+
+@media screen and (min-width: 1200px) {
+    .contentWithFeaturedImage {
+        margin: 4rem auto;
+    }
+}
