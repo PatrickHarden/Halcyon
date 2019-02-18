@@ -30,6 +30,10 @@ function setMetaData(pages){
   })
 }
 
+const tagManagerArgs = {
+  gtmId: 'GTM-KRFSK4G'
+}
+
 export default withRouteData(({ events, pages, siteRoot, title, metaDescription }) => (
 
   <section>
