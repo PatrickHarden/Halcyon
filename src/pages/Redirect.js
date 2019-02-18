@@ -7,11 +7,16 @@ export default withSiteData(class Redirect extends React.Component {
         super(props);
     }
     render() {
-        return (
-            <div>
-                Redirecting...
-                {window.location.replace(this.props.redirectURL)}
-            </div>
-        )
+
+        if (typeof document !== 'undefined') {
+            return (
+                <div>
+                    Redirecting...
+                    {window.location.replace(this.props.redirectURL)}
+                </div>
+            )
+        } else {
+            return null
+        }
     }
 })
