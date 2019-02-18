@@ -1,11 +1,35 @@
-
+.contentWithFeaturedImage {
+    margin: 1rem auto;
+}
+.contentWithFeaturedImage .image-column img {
+    border-radius: 5px;
+    box-shadow: 3px 2px 15px #666;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+.contentWithFeaturedImage .content-column .heading h2 {
+    margin-top: 0;
+    font-family: 'Flama', sans-serif;
+}
 
 @media screen and (min-width: 768px) {
+    .contentWithFeaturedImage {
+        margin: 3rem auto;
+    }
     .contentWithFeaturedImage .content-left {
         display: flex;
     }
     .contentWithFeaturedImage .content-left .image-column {
         order: 2;
     }
-    
+    .contentWithFeaturedImage .content-column .halcyon-button {
+        margin: auto auto auto 0;
+    }
+    .contentWithFeaturedImage .content-column .heading h2 {
+        margin: 0 0 2rem;
+    }
+    .contentWithFeaturedImage .content-column .heading .feather {
+        position: absolute;
+        top: -30px;
+    }
 }
