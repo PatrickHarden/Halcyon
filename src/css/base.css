@@ -118,25 +118,25 @@ nav{
     transition-duration:.5s
 }
 .navbar-expand-lg .navbar-nav .nav-link{
-    color:#333!important;
+    color:#333;
     text-transform:uppercase;
     font-size:1.4rem;
     letter-spacing:1px;
-    transition-duration:.5s;
+    transition-duration:.3s;
     font-family:'Flama'
 }
 
 .navbar-dark .navbar-nav .nav-link:hover,.navbar-dark .navbar-nav .nav-link:active,.navbar-dark .navbar-nav .nav-link:focus{
-    color:#209056!important;
-    transition-duration:.5s
+    color:#209056;
+    transition-duration:.3s
 }
 .navbar-expand-lg .navbar-nav .nav-link.nav-phone{
-    color:#209056!important;
+    color:#209056;
     text-decoration:none;
     font-weight:600
 }
 .navbar-expand-lg .navbar-nav .nav-link.nav-phone:hover{
-    color:#333!important
+    color:#333;
 }
 
 .navbar {
@@ -218,9 +218,16 @@ nav .container {
 .navWrapper .navRow .nav-inner .navbar-toggler:focus {
     outline: none;
 }
-#eventsIcon {
-    filter:invert(60%)
+.navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-link .nav-icon svg {
+    height: 40px;
+    max-width: 78px;
 }
+/* CMX Colors */
+.navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-icon.cmx .cls-1{fill:#cc5c22;}
+.navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-icon.cmx .cls-2{fill:#8a2432;}
+.navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-icon.cmx .cls-3{fill:#8c837b;}
+.navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-icon.cmx .cls-4{fill:#323e48;}
+
 main.content {
     padding-top: 50px;
 }
@@ -256,12 +263,54 @@ main.content {
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo) {
         max-width: 70px;
         margin: 0 1rem;
+        padding: 0 .5rem;
+        position: relative;
     }
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo) img {
         max-height: 40px;
     }
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item.logo img {
         max-width: 200px;
+    }
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-icon svg {
+        height: 40px;
+        width: 100%;
+    }
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo) .nav-icon svg path,
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo) svg polygon,
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo) svg rect {
+        transition: .3s;
+    }
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo):hover .nav-icon:not(.sign-up) svg path,
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo):hover svg polygon,
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo):hover svg rect {
+        fill: #fff;
+    }
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo):hover .nav-icon.sign-up svg path {
+        stroke: #fff;
+    }
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo):hover {
+        background: #8F1838;
+    }
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo):hover .nav-link {
+        color: #fff;
+        text-decoration: none;
+    }
+    
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo):hover .nav-link:after {
+        content: '';
+        width: 100%;
+        height: 7px;
+    }
+    
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo):hover .nav-icon:before {
+        content: '';
+        height: 9px;
+        width: 70px;
+        position: absolute;
+        background: #8F1838;
+        top: -9px;
+        left: 0;
     }
     main.content {
         padding-top: 46px;
@@ -281,6 +330,11 @@ main.content {
     }
     main.content {
         padding-top: 56px;
+    }
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo):hover .nav-icon:before {
+        height: 14px;
+        width: 85px;
+        top: -14px;
     }
 }
 
