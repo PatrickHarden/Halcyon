@@ -232,10 +232,18 @@ nav .container {
     max-width: 78px;
 }
 /* CMX Colors */
-.navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-icon.cmx .cls-1{fill:#cc5c22;}
-.navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-icon.cmx .cls-2{fill:#8a2432;}
-.navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-icon.cmx .cls-3{fill:#8c837b;}
-.navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-icon.cmx .cls-4{fill:#323e48;}
+.navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-icon.cmx .cls-1{
+    fill:#cc5c22;
+}
+.navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-icon.cmx .cls-2{
+    fill:#8a2432;
+}
+.navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-icon.cmx .cls-3{
+    fill:#8c837b;
+}
+.navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-icon.cmx .cls-4{
+    fill:#323e48;
+}
 
 main.content {
     padding-top: 50px;
