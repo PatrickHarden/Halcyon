@@ -75,7 +75,7 @@ export default withSiteData(class SiteFooter extends React.Component {
                             <img className='hidden-xs eyeball' src={AccessibilityIcon} onClick={this.changeContrast} />
                         </Container>
                     </div>
-                    {(tagManagerArgs) ? TagManager.initialize(tagManagerArgs) : ""}
+                    {(tagManagerArgs) ? setTimout(TagManager.initialize(tagManagerArgs), 1) : ""}
                 </footer>
             )
         }
