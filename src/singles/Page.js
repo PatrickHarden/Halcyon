@@ -45,16 +45,6 @@ export default withRouteData(class Page extends React.Component {
     }
   }
 
-  componentWillMount(){
-    <Head>
-    <body className={'single-page page-id-' + page.id + ' ' + page.slug + ' ' + page.acf.global_page_color} />
-    {(page.yoast_meta.yoast_wpseo_title) ? <title>{page.yoast_meta.yoast_wpseo_title}</title> : <title>{title}</title>}
-    {(page.yoast_meta.yoast_wpseo_metadesc) ? <meta name="description" content={page.yoast_meta.yoast_wpseo_metadesc} /> : <meta name="description" content={metaDescription} />}
-    {(page.yoast_meta.yoast_wpseo_canonical) ? <link rel="canonical" href={page.yoast_meta.yoast_wpseo_canonical} /> : <link rel="canonical" href={siteRoot} />}
-    {(page.acf.layout) ? <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" /> : ""}
-  </Head>
-  }
-
   render() {
     const page = this.props.page
     const siteRoot = this.props.siteRoot
@@ -63,6 +53,13 @@ export default withRouteData(class Page extends React.Component {
 
     return (
       <section>
+        <Head>
+          <body className={'single-page page-id-' + page.id + ' ' + page.slug + ' ' + page.acf.global_page_color} />
+          {(page.yoast_meta.yoast_wpseo_title) ? <title>{page.yoast_meta.yoast_wpseo_title}</title> : <title>{title}</title>}
+          {(page.yoast_meta.yoast_wpseo_metadesc) ? <meta name="description" content={page.yoast_meta.yoast_wpseo_metadesc} /> : <meta name="description" content={metaDescription} />}
+          {(page.yoast_meta.yoast_wpseo_canonical) ? <link rel="canonical" href={page.yoast_meta.yoast_wpseo_canonical} /> : <link rel="canonical" href={siteRoot} />}
+          {(page.acf.layout) ? <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" /> : ""}
+        </Head>
         {(page.acf.desktop_image) ?
           <div id="heroSection">
             <img className="hidden-xs" src={page.acf.desktop_image.url} alt={page.acf.desktop_image.alt} />
