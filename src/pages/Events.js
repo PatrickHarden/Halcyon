@@ -68,6 +68,5 @@ export default withRouteData(({ events, pages, siteRoot, title, metaDescription 
         </div>
       </Row>
     </Container>
-    {TagManager.dataLayer(tagManagerArgs)}
   </section>
 ))
