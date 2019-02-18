@@ -9,12 +9,12 @@ export default withSiteData(class Redirect extends React.Component {
     render() {
 
         if (typeof document !== 'undefined') {
-        return (
-            <div>
-                Redirecting...
-                {window.location.replace(this.props.redirectURL)}
-            </div>
-        )
+            return (
+                <div>
+                    Redirecting...
+                    {window.location.replace(this.props.redirectURL)}
+                </div>
+            )
         } else {
             return null
         }
