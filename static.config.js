@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 export default {
+  disableDuplicateRoutesWarning: true,
   getSiteData: async () => {
     const baseURL = 'https://halcyon.dev.v3.imaginuitycenters.com'
     const { data: menus } = await axios.get(baseURL + '/wp-json/wp-api-menus/v2/menus/2')
@@ -11,6 +12,7 @@ export default {
     const { data: posts } = await axios.get(baseURL + '/index.php/wp-json/wp/v2/posts?per_page=6')
     const { data: events } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100')
     const { data: stores } = await axios.get(baseURL + '/wp-json/wp/v2/stores/')
+    const { data: forms } = await axios.get('https://halcyon.dev.v3.imaginuitycenters.com/gravityformsapi/forms/1/?api_key=04f7c94448&signature=QGZALH2bJfsMzxM9K%2BFy7LTIDiM%3D&expires=1553135455')
 
     return {
       title: 'Halcyon',
@@ -25,7 +27,8 @@ export default {
       pages,
       posts,
       events,
-      stores
+      stores,
+      forms
     }
   },  
   getRoutes: async () => {

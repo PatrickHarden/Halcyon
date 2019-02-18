@@ -9,6 +9,7 @@ import FeaturedEvents from '../sections/modules/FeaturedEvents.js'
 import ContentArea from '../sections/modules/ContentArea.js'
 import FeaturedStores from '../sections/modules/FeaturedStores.js'
 import ContentWithFeaturedImage from '../sections/modules/ContentWithFeaturedImage.js'
+import Forms from '../sections/modules/Forms.js'
 
 import ReactHtmlParser from 'react-html-parser'
 
@@ -97,6 +98,8 @@ export default withRouteData(class Page extends React.Component {
               return <div key={index}><FeaturedStores pageData={page} section={section} /></div>
             } else if (section.acf_fc_layout == 'content_with_featured_image'){
               return <div key={index}><ContentWithFeaturedImage section={section} /></div>
+            } else if (section.acf_fc_layout == 'form'){
+              return <div key={index}><Forms section={section}/></div>
             }
           })}
         </div> : 
