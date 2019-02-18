@@ -12,6 +12,7 @@ import { Container,
          CardSubtitle } from 'reactstrap';
 
 import ReactHtmlParser from 'react-html-parser'
+import TagManager from 'react-gtm-module'
 //
 
 var newTitle;
@@ -27,6 +28,10 @@ function setMetaData(pages){
       newCanonical = page.yoast_meta.yoast_wpseo_canonical;
     } 
   })
+}
+
+const tagManagerArgs = {
+  gtmId: 'GTM-KRFSK4G'
 }
 
 export default withRouteData(({ events, pages, siteRoot, title, metaDescription }) => (
@@ -63,5 +68,6 @@ export default withRouteData(({ events, pages, siteRoot, title, metaDescription 
         </div>
       </Row>
     </Container>
+    {TagManager.dataLayer(tagManagerArgs)}
   </section>
 ))
