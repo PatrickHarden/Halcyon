@@ -88,7 +88,12 @@ img {
 }
 
 @media (min-width: 1200px) {
-    .container{max-width:1200px}
+    body {
+        font-size: 1.6rem;
+    }
+    .container{
+        max-width:1200px
+    }
     h2 {
         font-size: 3.6rem;
     }
