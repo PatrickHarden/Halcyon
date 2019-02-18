@@ -171,16 +171,6 @@ body.dark-brown #heroSection .hero-heading {
     text-align: center;
     text-transform: uppercase;
 }
-#heroSection .hero-heading:before {
-    background-image: url(../images/FEATHER.png);
-    content: '';
-    position: absolute;
-    top: 0;
-    height: 40px;
-    width: 200px;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
 #heroSection .hero-heading h1 {
     font-family: 'FreightText Pro', sans-serif;
     opacity: 1;
