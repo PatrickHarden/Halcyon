@@ -126,7 +126,8 @@ body.baby-blue .heading-container {
     background-color: #CDE2E0;
     color: #4F4B48;
 }
-body.red .heading-container {
+body.red .heading-container,
+body.red #heroSection .hero-heading {
     background-color: #8F1838;
     color: #fff;
 }
@@ -134,19 +135,53 @@ body.light-green .heading-container {
     background-color: #9DAF8A;
     color: #fff;
 }
-body.dark-green .heading-container {
+body.dark-green .heading-container,
+body.dark-green #heroSection .hero-heading,
+body.light-green #heroSection .hero-heading {
     background-color: #718472;
     color: #fff;
 }
-body.dark-grey .heading-container {
+body.dark-grey .heading-container,
+body.baby-blue #heroSection .hero-heading,
+body.dark-grey #heroSection .hero-heading {
     background-color: #4E5859;
     color: #fff;
 }
-body.dark-brown .heading-container {
+body.dark-brown .heading-container,
+body.dark-brown #heroSection .hero-heading {
     background-color: #4F4B48;
     color: #fff;
 }
-
+#heroSection img {
+    width: 100%;
+}
+#heroSection {
+    position: relative;
+}
+#heroSection .hero-heading {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;    
+    opacity: .8;
+    text-align: center;
+    text-transform: uppercase;
+}
+#heroSection .hero-heading:before {
+    background-image: url(../images/FEATHER.png);
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 40px;
+    width: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+#heroSection .hero-heading h1 {
+    font-family: 'FreightText Pro', sans-serif;
+    opacity: 1;
+    margin: 1rem 0;
+}
 @media screen and (min-width: 768px) {
     #home h1 {
         font-size: 2.4rem;
@@ -176,12 +211,15 @@ body.dark-brown .heading-container {
         border-radius: 5px;
         border: 0;
     }
-
-   
     #home .top-cta {
         padding-bottom: 2rem;
     }
     .search-toggle {display:block !important;}
+
+    #heroSection .hero-heading {
+        left: auto;
+        padding: 0 2rem;
+    }
 }
 
 @media screen and (min-width: 1200px) {
