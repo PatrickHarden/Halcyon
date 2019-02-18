@@ -12,6 +12,7 @@ import { Container,
          CardSubtitle } from 'reactstrap';
 
 import ReactHtmlParser from 'react-html-parser'
+import TagManager from 'react-gtm-module'
 //
 
 var newTitle;
@@ -63,5 +64,6 @@ export default withRouteData(({ events, pages, siteRoot, title, metaDescription 
         </div>
       </Row>
     </Container>
+    {TagManager.dataLayer(tagManagerArgs)}
   </section>
 ))
