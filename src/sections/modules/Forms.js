@@ -5,18 +5,19 @@ import ReactHtmlParser from 'react-html-parser';
 import CryptoJS from 'crypto-js';
 import { Container, Row, Col, Button, Form, FormGroup, Input } from 'reactstrap'
 
-export default withSiteData(class Forms extends React.Component {
+export default class Forms extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             form: [],
             fields: '',
-            gformTitle: ''
+            gformTitle: '',
+            email: ''
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
 
 
         let component = this;
@@ -27,7 +28,6 @@ export default withSiteData(class Forms extends React.Component {
             let fields = data.form.fields.map(function (field) {
                 // Create input type based off gForm Web API response, as well as accompanying state variable to match
                 {
-                    console.log(field);
                     switch (field.type) {
                         case 'name':
                         case 'address':
@@ -274,6 +274,11 @@ export default withSiteData(class Forms extends React.Component {
         } else {
             return 'The requested form is not available.';
         }
+
+        for (var key in this.props.section.form.notifications) {
+            if (this.props.section.form.notifications[key].hasOwnProperty("to"))
+                this.state.email = this.props.section.form.notifications[key].to
+        }
     }
     
 
@@ -284,7 +289,7 @@ export default withSiteData(class Forms extends React.Component {
                 <div className='heading-container'>
                         <h2>{this.props.section.heading}</h2>
                 </div>
-                <Form action={"https://formspree.io/" + this.props.centerInfo.acf.email}
+                <Form action={"https://formspree.io/" + this.state.email}
             method="POST" >
                 {this.state.fields}
                 <input type="submit" value="Send" class="halcyon-button"></input>
@@ -292,4 +297,4 @@ export default withSiteData(class Forms extends React.Component {
             </div>
         );
     }
-})
+}
