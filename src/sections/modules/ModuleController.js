@@ -10,11 +10,8 @@ import FeaturedStores from './FeaturedStores.js'
 import ContentWithFeaturedImage from './ContentWithFeaturedImage.js'
 import Forms from './Forms.js'
 import FeaturedContentCarousel from './FeaturedContentCarousel.js'
-<<<<<<< HEAD
-=======
 import DiningDirectory from './DiningDirectory.js'
 import MobileFloatingNav from '../MobileFloatingNav.js'
->>>>>>> 5801dba586b6433ff170e7b9b310ffdeb525a27a
 
 {/* <ModuleController page={page} /> or  <ModuleController page={event} /> or  <ModuleController page={store} /> */}
 
