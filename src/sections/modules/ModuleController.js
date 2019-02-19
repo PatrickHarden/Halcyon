@@ -11,7 +11,6 @@ import ContentWithFeaturedImage from './ContentWithFeaturedImage.js'
 import Forms from './Forms.js'
 import FeaturedContentCarousel from './FeaturedContentCarousel.js'
 import DiningDirectory from './DiningDirectory.js'
-import MobileFloatingNav from '../MobileFloatingNav.js'
 
 {/* <ModuleController page={page} /> or  <ModuleController page={event} /> or  <ModuleController page={store} /> */}
 
