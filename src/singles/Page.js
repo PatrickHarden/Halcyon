@@ -3,7 +3,6 @@ import React from 'react'
 import { withRouteData, Link, Head } from 'react-static'
 import { Container, Row, Col } from 'reactstrap'
 import '../css/components/pageContent.css'
-import '../sections/modules/ModuleController.js'
 
 import ReactHtmlParser from 'react-html-parser'
 import ModuleController from '../sections/modules/ModuleController.js';
@@ -53,7 +52,6 @@ export default withRouteData(class Page extends React.Component {
           {(page.yoast_meta.yoast_wpseo_title) ? <title>{page.yoast_meta.yoast_wpseo_title}</title> : <title>{title}</title>}
           {(page.yoast_meta.yoast_wpseo_metadesc) ? <meta name="description" content={page.yoast_meta.yoast_wpseo_metadesc} /> : <meta name="description" content={metaDescription} />}
           {(page.yoast_meta.yoast_wpseo_canonical) ? <link rel="canonical" href={page.yoast_meta.yoast_wpseo_canonical} /> : <link rel="canonical" href={siteRoot} />}
-          {(page.acf.layout) ? <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" /> : ""}
         </Head>
         {(page.acf.desktop_image) ?
           <div id="heroSection">

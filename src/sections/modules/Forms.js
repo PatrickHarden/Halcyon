@@ -14,13 +14,12 @@ export default class Forms extends React.Component {
         }
     }
 
-    componentWillMount() {
-
+    componentDidMount() {
 
         let component = this;
         let data = this.props.section
         let title = this.props.section.heading
-        console.log(this.props.section)
+
         if (data) {
             let fields = data.form.fields.map(function (field) {
                 // Create input type based off gForm Web API response, as well as accompanying state variable to match
