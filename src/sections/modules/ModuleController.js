@@ -10,6 +10,11 @@ import FeaturedStores from './FeaturedStores.js'
 import ContentWithFeaturedImage from './ContentWithFeaturedImage.js'
 import Forms from './Forms.js'
 import FeaturedContentCarousel from './FeaturedContentCarousel.js'
+<<<<<<< HEAD
+=======
+import DiningDirectory from './DiningDirectory.js'
+import MobileFloatingNav from '../MobileFloatingNav.js'
+>>>>>>> 5801dba586b6433ff170e7b9b310ffdeb525a27a
 
 {/* <ModuleController page={page} /> or  <ModuleController page={event} /> or  <ModuleController page={store} /> */}
 
@@ -43,14 +48,19 @@ export default class ModuleController extends React.Component {
                     return <div key={index}><Forms section={section} /></div>
                     } else if (section.acf_fc_layout == 'featured_content_carousel'){
                     return <div key={index}><FeaturedContentCarousel section={section} /></div>
+                    } else if (section.acf_fc_layout == 'dining_directory'){
+                    return <div key={index}><DiningDirectory section={section} /></div>
                     }
                 })}
                 </div> :
                 <Container>
                 <Row>
                     <Col xs="12">
+                    {(page.acf.additional_content) ? "" : <div>
                     <h1>{ReactHtmlParser(page.title.rendered)}</h1>
                     {ReactHtmlParser(page.content.rendered)}
+                    </div>
+                    }
                     </Col>
                 </Row>
                 </Container>}
