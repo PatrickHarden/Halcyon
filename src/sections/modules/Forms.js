@@ -282,13 +282,19 @@ export default withSiteData(class Forms extends React.Component {
         return (
             <div className='imageCarousel'>
                 <div className='heading-container'>
+                    <Container>
                         <h2>{this.props.section.heading}</h2>
+                    </Container>
                 </div>
-                <Form action={"https://formspree.io/" + this.props.centerInfo.acf.email}
-            method="POST" >
-                {this.state.fields}
-                <input type="submit" value="Send" class="halcyon-button"></input>
-                </Form>
+                <Container>
+                    <Row>
+                        <Form action={"https://formspree.io/" + this.props.centerInfo.acf.email}
+                    method="POST" >
+                        {this.state.fields}
+                        <input type="submit" value="Send" class="halcyon-button"></input>
+                        </Form>
+                    </Row>
+                </Container>
             </div>
         );
     }

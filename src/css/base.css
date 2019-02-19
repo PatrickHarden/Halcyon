@@ -346,7 +346,7 @@ main.content {
         max-width: 220px;
     }
     main.content {
-        padding-top: 56px;
+        padding-top: 52px;
     }
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo):hover .nav-icon:before {
         height: 14px;

@@ -48,10 +48,6 @@
         border-radius: 10px;
         transition: .4s;
     }
-    .imageCarousel .slider-container .slick-slide img:hover {
-        transform: scale(1.2);
-        box-shadow: 1px 5px 15px #aaa;
-    }
     .imageCarousel .slick-arrow {
         width: auto;
         height: auto;

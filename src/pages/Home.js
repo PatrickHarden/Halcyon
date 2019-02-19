@@ -159,9 +159,8 @@ export default withRouteData(class Home extends React.Component {
             <Container className='top-cta'>
               <h1>{home.acf.title_h1}</h1>
               <div>{ReactHtmlParser(home.acf.content_area)}</div>
-                {(home.acf.button_1) ? <Link className="halcyon-button" to={this.convertLink(home.acf.button_1.url)}>{ReactHtmlParser(home.acf.button_1.title)}</Link> : ""}           
+                {(home.acf.button) ? <Link className="halcyon-button" to={this.convertLink(home.acf.button.url)} target={home.acf.button.target}>{ReactHtmlParser(home.acf.button.title)}</Link> : ""}           
             </Container>
-      
             {(home.acf.layout) ? 
               <div>
                 {home.acf.layout.map((section, index) => {
@@ -178,9 +177,6 @@ export default withRouteData(class Home extends React.Component {
                   }
                 })}
               </div> : "" }
-
-            
-
             <Container className='social-feed-container'>
             {(this.props.property_options.acf.social_feed_data_id) ? <div>
               <h2>@HALCYONFORSYTH</h2>
