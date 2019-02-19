@@ -1,6 +1,6 @@
 import React from "react"
 import { Container, Row, Col } from 'reactstrap'
-
+import ReactHtmlParser from 'react-html-parser'
 
 import ImageCarousel from './ImageCarousel.js'
 import GlobalImageGrid from './GlobalImageGrid.js'
@@ -10,6 +10,7 @@ import FeaturedStores from './FeaturedStores.js'
 import ContentWithFeaturedImage from './ContentWithFeaturedImage.js'
 import Forms from './Forms.js'
 import FeaturedContentCarousel from './FeaturedContentCarousel.js'
+import MobileFloatingNav from '../MobileFloatingNav.js'
 
 {/* <ModuleController page={page} /> or  <ModuleController page={event} /> or  <ModuleController page={store} /> */}
 
@@ -21,9 +22,10 @@ export default class ModuleController extends React.Component {
 
     render(){
         const page = this.props.page
-        
+
         return (
             <div>
+                {(page.acf.mobile_floating_nav) ? <MobileFloatingNav /> : ""}
                 {(page.acf.layout) ?
                 <div>
                 {page.acf.layout.map((section, index) => {
@@ -42,7 +44,7 @@ export default class ModuleController extends React.Component {
                     } else if (section.acf_fc_layout == 'form') {
                     return <div key={index}><Forms section={section} /></div>
                     } else if (section.acf_fc_layout == 'featured_content_carousel'){
-                        return <div key={index}><FeaturedContentCarousel section={section} /></div>
+                    return <div key={index}><FeaturedContentCarousel section={section} /></div>
                     }
                 })}
                 </div> :

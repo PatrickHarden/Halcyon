@@ -49,7 +49,7 @@ export default withSiteData(class FeaturedContentCarousel extends React.Componen
         }
     }
 
-    componentDidMount(){
+    componentWillMount(){
         const section = this.props.section
 
         slides = section.slides.map((slide, index) => {
