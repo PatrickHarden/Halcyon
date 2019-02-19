@@ -1,8 +1,5 @@
 import React from "react";
 import { withSiteData } from 'react-static'
-import axios from 'axios'
-import ReactHtmlParser from 'react-html-parser';
-import CryptoJS from 'crypto-js';
 import { Container, Row, Col, Button, Form, FormGroup, Input } from 'reactstrap'
 
 export default class Forms extends React.Component {
