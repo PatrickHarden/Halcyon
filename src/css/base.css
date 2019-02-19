@@ -67,6 +67,7 @@ img {
     font-family: 'Flama', sans-serif;
     border: 2px solid;
     text-align: center;
+    -webkit-font-smoothing: antialiased;
 }
 .halcyon-button:hover {
     color: #4E5859;

@@ -3,9 +3,11 @@ import React from 'react'
 import { withRouteData, Link, Head } from 'react-static'
 import { Container, Row, Col } from 'reactstrap'
 import '../css/components/pageContent.css'
+import '../css/components/mobileFloatingNav.css'
 
 import ReactHtmlParser from 'react-html-parser'
 import ModuleController from '../sections/modules/ModuleController.js';
+import MobileFloatingNav from '../sections/MobileFloatingNav.js'
 
 export default withRouteData(class Page extends React.Component {
 
@@ -110,6 +112,7 @@ export default withRouteData(class Page extends React.Component {
             </div>
           </Container> : ""}
           <ModuleController page={page} />
+          {(page.acf.mobile_floating_nav) ? <MobileFloatingNav /> : ""}
       </section>
     )
   }

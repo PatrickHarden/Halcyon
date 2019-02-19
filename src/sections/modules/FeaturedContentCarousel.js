@@ -54,26 +54,29 @@ export default withSiteData(class FeaturedContentCarousel extends React.Componen
 
         slides = section.slides.map((slide, index) => {
             return (<div data-index={index} key={index}>
-                <Row key={index}>
-                    <Col sm={6}>
+                <div className='slide' key={index}>
+                    <div className='left'>
                         {(slide.image.url) ? <img src={slide.image.url} alt={slide.image.alt} /> : ""}
-                    </Col>
-                    <Col sm={6}>
-                        {(slide.heading) ? <h4>{ReactHtmlParser(slide.heading)}</h4> : ""}
-                        {(slide.blurb) ? <p>{ReactHtmlParser(slide.blurb)}</p> : ""}
-                        {(slide.button) ? <Link className="halcyon-button" to={this.convertLink(slide.button.url)}>{(slide.button.title) ? <div>{ReactHtmlParser(slide.button.title)}</div>: <div>{this.getTitleFromUrl(slide.button.url)}</div>}</Link> : ""} 
-                    </Col>
-                </Row>
+                    </div>
+                    <div className='right'>
+                        <div className='inner-wrapper'>
+                            <div className='content-wrap'>
+                                {(slide.heading) ? <h4>{ReactHtmlParser(slide.heading)}</h4> : ""}
+                                {(slide.blurb) ? <p>{ReactHtmlParser(slide.blurb)}</p> : ""}
+                                {(slide.button) ? <Link className="halcyon-button" to={this.convertLink(slide.button.url)}>{(slide.button.title) ? <div>{ReactHtmlParser(slide.button.title)}</div>: <div>{this.getTitleFromUrl(slide.button.url)}</div>}</Link> : ""} 
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>)
         })
     }
 
     render() {
         var settings = {
-            dots: true,
             infinite: true,
             speed: 500,
-            draggable: false,
+            draggable: true,
             slidesToShow: 1,
             slidesToScroll: 1,
             responsive: [
@@ -87,12 +90,21 @@ export default withSiteData(class FeaturedContentCarousel extends React.Componen
               ]
         };
 
-        return (        
-            <Container className='featuredContentCarousel'>
-                <Slider {...settings}>
-                    {slides}
-                </Slider>
-            </Container>
+        return (   
+            <div className='featuredContentCarousel'>
+                {this.props.section.heading &&
+                    <div className='heading-container'>
+                        <Container>
+                            <h2>{this.props.section.heading}</h2>
+                        </Container>
+                    </div>
+                    }     
+                <Container className='carousel'>
+                    <Slider {...settings}>
+                        {slides}
+                    </Slider>
+                </Container>
+            </div>
         );
     }
 })

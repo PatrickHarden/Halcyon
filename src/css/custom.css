@@ -127,7 +127,8 @@ body.baby-blue .heading-container {
     color: #4F4B48;
 }
 body.red .heading-container,
-body.red #heroSection .hero-heading {
+body.red #heroSection .hero-heading,
+body.red #mobileFloatingNav {
     background-color: #8F1838;
     color: #fff;
 }
@@ -137,18 +138,23 @@ body.light-green .heading-container {
 }
 body.dark-green .heading-container,
 body.dark-green #heroSection .hero-heading,
-body.light-green #heroSection .hero-heading {
+body.light-green #heroSection .hero-heading,
+body.dark-green #mobileFloatingNav,
+body.light-green #mobileFloatingNav {
     background-color: #718472;
     color: #fff;
 }
 body.dark-grey .heading-container,
 body.baby-blue #heroSection .hero-heading,
-body.dark-grey #heroSection .hero-heading {
+body.dark-grey #heroSection .hero-heading,
+body.baby-blue #mobileFloatingNav,
+body.dark-grey #mobileFloatingNav {
     background-color: #4E5859;
     color: #fff;
 }
 body.dark-brown .heading-container,
-body.dark-brown #heroSection .hero-heading {
+body.dark-brown #heroSection .hero-heading,
+body.dark-brown #mobileFloatingNav {
     background-color: #4F4B48;
     color: #fff;
 }
@@ -267,7 +273,12 @@ body.dark-brown #heroSection .hero-heading {
         padding-bottom: 3rem;
     }
     #heroSection .hero-container {
-        max-width: 500px;
+        max-width: 650px;
+    }
+    #heroSection .hero-heading h1 {
+        font-size: 8rem;
+        text-align: left;
+        padding-left: 2rem;
     }
     #heroSection .hero-container .hero-content {
         padding: 4rem 6rem 2rem 4rem;

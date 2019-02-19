@@ -1,3 +1,14 @@
-@media screen and (min-width:481px){
+#mobileFloatingNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 55px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+@media screen and (min-width:768px){
     #mobileFloatingNav {display:none;}
 }

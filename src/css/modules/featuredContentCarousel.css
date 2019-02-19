@@ -1,8 +1,75 @@
-.featuredContentCarousel .slick-next {
-    background:black;
-    right:0;
+.featuredContentCarousel .carousel {
+    margin: 2rem auto;
 }
-.featuredContentCarousel .slick-prev {
-    background:black;
-    left:0;
+.featuredContentCarousel .carousel .slick-arrow:before {
+    content: none;
+}
+.featuredContentCarousel .carousel .store:focus {
+    outline: none;
+}
+
+.featuredContentCarousel .carousel .slick-slide {
+    padding: 0 3rem;
+    text-align: center;
+}
+.featuredContentCarousel .carousel .slick-arrow {
+    content: '';
+    border: solid #4F4B48;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    top: 25%
+}
+.featuredContentCarousel .carousel .slick-arrow.slick-next {
+    transform: rotate(-45deg);
+    right: 1rem;
+    z-index: 1;
+}
+.featuredContentCarousel .carousel .slick-arrow.slick-prev {
+    transform: rotate(135deg);
+    left: 1rem;
+    z-index: 1;
+}
+
+@media screen and (min-width: 768px) {
+    .featuredContentCarousel .carousel .slick-slide {
+        text-align: left;
+    }
+    .featuredContentCarousel .carousel .slick-arrow {
+        top: 50%;
+    }
+    .featuredContentCarousel .carousel .slide {
+        display: flex;
+    }
+    
+    .featuredContentCarousel .carousel .slide .left {
+        width: 50%;
+        margin-right: 1rem;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .featuredContentCarousel .carousel .slide .right {
+        width: 50%;
+        background-color: #EDECE2;
+        margin-left: 1rem;
+        padding: 2rem;
+        min-height: 400px;
+    }
+    .featuredContentCarousel .carousel .slide .right .inner-wrapper {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        background: #fff;
+        padding: 2rem;
+    }
+    .featuredContentCarousel .carousel .slide .left img {
+        position: absolute;
+        max-width: none;
+        width: auto;
+        min-width: 100%;
+        min-height: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }

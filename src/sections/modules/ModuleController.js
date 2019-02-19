@@ -10,7 +10,6 @@ import FeaturedStores from './FeaturedStores.js'
 import ContentWithFeaturedImage from './ContentWithFeaturedImage.js'
 import Forms from './Forms.js'
 import FeaturedContentCarousel from './FeaturedContentCarousel.js'
-import MobileFloatingNav from '../MobileFloatingNav.js'
 
 {/* <ModuleController page={page} /> or  <ModuleController page={event} /> or  <ModuleController page={store} /> */}
 
@@ -25,7 +24,6 @@ export default class ModuleController extends React.Component {
 
         return (
             <div>
-                {(page.acf.mobile_floating_nav) ? <MobileFloatingNav /> : ""}
                 {(page.acf.layout) ?
                 <div>
                 {page.acf.layout.map((section, index) => {
