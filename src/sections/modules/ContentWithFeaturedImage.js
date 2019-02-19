@@ -47,7 +47,14 @@ export default withSiteData(class ContentWithFeaturedImage extends React.Compone
 
     render() {
 
-    return (   
+    return (<div>
+        {this.props.section.heading &&
+        <div className='heading-container'>
+            <Container>
+            <h2>{this.props.section.heading}</h2>
+            </Container>
+        </div>
+        }     
         <Container className='contentWithFeaturedImage'>
             <Row className={(this.props.section.display_options == 'content-left-image-right') ? 'content-left' : 'content-right'}>
                 <Col sm={6} lg={7} className='image-column'>
@@ -64,6 +71,7 @@ export default withSiteData(class ContentWithFeaturedImage extends React.Compone
                 </Col>
             </Row> 
         </Container>
+        </div>
     );
   }
 })
