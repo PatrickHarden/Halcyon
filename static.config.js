@@ -45,6 +45,20 @@ export default {
 
     return [
       {
+        path: '/',
+        component: 'src/pages/Home',
+        getData: () => ({
+          stores, events, pages, home, property_options
+        }),
+        children: pages.map(page => ({
+        path: `/${page.slug}`,
+        component: 'src/singles/Page',
+          getData: () => ({
+            page, siteRoot, title, metaDescription, 
+          }),
+        })),
+      },
+      {
         path: '/blogs',
         component: 'src/pages/Blogs',
         getData: () => ({
@@ -128,20 +142,6 @@ export default {
         getData: () => ({
           stores, events, pages, metaDescription
         }),
-      },
-      {
-        path: '/',
-        component: 'src/pages/Home',
-        getData: () => ({
-          stores, events, pages, home, property_options
-        }),
-        children: pages.map(page => ({
-        path: `/${page.slug}`,
-        component: 'src/singles/Page',
-          getData: () => ({
-            page, siteRoot, title, metaDescription, 
-          }),
-        })),
       },
       {
         path: '/admin',
