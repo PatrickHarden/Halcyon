@@ -1,41 +1,49 @@
 import React from "react";
-import { Link } from 'react-static'
+import { Link, withSiteData } from 'react-static'
 import { Container, Row, Col } from 'reactstrap';
 import ReactHtmlParser from 'react-html-parser';
 import '../../css/modules/contentWithFeaturedImage.css';
 import DarkFeather from '../../images/feather-dark.png';
 
-export default class ContentWithFeaturedImage extends React.Component {
+export default withSiteData(class ContentWithFeaturedImage extends React.Component {
 
     constructor(props) {
         super(props);
     }
 
     convertLink(url){
-        var words = url.split('/');
-        if (words[4] == ""){
-          return words[3]
+        if (url.includes(this.props.title.toLowerCase())){
+            var words = url.split('/');
+            if (words[4] == ""){
+                return words[3]
+            } else {
+                if (words[3] == "events") {
+                return "/events/" + words[4]
+                } else if (words[3] == "sales"){
+                return "/sales/" + words[4]
+                }  else if (words[3] == "stores"){
+                return "/stores/" + words[4]
+                } else if (words[3] == "blog"){
+                return "/blogs/" + words[4]
+                }
+            }
         } else {
-          if (words[3] == "events") {
-            return "/events/" + words[4]
-          } else if (words[3] == "sales"){
-            return "/sales/" + words[4]
-          }  else if (words[3] == "stores"){
-            return "/stores/" + words[4]
-          } else if (words[3] == "blog"){
-            return "/blogs/" + words[4]
-          }
+            return url;
         }
-      }
+    }
     
-      getTitleFromUrl(url){
+    getTitleFromUrl(url){
         var words = url.split('/');
-        if (words[4] == ""){
-          return words[3].replace(/-/g, ' ')
+        if (url.includes(this.props.title.toLowerCase())){
+            if (words[4] == ""){
+                return words[3].replace(/-/g, ' ')
+            } else {
+                return words[4].replace(/-/g, ' ')
+            }
         } else {
-          return words[4].replace(/-/g, ' ')
+            return url.replace(/(^\w+:|^)\/\//, '')
         }
-      }
+    }
 
     render() {
 
@@ -59,4 +67,4 @@ export default class ContentWithFeaturedImage extends React.Component {
         </Container>
     );
   }
-}
+})
