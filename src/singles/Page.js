@@ -3,15 +3,9 @@ import React from 'react'
 import { withRouteData, Link, Head } from 'react-static'
 import { Container, Row, Col } from 'reactstrap'
 import '../css/components/pageContent.css'
-import ImageCarousel from '../sections/modules/ImageCarousel.js'
-import GlobalImageGrid from '../sections/modules/GlobalImageGrid.js'
-import FeaturedEvents from '../sections/modules/FeaturedEvents.js'
-import ContentArea from '../sections/modules/ContentArea.js'
-import FeaturedStores from '../sections/modules/FeaturedStores.js'
-import ContentWithFeaturedImage from '../sections/modules/ContentWithFeaturedImage.js'
-import Forms from '../sections/modules/Forms.js'
 
 import ReactHtmlParser from 'react-html-parser'
+import ModuleController from '../sections/modules/ModuleController.js';
 
 export default withRouteData(class Page extends React.Component {
 
@@ -29,7 +23,7 @@ export default withRouteData(class Page extends React.Component {
       } else if (words[3] == "sales") {
         return "/sales/" + words[4]
       } else if (words[3] == "stores") {
-        return "/stores/" + words[4]
+        return "/shopping/" + words[4]
       } else if (words[3] == "blog") {
         return "/blogs/" + words[4]
       }
@@ -58,7 +52,6 @@ export default withRouteData(class Page extends React.Component {
           {(page.yoast_meta.yoast_wpseo_title) ? <title>{page.yoast_meta.yoast_wpseo_title}</title> : <title>{title}</title>}
           {(page.yoast_meta.yoast_wpseo_metadesc) ? <meta name="description" content={page.yoast_meta.yoast_wpseo_metadesc} /> : <meta name="description" content={metaDescription} />}
           {(page.yoast_meta.yoast_wpseo_canonical) ? <link rel="canonical" href={page.yoast_meta.yoast_wpseo_canonical} /> : <link rel="canonical" href={siteRoot} />}
-          {(page.acf.layout) ? <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" /> : ""}
         </Head>
         {(page.acf.desktop_image) ?
           <div id="heroSection">
@@ -116,34 +109,7 @@ export default withRouteData(class Page extends React.Component {
               }
             </div>
           </Container> : ""}
-        {(page.acf.layout) ?
-          <div>
-            {page.acf.layout.map((section, index) => {
-              if (section.acf_fc_layout == 'content_area') {
-                return <Container key={index}><ContentArea section={section} /></Container>
-              } else if (section.acf_fc_layout == 'image_carousel') {
-                return <div key={index}><ImageCarousel section={section} /></div>
-              } else if (section.acf_fc_layout == 'image_grid') {
-                return <div key={index}><GlobalImageGrid section={section} /></div>
-              } else if (section.acf_fc_layout == 'featured_events') {
-                return <div key={index}><FeaturedEvents section={section} /></div>
-              } else if (section.acf_fc_layout == 'featured_stores') {
-                return <div key={index}><FeaturedStores pageData={page} section={section} /></div>
-              } else if (section.acf_fc_layout == 'content_with_featured_image') {
-                return <div key={index}><ContentWithFeaturedImage section={section} /></div>
-              } else if (section.acf_fc_layout == 'form') {
-                return <div key={index}><Forms section={section} /></div>
-              }
-            })}
-          </div> :
-          <Container>
-            <Row>
-              <Col xs="12">
-                <h1>{ReactHtmlParser(page.title.rendered)}</h1>
-                {ReactHtmlParser(page.content.rendered)}
-              </Col>
-            </Row>
-          </Container>}
+          <ModuleController page={page} />
       </section>
     )
   }

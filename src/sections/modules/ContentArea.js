@@ -19,7 +19,7 @@ export default withSiteData(class ContentArea extends React.Component {
           } else if (words[3] == "sales"){
             return "/sales/" + words[4]
           }  else if (words[3] == "stores"){
-            return "/stores/" + words[4]
+            return "/shopping/" + words[4]
           } else if (words[3] == "blog"){
             return "/blogs/" + words[4]
           }

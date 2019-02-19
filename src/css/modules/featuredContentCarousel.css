@@ -1,0 +1,8 @@
+.featuredContentCarousel .slick-next {
+    background:black;
+    right:0;
+}
+.featuredContentCarousel .slick-prev {
+    background:black;
+    left:0;
+}
