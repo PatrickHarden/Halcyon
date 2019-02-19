@@ -1,25 +1,19 @@
 
 import React from 'react'
 import { withRouteData, Link, Head } from 'react-static'
-import { Container,
-         Row,
-         Col,
-         Card,
-         CardImg,
-         CardText,
-         CardBody,
-         CardTitle,
-         CardSubtitle } from 'reactstrap';
+import { Container } from 'reactstrap';
+import ModuleController from '../sections/modules/ModuleController.js'
 
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser'
 //
 
 var newTitle;
 var newMeta;
 var newCanonical;
+var pageContent;
 function setMetaData(pages){
   pages.map(page => {
     if (page.slug == 'dining'){
+      pageContent = page;
       newTitle = page.yoast_meta.yoast_wpseo_title;
       newMeta = page.yoast_meta.yoast_wpseo_metadesc;
       newCanonical = page.yoast_meta.yoast_wpseo_canonical;
@@ -38,13 +32,8 @@ export default withRouteData(({ stores, pages, siteRoot, title, metaDescription 
       {(newCanonical) ? <link rel="canonical" href={newCanonical} /> : <link rel="canonical" href={siteRoot} /> }
     </Head>
     <Container>
-      <Row>
-        <Col xs="12">
-          <h1>Dining</h1>
-        </Col>
-      </Row>
-      <Row>
-        <div className="card-columns">
+      <ModuleController page={pageContent} />
+        {/* <div className="card-columns">
             {stores.map(store => (
               (store.acf.store_type == "restaurant") ? 
               <Card key={store.id} className={"card-" + store.id}>
@@ -60,8 +49,7 @@ export default withRouteData(({ stores, pages, siteRoot, title, metaDescription 
               </Card>
             : "" 
             ))}
-        </div>
-      </Row>
+        </div> */}
     </Container>
   </section>
 ))
