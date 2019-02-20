@@ -7,6 +7,7 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap
 var categories = [];
 var categoryId;
 var storeAmount = [];
+var storeNameArray = [];
 
 export default withSiteData(class ShoppingDirectory extends React.Component {
 
@@ -42,7 +43,6 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
         });
 
         var target = categoryId[0];
-        console.log(target)
         var el = document.getElementsByClassName('storeRow');
         if (target != undefined){
             for (var i = 0; i < el.length; i++){
@@ -61,37 +61,63 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
     }
 
     loadMore(){
+        this.setState({
+            amount: this.state.amount + 10
+        })
+    }
+
+    componentDidUpdate(){
         storeAmount = this.props.stores.map(store => {
-            if (store.acf.store_type == "retailer") {
+            if (store.acf.store_type == "retailer" && store.title.rendered.toLowerCase().includes(this.state.search.toLowerCase())) {
                 return 1
             }
         })
         storeAmount = storeAmount.filter(function (el) {
             return el != null;
         });
-        this.setState({
-            amount: this.state.amount * 2
-        })
-    }
-
-    componentDidUpdate(){
         var el = document.getElementsByClassName('storeRow');
-        if (storeAmount.length == el.length){
+        if (storeAmount.length == el.length || storeAmount.length < this.state.amount){
             document.getElementById('loadMore').style.display = 'none';
         }
     }
 
     componentWillMount(){
         const storeCategories = this.props.storeCategories;
+        const sales = this.props.sales
         categories = storeCategories.map(category => {
             return <DropdownItem onClick={() => { this.setCategory(category.slug) }}>{category.slug}</DropdownItem>
         })
+        console.log(sales)
         console.log(this.props.stores)
+        // storeNameArray = this.props.stores.map(store => {
+        //     return store.slug
+        // })
+        // console.log(storeNameArray)
+    }
+
+    offerAvailable(slug){
+        this.props.sales.map(sale => {
+            if (sale.acf.related_store.post_name == slug){
+                if (this.inDateRange(sale)) {
+                    console.log(sale)
+                    return true
+                } else {
+                    return false
+                }
+            }
+        })
+    }
+
+    inDateRange(sale){
+        var today = new Date().getTime();
+        var from = new Date(sale.acf.start_date.substring(0,4) + '/' + sale.acf.start_date.substring(4,6) + '/' + sale.acf.start_date.substring(6,8)).getTime();
+        var to = new Date(sale.acf.end_date.substring(0,4) + '/' + sale.acf.end_date.substring(4,6) + '/' + sale.acf.end_date.substring(6,8)).getTime();
+        var withinRange = today >= from && today <= to;
+        return withinRange
     }
 
     render() {
     const stores = this.props.stores
-    const sales = this.props.sales
 
     return (   <div>
         <div className='heading-container'>
@@ -100,54 +126,54 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
             </Container>
         </div>
         <Container className='shoppingDIrectory'>
-        <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-            <DropdownToggle caret>
-                {this.state.selectedCategory}
-            </DropdownToggle>
-            <DropdownMenu left>
-            <DropdownItem onClick={() => { this.setCategory('Filter by Category') }}>Reset</DropdownItem>
-                {categories}
-            </DropdownMenu>
-        </Dropdown>
-        <input className='search-bar pull-right' placeholder="Search..." value={this.state.search} onChange = {event => this.setState({search : event.target.value})} />
-            <div className="card-columns">
-            {(this.state.search == '') ?
-                <table className="table table-hover">
-                <tbody>
-                    {stores.slice(0, this.state.amount).map(store => (
-                    (store.acf.store_type == "retailer") ? 
-                    <tr key={store.id} className={store.id + ' storeRow'} categories={(store.imag_taxonomy_store_category[0]) ? store.imag_taxonomy_store_category : "-1"}>
-                    <td><Link to={`/dining/${store.slug}/`}><h5>{(store.title.rendered)?<div>{ReactHtmlParser(store.title.rendered)}</div>:null}</h5></Link></td>
-                    <td>{(store.acf.flags)?<div>{store.acf.flags[0] + '!'}</div>:<div></div>}</td>
-                    <td>{(store.acf.phone_number)?<div>{store.acf.phone_number}</div>:null}</td>
-                    <td><small>{store.date.substring(0, 10)}</small></td>
-                    <td>{(store.acf.street_address)? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank">Map Icon</a> : ""}</td>
-                    <td><Link to={`/dining/${store.slug}/`} className="halcyon-button viewStoreButton"><div>View Store ></div></Link></td>
-                    </tr>
-                    : "" 
-                    ))}
-                </tbody>
-                </table>
-            : 
-                <table className="table table-hover">
-                <tbody>
-                    {stores.map(store => (
-                    (store.acf.store_type == "retailer" && store.title.rendered.toLowerCase().includes(this.state.search.toLowerCase())) ? 
-                        <tr key={store.id} className={store.id}>
+            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                <DropdownToggle caret>
+                    {this.state.selectedCategory}
+                </DropdownToggle>
+                <DropdownMenu left>
+                <DropdownItem onClick={() => { this.setCategory('Filter by Category') }}>Reset</DropdownItem>
+                    {categories}
+                </DropdownMenu>
+            </Dropdown>
+            <input className='search-bar pull-right' placeholder="Search..." value={this.state.search} onChange = {event => this.setState({search : event.target.value})} />
+                <div className="card-columns">
+                {(this.state.search == '') ?
+                    <table className="table table-hover">
+                    <tbody>
+                        {stores.slice(0, this.state.amount).map(store => (
+                        (store.acf.store_type == "retailer") ? 
+                        <tr key={store.id} className={store.id + ' storeRow'} categories={(store.imag_taxonomy_store_category[0]) ? store.imag_taxonomy_store_category : "-1"}>
                         <td><Link to={`/dining/${store.slug}/`}><h5>{(store.title.rendered)?<div>{ReactHtmlParser(store.title.rendered)}</div>:null}</h5></Link></td>
-                        <td>{(store.acf.flags)?<div>{store.acf.flags[0]}</div>:<div></div>}</td>
-                        <td>{(store.acf.phone_number)?<div>{store.acf.phone_number + '!'}</div>:null}</td>
+                        <td>{(store.acf.flags)?<div>{store.acf.flags[0] + '!'}</div>:""}{(this.offerAvailable(store.slug)) ? <div>offerAvailable</div>: ""}</td>
+                        <td>{(store.acf.phone_number)?<div>{store.acf.phone_number}</div>:null}</td>
                         <td><small>{store.date.substring(0, 10)}</small></td>
                         <td>{(store.acf.street_address)? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank">Map Icon</a> : ""}</td>
                         <td><Link to={`/dining/${store.slug}/`} className="halcyon-button viewStoreButton"><div>View Store ></div></Link></td>
                         </tr>
-                    : "" 
-                    ))}
-                </tbody>
-                </table>
-            }
-            <div class="halcyon-button" id="loadMore" onClick={this.loadMore}>Load More</div>
-            </div>
+                        : "" 
+                        ))}
+                    </tbody>
+                    </table>
+                : 
+                    <table className="table table-hover">
+                    <tbody>
+                        {stores.slice(0, this.state.amount).map(store => (
+                        (store.acf.store_type == "retailer" && store.title.rendered.toLowerCase().includes(this.state.search.toLowerCase())) ? 
+                            <tr key={store.id} className={store.id } categories={(store.imag_taxonomy_store_category[0]) ? store.imag_taxonomy_store_category : "-1"}>
+                            <td><Link to={`/dining/${store.slug}/`}><h5>{(store.title.rendered)?<div>{ReactHtmlParser(store.title.rendered)}</div>:null}</h5></Link></td>
+                            <td>{(store.acf.flags)?<div>{store.acf.flags[0] + '!'}</div>:<div></div>}</td>
+                            <td>{(store.acf.phone_number)?<div>{store.acf.phone_number}</div>:null}</td>
+                            <td><small>{store.date.substring(0, 10)}</small></td>
+                            <td>{(store.acf.street_address)? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank">Map Icon</a> : ""}</td>
+                            <td><Link to={`/dining/${store.slug}/`} className="halcyon-button viewStoreButton"><div>View Store ></div></Link></td>
+                            </tr>
+                        : "" 
+                        ))}
+                    </tbody>
+                    </table>
+                }
+                <div class="halcyon-button" id="loadMore" onClick={this.loadMore}>Load More</div>
+                </div>
         </Container>
         </div>
     );
