@@ -83,7 +83,7 @@ export default withSiteData(class ContentWithFeaturedVideo extends React.Compone
                         {this.props.section.heading &&
                             <div className='heading'><h2>{this.props.section.content_heading}</h2></div>
                         }
-                        {this.props.section.content &&
+                        {this.props.section.description &&
                             <div clasName='content'>{ReactHtmlParser(this.props.section.description)}</div>
                         }
                     {(this.props.section.button) ? <Link className="halcyon-button" to={this.convertLink(this.props.section.button.url)}>{(this.props.section.button.title) ? <div>{ReactHtmlParser(this.props.section.button.title)}</div>: <div>{this.getTitleFromUrl(this.props.section.button.url)}</div>}</Link> : ""} 
