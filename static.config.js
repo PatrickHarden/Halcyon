@@ -13,6 +13,7 @@ export default {
     const { data: events } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100')
     const { data: stores } = await axios.get(baseURL + '/wp-json/wp/v2/stores/')
     const { data: sales } = await axios.get(baseURL + '/wp-json/wp/v2/sales?per_page=100')
+    const { data: storeCategories} = await axios.get(baseURL + '/wp-json/wp/v2/imag_taxonomy_store_category?per_page=100')
 
     return {
       title: 'Halcyon',
@@ -28,6 +29,7 @@ export default {
       posts,
       events,
       stores,
+      storeCategories,
       sales
     }
   },

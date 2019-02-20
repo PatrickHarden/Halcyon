@@ -120,20 +120,20 @@ describe('Utils', () => {
       const element = document.createElement('div');
       element.className = 'thing';
       document.body.appendChild(element);
-      jest.spyOn(document, 'querySelector');
+      jest.spyOn(document, 'querySelectorAll');
       expect(Utils.getTarget('.thing')).toEqual(element);
-      expect(document.querySelector).toHaveBeenCalledWith('.thing');
-      document.querySelector.mockRestore();
+      expect(document.querySelectorAll).toHaveBeenCalledWith('.thing');
+      document.querySelectorAll.mockRestore();
     });
 
     it('should query the document for the id target if the target is a string and could not be found normally', () => {
       const element = document.createElement('div');
       element.setAttribute('id', 'thing');
       document.body.appendChild(element);
-      jest.spyOn(document, 'querySelector');
+      jest.spyOn(document, 'querySelectorAll');
       expect(Utils.getTarget('thing')).toEqual(element);
-      expect(document.querySelector).toHaveBeenCalledWith('#thing');
-      document.querySelector.mockRestore();
+      expect(document.querySelectorAll).toHaveBeenCalledWith('#thing');
+      document.querySelectorAll.mockRestore();
     });
 
     it('should return the input target if it is not a function nor a string', () => {
@@ -156,6 +156,16 @@ describe('Utils', () => {
       expect(() => {
         Utils.getTarget(target);
       }).toThrow(`The target '${target}' could not be identified in the dom, tip: check spelling`);
+    });
+
+    it('should return the value of the `current` object if it is a react Ref object', () => {
+      const target = { current: { name: 'hello' } };
+      expect(Utils.getTarget(target)).toEqual(target.current);
+    });
+
+    it('should return null if the `current` property of the target is null', () => {
+      const target = { current: null };
+      expect(Utils.getTarget(target)).toBeNull();
     });
   });
 
