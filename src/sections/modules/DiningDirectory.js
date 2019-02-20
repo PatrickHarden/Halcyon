@@ -7,7 +7,7 @@ import FoodHallIcon from '../../images/foodHallIcon.png'
 import RestaurantIcon from '../../images/restaurantIcon.png'
 import OpenTableIcon from '../../images/icon-open-table.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-  import {faFacebook, faTwitter, faInstagram} from '@fortawesome/fontawesome-free-brands'
+  import {faFacebookF, faTwitter, faInstagram} from '@fortawesome/fontawesome-free-brands'
   import { faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 
 import '../../css/modules/diningDirectory.css'
@@ -17,7 +17,6 @@ export default withSiteData(class DiningDirectory extends React.Component {
     constructor(props) {
         super(props);
     }
-
 
     render() {
         const stores = this.props.stores
@@ -44,10 +43,12 @@ export default withSiteData(class DiningDirectory extends React.Component {
                             </Col>
                             <Col sm={3}>
                                 <img src={RestaurantIcon} className="diningIcon" />
-                                {(store.acf.open_table) ? <a href={store.acf.open_table} target="_blank"><img src={OpenTableIcon} alt='open table logo'/></a> : ""}
-                                {(store.acf.twitter) ? <a className='social-icon' href={store.acf.twitter} target="_blank"><FontAwesomeIcon icon={faTwitter} className='icon' /></a> : ""}
-                                {(store.acf.facebook) ? <a className='social-icon' href={store.acf.facebook} target="_blank"><FontAwesomeIcon icon={faFacebook} className='icon' /></a> : ""}
-                                {(store.acf.instagram) ? <a className='social-icon' href={store.acf.instagram} target="_blank"><FontAwesomeIcon icon={faInstagram} className='icon' /></a> : ""}
+                                <div className='social-container'>
+                                    {(store.acf.open_table) ? <a className='open-table' href={store.acf.open_table} target="_blank"><img src={OpenTableIcon} alt='open table logo'/></a> : ""}
+                                    {(store.acf.twitter) ? <a className='social-icon' href={store.acf.twitter} target="_blank"><FontAwesomeIcon icon={faTwitter} className='icon' /></a> : ""}
+                                    {(store.acf.facebook) ? <a className='social-icon' href={store.acf.facebook} target="_blank"><FontAwesomeIcon icon={faFacebookF} className='icon' /></a> : ""}
+                                    {(store.acf.instagram) ? <a className='social-icon' href={store.acf.instagram} target="_blank"><FontAwesomeIcon icon={faInstagram} className='icon' /></a> : ""}
+                                </div>
                                 {(store.acf.street_address) ? <a href={"//maps.google.com/?q="+store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon' /></a> : ""}
                                 {(store.acf.phone_number) ? <a href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} className='icon' /></a> : ""}
                                 <Link to={`/dining/${store.slug}/`} className="halcyon-button arrow">View Details</Link>

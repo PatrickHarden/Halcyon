@@ -1,1 +1,22 @@
 .diningIcon {background:#8F1838; border-radius:50%;}
+.diningDirectory .diningRows .social-container {
+    display: flex;
+}
+.diningDirectory .diningRows .social-icon {
+    background: #8F1838;
+    padding: 1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin-right: 1.5rem;
+}
+.diningDirectory .diningRows .open-table {
+    margin-right: 1.5rem;
+}
+.diningDirectory .diningRows .social-icon .icon {
+    font-size: 2rem;
+    color: #fff;
+}
