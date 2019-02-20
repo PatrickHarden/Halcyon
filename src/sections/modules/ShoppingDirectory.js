@@ -7,7 +7,7 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap
 var categories = [];
 var categoryId;
 var storeAmount = [];
-var storeNameArray = [];
+var salesArray = [];
 
 export default withSiteData(class ShoppingDirectory extends React.Component {
 
@@ -87,22 +87,16 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
         categories = storeCategories.map(category => {
             return <DropdownItem onClick={() => { this.setCategory(category.slug) }}>{category.slug}</DropdownItem>
         })
-        console.log(sales)
-        console.log(this.props.stores)
-        // storeNameArray = this.props.stores.map(store => {
-        //     return store.slug
-        // })
-        // console.log(storeNameArray)
+        this.props.stores.map(store => {
+            this.offerAvailable(store.slug);
+        })
     }
 
     offerAvailable(slug){
         this.props.sales.map(sale => {
             if (sale.acf.related_store.post_name == slug){
                 if (this.inDateRange(sale)) {
-                    console.log(sale)
-                    return true
-                } else {
-                    return false
+                    salesArray.push(sale)
                 }
             }
         })
@@ -114,6 +108,16 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
         var to = new Date(sale.acf.end_date.substring(0,4) + '/' + sale.acf.end_date.substring(4,6) + '/' + sale.acf.end_date.substring(6,8)).getTime();
         var withinRange = today >= from && today <= to;
         return withinRange
+    }
+
+    isSale(store){
+        var result = false;
+        for (var i = 0; i < salesArray.length; i++){
+            if (salesArray[i].acf.related_store.post_name == store.slug){
+                result = true;
+            }
+        }
+        return result
     }
 
     render() {
@@ -144,7 +148,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                         (store.acf.store_type == "retailer") ? 
                         <tr key={store.id} className={store.id + ' storeRow'} categories={(store.imag_taxonomy_store_category[0]) ? store.imag_taxonomy_store_category : "-1"}>
                         <td><Link to={`/dining/${store.slug}/`}><h5>{(store.title.rendered)?<div>{ReactHtmlParser(store.title.rendered)}</div>:null}</h5></Link></td>
-                        <td>{(store.acf.flags)?<div>{store.acf.flags[0] + '!'}</div>:""}{(this.offerAvailable(store.slug)) ? <div>offerAvailable</div>: ""}</td>
+                        <td>{(store.acf.flags)?<div>{store.acf.flags[0] + '!'}</div>:""}{(this.isSale(store))?<div>Offer Available</div>: ""}</td>
                         <td>{(store.acf.phone_number)?<div>{store.acf.phone_number}</div>:null}</td>
                         <td><small>{store.date.substring(0, 10)}</small></td>
                         <td>{(store.acf.street_address)? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank">Map Icon</a> : ""}</td>
@@ -161,7 +165,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                         (store.acf.store_type == "retailer" && store.title.rendered.toLowerCase().includes(this.state.search.toLowerCase())) ? 
                             <tr key={store.id} className={store.id } categories={(store.imag_taxonomy_store_category[0]) ? store.imag_taxonomy_store_category : "-1"}>
                             <td><Link to={`/dining/${store.slug}/`}><h5>{(store.title.rendered)?<div>{ReactHtmlParser(store.title.rendered)}</div>:null}</h5></Link></td>
-                            <td>{(store.acf.flags)?<div>{store.acf.flags[0] + '!'}</div>:<div></div>}</td>
+                            <td>{(store.acf.flags)?<div>{store.acf.flags[0] + '!'}</div>:""}{(this.isSale(store))?<div>Offer Available</div>: ""}</td>
                             <td>{(store.acf.phone_number)?<div>{store.acf.phone_number}</div>:null}</td>
                             <td><small>{store.date.substring(0, 10)}</small></td>
                             <td>{(store.acf.street_address)? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank">Map Icon</a> : ""}</td>
