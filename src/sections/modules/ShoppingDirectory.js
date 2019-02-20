@@ -6,6 +6,7 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap
 
 var categories = [];
 var categoryId;
+var storeAmount = [];
 
 export default withSiteData(class ShoppingDirectory extends React.Component {
 
@@ -15,8 +16,10 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
             search : '',
             dropdownOpen: false,
             selectedCategory: 'Filter by Category',
+            amount: 5
         }
         this.toggle = this.toggle.bind(this);
+        this.loadMore = this.loadMore.bind(this);
     }
 
     toggle() {
@@ -57,6 +60,27 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
         }
     }
 
+    loadMore(){
+        storeAmount = this.props.stores.map(store => {
+            if (store.acf.store_type == "retailer") {
+                return 1
+            }
+        })
+        storeAmount = storeAmount.filter(function (el) {
+            return el != null;
+        });
+        this.setState({
+            amount: this.state.amount * 2
+        })
+    }
+
+    componentDidUpdate(){
+        var el = document.getElementsByClassName('storeRow');
+        if (storeAmount.length == el.length){
+            document.getElementById('loadMore').style.display = 'none';
+        }
+    }
+
     componentWillMount(){
         const storeCategories = this.props.storeCategories;
         categories = storeCategories.map(category => {
@@ -90,7 +114,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
             {(this.state.search == '') ?
                 <table className="table table-hover">
                 <tbody>
-                    {stores.map(store => (
+                    {stores.slice(0, this.state.amount).map(store => (
                     (store.acf.store_type == "retailer") ? 
                     <tr key={store.id} className={store.id + ' storeRow'} categories={(store.imag_taxonomy_store_category[0]) ? store.imag_taxonomy_store_category : "-1"}>
                     <td><Link to={`/dining/${store.slug}/`}><h5>{(store.title.rendered)?<div>{ReactHtmlParser(store.title.rendered)}</div>:null}</h5></Link></td>
@@ -122,6 +146,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                 </tbody>
                 </table>
             }
+            <div class="halcyon-button" id="loadMore" onClick={this.loadMore}>Load More</div>
             </div>
         </Container>
         </div>
