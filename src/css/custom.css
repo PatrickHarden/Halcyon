@@ -1,5 +1,6 @@
 /* Home */
 .search-page-bar {margin-top:30px;}
+form input[type=date].form-control {color:rgba(0,0,0,0.4)}
 
 .hero-slider .slick-slide {
     position: relative;
