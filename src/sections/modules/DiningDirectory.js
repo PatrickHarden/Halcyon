@@ -13,13 +13,52 @@ import helpers from '../../helpers.js'
 
 import '../../css/modules/diningDirectory.css'
 
-var excerpt;
-var regex = /(<([^>]+)>)/ig;
+var globalHours = [];
+var globalHolidayHours = [];
+var storeCounter;
 
 export default withSiteData(class DiningDirectory extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            amount: 8
+        }
+        this.loadMore = this.loadMore.bind(this);
+    }
+
+    loadMore(){
+        this.setState({
+            amount: this.state.amount + 10
+        })
+    }
+
+    componentWillMount() {
+        if (this.props.centerInfo.acf.standard_hours) {
+            for (var i = 0; i < this.props.centerInfo.acf.standard_hours.length; i++) {
+                globalHours.push(this.props.centerInfo.acf.standard_hours[0])
+            }
+        }
+        if (this.props.centerInfo.acf.alternate_hours) {
+            for (var i = 0; i < this.props.centerInfo.acf.alternate_hours.length; i++) {
+                globalHolidayHours.push(this.props.centerInfo.acf.alternate_hours[0])
+            }
+        }
+        storeCounter = this.props.stores.map(store => {
+            if (store.acf.store_type == "restaurant") {
+                return <div></div>
+            }
+        })
+        storeCounter = storeCounter.filter(function (el) {
+            return el != null;
+        });
+        console.log(storeCounter.length)
+    }
+
+    componentWillUpdate(){
+        if (storeCounter.length <= this.state.amount){
+            document.getElementById('loadMore').style.display = 'none';
+        }
     }
 
     render() {
@@ -33,7 +72,8 @@ export default withSiteData(class DiningDirectory extends React.Component {
                     </Container>
                 </div>
                 <Container className="diningRows">
-                    {stores.map((store, index) => (
+                {console.log(this.state.amount)}
+                    {stores.slice(0, this.state.amount).map((store, index) => (
                         (store.acf.store_type == "restaurant") ? 
                         <div key={index} className='store-single'>
                             <div className='image-wrapper'>
@@ -41,7 +81,7 @@ export default withSiteData(class DiningDirectory extends React.Component {
                             </div>
                             <div className='content-wrapper'>
                                 <h4 className='store-title'>{ReactHtmlParser(store.title.rendered)}</h4>
-                                <div className='hours'>Hours: Mon-Sun 8am-10pm</div>
+                                <div className='hours'>Hours: {helpers.getHours(store, globalHours, globalHolidayHours)}</div>
                                 {(store.acf.store_copy) ? <div className='hidden-xs'>{ReactHtmlParser(helpers.compressText(store.acf.store_copy, 200))}</div> : ''}
                             </div>
                             <div className='action-corner'>
@@ -73,6 +113,7 @@ export default withSiteData(class DiningDirectory extends React.Component {
                         </div>
                         : "" 
                     ))}
+                    <div class="loadmore-button halcyon-button" id="loadMore" onClick={this.loadMore}>Load More</div>
                 </Container>
             </div>
         );
