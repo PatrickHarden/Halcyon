@@ -65,15 +65,15 @@ form input[type=date].form-control {color:rgba(0,0,0,0.4)}
     vertical-align: top;
 }
 /* Fixes issue of slides stacking on page load */
-.hero-slider .hero-slide {
+.hero-slider .slick-slide {
     visibility: hidden;
 }
 
-.hero-slider.hero-slide:first-child {
+.hero-slider.slick-slide:first-child {
     visibility: visible;
 }
 
-.hero-slider.slick-initialized .hero-slide {
+.hero-slider.slick-initialized .slick-slide {
     visibility: visible;
 }
 
