@@ -68,8 +68,7 @@ form input[type=date].form-control {color:rgba(0,0,0,0.4)}
 .hero-slider .hero-slide {
     visibility: hidden;
 }
-.hero-slider .slick-slide.slick-active {visibility: visible}
-.hero-slider .slick-slide {visibility:hidden} 
+
 .hero-slider.hero-slide:first-child {
     visibility: visible;
 }
