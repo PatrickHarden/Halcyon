@@ -11,6 +11,7 @@ var salesArray = [];
 var elementCount;
 var initialCount;
 var categorySelected = 'initial';
+var once = 2;
 
 export default withSiteData(class ShoppingDirectory extends React.Component {
 
@@ -33,9 +34,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
     }
 
     setCategory(test){
-        this.setState({
-            selectedCategory: test
-        })
+        var el = document.getElementsByClassName('storeRow');
         categoryId = this.props.storeCategories.map(category => {
             if (category.slug == test) {
                 return category.id
@@ -48,7 +47,6 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
         categorySelected = test;
         elementCount = 0;
         var target = categoryId[0];
-        var el = document.getElementsByClassName('storeRow');
         if (target != undefined){
             for (var i = 0; i < el.length; i++){
                 var temp = String(el[i].attributes[1].nodeValue);
@@ -64,6 +62,10 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                 el[i].style.display = 'table-row';
             }
         }
+        this.setState({
+            search: '',
+            selectedCategory: test
+        })
     }
 
     loadMore(){
@@ -132,7 +134,12 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
         if (categorySelected == 'Filter by Category' && initialCount >= el.length){
             document.getElementById('loadMore').style.display = 'inline-block';
         }
-        // categorySelected = '';
+        if (categorySelected == 'Filter by Category'){
+            for (var i = 0; i < el.length; i++){
+                el[i].style.display = 'table-row';
+            }
+        }
+
     }
 
     render() {
@@ -154,7 +161,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                     {categories}
                 </DropdownMenu>
             </Dropdown>
-            <input className='search-bar pull-right' placeholder="Search..." value={this.state.search} onChange = {event => this.setState({search : event.target.value})} />
+            <input className='search-bar pull-right' placeholder="Search..." value={this.state.search} onChange = {event => this.setState({ search : event.target.value})} />
                 <div className="card-columns">
                 {(this.state.search == '') ?
                     <table className="table table-hover">
@@ -191,7 +198,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                     </tbody>
                     </table>
                 }
-                {(this.state.search == '') ? <div class="halcyon-button" id="loadMore" onClick={this.loadMore}>Load More</div> : "" }
+                {(this.state.search == '') ? <div class="halcyon-button" id="loadMore" onClick={this.loadMore}>Load More</div> : <div class="halcyon-button hidden" id="loadMore" onClick={this.loadMore}>Load More</div> }
                 </div>
         </Container>
         </div>
