@@ -21,12 +21,6 @@ export default withSiteData(class DiningDirectory extends React.Component {
         super(props);
     }
 
-    compressText(store){
-        excerpt = store.replace(regex, "").substr(0, 200)
-        excerpt = excerpt.substr(0, excerpt.lastIndexOf(" "))
-        return excerpt + "...";
-    }
-
     render() {
         const stores = this.props.stores
 
