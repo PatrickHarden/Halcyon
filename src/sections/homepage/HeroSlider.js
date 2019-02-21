@@ -33,6 +33,11 @@ export default class HeroSlider extends React.Component {
     })
   }
 
+  componentDidMount(){
+    var element = document.getElementById("fadeHeroIn");
+    element.classList.add("fadeHeroIn");
+  }
+
   render() {
     var settings = {
       dots: true,
@@ -43,7 +48,7 @@ export default class HeroSlider extends React.Component {
       arrows: false,
     };
     return (
-      <div className='hero-slider-wrapper'>
+      <div className='hero-slider-wrapper' id="fadeHeroIn">
         <Slider className='hero-slider' {...settings}>
           {heroArray}
         </Slider>
