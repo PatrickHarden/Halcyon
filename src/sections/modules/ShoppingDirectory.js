@@ -8,6 +8,9 @@ var categories = [];
 var categoryId;
 var storeAmount = [];
 var salesArray = [];
+var elementCount;
+var initialCount;
+var categorySelected = 'initial';
 
 export default withSiteData(class ShoppingDirectory extends React.Component {
 
@@ -42,6 +45,8 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
             return el != null;
         });
 
+        categorySelected = test;
+        elementCount = 0;
         var target = categoryId[0];
         var el = document.getElementsByClassName('storeRow');
         if (target != undefined){
@@ -49,6 +54,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                 var temp = String(el[i].attributes[1].nodeValue);
                 if (temp.includes(target)) {
                     el[i].style.display = 'table-row';
+                    elementCount++;
                 } else {
                     el[i].style.display = 'none';
                 }
@@ -64,21 +70,6 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
         this.setState({
             amount: this.state.amount + 10
         })
-    }
-
-    componentDidUpdate(){
-        storeAmount = this.props.stores.map(store => {
-            if (store.acf.store_type == "retailer" && store.title.rendered.toLowerCase().includes(this.state.search.toLowerCase())) {
-                return 1
-            }
-        })
-        storeAmount = storeAmount.filter(function (el) {
-            return el != null;
-        });
-        var el = document.getElementsByClassName('storeRow');
-        if (storeAmount.length == el.length || storeAmount.length < this.state.amount){
-            document.getElementById('loadMore').style.display = 'none';
-        }
     }
 
     componentWillMount(){
@@ -118,6 +109,30 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
             }
         }
         return result
+    }
+
+    componentDidMount(){
+        initialCount = document.getElementsByClassName('storeRow');
+        initialCount = initialCount.length;
+    }
+
+    componentDidUpdate(){
+        storeAmount = this.props.stores.map(store => {
+            if (store.acf.store_type == "retailer" && store.title.rendered.toLowerCase().includes(this.state.search.toLowerCase())) {
+                return 1
+            }
+        })
+        storeAmount = storeAmount.filter(function (el) {
+            return el != null;
+        });
+        var el = document.getElementsByClassName('storeRow');
+        if (storeAmount.length == el.length || storeAmount.length < this.state.amount || elementCount < el.length){
+            document.getElementById('loadMore').style.display = 'none';
+        } 
+        if (categorySelected == 'Filter by Category' && initialCount >= el.length){
+            document.getElementById('loadMore').style.display = 'inline-block';
+        }
+        // categorySelected = '';
     }
 
     render() {
@@ -161,7 +176,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                 : 
                     <table className="table table-hover">
                     <tbody>
-                        {stores.slice(0, this.state.amount).map(store => (
+                        {stores.map(store => (
                         (store.acf.store_type == "retailer" && store.title.rendered.toLowerCase().includes(this.state.search.toLowerCase())) ? 
                             <tr key={store.id} className={store.id } categories={(store.imag_taxonomy_store_category[0]) ? store.imag_taxonomy_store_category : "-1"}>
                             <td><Link to={`/dining/${store.slug}/`}><h5>{(store.title.rendered)?<div>{ReactHtmlParser(store.title.rendered)}</div>:null}</h5></Link></td>
@@ -176,7 +191,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                     </tbody>
                     </table>
                 }
-                <div class="halcyon-button" id="loadMore" onClick={this.loadMore}>Load More</div>
+                {(this.state.search == '') ? <div class="halcyon-button" id="loadMore" onClick={this.loadMore}>Load More</div> : "" }
                 </div>
         </Container>
         </div>
