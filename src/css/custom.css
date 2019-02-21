@@ -65,28 +65,7 @@ form input[type=date].form-control {color:rgba(0,0,0,0.4)}
     vertical-align: top;
 }
 /* Fixes issue of slides stacking on page load */
-.hero-slider-wrapper > div > div > div > div {
-    visibility: hidden;
-}
-
-.hero-slider-wrapper > div > div > div > div:first-child {
-    visibility: visible;
-}
-.hero-slider-wrapper > div.slick-initialized > div > div > div {
-    visibility: visible;
-}
-
-.hero-slider-wrapper {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 1s ease;
-    -webkit-transition: opacity 1s ease;
-}
-
-.hero-slider-wrapper.slick-initialized {
-    visibility: visible;
-    opacity: 1;    
-}
+.hero-slider-wrapper {max-height:900px; overflow:hidden}
 
 #searchBar {
     background:#8F1838;
