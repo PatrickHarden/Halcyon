@@ -43,9 +43,11 @@ export default class HeroSlider extends React.Component {
       arrows: false,
     };
     return (
-      <Slider className='hero-slider' {...settings}>
-        {heroArray}
-      </Slider>
+      <div className='hero-slider-wrapper'>
+        <Slider className='hero-slider' {...settings}>
+          {heroArray}
+        </Slider>
+      </div>
     );
   }
 }
