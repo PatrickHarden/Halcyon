@@ -1,0 +1,29 @@
+.contentArea {
+    margin: 2rem 0;
+}
+.contentArea .column-heading {
+    font-size: 2rem;
+}
+.contentArea .heading-button-align-center .column-heading, .contentArea .heading-button-align-center .button-wrapper {
+    text-align: center;
+}
+.contentArea .heading-button-align-right .column-heading, .contentArea .heading-button-align-right .button-wrapper {
+    text-align: right;
+}
+@media screen and (min-width: 768px) {
+    .contentArea {
+        margin: 3rem 0;
+    }
+    .contentArea .column-heading {
+        font-size: 2.5rem;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .contentArea {
+        margin: 4rem 0;
+    }
+    .contentArea .column-heading {
+        font-size: 3rem;
+    }
+}

@@ -54,6 +54,7 @@
     box-shadow: 3px 3px 10px #ccc;
     border-radius: 10px;
     margin-bottom: 1rem;
+    transition: .3s;
 }
 .diningDirectory .button-wrapper .halcyon-button {
     margin: 1rem 0;
@@ -67,6 +68,8 @@
 }
 .diningDirectory .store-single:hover {
     background-color: #EDECE2;
+    transform: translateY(-5px);
+    box-shadow: 3px 5px 20px #aaa;
 }
 .diningDirectory .button-wrapper .halcyon-button:hover {
     color: #8f1838;
