@@ -83,7 +83,7 @@ form input[type=date].form-control {color:rgba(0,0,0,0.4)}
     -webkit-transition: opacity 1s ease;
 }
 
-.hero-slider-wapper.slick-initialized {
+.hero-slider-wrapper.slick-initialized {
     visibility: visible;
     opacity: 1;    
 }
