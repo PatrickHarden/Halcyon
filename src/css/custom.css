@@ -66,7 +66,7 @@ form input[type=date].form-control {color:rgba(0,0,0,0.4)}
 }
 /* Fixes issue of slides stacking on page load */
 .hero-slider-wrapper { max-height:600px; transition:.5s ease ease-in; opacity:0;}
-.hero-slider-wrapper.fadeHeroIn {max-height:auto; opacity:1;}
+.hero-slider-wrapper.fadeHeroIn {max-height:inherit; opacity:1;}
 
 #searchBar {
     background:#8F1838;
