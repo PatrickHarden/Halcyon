@@ -72,8 +72,7 @@ function updateArrows(){
     $('#nextTitleText').text(titleArray[next]);
     $('#prevTitleText').text(titleArray[target]);
 }
-var excerpt;
-var regex = /(<([^>]+)>)/ig;
+
 var selectedStores = [];
 
 export default withSiteData(class FeaturesStores extends React.Component {
