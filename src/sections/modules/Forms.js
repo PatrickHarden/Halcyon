@@ -84,7 +84,7 @@ export default class Forms extends React.Component {
                         case 'select':
                             return (
                                 <div
-                                    className={"col-xs-12 form-group" + (field.isRequired ? ' required' : '') + ' type-' + field.type}
+                                    className={"col-xs-12 form-group" + (field.size !== 'large' ? ' col-sm-6' : '') +  (field.isRequired ? ' required' : '') + ' type-' + field.type}
                                     id={"group-" + field.id}
                                     data-name={field.label}
                                 >
