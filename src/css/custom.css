@@ -64,6 +64,18 @@ form input[type=date].form-control {color:rgba(0,0,0,0.4)}
     display: inline-block;
     vertical-align: top;
 }
+/* Fixes issue of slides stacking on page load */
+.hero-slider .hero-slide {
+    visibility: hidden;
+}
+
+.hero-slider.hero-slide:first-child {
+    visibility: visible;
+}
+
+.hero-slider.slick-initialized .hero-slide {
+    visibility: visible;
+}
 
 #searchBar {
     background:#8F1838;

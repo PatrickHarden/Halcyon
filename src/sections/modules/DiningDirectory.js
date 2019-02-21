@@ -9,6 +9,7 @@ import OpenTableIcon from '../../images/icon-open-table.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
   import {faFacebookF, faTwitter, faInstagram} from '@fortawesome/fontawesome-free-brands'
   import { faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
+import helpers from '../../helpers.js'
 
 import '../../css/modules/diningDirectory.css'
 

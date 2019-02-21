@@ -19,21 +19,18 @@ const universalOptions = {
   },
 }
 
-  const t_0 = universal(import('../src/singles/Post'), universalOptions)
-const t_1 = universal(import('../src/pages/Blogs'), universalOptions)
-const t_2 = universal(import('../src/singles/Event'), universalOptions)
-const t_3 = universal(import('../src/pages/Events'), universalOptions)
-const t_4 = universal(import('../src/singles/Sale'), universalOptions)
+  const t_0 = universal(import('../src/pages/Home'), universalOptions)
+const t_1 = universal(import('../src/singles/Page'), universalOptions)
+const t_2 = universal(import('../src/pages/Blogs'), universalOptions)
+const t_3 = universal(import('../src/singles/Post'), universalOptions)
+const t_4 = universal(import('../src/singles/Event'), universalOptions)
 const t_5 = universal(import('../src/pages/Sales'), universalOptions)
-const t_6 = universal(import('../src/oldContainers/Search'), universalOptions)
-const t_7 = universal(import('../src/singles/Store'), universalOptions)
-const t_8 = universal(import('../src/pages/Stores'), universalOptions)
-const t_9 = universal(import('../src/pages/Dining'), universalOptions)
-const t_10 = universal(import('../src/pages/Contact'), universalOptions)
-const t_11 = universal(import('../src/pages/SearchResults'), universalOptions)
-const t_12 = universal(import('../src/singles/Page'), universalOptions)
-const t_13 = universal(import('../src/pages/Home'), universalOptions)
-const t_14 = universal(import('../src/pages/404'), universalOptions)
+const t_6 = universal(import('../src/singles/Sale'), universalOptions)
+const t_7 = universal(import('../src/oldContainers/Search'), universalOptions)
+const t_8 = universal(import('../src/singles/Store'), universalOptions)
+const t_9 = universal(import('../src/pages/SearchResults'), universalOptions)
+const t_10 = universal(import('../src/pages/Redirect'), universalOptions)
+const t_11 = universal(import('../src/pages/404'), universalOptions)
 
 
 // Template Map
@@ -49,15 +46,12 @@ t_7,
 t_8,
 t_9,
 t_10,
-t_11,
-t_12,
-t_13,
-t_14
+t_11
 ]
 
 // Template Tree
 global.templateIDsByPath = global.templateIDsByPath || {
-  '404': 14
+  '404': 11
 }
 
 // Get template for given path
