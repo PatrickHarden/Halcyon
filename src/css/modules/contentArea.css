@@ -3,6 +3,7 @@
 }
 .contentArea .column-heading {
     font-size: 2rem;
+    text-transform: uppercase;
 }
 .contentArea .heading-button-align-center .column-heading, .contentArea .heading-button-align-center .button-wrapper {
     text-align: center;

@@ -1,0 +1,50 @@
+.shoppingDirectory .shoppingRows .storeRow {
+    padding: 1rem;
+    box-shadow: 3px 3px 10px #ccc;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    transition: .3s;
+}
+.shoppingDirectory .shoppingRows .storeRow .store-title {
+    color: #4E5859;
+}
+.shoppingDirectory .shoppingRows .storeRow .red-text {
+    color: #8F1838;
+    font-size: 1.4rem;
+    font-family: 'Flama', sans-serif;
+}
+.shoppingDirectory .button-wrapper .halcyon-button {
+    margin: 1rem 0;
+    background: #8F1838;
+}
+.shoppingDirectory .button-wrapper .halcyon-button:hover {
+    color: #8f1838;
+    background: #fff;
+}
+.shoppingDirectory .button-wrapper .halcyon-button:hover:after {
+    border-color: #8f1838;
+}
+.shoppingDirectory .shoppingRows .storeRow .center-container {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+}
+.shoppingDirectory .shoppingRows .storeRow .store-phone a, 
+.shoppingDirectory .shoppingRows .storeRow .store-directions a {
+    font-size: 3.25rem;
+    margin-right: 4rem;
+    display: block;
+}
+.shoppingDirectory .shoppingRows .storeRow .store-phone .icon, 
+.shoppingDirectory .shoppingRows .storeRow .store-directions .icon {
+    color: #4E5859;
+}
+.shoppingDirectory .shoppingRows .storeRow .center-container .hours {
+    font-size: 1.4rem;
+    font-family: 'Flama', sans-serif;
+}
+.shoppingDirectory .storeRow:hover {
+    background-color: #EDECE2;
+    transform: translateY(-5px);
+    box-shadow: 3px 5px 20px #aaa;
+}
