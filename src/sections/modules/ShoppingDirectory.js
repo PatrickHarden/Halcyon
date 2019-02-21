@@ -5,13 +5,13 @@ import ReactHtmlParser from 'react-html-parser';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 var categories = [];
-var categoryId;
+var categoryId = '';
 var storeAmount = [];
 var salesArray = [];
 var elementCount;
 var initialCount;
 var categorySelected = 'initial';
-var once = 2;
+var wasSelected = false;
 
 export default withSiteData(class ShoppingDirectory extends React.Component {
 
@@ -21,7 +21,9 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
             search : '',
             dropdownOpen: false,
             selectedCategory: 'Filter by Category',
-            amount: 5
+            amount: 5,
+            stores: [],
+            default: []
         }
         this.toggle = this.toggle.bind(this);
         this.loadMore = this.loadMore.bind(this);
@@ -33,8 +35,17 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
         }));
     }
 
+
+    loadMore(){
+        this.setState({
+            amount: this.state.amount + 10
+        })
+    }
+
     setCategory(test){
-        var el = document.getElementsByClassName('storeRow');
+        this.setState({
+            selectedCategory: test
+        })
         categoryId = this.props.storeCategories.map(category => {
             if (category.slug == test) {
                 return category.id
@@ -43,35 +54,6 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
         categoryId = categoryId.filter(function (el) {
             return el != null;
         });
-
-        categorySelected = test;
-        elementCount = 0;
-        var target = categoryId[0];
-        if (target != undefined){
-            for (var i = 0; i < el.length; i++){
-                var temp = String(el[i].attributes[1].nodeValue);
-                if (temp.includes(target)) {
-                    el[i].style.display = 'table-row';
-                    elementCount++;
-                } else {
-                    el[i].style.display = 'none';
-                }
-            }
-        } else {
-            for (var i = 0; i < el.length; i++){
-                el[i].style.display = 'table-row';
-            }
-        }
-        this.setState({
-            search: '',
-            selectedCategory: test
-        })
-    }
-
-    loadMore(){
-        this.setState({
-            amount: this.state.amount + 10
-        })
     }
 
     componentWillMount(){
@@ -83,8 +65,38 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
         this.props.stores.map(store => {
             this.offerAvailable(store.slug);
         })
+
+        this.state.stores = this.props.stores.slice(0, this.state.amount).map(store => {
+            if (store.acf.store_type == "retailer"){
+                return (
+                    <tr key={store.id} className={store.id + ' storeRow'} categories={(store.imag_taxonomy_store_category[0]) ? store.imag_taxonomy_store_category : "-1"} slug={store.title.rendered}>
+                        <td><Link to={`/dining/${store.slug}/`}><h5>{(store.title.rendered)?<div>{ReactHtmlParser(store.title.rendered)}</div>:null}</h5></Link></td>
+                        <td>{(store.acf.flags)?<div>{store.acf.flags[0] + '!'}</div>:""}{(this.isSale(store))?<div>Offer Available</div>: ""}</td>
+                        <td>{(store.acf.phone_number)?<div>{store.acf.phone_number}</div>:null}</td>
+                        <td><small>{store.date.substring(0, 10)}</small></td>
+                        <td>{(store.acf.street_address)? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank">Map Icon</a> : ""}</td>
+                        <td><Link to={`/dining/${store.slug}/`} className="halcyon-button viewStoreButton"><div>View Store ></div></Link></td>
+                    </tr>
+                )
+            }
+        })
+
+        this.state.stores = this.state.stores.filter(function (el) {
+            return el != null;
+        });
+        this.state.default = this.state.stores;
+
+        storeAmount = this.props.stores.slice(0, this.state.amount).map(store => {
+            if (store.acf.store_type == "retailer"){
+                return store
+            }
+        })
+        storeAmount = storeAmount.filter(function (el) {
+            return el != null;
+        });
     }
 
+    
     offerAvailable(slug){
         this.props.sales.map(sale => {
             if (sale.acf.related_store.post_name == slug){
@@ -113,37 +125,21 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
         return result
     }
 
-    componentDidMount(){
-        initialCount = document.getElementsByClassName('storeRow');
-        initialCount = initialCount.length;
-    }
-
     componentDidUpdate(){
-        storeAmount = this.props.stores.map(store => {
-            if (store.acf.store_type == "retailer" && store.title.rendered.toLowerCase().includes(this.state.search.toLowerCase())) {
-                return 1
-            }
-        })
-        storeAmount = storeAmount.filter(function (el) {
-            return el != null;
-        });
         var el = document.getElementsByClassName('storeRow');
-        if (storeAmount.length == el.length || storeAmount.length < this.state.amount || elementCount < el.length){
+        if (storeAmount.length > el.length || storeAmount.length < this.state.amount){
             document.getElementById('loadMore').style.display = 'none';
         } 
-        if (categorySelected == 'Filter by Category' && initialCount >= el.length){
+        if (categoryId == '' && this.state.search == '' && this.state.amount <= el.length + 1){
             document.getElementById('loadMore').style.display = 'inline-block';
         }
-        if (categorySelected == 'Filter by Category'){
-            for (var i = 0; i < el.length; i++){
-                el[i].style.display = 'table-row';
-            }
-        }
+    }
 
+    handleSearch(query){
+        this.setState({ search: query })
     }
 
     render() {
-    const stores = this.props.stores
 
     return (   <div>
         <div className='heading-container'>
@@ -161,45 +157,66 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                     {categories}
                 </DropdownMenu>
             </Dropdown>
-            <input className='search-bar pull-right' placeholder="Search..." value={this.state.search} onChange = {event => this.setState({ search : event.target.value})} />
+            <input className='search-bar pull-right' placeholder="Search..." value={this.state.search} onChange = {event => this.handleSearch(event.target.value)} />
                 <div className="card-columns">
-                {(this.state.search == '') ?
                     <table className="table table-hover">
                     <tbody>
-                        {stores.slice(0, this.state.amount).map(store => (
-                        (store.acf.store_type == "retailer") ? 
-                        <tr key={store.id} className={store.id + ' storeRow'} categories={(store.imag_taxonomy_store_category[0]) ? store.imag_taxonomy_store_category : "-1"}>
-                        <td><Link to={`/dining/${store.slug}/`}><h5>{(store.title.rendered)?<div>{ReactHtmlParser(store.title.rendered)}</div>:null}</h5></Link></td>
-                        <td>{(store.acf.flags)?<div>{store.acf.flags[0] + '!'}</div>:""}{(this.isSale(store))?<div>Offer Available</div>: ""}</td>
-                        <td>{(store.acf.phone_number)?<div>{store.acf.phone_number}</div>:null}</td>
-                        <td><small>{store.date.substring(0, 10)}</small></td>
-                        <td>{(store.acf.street_address)? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank">Map Icon</a> : ""}</td>
-                        <td><Link to={`/dining/${store.slug}/`} className="halcyon-button viewStoreButton"><div>View Store ></div></Link></td>
-                        </tr>
-                        : "" 
-                        ))}
+                        {this.props.stores.slice(0, this.state.amount).map(store => {
+                        if (store.acf.store_type == "retailer"){
+                            if (categoryId == '' && this.state.search == ''){
+                                return (
+                                    <tr key={store.id} className={store.id + ' storeRow'} categories={(store.imag_taxonomy_store_category[0]) ? store.imag_taxonomy_store_category : "-1"} slug={store.title.rendered}>
+                                        <td><Link to={`/dining/${store.slug}/`}><h5>{(store.title.rendered)?<div>{ReactHtmlParser(store.title.rendered)}</div>:null}</h5></Link></td>
+                                        <td>{(store.acf.flags)?<div>{store.acf.flags[0] + '!'}</div>:""}{(this.isSale(store))?<div>Offer Available</div>: ""}</td>
+                                        <td>{(store.acf.phone_number)?<div>{store.acf.phone_number}</div>:null}</td>
+                                        <td><small>{store.date.substring(0, 10)}</small></td>
+                                        <td>{(store.acf.street_address)? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank">Map Icon</a> : ""}</td>
+                                        <td><Link to={`/dining/${store.slug}/`} className="halcyon-button viewStoreButton"><div>View Store ></div></Link></td>
+                                    </tr>
+                                    )
+                            } else {
+                                if (categoryId == '' && this.state.search != ''){
+                                    if (store.title.rendered.toLowerCase().includes(this.state.search.toLowerCase())){
+                                        return (
+                                            <tr key={store.id} className={store.id + ' storeRow'} categories={(store.imag_taxonomy_store_category[0]) ? store.imag_taxonomy_store_category : "-1"} slug={store.title.rendered}>
+                                                <td><Link to={`/dining/${store.slug}/`}><h5>{(store.title.rendered)?<div>{ReactHtmlParser(store.title.rendered)}</div>:null}</h5></Link></td>
+                                                <td>{(store.acf.flags)?<div>{store.acf.flags[0] + '!'}</div>:""}{(this.isSale(store))?<div>Offer Available</div>: ""}</td>
+                                                <td>{(store.acf.phone_number)?<div>{store.acf.phone_number}</div>:null}</td>
+                                                <td><small>{store.date.substring(0, 10)}</small></td>
+                                                <td>{(store.acf.street_address)? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank">Map Icon</a> : ""}</td>
+                                                <td><Link to={`/dining/${store.slug}/`} className="halcyon-button viewStoreButton"><div>View Store ></div></Link></td>
+                                            </tr>                                 
+                                    )}
+                                } else if (String(store.imag_taxonomy_store_category[0]).includes(categoryId[0]) && this.state.search == ''){
+                                    return (
+                                        <tr key={store.id} className={store.id + ' storeRow'} categories={(store.imag_taxonomy_store_category[0]) ? store.imag_taxonomy_store_category : "-1"} slug={store.title.rendered}>
+                                        <td><Link to={`/dining/${store.slug}/`}><h5>{(store.title.rendered)?<div>{ReactHtmlParser(store.title.rendered)}</div>:null}</h5></Link></td>
+                                        <td>{(store.acf.flags)?<div>{store.acf.flags[0] + '!'}</div>:""}{(this.isSale(store))?<div>Offer Available</div>: ""}</td>
+                                        <td>{(store.acf.phone_number)?<div>{store.acf.phone_number}</div>:null}</td>
+                                        <td><small>{store.date.substring(0, 10)}</small></td>
+                                        <td>{(store.acf.street_address)? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank">Map Icon</a> : ""}</td>
+                                        <td><Link to={`/dining/${store.slug}/`} className="halcyon-button viewStoreButton"><div>View Store ></div></Link></td>
+                                    </tr>
+                                    )
+                                } else if (String(store.imag_taxonomy_store_category[0]).includes(categoryId[0]) && this.state.search != ''){
+                                    if (store.title.rendered.toLowerCase().includes(this.state.search.toLowerCase())){
+                                        return (
+                                            <tr key={store.id} className={store.id + ' storeRow'} categories={(store.imag_taxonomy_store_category[0]) ? store.imag_taxonomy_store_category : "-1"} slug={store.title.rendered}>
+                                                <td><Link to={`/dining/${store.slug}/`}><h5>{(store.title.rendered)?<div>{ReactHtmlParser(store.title.rendered)}</div>:null}</h5></Link></td>
+                                                <td>{(store.acf.flags)?<div>{store.acf.flags[0] + '!'}</div>:""}{(this.isSale(store))?<div>Offer Available</div>: ""}</td>
+                                                <td>{(store.acf.phone_number)?<div>{store.acf.phone_number}</div>:null}</td>
+                                                <td><small>{store.date.substring(0, 10)}</small></td>
+                                                <td>{(store.acf.street_address)? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank">Map Icon</a> : ""}</td>
+                                                <td><Link to={`/dining/${store.slug}/`} className="halcyon-button viewStoreButton"><div>View Store ></div></Link></td>
+                                            </tr>                                 
+                                    )}
+                                }
+                            }
+                            }
+                        })}
                     </tbody>
                     </table>
-                : 
-                    <table className="table table-hover">
-                    <tbody>
-                        {stores.map(store => (
-                        (store.acf.store_type == "retailer" && store.title.rendered.toLowerCase().includes(this.state.search.toLowerCase())) ? 
-                            <tr key={store.id} className={store.id } categories={(store.imag_taxonomy_store_category[0]) ? store.imag_taxonomy_store_category : "-1"}>
-                            <td><Link to={`/dining/${store.slug}/`}><h5>{(store.title.rendered)?<div>{ReactHtmlParser(store.title.rendered)}</div>:null}</h5></Link></td>
-                            <td>{(store.acf.flags)?<div>{store.acf.flags[0] + '!'}</div>:""}{(this.isSale(store))?<div>Offer Available</div>: ""}</td>
-                            <td>{(store.acf.phone_number)?<div>{store.acf.phone_number}</div>:null}</td>
-                            <td><small>{store.date.substring(0, 10)}</small></td>
-                            <td>{(store.acf.street_address)? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank">Map Icon</a> : ""}</td>
-                            <td><Link to={`/dining/${store.slug}/`} className="halcyon-button viewStoreButton"><div>View Store ></div></Link></td>
-                            </tr>
-                        : "" 
-                        ))}
-                    </tbody>
-                    </table>
-                }
-                {(this.state.search == '') ? <div class="halcyon-button" id="loadMore" onClick={this.loadMore}>Load More</div> : <div class="halcyon-button hidden" id="loadMore" onClick={this.loadMore}>Load More</div> }
-                </div>
+                <div class="halcyon-button" id="loadMore" onClick={this.loadMore}>Load More</div> </div>
         </Container>
         </div>
     );
