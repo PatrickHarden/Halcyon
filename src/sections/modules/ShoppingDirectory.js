@@ -6,6 +6,7 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import '../../css/modules/shoppingDirectory.css'
+import helpers from '../../helpers.js'
 
 var categories = [];
 var categoryId = '';
@@ -13,9 +14,6 @@ var storeAmount = [];
 var salesArray = [];
 var globalHours = [];
 var globalHolidayHours = [];
-var todaysDate = new Date();
-var day = new Date().getDay();
-var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 export default withSiteData(class ShoppingDirectory extends React.Component {
     constructor(props) {
@@ -38,8 +36,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
         }));
     }
 
-
-    loadMore() {
+    loadMore(){
         this.setState({
             amount: this.state.amount + 10
         })
@@ -129,79 +126,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                 globalHolidayHours.push(this.props.centerInfo.acf.alternate_hours[0])
             }
         }
-        console.log(globalHolidayHours)
     }
-
-    getHours(store) {
-        // If store holiday hours are present and today
-        console.log(store)
-        var customStoreHolidayHours = false
-        var customStoreHours = false
-        var holidayHours = false
-        var storeHours = false
-        if (store.acf.alternate_hours.length != 0) {
-            var hourArray = store.acf.alternate_hours
-            for (var i = 0; i < hourArray.length; i++) {
-                var testDate = new Date(store.acf.alternate_hours[i].date_picker)
-                if (testDate.setHours(0, 0, 0, 0) == todaysDate.setHours(0, 0, 0, 0)) {
-                    customStoreHolidayHours = true
-                    return store.acf.alternate_hours[i].start_time + " - " + store.acf.alternate_hours[i].end_time
-                }
-            }
-        }
-        if (store.acf.custom_hours == true && customStoreHolidayHours == false) {
-            if (days[day] == "Monday") {
-                if (store.acf.standard_hours[0].thursday_closed == false) {
-                    customStoreHours = true;
-                    return store.acf.standard_hours[0].thursday_open + " - " + store.acf.standard_hours[0].thursday_close
-                }
-            } else if (days[day] == "Tuesday") {
-                if (store.acf.standard_hours[0].thursday_closed == false) {
-                    customStoreHours = true;
-                    return store.acf.standard_hours[0].thursday_open + " - " + store.acf.standard_hours[0].thursday_close
-                }
-            } else if (days[day] == "Wednesday") {
-                if (store.acf.standard_hours[0].thursday_closed == false) {
-                    customStoreHours = true;
-                    return store.acf.standard_hours[0].thursday_open + " - " + store.acf.standard_hours[0].thursday_close
-                }
-            } else if (days[day] == "Thursday") {
-                if (store.acf.standard_hours[0].thursday_closed == false) {
-                    customStoreHours = true;
-                    return store.acf.standard_hours[0].thursday_open + " - " + store.acf.standard_hours[0].thursday_close
-                }
-            } else if (days[day] == "Friday") {
-                if (store.acf.standard_hours[0].thursday_closed == false) {
-                    customStoreHours = true;
-                    return store.acf.standard_hours[0].thursday_open + " - " + store.acf.standard_hours[0].thursday_close
-                }
-            } else if (days[day] == "Saturday") {
-                if (store.acf.standard_hours[0].thursday_closed == false) {
-                    customStoreHours = true;
-                    return store.acf.standard_hours[0].thursday_open + " - " + store.acf.standard_hours[0].thursday_close
-                }
-            } else if (days[day] == "Sunday") {
-                if (store.acf.standard_hours[0].thursday_closed == false) {
-                    customStoreHours = true;
-                    return store.acf.standard_hours[0].thursday_open + " - " + store.acf.standard_hours[0].thursday_close
-                }
-            }
-        }
-        if (store.acf.custom_hours == false && customStoreHolidayHours == false && customStoreHours == false) {
-            console.log('etset')
-            if (globalHolidayHours != 0) {
-                var hourArray = store.acf.alternate_hours
-                for (var i = 0; i < hourArray.length; i++) {
-                    var testDate = new Date(store.acf.alternate_hours[i].date_picker)
-                    if (testDate.setHours(0, 0, 0, 0) == todaysDate.setHours(0, 0, 0, 0)) {
-                        customStoreHolidayHours = true
-                        return store.acf.alternate_hours[i].start_time + " - " + store.acf.alternate_hours[i].end_time
-                    }
-                }
-            }
-        }
-    }
-
 
     render() {
 
@@ -240,7 +165,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                                             <div className='center-container'>
                                                 <div className='store-phone'>{(store.acf.phone_number) ? <a href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
                                                 <div className='store-directions'>{(store.acf.street_address) ? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon' /></a> : ""}</div>
-                                                <div className='hours'>{this.getHours(store)}</div>
+                                                <div className='hours'>{helpers.getHours(store, globalHours, globalHolidayHours)}</div>
                                             </div>
                                             <div className='button-wrapper'><Link to={`/shopping/${store.slug}/`} className="halcyon-button arrow viewStoreButton"><div>View Store</div></Link></div>
                                         </div>
@@ -255,7 +180,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                                                     <div className='center-container'>
                                                         <div className='store-phone'>{(store.acf.phone_number) ? <a href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
                                                         <div className='store-directions'>{(store.acf.street_address) ? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon' /></a> : ""}</div>
-                                                        <div className='hours'>{this.getHours(store)}</div>
+                                                        <div className='hours'>{helpers.getHours(store, globalHours, globalHolidayHours)}</div>
                                                     </div>
                                                     <div className='button-wrapper'><Link to={`/shopping/${store.slug}/`} className="halcyon-button arrow viewStoreButton"><div>View Store</div></Link></div>
                                                 </div>
@@ -269,7 +194,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                                                 <div className='center-container'>
                                                     <div className='store-phone'>{(store.acf.phone_number) ? <a href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
                                                     <div className='store-directions'>{(store.acf.street_address) ? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon' /></a> : ""}</div>
-                                                    <div className='hours'>{this.getHours(store)}</div>
+                                                    <div className='hours'>{helpers.getHours(store, globalHours, globalHolidayHours)}</div>
                                                 </div>
                                                 <div className='button-wrapper'><Link to={`/shopping/${store.slug}/`} className="halcyon-button arrow viewStoreButton"><div>View Store</div></Link></div>
                                             </div>
@@ -283,7 +208,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                                                     <div className='center-container'>
                                                         <div className='store-phone'>{(store.acf.phone_number) ? <a href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
                                                         <div className='store-directions'>{(store.acf.street_address) ? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon' /></a> : ""}</div>
-                                                        <div className='hours'>{this.getHours(store)}</div>
+                                                        <div className='hours'>{helpers.getHours(store, globalHours, globalHolidayHours)}</div>
                                                     </div>
                                                     <div className='button-wrapper'><Link to={`/shopping/${store.slug}/`} className="halcyon-button arrow viewStoreButton"><div>View Store</div></Link></div>
                                                 </div>
