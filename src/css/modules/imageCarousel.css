@@ -28,6 +28,7 @@
 }
 .imageCarousel .slider-container {
     padding: 3rem 0;
+    background-size: cover;
 }
 .imageCarousel .slider-container .slick-track {
     display: flex;

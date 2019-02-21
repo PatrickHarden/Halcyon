@@ -99,12 +99,12 @@ export default class GlobalImageGrid extends Component {
             <div className="image-grid-container">
                 <div className="module image_grid">
                     <div className="row">
-                        <div className="col-xs-6 image-group image-group-1">
+                        <div className="col-sm-6 image-group image-group-1">
                             <div>
                                {this.mapImageArrays(this.state.imageGridData.image_group_1)}
                             </div>
                         </div>
-                        <div className="col-xs-6">
+                        <div className="col-sm-6">
                             <div className="row">
                                 <div className="col-xs-6 image-group image-group-2">
                                     <div>

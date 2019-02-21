@@ -1,6 +1,7 @@
 import React from "react";
 import { withSiteData } from 'react-static'
 import { Container, Row, Col, Button, Form, FormGroup, Input } from 'reactstrap'
+import '../../css/modules/form.css'
 
 export default class Forms extends React.Component {
 
@@ -89,7 +90,7 @@ export default class Forms extends React.Component {
                                 >
                                     <div className="row">
 
-                                        <Col xs={12}>
+                                        <div className='col-xs-12'>
                                             <label for={field.label}>
                                                 <b>{field.label + (field.isRequired ? '*' : '')}</b><br/>
                                                 <select
@@ -108,7 +109,7 @@ export default class Forms extends React.Component {
                                                     })}
                                                 </select>
                                             </label>
-                                        </Col>
+                                        </div>
                                     </div>
                                 </div>
                             );
@@ -281,7 +282,7 @@ export default class Forms extends React.Component {
     render() {
 
         return (
-            <div className='imageCarousel'>
+            <div className='formModule'>
                 <div className='heading-container'>
                     <Container>
                         <h2>{this.props.section.heading}</h2>
@@ -289,6 +290,9 @@ export default class Forms extends React.Component {
                 </div>
                 <Container>
                     <Row>
+                        {this.props.section.blurb &&
+                            <Col sm={12} className='blurb'>{this.props.section.blurb}</Col>
+                        }
                         <Form action={"https://formspree.io/" + this.state.email}
                     method="POST" >
                         {this.state.fields}

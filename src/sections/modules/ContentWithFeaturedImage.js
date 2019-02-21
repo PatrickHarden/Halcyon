@@ -55,7 +55,7 @@ export default withSiteData(class ContentWithFeaturedImage extends React.Compone
                 </Col>
                 <Col sm={6} lg={5} className='content-column'>
                     {this.props.section.heading &&
-                        <div className='heading'><h2>{this.props.section.heading}</h2><img className='feather hidden-xs' src={DarkFeather} alt='feather'/></div>
+                        <div className='heading'><h2>{this.props.section.heading}</h2></div>
                     }
                     {this.props.section.content &&
                         <div clasName='content'>{ReactHtmlParser(this.props.section.content)}</div>
