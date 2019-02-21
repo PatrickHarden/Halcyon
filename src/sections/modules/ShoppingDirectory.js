@@ -3,7 +3,7 @@ import { Link, withSiteData } from 'react-static'
 import { Container, Row, Col } from 'reactstrap';
 import ReactHtmlParser from 'react-html-parser';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import { faStickerMule } from "@fortawesome/fontawesome-free-brands";
+import helpers from '../../helpers.js'
 
 var categories = [];
 var categoryId = '';
@@ -36,7 +36,6 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
           dropdownOpen: !prevState.dropdownOpen
         }));
     }
-
 
     loadMore(){
         this.setState({
@@ -130,144 +129,6 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
         }
     }
 
-    getHours(store){
-        // If store holiday hours are present and today
-        var customStoreHolidayHours = false
-        var customStoreHours = false
-        var holidayHours = false
-        if (store.acf.alternate_hours.length != 0){
-            var hourArray = store.acf.alternate_hours
-            for (var i = 0; i < hourArray.length; i++){
-                var testDate = new Date(store.acf.alternate_hours[i].date_picker)
-                if(testDate.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0) && store.acf.alternate_hours[i].closed == true) {
-                    customStoreHolidayHours = true
-                    return store.acf.alternate_hours[i].start_time + " - " + store.acf.alternate_hours[i].end_time
-                }
-            }
-        }
-        if (store.acf.custom_hours == true && customStoreHolidayHours == false){
-            if (days[day] == "Monday"){
-                if (store.acf.standard_hours[0].monday_closed == false){
-                    customStoreHours = true;
-                    return store.acf.standard_hours[0].monday_open + " - " + store.acf.standard_hours[0].monday_close
-                } else {
-                    return 'Closed'
-                }
-            } else if (days[day] == "Tuesday"){
-                if (store.acf.standard_hours[0].tuesday_closed == false){
-                    customStoreHours = true;
-                    return store.acf.standard_hours[0].tuesday_open + " - " + store.acf.standard_hours[0].tuesday_close
-                } else {
-                    return 'Closed'
-                }
-            } else if (days[day] == "Wednesday"){
-                if (store.acf.standard_hours[0].wednesday_closed == false){
-                    customStoreHours = true;
-                    return store.acf.standard_hours[0].wednesday_open + " - " + store.acf.standard_hours[0].wednesday_close
-                } else {
-                    return 'Closed'
-                }
-            } else if (days[day] == "Thursday"){
-                if (store.acf.standard_hours[0].thursday_closed == false){
-                    customStoreHours = true;
-                    return store.acf.standard_hours[0].thursday_open + " - " + store.acf.standard_hours[0].thursday_close
-                } else {
-                    return 'Closed'
-                }
-            } else if (days[day] == "Friday"){
-                if (store.acf.standard_hours[0].friday_closed == false){
-                    customStoreHours = true;
-                    return store.acf.standard_hours[0].friday_open + " - " + store.acf.standard_hours[0].friday_close
-                } else {
-                    return 'Closed'
-                }
-            } else if (days[day] == "Saturday"){
-                if (store.acf.standard_hours[0].saturday_closed == false){
-                    customStoreHours = true;
-                    return store.acf.standard_hours[0].saturday_open + " - " + store.acf.standard_hours[0].saturday_close
-                } else {
-                    return 'Closed'
-                }
-            } else if (days[day] == "Sunday"){
-                if (store.acf.standard_hours[0].sunday_closed == false){
-                    customStoreHours = true;
-                    return store.acf.standard_hours[0].sunday_open + " - " + store.acf.standard_hours[0].sunday_close
-                } else {
-                    return 'Closed'
-                }
-            }
-        }
-        if (store.acf.custom_hours == false && customStoreHolidayHours == false){
-            if (globalHolidayHours.length != 0){
-                var hourArray = globalHolidayHours
-                for (var i = 0; i < hourArray.length; i++){
-                    var testDate = new Date(globalHolidayHours[i].date_picker)
-                    if(testDate.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0) && globalHolidayHours[i].closed == true) {
-                        console.log('holiday hours true')
-                        holidayHours = true
-                        return globalHolidayHours[i].start_time + " - " + globalHolidayHours[i].end_time
-                    }
-                }
-            }
-        }
-        if (store.acf.custom_hours == false && customStoreHolidayHours == false && holidayHours == false){
-            if (globalHours.length != 0){
-                console.log(globalHours, 'global hours')
-                if (days[day] == "Monday"){
-                    if (globalHours[0].monday_closed == false){
-                        customStoreHours = true;
-                        return globalHours[0].monday_open + " - " + globalHours[0].monday_close
-                    } else {
-                        return 'Closed'
-                    }
-                } else if (days[day] == "Tuesday"){
-                    if (globalHours[0].tuesday_closed == false){
-                        customStoreHours = true;
-                        return globalHours[0].tuesday_open + " - " + globalHours[0].tuesday_close
-                    } else {
-                        return 'Closed'
-                    }
-                } else if (days[day] == "Wednesday"){
-                    if (globalHours[0].wednesday_closed == false){
-                        customStoreHours = true;
-                        return globalHours[0].wednesday_open + " - " + globalHours[0].wednesday_close
-                    } else {
-                        return 'Closed'
-                    }
-                } else if (days[day] == "Thursday"){
-                    if (globalHours[0].thursday_closed == false){
-                        customStoreHours = true;
-                        return globalHours[0].thursday_open + " - " + globalHours[0].thursday_close
-                    } else {
-                        return 'Closed'
-                    }
-                } else if (days[day] == "Friday"){
-                    if (globalHours[0].friday_closed == false){
-                        customStoreHours = true;
-                        return globalHours[0].friday_open + " - " + globalHours[0].friday_close
-                    } else {
-                        return 'Closed'
-                    }
-                } else if (days[day] == "Saturday"){
-                    if (globalHours[0].saturday_closed == false){
-                        customStoreHours = true;
-                        return globalHours[0].saturday_open + " - " + globalHours[0].saturday_close
-                    } else {
-                        return 'Closed'
-                    }
-                } else if (days[day] == "Sunday"){
-                    if (globalHours[0].sunday_closed == false){
-                        customStoreHours = true;
-                        return globalHours[0].sunday_open + " - " + globalHours[0].sunday_close
-                    } else {
-                        return 'Closed'
-                    }
-                } 
-            }
-        }    
-    }
-
-
     render() {
 
     return (   <div>
@@ -298,7 +159,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                                         <td><Link to={`/dining/${store.slug}/`}><h5>{(store.title.rendered)?<div>{ReactHtmlParser(store.title.rendered)}</div>:null}</h5></Link></td>
                                         <td>{(store.acf.flags)?<div>{store.acf.flags[0] + '!'}</div>:""}{(this.isSale(store))?<div>Offer Available</div>: ""}</td>
                                         <td>{(store.acf.phone_number)?<div>{store.acf.phone_number}</div>:null}</td>
-                                        <td><small>{this.getHours(store)}</small></td>
+                                        <td><small>{helpers.getHours(store, globalHours, globalHolidayHours)}</small></td>
                                         <td>{(store.acf.street_address)? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank">Map Icon</a> : ""}</td>
                                         <td><Link to={`/dining/${store.slug}/`} className="halcyon-button viewStoreButton"><div>View Store ></div></Link></td>
                                     </tr>
@@ -311,7 +172,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                                                 <td><Link to={`/dining/${store.slug}/`}><h5>{(store.title.rendered)?<div>{ReactHtmlParser(store.title.rendered)}</div>:null}</h5></Link></td>
                                                 <td>{(store.acf.flags)?<div>{store.acf.flags[0] + '!'}</div>:""}{(this.isSale(store))?<div>Offer Available</div>: ""}</td>
                                                 <td>{(store.acf.phone_number)?<div>{store.acf.phone_number}</div>:null}</td>
-                                                <td><small>{this.getHours(store)}</small></td>
+                                                <td><small>{helpers.getHours(store, globalHours, globalHolidayHours)}</small></td>
                                                 <td>{(store.acf.street_address)? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank">Map Icon</a> : ""}</td>
                                                 <td><Link to={`/dining/${store.slug}/`} className="halcyon-button viewStoreButton"><div>View Store ></div></Link></td>
                                             </tr>                                 
@@ -322,7 +183,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                                         <td><Link to={`/dining/${store.slug}/`}><h5>{(store.title.rendered)?<div>{ReactHtmlParser(store.title.rendered)}</div>:null}</h5></Link></td>
                                         <td>{(store.acf.flags)?<div>{store.acf.flags[0] + '!'}</div>:""}{(this.isSale(store))?<div>Offer Available</div>: ""}</td>
                                         <td>{(store.acf.phone_number)?<div>{store.acf.phone_number}</div>:null}</td>
-                                        <td><small>{this.getHours(store)}</small></td>
+                                        <td><small>{helpers.getHours(store, globalHours, globalHolidayHours)}</small></td>
                                         <td>{(store.acf.street_address)? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank">Map Icon</a> : ""}</td>
                                         <td><Link to={`/dining/${store.slug}/`} className="halcyon-button viewStoreButton"><div>View Store ></div></Link></td>
                                     </tr>
@@ -334,7 +195,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                                                 <td><Link to={`/dining/${store.slug}/`}><h5>{(store.title.rendered)?<div>{ReactHtmlParser(store.title.rendered)}</div>:null}</h5></Link></td>
                                                 <td>{(store.acf.flags)?<div>{store.acf.flags[0] + '!'}</div>:""}{(this.isSale(store))?<div>Offer Available</div>: ""}</td>
                                                 <td>{(store.acf.phone_number)?<div>{store.acf.phone_number}</div>:null}</td>
-                                                <td><small>{this.getHours(store)}</small></td>
+                                                <td><small>{helpers.getHours(store, globalHours, globalHolidayHours)}</small></td>
                                                 <td>{(store.acf.street_address)? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank">Map Icon</a> : ""}</td>
                                                 <td><Link to={`/dining/${store.slug}/`} className="halcyon-button viewStoreButton"><div>View Store ></div></Link></td>
                                             </tr>                                 

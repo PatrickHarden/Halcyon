@@ -38,7 +38,6 @@ export default withSiteData(class DiningDirectory extends React.Component {
                     </Container>
                 </div>
                 <Container className="diningRows">
-                {console.log(stores)}
                     {stores.map((store, index) => (
                         (store.acf.store_type == "restaurant") ? 
                         <div key={index} className='store-single'>
@@ -48,7 +47,7 @@ export default withSiteData(class DiningDirectory extends React.Component {
                             <div className='content-wrapper'>
                                 <h4 className='store-title'>{ReactHtmlParser(store.title.rendered)}</h4>
                                 <div className='hours'>Hours: Mon-Sun 8am-10pm</div>
-                                {(store.acf.store_copy) ? <div className='hidden-xs'>{ReactHtmlParser(this.compressText(store.acf.store_copy))}</div> : ''}
+                                {(store.acf.store_copy) ? <div className='hidden-xs'>{ReactHtmlParser(helpers.compressText(store.acf.store_copy, 200))}</div> : ''}
                             </div>
                             <div className='action-corner'>
                                 <div className='social-container hidden-xs'>

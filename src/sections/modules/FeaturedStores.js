@@ -10,6 +10,7 @@ import '../../css/modules/featuredStores.css';
 import leftArrow from '../../images/leftArrow.png';
 import rightArrow from '../../images/rightArrow.png';
 import $ from 'jquery';
+import helpers from '../../helpers.js'
 
 var storeArray = [];
 var prevTitle;
@@ -121,7 +122,7 @@ export default withSiteData(class FeaturesStores extends React.Component {
                                         <div className='inner-wrapper'>
                                             <h4 key={store.slug}>{ReactHtmlParser(store.title.rendered)}</h4>
                                             <div className="tenantText">
-                                            {ReactHtmlParser(this.compressText(store.acf.store_copy))}
+                                            {ReactHtmlParser(helpers.compressText(store.acf.store_copy, 200))}
                                             {/* {ReactHtmlParser(store.acf.store_copy)} */}
                                             </div>
                                             <a className='halcyon-button' href={`/shopping/${store.slug}/`}>Learn More</a>
