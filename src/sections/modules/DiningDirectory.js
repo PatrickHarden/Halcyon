@@ -52,7 +52,7 @@ export default withSiteData(class DiningDirectory extends React.Component {
         storeCounter = storeCounter.filter(function (el) {
             return el != null;
         });
-        console.log(storeCounter.length)
+        console.log(this.props.temp)
     }
 
     componentWillUpdate(){

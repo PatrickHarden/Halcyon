@@ -31,15 +31,15 @@ export default class TintSocialFeed extends Component{
             <div className="tint-social-feed">
                 <div
                     className="tintup"
-                    data-id={this.props.optionsData.acf.social_feed_data_id}
+                    data-id={this.props.optionsData.acf.script_id}
                     data-columns=""
                     data-mobilescroll="true"
                     data-infinitescroll="true"
-                    data-personalization-id={this.props.optionsData.acf.social_feed_personalization_id}
+                    data-personalization-id={this.props.optionsData.acf.personalization_id}
                     style={{'height':'350px','width':'100%'}}
                 ></div>
                 <Script
-                    url={this.props.optionsData.acf.social_feed_script_url}
+                    url={this.props.optionsData.acf.script_url}
                     onCreate={this.handleScriptCreate.bind(this)}
                     onLoad={this.handleScriptLoad.bind(this)}
                 />
