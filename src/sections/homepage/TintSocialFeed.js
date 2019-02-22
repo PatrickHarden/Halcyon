@@ -31,7 +31,7 @@ export default class TintSocialFeed extends Component{
             <div className="tint-social-feed">
                 <div
                     className="tintup"
-                    data-id={this.props.optionsData.acf.script_id}
+                    data-id={this.props.optionsData.acf.data_id}
                     data-columns=""
                     data-mobilescroll="true"
                     data-infinitescroll="true"
@@ -44,7 +44,6 @@ export default class TintSocialFeed extends Component{
                     onLoad={this.handleScriptLoad.bind(this)}
                 />
             </div>
-
         )
     }
 }
