@@ -22,7 +22,7 @@ export default withSiteData(class DiningDirectory extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            amount: 8
+            amount: 4
         }
         this.loadMore = this.loadMore.bind(this);
     }
