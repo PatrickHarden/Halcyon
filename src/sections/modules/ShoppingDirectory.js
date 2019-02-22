@@ -4,7 +4,8 @@ import { Container, Row, Col } from 'reactstrap';
 import ReactHtmlParser from 'react-html-parser';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
+import { faPhone, faMapMarkerAlt, faPlus } from '@fortawesome/free-solid-svg-icons'
+import MapIconDesktop from '../../images/map-icon-desktop.png'
 import '../../css/modules/shoppingDirectory.css'
 import helpers from '../../helpers.js'
 
@@ -207,7 +208,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                                                     <div className='red-text'>{(store.acf.flags) ? <div>{store.acf.flags[0] + '!'}</div> : ""}{(this.isSale(store)) ? <div>Offer Available</div> : ""}</div>
                                                     <div className='center-container'>
                                                         <div className='store-phone'>{(store.acf.phone_number) ? <a href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
-                                                        <div className='store-directions'>{(store.acf.street_address) ? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon' /></a> : ""}</div>
+                                                        <div className='store-directions'>{(store.acf.street_address) ? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon visible-xs' /><img src={MapIconDesktop} className="hidden-xs icon" /></a> : ""}</div>
                                                         <div className='hours'>{helpers.getHours(store, globalHours, globalHolidayHours)}</div>
                                                     </div>
                                                     <div className='button-wrapper'><Link to={`/shopping/${store.slug}/`} className="halcyon-button arrow viewStoreButton"><div>View Store</div></Link></div>
@@ -219,7 +220,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                             }
                         })}
                     </div>
-                    <div class="loadmore-button" id="loadMore" onClick={this.loadMore}>Load More</div>
+                    <div class="loadmore-button" id="loadMore" onClick={this.loadMore}><FontAwesomeIcon icon={faPlus} className='icon' />Load More</div>
                 </Container>
             </div>
         );

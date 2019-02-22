@@ -93,6 +93,32 @@ img {
 .halcyon-button.arrow:hover:after {
     border-color: #4E5859;
 }
+#loadMore {
+    font-size: 2rem;
+    font-family: 'Flama', sans-serif;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem auto;
+    cursor: pointer;
+}
+
+#loadMore .icon {
+    background: #8F1838;
+    height: 50px;
+    width: 50px;
+    padding: 1.5rem;
+    color: #fff;
+    border-radius: 50%;
+    margin-right: 1rem;
+    box-shadow: 3px 3px 10px #aaa;
+    transition: .3s;
+}
+#loadMore:hover .icon {
+    transform: scale(1.1);
+    box-shadow: 5px 5px 15px #666;
+}
 @media screen and (min-width: 768px) {
     body {
         font-size: 1.4rem;

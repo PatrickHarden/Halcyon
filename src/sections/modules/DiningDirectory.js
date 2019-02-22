@@ -8,7 +8,7 @@ import RestaurantIcon from '../../images/restaurantIcon.png'
 import OpenTableIcon from '../../images/icon-open-table.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
   import {faFacebookF, faTwitter, faInstagram} from '@fortawesome/fontawesome-free-brands'
-  import { faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
+  import { faPhone, faMapMarkerAlt, faPlus } from '@fortawesome/free-solid-svg-icons'
 import helpers from '../../helpers.js'
 
 import '../../css/modules/diningDirectory.css'
@@ -113,7 +113,7 @@ export default withSiteData(class DiningDirectory extends React.Component {
                         </div>
                         : "" 
                     ))}
-                    <div class="loadmore-button halcyon-button" id="loadMore" onClick={this.loadMore}>Load More</div>
+                    <div class="loadmore-button" id="loadMore" onClick={this.loadMore}><FontAwesomeIcon icon={faPlus} className='icon' />Load More</div>
                 </Container>
             </div>
         );

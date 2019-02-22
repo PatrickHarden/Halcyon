@@ -37,6 +37,10 @@
 .imageCarousel .slider-container .slick-slide {
     background-size: cover;
 }
+.imageCarousel .slider-container .slick-slide img {
+    border-radius: 10px;
+    transition: .4s;
+}
 @media screen and (min-width: 768px) {
     .imageCarousel .slider-container .slick-slide {
         padding: 0 1rem;
@@ -44,10 +48,6 @@
       }
       .imageCarousel .slider-container {
         padding: 5rem 0;
-    }
-    .imageCarousel .slider-container .slick-slide img {
-        border-radius: 10px;
-        transition: .4s;
     }
     .imageCarousel .slick-arrow {
         width: auto;
