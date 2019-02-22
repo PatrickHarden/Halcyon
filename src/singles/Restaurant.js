@@ -8,6 +8,7 @@ import ReactHtmlParser from 'react-html-parser'
 import '../css/components/pageContent.css'
 import '../css/components/retailerContent.css'
 import '../css/components/mobileFloatingNav.css'
+import ModuleController from '../sections/modules/ModuleController.js';
 //
 
 export default withRouteData(({ restaurant, siteRoot, title, metaDescription }) => (
@@ -47,5 +48,6 @@ export default withRouteData(({ restaurant, siteRoot, title, metaDescription }) 
         </Col>
       </Row>
     </div>
+    <ModuleController page={restaurant} />
   </section>
 ))
