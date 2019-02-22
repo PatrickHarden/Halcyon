@@ -22,9 +22,11 @@ export default withSiteData(class contentWithFeaturedSale extends React.Componen
             return sale.post_name;
         })
         targetSale = this.props.sales.map(sale => {
-            if (sale.slug == targetStore[0]) {
-                return sale
-            } 
+            for (var i = 0; i < targetStore.length; i++){
+                if (sale.slug == targetStore[i]) {
+                    return sale
+                } 
+            }
         })
         targetSale = targetSale.filter(function (el) {
             return el != null;
@@ -48,6 +50,7 @@ export default withSiteData(class contentWithFeaturedSale extends React.Componen
                         {targetSale[0].acf.post_copy &&
                             <div clasName='content'>{ReactHtmlParser(targetSale[0].acf.post_copy)}</div>
                         }
+                        <Link class="halcyon-button" to={'/sales/' + targetSale[0].slug}>More info</Link>
                     </Col>
                 </Row> 
             </Container>
