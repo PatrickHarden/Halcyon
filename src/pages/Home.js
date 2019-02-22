@@ -178,7 +178,8 @@ export default withRouteData(class Home extends React.Component {
                 })}
               </div> : "" }
             <Container className='social-feed-container'>
-            {(this.props.property_options.acf.social_feed_data_id) ? <div>
+            {console.log(this.props.property_options)}
+            {(this.props.property_options.acf.data_id) ? <div>
               <h2>@HALCYONFORSYTH</h2>
               <TintSocialFeed optionsData={this.props.property_options} />
             </div> : ""}

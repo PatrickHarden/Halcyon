@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+var retailers;
+var restaurants;
 export default {
   disableDuplicateRoutesWarning: true,
   getSiteData: async () => {
@@ -45,6 +47,23 @@ export default {
     const metaDescription = property_options.acf.meta_description
     const siteRoot = 'https://halycon.netlify.com/'
     const title = 'Halcyon'
+    retailers = stores.map(store => {
+      if (store.acf.store_type == "retailer"){
+        return store
+      }
+    })
+    retailers = retailers.filter(function (el) {
+      return el != null;
+    });
+    restaurants = stores.map(store => {
+      if (store.acf.store_type == "restaurant"){
+        return store
+      }
+    })
+    restaurants = restaurants.filter(function (el) {
+      return el != null;
+    });
+
 
     return [
       {
@@ -113,11 +132,11 @@ export default {
         getData: () => ({
           stores, siteRoot, title, metaDescription, pages, sales
         }),
-        children: stores.map(store => ({
-          path: `/${store.slug}`,
-          component: 'src/singles/Store',
+        children: retailers.map(retailer => ({
+          path: `/${retailer.slug}`,
+          component: 'src/singles/Retailer',
           getData: () => ({
-            store, siteRoot, title, metaDescription
+            retailer, siteRoot, title, metaDescription
           }),
         })),
       },
@@ -127,11 +146,11 @@ export default {
         getData: () => ({
           stores, siteRoot, title, metaDescription, pages
         }),
-        children: stores.map(store => ({
-          path: `/${store.slug}`,
-          component: 'src/singles/Store',
+        children: restaurants.map(restaurant => ({
+          path: `/${restaurant.slug}`,
+          component: 'src/singles/Restaurant',
           getData: () => ({
-            store, siteRoot, title, metaDescription
+            restaurant, siteRoot, title, metaDescription
           }),
         })),
       },

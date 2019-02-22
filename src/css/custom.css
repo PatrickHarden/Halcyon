@@ -1,5 +1,7 @@
 /* Home */
 .search-page-bar {margin-top:30px;}
+#initialHeroImage img {width:100%;}
+#fadeHeroIn {visibility:hidden}
 form input[type=date].form-control {color:rgba(0,0,0,0.4)}
 
 .hero-slider .slick-slide {
@@ -65,8 +67,6 @@ form input[type=date].form-control {color:rgba(0,0,0,0.4)}
     vertical-align: top;
 }
 /* Fixes issue of slides stacking on page load */
-.hero-slider-wrapper { max-height:600px; transition:.5s ease ease-in; opacity:0;}
-.hero-slider-wrapper.fadeHeroIn {max-height:inherit; opacity:1;}
 
 #searchBar {
     background:#8F1838;

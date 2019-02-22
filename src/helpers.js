@@ -14,131 +14,129 @@ const helpers = {
     getHours: function(store, globalHours, globalHolidayHours){
         // If store holiday hours are present and today
         var customStoreHolidayHours = false
-        var customStoreHours = false
         var holidayHours = false
         if (store.acf.alternate_hours.length != 0){
             var hourArray = store.acf.alternate_hours
             for (var i = 0; i < hourArray.length; i++){
                 var testDate = new Date(store.acf.alternate_hours[i].date_picker)
-                if(testDate.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0) && store.acf.alternate_hours[i].closed == true) {
+                if(testDate.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)) {
+                    console.log('Custom store holiday hours:', store.acf.alternate_hours)
                     customStoreHolidayHours = true
-                    return store.acf.alternate_hours[i].start_time + " - " + store.acf.alternate_hours[i].end_time
+                    if (store.acf.alternate_hours[i].closed == true){
+                        return store.acf.alternate_hours[i].start_time + " - " + store.acf.alternate_hours[i].end_time
+                    } else {
+                        return 'Closed'
+                    }
                 }
             }
         }
+        // If store custom hours are present and store custom holiday hours are not in range
         if (store.acf.custom_hours == true && customStoreHolidayHours == false){
+            console.log('Custom store hours:', store.acf.standard_hours[0])
             if (days[day] == "Monday"){
                 if (store.acf.standard_hours[0].monday_closed == false){
-                    customStoreHours = true;
                     return store.acf.standard_hours[0].monday_open + " - " + store.acf.standard_hours[0].monday_close
                 } else {
                     return 'Closed'
                 }
             } else if (days[day] == "Tuesday"){
                 if (store.acf.standard_hours[0].tuesday_closed == false){
-                    customStoreHours = true;
                     return store.acf.standard_hours[0].tuesday_open + " - " + store.acf.standard_hours[0].tuesday_close
                 } else {
                     return 'Closed'
                 }
             } else if (days[day] == "Wednesday"){
                 if (store.acf.standard_hours[0].wednesday_closed == false){
-                    customStoreHours = true;
                     return store.acf.standard_hours[0].wednesday_open + " - " + store.acf.standard_hours[0].wednesday_close
                 } else {
                     return 'Closed'
                 }
             } else if (days[day] == "Thursday"){
                 if (store.acf.standard_hours[0].thursday_closed == false){
-                    customStoreHours = true;
                     return store.acf.standard_hours[0].thursday_open + " - " + store.acf.standard_hours[0].thursday_close
                 } else {
                     return 'Closed'
                 }
             } else if (days[day] == "Friday"){
                 if (store.acf.standard_hours[0].friday_closed == false){
-                    customStoreHours = true;
                     return store.acf.standard_hours[0].friday_open + " - " + store.acf.standard_hours[0].friday_close
                 } else {
                     return 'Closed'
                 }
             } else if (days[day] == "Saturday"){
                 if (store.acf.standard_hours[0].saturday_closed == false){
-                    customStoreHours = true;
                     return store.acf.standard_hours[0].saturday_open + " - " + store.acf.standard_hours[0].saturday_close
                 } else {
                     return 'Closed'
                 }
             } else if (days[day] == "Sunday"){
                 if (store.acf.standard_hours[0].sunday_closed == false){
-                    customStoreHours = true;
                     return store.acf.standard_hours[0].sunday_open + " - " + store.acf.standard_hours[0].sunday_close
                 } else {
                     return 'Closed'
                 }
             }
         }
+        // If store custom hours and custom holiday hours are false, check to see if global holiday hours are present and today
         if (store.acf.custom_hours == false && customStoreHolidayHours == false){
             if (globalHolidayHours.length != 0){
                 var hourArray = globalHolidayHours
                 for (var i = 0; i < hourArray.length; i++){
                     var testDate = new Date(globalHolidayHours[i].date_picker)
-                    if(testDate.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0) && globalHolidayHours[i].closed == true) {
-                        console.log('holiday hours true')
+                    if(testDate.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)) {
+                        console.log('Global holiday hours:', globalHolidayHours[i])
                         holidayHours = true
-                        return globalHolidayHours[i].start_time + " - " + globalHolidayHours[i].end_time
+                        if (globalHolidayHours[i].closed == true) {
+                            return globalHolidayHours[i].start_time + " - " + globalHolidayHours[i].end_time
+                        } else {
+                            return 'Closed'
+                        }
                     }
                 }
             }
         }
+        // If all other hours are non-existent, use global store hours
         if (store.acf.custom_hours == false && customStoreHolidayHours == false && holidayHours == false){
             if (globalHours.length != 0){
-                console.log(globalHours, 'global hours')
+                console.log('Global hours:', globalHours[0])
                 if (days[day] == "Monday"){
                     if (globalHours[0].monday_closed == false){
-                        customStoreHours = true;
                         return globalHours[0].monday_open + " - " + globalHours[0].monday_close
                     } else {
                         return 'Closed'
                     }
                 } else if (days[day] == "Tuesday"){
                     if (globalHours[0].tuesday_closed == false){
-                        customStoreHours = true;
                         return globalHours[0].tuesday_open + " - " + globalHours[0].tuesday_close
                     } else {
                         return 'Closed'
                     }
                 } else if (days[day] == "Wednesday"){
                     if (globalHours[0].wednesday_closed == false){
-                        customStoreHours = true;
                         return globalHours[0].wednesday_open + " - " + globalHours[0].wednesday_close
                     } else {
                         return 'Closed'
                     }
                 } else if (days[day] == "Thursday"){
                     if (globalHours[0].thursday_closed == false){
-                        customStoreHours = true;
                         return globalHours[0].thursday_open + " - " + globalHours[0].thursday_close
                     } else {
                         return 'Closed'
                     }
                 } else if (days[day] == "Friday"){
                     if (globalHours[0].friday_closed == false){
-                        customStoreHours = true;
                         return globalHours[0].friday_open + " - " + globalHours[0].friday_close
                     } else {
                         return 'Closed'
                     }
                 } else if (days[day] == "Saturday"){
                     if (globalHours[0].saturday_closed == false){
-                        customStoreHours = true;
                         return globalHours[0].saturday_open + " - " + globalHours[0].saturday_close
                     } else {
                         return 'Closed'
                     }
                 } else if (days[day] == "Sunday"){
                     if (globalHours[0].sunday_closed == false){
-                        customStoreHours = true;
                         return globalHours[0].sunday_open + " - " + globalHours[0].sunday_close
                     } else {
                         return 'Closed'
@@ -180,7 +178,9 @@ const helpers = {
                 return words[4].replace(/-/g, ' ')
             }
         } else {
-            return url.replace(/(^\w+:|^)\/\//, '')
+            var temp = url.replace(/(^\w+:|^)\/\//, '')
+            var end = temp.lastIndexOf('.');
+            return temp.substring(0, end);
         }
     },
 

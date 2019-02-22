@@ -13,10 +13,11 @@ import t_4 from '../../src/singles/Event'
 import t_5 from '../../src/pages/Sales'
 import t_6 from '../../src/singles/Sale'
 import t_7 from '../../src/oldContainers/Search'
-import t_8 from '../../src/singles/Store'
-import t_9 from '../../src/pages/SearchResults'
-import t_10 from '../../src/pages/Redirect'
-import t_11 from '../../src/pages/404'
+import t_8 from '../../src/singles/Retailer'
+import t_9 from '../../src/singles/Restaurant'
+import t_10 from '../../src/pages/SearchResults'
+import t_11 from '../../src/pages/Redirect'
+import t_12 from '../../src/pages/404'
 
 // Template Map
 global.componentsByTemplateID = global.componentsByTemplateID || [
@@ -31,12 +32,13 @@ t_7,
 t_8,
 t_9,
 t_10,
-t_11
+t_11,
+t_12
 ]
 
 // Template Tree
 global.templateIDsByPath = global.templateIDsByPath || {
-  '404': 11
+  '404': 12
 }
 
 // Get template for given path
