@@ -35,7 +35,7 @@ export default class HeroSlider extends React.Component {
 
   componentDidMount(){
     var element = document.getElementById("fadeHeroIn");
-    element.style.display = 'block';
+    element.style.visibility = 'visible';
     document.getElementById('initialHeroImage').style.display = 'none';    
   }
 
