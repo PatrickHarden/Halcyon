@@ -119,7 +119,7 @@ export default withSiteData(class MenuList extends React.Component {
 	c-0.1-0.5-0.2-1-0.2-1.5c-23.3,0-46.6,0-69.9,0c-4.6,0-7.1-2.5-7.1-7.1c0-18,0-36,0-54c0-10.8,0-21.6,0-32.4h133.9
 	c0,10.8,0,21.6,0,32.4V95C156.4,95.5,160.4,96.4,164.3,97.9z"/>
 </svg></div> : ""}
-                                {(menu.object_slug == 'shopping') ? <img id="shoppingIcon" src={''} /> : ""}
+                                {(menu.object_slug == 'shopping') ? <img id="shoppingIcon" src={shoppingIcon} /> : ""}
                                 {(menu.object_slug == 'sign-up') ? <div className='nav-icon sign-up'><svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
 	 viewBox="0 0 200 200" enable-background="new 0 0 200 200">
 <g id="_x32_">
