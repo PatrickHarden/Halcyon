@@ -50,14 +50,13 @@ export default class HeroSlider extends React.Component {
     };
     return (
       <div>
+        <div id="initialHeroImage">
+          <img src={this.props.home[0].acf.hero_slider[0].desktop_image.url} />
+        </div>
         <div className='hero-slider-wrapper' id="fadeHeroIn">
           <Slider className='hero-slider' {...settings}>
             {heroArray}
           </Slider>
-        </div>
-        <div id="initialHeroImage">
-        {console.log(this.props.home[0])}
-          <img src={this.props.home[0].acf.hero_slider[0].desktop_image.url} />
         </div>
       </div>
     );
