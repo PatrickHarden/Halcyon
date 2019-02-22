@@ -1,0 +1,15 @@
+.store-container {position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 60%;
+}
+
+.store-container .featuredImage {height:50%;}
+
+.store-container .featuredContent { height: 50%;
+    background: rgba(0,0,0,0.4);
+    margin-top: -10px;
+    color:#fff;
+    text-align: center;
+}
