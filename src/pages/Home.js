@@ -188,6 +188,5 @@ export default withRouteData(class Home extends React.Component {
           </div>
         </article>
       )
-
   }
 })

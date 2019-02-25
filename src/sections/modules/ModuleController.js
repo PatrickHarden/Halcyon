@@ -61,9 +61,9 @@ export default class ModuleController extends React.Component {
                 <Container>
                 <Row>
                     <Col xs="12">
-                    {(page.acf.additional_content) ? "" : <div>
-                    <h1>{ReactHtmlParser(page.title.rendered)}</h1>
-                    {ReactHtmlParser(page.content.rendered)}
+                    {console.log(page)}
+                    {(page.acf.additional_content) ? <div>                    <h1 id="test">{ReactHtmlParser(page.title.rendered)}</h1>
+                    {(page.content) ? ReactHtmlParser(page.content.rendered) : ""}</div> : <div>
                     </div>
                     }
                     </Col>
