@@ -38,25 +38,6 @@ export default withRouteData(class Home extends React.Component {
     };
   }
 
-  compressText(store){
-    if (store.length > 80){
-      excerpt = store.replace(regex, "").substr(0, 80)
-      excerpt = excerpt.substr(0, excerpt.lastIndexOf(" "))
-      return excerpt + "...";
-    } else {
-      return store;
-    }
-  }
-
-  getTitleFromUrl(url){
-    var words = url.split('/');
-    if (words[4] == ""){
-      return words[3].replace(/-/g, ' ')
-    } else {
-      return words[4].replace(/-/g, ' ')
-    }
-  }
-
   componentWillMount(){
 
     let component = this;
@@ -97,37 +78,11 @@ export default withRouteData(class Home extends React.Component {
     featuredStores = featuredStores.slice(0,3)
   }
 
-  componentDidMount(){
-    // this.setState({ tint: true })
-    // tintHTML = <div
-    // className="tintup"
-    // data-id={this.props.property_options.acf.data_id}
-    // data-columns=""
-    // data-mobilescroll="true"
-    // data-infinitescroll="true"
-    // data-personalization-id={this.props.property_options.acf.personalization_id}
-    // style={{'height':'350px','width':'100%'}}
-    // ></div>;
-    // const script = document.createElement('script');
-    // script.src = this.props.property_options.acf.script_url;
-    // script.id = 'removeMe'; 
-    // document.body.appendChild(script);
-  }
-
-  componentWillUnmount(){
-    // tintHTML = <div></div>;
-    // this.removeElements(document.querySelectorAll('body > iframe'))
-    // var element = document.getElementById("removeMe");
-    // element.parentNode.removeChild(element);
-    // this.setState({ tint: false })
-    this.removeElements(document.querySelectorAll('#frameTarget'))
-  }
-
   removeElements(elements) {
     for (var i=0; i<elements.length; i++) {
       elements[i].parentNode.removeChild(elements[i]);
     }
-}
+  }
 
   render() {
 
