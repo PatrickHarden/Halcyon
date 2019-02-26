@@ -8,7 +8,6 @@ import FeaturedEvents from './FeaturedEvents.js'
 import ContentArea from './ContentArea.js'
 import FeaturedStores from './FeaturedStores.js'
 import ContentWithFeaturedImage from './ContentWithFeaturedImage.js'
-import ContentWithFeaturedSale from './ContentWithFeaturedSale.js'
 import Forms from './Forms.js'
 import FeaturedContentCarousel from './FeaturedContentCarousel.js'
 import DiningDirectory from './DiningDirectory.js'
@@ -53,8 +52,6 @@ export default class ModuleController extends React.Component {
                     return <div key={index}><ShoppingDirectory section={section} /></div>
                     } else if (section.acf_fc_layout == 'video'){
                     return <div key={index}><ContentWithFeaturedVideo section={section} /></div>
-                    } else if (section.acf_fc_layout == 'content_with_featured_sale'){
-                    return <div key={index}><ContentWithFeaturedSale section={section} /></div>
                     }
                 })}
                 </div> :

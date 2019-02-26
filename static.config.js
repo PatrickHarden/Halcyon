@@ -136,7 +136,7 @@ export default {
           path: `/${retailer.slug}`,
           component: 'src/singles/Retailer',
           getData: () => ({
-            retailer, siteRoot, title, metaDescription
+            retailer, siteRoot, title, metaDescription, property_options
           }),
         })),
       },
@@ -150,7 +150,7 @@ export default {
           path: `/${restaurant.slug}`,
           component: 'src/singles/Restaurant',
           getData: () => ({
-            restaurant, siteRoot, title, metaDescription
+            restaurant, siteRoot, title, metaDescription, property_options
           }),
         })),
       },
