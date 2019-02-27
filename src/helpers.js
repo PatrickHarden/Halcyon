@@ -17,7 +17,7 @@ const helpers = {
             for (var i = 0; i < hourArray.length; i++){
                 var testDate = new Date(store.acf.alternate_hours[i].date_picker)
                 if(testDate.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)) {
-                    console.log('Custom store holiday hours:', store.acf.alternate_hours)
+                    // console.log('Custom store holiday hours:', store.acf.alternate_hours)
                     customStoreHolidayHours = true
                     if (store.acf.alternate_hours[i].closed == true){
                         return store.acf.alternate_hours[i].start_time + " - " + store.acf.alternate_hours[i].end_time
@@ -29,7 +29,7 @@ const helpers = {
         }
         // If store custom hours are present and store custom holiday hours are not in range
         if (store.acf.custom_hours == true && customStoreHolidayHours == false){
-            console.log('Custom store hours:', store.acf.standard_hours[0])
+            // console.log('Custom store hours:', store.acf.standard_hours[0])
             if (days[day] == "Monday"){
                 if (store.acf.standard_hours[0].monday_closed == false){
                     return store.acf.standard_hours[0].monday_open + " - " + store.acf.standard_hours[0].monday_close
@@ -81,7 +81,7 @@ const helpers = {
                 for (var i = 0; i < hourArray.length; i++){
                     var testDate = new Date(globalHolidayHours[i].date_picker)
                     if(testDate.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)) {
-                        console.log('Global holiday hours:', globalHolidayHours[i])
+                        // console.log('Global holiday hours:', globalHolidayHours[i])
                         holidayHours = true
                         if (globalHolidayHours[i].closed == true) {
                             return globalHolidayHours[i].start_time + " - " + globalHolidayHours[i].end_time
@@ -95,7 +95,7 @@ const helpers = {
         // If all other hours are non-existent, use global store hours
         if (store.acf.custom_hours == false && customStoreHolidayHours == false && holidayHours == false){
             if (globalHours.length != 0){
-                console.log('Global hours:', globalHours[0])
+                // console.log('Global hours:', globalHours[0])
                 if (days[day] == "Monday"){
                     if (globalHours[0].monday_closed == false){
                         return globalHours[0].monday_open + " - " + globalHours[0].monday_close
@@ -148,13 +148,12 @@ const helpers = {
     getWeekHours: function(store, currendDay, index, globalHours, globalHolidayHours){
         var customStoreHolidayHours = false
         var holidayHours = false
-        console.log(index)
         if (store.acf.alternate_hours.length != 0){
             var hourArray = store.acf.alternate_hours
             for (var i = 0; i < hourArray.length; i++){
                 var testDate = new Date(store.acf.alternate_hours[i].date_picker)
                 if(testDate.setHours(0,0,0,0) == todaysDate.setHours((24 * index),0,0,0)) {
-                    console.log('Custom store holiday hours:', store.acf.alternate_hours)
+                    // console.log('Custom store holiday hours:', store.acf.alternate_hours)
                     customStoreHolidayHours = true
                     if (store.acf.alternate_hours[i].closed == true){
                         return store.acf.alternate_hours[i].start_time + " - " + store.acf.alternate_hours[i].end_time
@@ -166,7 +165,7 @@ const helpers = {
         }
 
         if (store.acf.custom_hours == true && customStoreHolidayHours == false){
-            console.log('Custom store hours:', store.acf.standard_hours[0], currendDay)
+            // console.log('Custom store hours:', store.acf.standard_hours[0], currendDay)
             if (currendDay == "Monday"){
                 if (store.acf.standard_hours[0].monday_closed == false){
                     return store.acf.standard_hours[0].monday_open + " - " + store.acf.standard_hours[0].monday_close
@@ -218,7 +217,7 @@ const helpers = {
                 for (var i = 0; i < hourArray.length; i++){
                     var testDate = new Date(globalHolidayHours[i].date_picker)
                     if(testDate.setHours(0,0,0,0) == todaysDate.setHours((24 * index),0,0,0)) {
-                        console.log('Global holiday hours:', globalHolidayHours[i])
+                        // console.log('Global holiday hours:', globalHolidayHours[i])
                         holidayHours = true
                         if (globalHolidayHours[i].closed == true) {
                             return globalHolidayHours[i].start_time + " - " + globalHolidayHours[i].end_time
@@ -232,7 +231,7 @@ const helpers = {
         // If all other hours are non-existent, use global store hours
         if (store.acf.custom_hours == false && customStoreHolidayHours == false && holidayHours == false){
             if (globalHours.length != 0){
-                console.log('Global hours:', globalHours[0])
+                // console.log('Global hours:', globalHours[0])
                 if (currendDay == "Monday"){
                     if (globalHours[0].monday_closed == false){
                         return globalHours[0].monday_open + " - " + globalHours[0].monday_close

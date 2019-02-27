@@ -52,7 +52,7 @@ export default withSiteData(class SearchComponent extends React.Component {
         <Container>
             <input className='search-bar' placeholder="Search..." value={this.state.term} onChange = {event => this.setState({term : event.target.value})} />
             <div id="theResults">
-            { (this.state.term != '') ?
+            { (this.state.term.length > 1) ?
                 <div>
                 {this.hideContent()}
                 <PageSearch searchResult={this.state.term} />

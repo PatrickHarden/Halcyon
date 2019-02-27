@@ -72,7 +72,6 @@ export default withSiteData(class DiningDirectory extends React.Component {
                     </Container>
                 </div>
                 <Container className="diningRows">
-                {console.log(this.state.amount)}
                     {stores.slice(0, this.state.amount).map((store, index) => (
                         (store.acf.store_type == "restaurant") ? 
                         <div key={index} className='store-single'>

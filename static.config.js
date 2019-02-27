@@ -18,8 +18,6 @@ export default {
     const { data: stores } = await axios.get(baseURL + '/wp-json/wp/v2/stores/')
     const { data: sales } = await axios.get(baseURL + '/wp-json/wp/v2/sales?per_page=100')
     const { data: storeCategories} = await axios.get(baseURL + '/wp-json/wp/v2/imag_taxonomy_store_category?per_page=100')
-    const { headers: eventsHeaders } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=1')
-    
 
     var {data: moreEvents } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100&page=2').catch(error => {
       console.log(error.response)
@@ -45,8 +43,7 @@ export default {
       events,
       stores,
       storeCategories,
-      sales,
-      eventsHeaders
+      sales
     }
   },
 
@@ -206,7 +203,7 @@ export default {
           path: `/${retailer.slug}`,
           component: 'src/singles/Retailer',
           getData: () => ({
-            retailer, siteRoot, title, metaDescription, property_options
+            retailer, siteRoot, title, metaDescription, property_options, sales
           }),
         })),
       },
@@ -220,7 +217,7 @@ export default {
           path: `/${restaurant.slug}`,
           component: 'src/singles/Restaurant',
           getData: () => ({
-            restaurant, siteRoot, title, metaDescription, property_options
+            restaurant, siteRoot, title, metaDescription, property_options, sales
           }),
         })),
       },
