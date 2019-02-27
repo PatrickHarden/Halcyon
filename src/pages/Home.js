@@ -9,7 +9,6 @@ import HeroSlider from '../sections/homepage/HeroSlider';
 import ModuleController from '../sections/modules/ModuleController.js'
 import TintSocialFeed from '../sections/homepage/TintSocialFeed.js';
 import helpers from '../helpers.js'
-import SiteHeader from '../sections/Header.js'
 
 
 var featuredStores = [];
@@ -80,7 +79,6 @@ export default withRouteData(class Home extends React.Component {
             {(home.yoast_meta.yoast_wpseo_metadesc) ? <meta name="description" content={home.yoast_meta.yoast_wpseo_metadesc} /> : ""}
             {(home.yoast_meta.yoast_wpseo_canonical) ? <link rel="canonical" href={home.yoast_meta.yoast_wpseo_canonical} /> : "" }
           </Head>
-          <SiteHeader />
           <HeroSlider home={this.props.home} />
           <div id="searchBar">
          <Container>
