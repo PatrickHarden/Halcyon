@@ -9,6 +9,7 @@ import ReactHtmlParser from 'react-html-parser'
 import ModuleController from '../sections/modules/ModuleController.js';
 import MobileFloatingNav from '../sections/MobileFloatingNav.js'
 import helpers from '../helpers'
+import SiteHeader from '../sections/Header.js'
 
 export default withRouteData(class Page extends React.Component {
 
@@ -30,6 +31,7 @@ export default withRouteData(class Page extends React.Component {
           {(page.yoast_meta.yoast_wpseo_metadesc) ? <meta name="description" content={page.yoast_meta.yoast_wpseo_metadesc} /> : <meta name="description" content={metaDescription} />}
           {(page.yoast_meta.yoast_wpseo_canonical) ? <link rel="canonical" href={page.yoast_meta.yoast_wpseo_canonical} /> : <link rel="canonical" href={siteRoot} />}
         </Head>
+        <SiteHeader />
         {(page.acf.desktop_image) ?
           <div id="heroSection">
             <img className="hidden-xs" src={page.acf.desktop_image.url} alt={page.acf.desktop_image.alt} />

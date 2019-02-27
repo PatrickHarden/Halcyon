@@ -14,6 +14,7 @@ import FeaturedContentCarousel from './FeaturedContentCarousel.js'
 import DiningDirectory from './DiningDirectory.js'
 import ShoppingDirectory from './ShoppingDirectory.js'
 import ContentWithFeaturedVideo from './ContentWithFeaturedVideo.js'
+import ContentWithFeaturedEvent from './ContentWithFeaturedEvent.js'
 
 {/* <ModuleController page={page} /> or  <ModuleController page={event} /> or  <ModuleController page={store} /> */ }
 
@@ -53,10 +54,11 @@ export default class ModuleController extends React.Component {
                                 return <div key={index}><ShoppingDirectory section={section} /></div>
                             } else if (section.acf_fc_layout == 'video') {
                                 return <div key={index}><ContentWithFeaturedVideo section={section} /></div>
+                            } else if (section.acf_fc_layout == 'content_with_featured_sale'){
+                                return <div key={index}><ContentWithFeaturedSale section={section} /></div>
+                            }  else if (section.acf_fc_layout == 'content_with_featured_event'){
+                                return <div key={index}><ContentWithFeaturedSale section={section} /></div>
                             }
-                            // } else if (section.acf_fc_layout == 'content_with_featured_sale'){
-                            // return <div key={index}><ContentWithFeaturedSale section={section} /></div>
-                            // }
                         })}
                     </div> :
                     <Container>

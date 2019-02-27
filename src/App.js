@@ -14,7 +14,6 @@ import SiteFooter from './sections/Footer'
 const App = () => (
   <Router>
     <div id="site">
-      <SiteHeader />
       <SearchComponent />
       <main className="content">
         <Routes />
