@@ -7,6 +7,7 @@ import '../css/components/pageContent.css'
 import '../css/components/retailerContent.css'
 import '../css/components/mobileFloatingNav.css'
 import ModuleController from '../sections/modules/ModuleController.js';
+let moment = require('moment');
 
 import helpers from '../helpers.js'
 import DownArrow from '../images/downArrrow.png'
@@ -20,6 +21,9 @@ var globalHours = [];
 var globalHolidayHours = [];
 var todaysHours;
 var temp = 0;
+var salesArray = [];
+var sales;
+var counter = 0;
 
 export default withRouteData(class Page extends React.Component {
 
@@ -38,7 +42,38 @@ export default withRouteData(class Page extends React.Component {
     });
   }
 
+  isSale(store) {
+    var result = false;
+    for (var i = 0; i < salesArray.length; i++) {
+      if (salesArray[i].acf.related_store.post_name == store.slug) {
+        result = true;
+      }
+    }
+    return result
+  }
+
+  offerAvailable(slug) {
+    this.props.sales.map(sale => {
+      if (sale.acf.related_store.post_name == slug) {
+        if (this.inDateRange(sale)) {
+          salesArray.push(sale)
+        }
+      }
+    })
+  }
+
+  inDateRange(sale) {
+    var today = new Date().getTime();
+    var from = new Date(sale.acf.start_date.substring(0, 4) + '/' + sale.acf.start_date.substring(4, 6) + '/' + sale.acf.start_date.substring(6, 8)).getTime();
+    var to = new Date(sale.acf.end_date.substring(0, 4) + '/' + sale.acf.end_date.substring(4, 6) + '/' + sale.acf.end_date.substring(6, 8)).getTime();
+    var withinRange = today >= from && today <= to;
+    return withinRange
+  }
+
   componentWillMount() {
+
+    this.offerAvailable(this.props.retailer.slug);
+
     if (this.props.property_options.acf.standard_hours) {
       for (var i = 0; i < this.props.property_options.acf.standard_hours.length; i++) {
         globalHours.push(this.props.property_options.acf.standard_hours[0])
@@ -60,6 +95,37 @@ export default withRouteData(class Page extends React.Component {
       }
       return <div>{(index == 0) ? <span><strong>{days[counter]}</strong></span> : <span>{days[counter]}</span>}: {helpers.getWeekHours(this.props.retailer, days[counter], index, globalHours, globalHolidayHours)}<div class="hidden">{counter++}</div></div>
     })
+
+    const siteRoot = 'https://halycon.netlify.com';
+    // If sales array is full, do nothing, otherwise build out sales arraay.
+    if (sales) {
+    } else {
+      sales = salesArray.map((sale, index) => {
+        return (<div key={index} className="sale-single row">
+          <div className="col-sm-2">{(sale.acf.end_date) ? <span>Ends<br />{moment(sale.acf.end_date, 'YYYYMMDD').format('MM/DD')}</span> : ""}</div>
+          <div className='image-wrapper col-sm-3'>
+            <img className='hidden-xs' src={sale.acf.featured_image} />
+          </div>
+          <div className="col-sm-5">
+            <div>{moment(sale.acf.start_date, 'YYYYMMDD').format('MMM DD')} - {moment(sale.acf.end_date, 'YYYYMMDD').format('MMM DD')} at {this.props.retailer.title.rendered}</div>
+            <h5>{sale.title.rendered}</h5>
+            {(sale.acf.post_copy) ? <div>{ReactHtmlParser(sale.acf.post_copy)}</div> : ""}
+          </div>
+          <div className="col-sm-2">
+            <a href={'mailto:?body=' + siteRoot + '/dining/' + this.props.retailer.slug + '&subject=' + ReactHtmlParser(sale.title.rendered)}>
+              mail
+                      </a>
+            <a href={'https://twitter.com/home?status=' + siteRoot + '/dining/' + this.props.retailer.slug} target="_blank">
+              twitter
+                      </a>
+            <a href={'https://www.facebook.com/sharer/sharer.php?u=' + siteRoot + '/dining/' + this.props.retailer.slug} target="_blank">
+              facebook
+                      </a>
+            <Link to={'/sales/' + sale.slug} className="halcyon-button">More Info ></Link>
+          </div>
+        </div>)
+      })
+    }
   }
 
   render() {
@@ -113,6 +179,17 @@ export default withRouteData(class Page extends React.Component {
             </Col>
           </Row>
         </div>
+        {this.isSale(retailer) ?
+          <div>
+            <div className='heading-container'>
+              <Container>
+                <h2>Featured Promotions</h2>
+              </Container>
+            </div>
+            <Container className="retailerRows">
+              {sales}
+            </Container>
+          </div> : ""}
         <ModuleController page={retailer} />
       </section>
     )

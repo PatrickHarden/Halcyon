@@ -18,13 +18,13 @@ export default {
     const { data: events } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100')
     const { data: stores } = await axios.get(baseURL + '/wp-json/wp/v2/stores/')
     const { data: sales } = await axios.get(baseURL + '/wp-json/wp/v2/sales?per_page=100')
-    const { data: storeCategories} = await axios.get(baseURL + '/wp-json/wp/v2/imag_taxonomy_store_category?per_page=100')
+    const { data: storeCategories } = await axios.get(baseURL + '/wp-json/wp/v2/imag_taxonomy_store_category?per_page=100')
 
-    var {data: moreEvents } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100&page=2').catch(error => {
+    var { data: moreEvents } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100&page=2').catch(error => {
       console.log(error.response)
     });
-    if (moreEvents){
-      for (var i = 0; i<moreEvents.length; i++){
+    if (moreEvents) {
+      for (var i = 0; i < moreEvents.length; i++) {
         events.push(moreEvents[i])
       }
     }
@@ -72,10 +72,10 @@ export default {
     // checks page count, loops json pull per that page count, pushes it to the array above ^
     let count = eventHeaders['x-wp-totalpages']
     let x = 2;
-    while (x <= count){
-      var {data: moreEvents } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100&page=' + x)
-      if (moreEvents){
-        for (var i = 0; i<moreEvents.length; i++){
+    while (x <= count) {
+      var { data: moreEvents } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100&page=' + x)
+      if (moreEvents) {
+        for (var i = 0; i < moreEvents.length; i++) {
           events.push(moreEvents[i])
         }
       }
@@ -83,10 +83,10 @@ export default {
     }
     let counter = storeHeaders['x-wp-totalpages']
     let xy = 2;
-    while (xy <= counter){
-      var {data: moreStores } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100&page=' + x)
-      if (moreStores){
-        for (var i = 0; i<moreStores.length; i++){
+    while (xy <= counter) {
+      var { data: moreStores } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100&page=' + x)
+      if (moreStores) {
+        for (var i = 0; i < moreStores.length; i++) {
           events.push(moreStores[i])
         }
       }
@@ -94,10 +94,10 @@ export default {
     }
     let counter2 = pageHeaders['x-wp-totalpages']
     let xyz = 2;
-    while (xyz <= counter2){
-      var {data: moreStores } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100&page=' + x)
-      if (moreStores){
-        for (var i = 0; i<moreStores.length; i++){
+    while (xyz <= counter2) {
+      var { data: moreStores } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100&page=' + x)
+      if (moreStores) {
+        for (var i = 0; i < moreStores.length; i++) {
           events.push(moreStores[i])
         }
       }
@@ -105,10 +105,10 @@ export default {
     }
     let counter3 = postHeaders['x-wp-totalpages']
     let xyzq = 2;
-    while (xyzq <= counter3){
-      var {data: moreStores } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100&page=' + x)
-      if (moreStores){
-        for (var i = 0; i<moreStores.length; i++){
+    while (xyzq <= counter3) {
+      var { data: moreStores } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100&page=' + x)
+      if (moreStores) {
+        for (var i = 0; i < moreStores.length; i++) {
           events.push(moreStores[i])
         }
       }
@@ -119,7 +119,7 @@ export default {
     // Divides stores data into two separate variables (retailers/restaurant) so that the routes are separated 
     // e.g. /shopping/test-route or /dining/taco-bell instead of having /shopping/taco-bell generated
     retailers = stores.map(store => {
-      if (store.acf.store_type == "retailer"){
+      if (store.acf.store_type == "retailer") {
         return store
       }
     })
@@ -127,13 +127,13 @@ export default {
       return el != null;
     });
     restaurants = stores.map(store => {
-      if (store.acf.store_type == "restaurant"){
+      if (store.acf.store_type == "restaurant") {
         return store
       }
     })
     restaurants = restaurants.filter(function (el) {
       return el != null;
-    });    
+    });
 
 
     // Generate routes based off of JSON data above or custom paths
@@ -145,10 +145,10 @@ export default {
           stores, events, pages, home, property_options
         }),
         children: pages.map(page => ({
-        path: `/${page.slug}`,
-        component: 'src/singles/Page',
+          path: `/${page.slug}`,
+          component: 'src/singles/Page',
           getData: () => ({
-            page, siteRoot, title, metaDescription, 
+            page, siteRoot, title, metaDescription,
           }),
         })),
       },
