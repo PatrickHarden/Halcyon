@@ -5,7 +5,6 @@ import ReactHtmlParser from 'react-html-parser';
 import Slider from "react-slick";
 import helpers from '../../helpers.js'
 
-import '../../css/modules/featuredContentCarousel.css'
 
 
 var slides = [];
