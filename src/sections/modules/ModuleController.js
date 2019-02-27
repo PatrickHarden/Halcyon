@@ -57,7 +57,7 @@ export default class ModuleController extends React.Component {
                             } else if (section.acf_fc_layout == 'content_with_featured_sale'){
                                 return <div key={index}><ContentWithFeaturedSale section={section} /></div>
                             }  else if (section.acf_fc_layout == 'content_with_featured_event'){
-                                return <div key={index}><ContentWithFeaturedSale section={section} /></div>
+                                return <div key={index}><ContentWithFeaturedEvent section={section} /></div>
                             }
                         })}
                     </div> :

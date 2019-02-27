@@ -3,7 +3,7 @@ import { Link, withSiteData } from 'react-static'
 import { Container, Row, Col } from 'reactstrap';
 import ReactHtmlParser from 'react-html-parser';
 import '../../css/modules/contentWithFeaturedImage.css';
-import DarkFeather from '../../images/feather-dark.png';
+import helpers from '../../helpers.js'
 
 var targetStore;
 var targetSale
@@ -21,11 +21,13 @@ export default withSiteData(class contentWithFeaturedEvent extends React.Compone
 
     componentWillMount() {
 
-        targetStore = this.props.section.sales.post_name
-
-        targetSale = this.props.sales.map(sale => {
-            if (sale.slug == targetStore) {
-                return sale
+        console.log(this.props.section)
+        targetStore = this.props.section.event.post_name
+        console.log(targetStore)
+        console.log(this.props.events)
+        targetSale = this.props.events.map(event => {
+            if (event.slug == targetStore) {
+                return event
             }
         })
         targetSale = targetSale.filter(function (el) {
@@ -33,7 +35,6 @@ export default withSiteData(class contentWithFeaturedEvent extends React.Compone
         });
         console.log('Sale:', targetSale)
     }
-
 
     render() {
 
@@ -55,7 +56,7 @@ export default withSiteData(class contentWithFeaturedEvent extends React.Compone
                             <div className='heading'><h2>{targetSale[0].title.rendered}</h2></div>
                         }
                         {targetSale[0].acf.post_copy &&
-                            <div clasName='content'>{ReactHtmlParser(targetSale[0].acf.post_copy)}</div>
+                            <div clasName='content'>{ReactHtmlParser(helpers.compressText(targetSale[0].acf.post_copy), 200)}</div>
                         }
                         <Link class="halcyon-button" to={'/sales/' + targetSale[0].slug}>More info</Link>
                     </Col>
