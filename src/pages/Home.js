@@ -6,22 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhone, faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 
 import HeroSlider from '../sections/homepage/HeroSlider';
-import ImageCarousel from '../sections/modules/ImageCarousel.js'
-import GlobalImageGrid from '../sections/modules/GlobalImageGrid.js'
-import FeaturedEvents from '../sections/modules/FeaturedEvents.js'
-import ContentArea from '../sections/modules/ContentArea.js'
-import FeaturedStores from '../sections/modules/FeaturedStores.js'
+import ModuleController from '../sections/modules/ModuleController.js'
 import TintSocialFeed from '../sections/homepage/TintSocialFeed.js';
 import helpers from '../helpers.js'
 
-const fullWidth = {
-  width: '100%'
-}
 
-var tintHTML;
-var excerpt;
-var regex = /(<([^>]+)>)/ig;
-var selectedStores = [];
 var featuredStores = [];
 
 export default withRouteData(class Home extends React.Component {
@@ -78,12 +67,6 @@ export default withRouteData(class Home extends React.Component {
     featuredStores = featuredStores.slice(0,3)
   }
 
-  removeElements(elements) {
-    for (var i=0; i<elements.length; i++) {
-      elements[i].parentNode.removeChild(elements[i]);
-    }
-  }
-
   render() {
 
     const home = this.props.home[0];
@@ -130,19 +113,7 @@ export default withRouteData(class Home extends React.Component {
             </Container>
             {(home.acf.layout) ? 
               <div>
-                {home.acf.layout.map((section, index) => {
-                  if (section.acf_fc_layout == 'content_area'){
-                    return <Container key={index}><ContentArea section={section} /></Container>
-                  } else if (section.acf_fc_layout == 'image_carousel'){
-                    return <div key={index}><ImageCarousel section={section} /></div>
-                  } else if (section.acf_fc_layout == 'image_grid') {
-                    return <div key={index}><GlobalImageGrid section={section} /></div>
-                  } else if (section.acf_fc_layout == 'featured_events') {
-                    return <div key={index}><FeaturedEvents section={section} /></div>
-                  } else if (section.acf_fc_layout == 'featured_stores') {
-                    return <div key={index}><FeaturedStores pageData={home} section={section} /></div>
-                  }
-                })}
+              <ModuleController page={home} />
               </div> : "" }
             <Container className='social-feed-container'>
             {(this.props.property_options.acf.data_id) ? <div>

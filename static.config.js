@@ -4,9 +4,11 @@ var retailers;
 var restaurants;
 
 export default {
-  // The following is JSON data accessible globally, by any component, by using the withSiteData() call
+  // self-evident
   disableDuplicateRoutesWarning: true,
+  // siteRoot here is responsible for generating xml file automatically
   siteRoot: 'https://halycon.netlify.com',
+  // The following is JSON data accessible globally, by any component, by using the withSiteData() call
   getSiteData: async () => {
     const baseURL = 'https://halcyon.dev.v3.imaginuitycenters.com'
     const { data: menus } = await axios.get(baseURL + '/wp-json/wp-api-menus/v2/menus/2')
