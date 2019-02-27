@@ -144,7 +144,7 @@ export default {
         path: '/',
         component: 'src/pages/Home',
         getData: () => ({
-          stores, events, pages, home, property_options
+          stores, events, pages, home, property_options, title
         }),
         children: pages.map(page => ({
           path: `/${page.slug}`,

@@ -109,7 +109,7 @@ export default withRouteData(class Home extends React.Component {
             <Container className='top-cta'>
               <h1>{home.acf.title_h1}</h1>
               <div>{ReactHtmlParser(home.acf.content_area)}</div>
-                {(home.acf.button) ? <Link className="halcyon-button" to={helpers.convertLink(home.acf.button.url)} target={home.acf.button.target}>{ReactHtmlParser(home.acf.button.title)}</Link> : ""}           
+                {(home.acf.button) ? <Link className="halcyon-button" to={helpers.convertLink(home.acf.button.url, this.props.title.toLowerCase())} target={home.acf.button.target}>{ReactHtmlParser(home.acf.button.title)}</Link> : ""}           
             </Container>
             {(home.acf.layout) ? 
               <div>
