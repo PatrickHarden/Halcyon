@@ -22,6 +22,7 @@ var todaysHours;
 var temp = 0;
 var salesArray = [];
 var sales;
+var counter = 0;
 
 export default withRouteData(class Page extends React.Component {
 
@@ -84,35 +85,37 @@ export default withRouteData(class Page extends React.Component {
             return <div>{(index == 0) ? <span><strong>{days[counter]}</strong></span> : <span>{days[counter]}</span>}: {helpers.getWeekHours(this.props.restaurant, days[counter], index, globalHours, globalHolidayHours)}<div class="hidden">{counter++}</div></div>
         })
 
-        console.log(salesArray[0])
-
         const siteRoot = 'https://halycon.netlify.com';
-        sales = ''
-        sales = salesArray.map((sale, index) => {
-            return (<div key={index} className="sale-single row">
-                <div className="col-sm-2">{(sale.acf.end_date)? <span>Ends<br/>{moment(sale.acf.end_date, 'YYYYMMDD').format('MM/DD')}</span> : ""}</div>         
-                <div className='image-wrapper col-sm-3'>
-                    <img className='hidden-xs' src={sale.acf.featured_image} />
-                </div>
-                <div className="col-sm-5">
-                    <div>{moment(sale.acf.start_date, 'YYYYMMDD').format('MMM DD')} - {moment(sale.acf.end_date, 'YYYYMMDD').format('MMM DD')} at {this.props.restaurant.title.rendered}</div>
-                    <h5>{sale.title.rendered}</h5>
-                    {(sale.acf.post_copy)? <div>{ReactHtmlParser(sale.acf.post_copy)}</div>:""}
-                </div>
-                <div className="col-sm-2">
-                    <a href={'mailto:?body=' + siteRoot + '/dining/' + this.props.restaurant.slug + '&subject=' + ReactHtmlParser(sale.title.rendered)}>
-                        mail
-                    </a>
-                    <a href={'https://twitter.com/home?status=' + siteRoot + '/dining/' + this.props.restaurant.slug} target="_blank">
-                        twitter
-                    </a>
-                    <a href={'https://www.facebook.com/sharer/sharer.php?u=' +siteRoot + '/dining/' + this.props.restaurant.slug} target="_blank">
-                        facebook
-                    </a>
-                    <Link to={'/sales/' + sale.slug} className="halcyon-button">More Info ></Link>
-                </div>
-            </div>)
-        })
+
+        // If sales array is empty do nothing, otherwise build out sales arraay. Temporary debug for repeated foward/back abuse
+        if (sales){      
+        } else {
+            sales = salesArray.map((sale, index) => {
+                return (<div key={index} className="sale-single row">
+                    <div className="col-sm-2">{(sale.acf.end_date)? <span>Ends<br/>{moment(sale.acf.end_date, 'YYYYMMDD').format('MM/DD')}</span> : ""}</div>         
+                    <div className='image-wrapper col-sm-3'>
+                        <img className='hidden-xs' src={sale.acf.featured_image} />
+                    </div>
+                    <div className="col-sm-5">
+                        <div>{moment(sale.acf.start_date, 'YYYYMMDD').format('MMM DD')} - {moment(sale.acf.end_date, 'YYYYMMDD').format('MMM DD')} at {this.props.restaurant.title.rendered}</div>
+                        <h5>{sale.title.rendered}</h5>
+                        {(sale.acf.post_copy)? <div>{ReactHtmlParser(sale.acf.post_copy)}</div>:""}
+                    </div>
+                    <div className="col-sm-2">
+                        <a href={'mailto:?body=' + siteRoot + '/dining/' + this.props.restaurant.slug + '&subject=' + ReactHtmlParser(sale.title.rendered)}>
+                            mail
+                        </a>
+                        <a href={'https://twitter.com/home?status=' + siteRoot + '/dining/' + this.props.restaurant.slug} target="_blank">
+                            twitter
+                        </a>
+                        <a href={'https://www.facebook.com/sharer/sharer.php?u=' +siteRoot + '/dining/' + this.props.restaurant.slug} target="_blank">
+                            facebook
+                        </a>
+                        <Link to={'/sales/' + sale.slug} className="halcyon-button">More Info ></Link>
+                    </div>
+                </div>)
+            })  
+        }
     }
 
     render() {
