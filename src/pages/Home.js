@@ -1,5 +1,5 @@
 import React from 'react'
-import { withSiteData, Link, withRouteData, Head } from 'react-static'
+import { Link, withRouteData, Head } from 'react-static'
 import ReactHtmlParser from 'react-html-parser';
 import { Container } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
