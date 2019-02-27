@@ -103,10 +103,10 @@ export default withRouteData(class Page extends React.Component {
                     <a href={'mailto:?body=' + siteRoot + '/dining/' + this.props.restaurant.slug + '&subject=' + ReactHtmlParser(sale.title.rendered)}>
                         mail
                     </a>
-                    <a to={'https://twitter.com/home?status=' + siteRoot + '/dining/' + this.props.restaurant.slug} target="_blank">
+                    <a href={'https://twitter.com/home?status=' + siteRoot + '/dining/' + this.props.restaurant.slug} target="_blank">
                         twitter
                     </a>
-                    <a to={'https://www.facebook.com/sharer/sharer.php?u=' +siteRoot + '/dining/' + this.props.restaurant.slug} target="_blank">
+                    <a href={'https://www.facebook.com/sharer/sharer.php?u=' +siteRoot + '/dining/' + this.props.restaurant.slug} target="_blank">
                         facebook
                     </a>
                     <Link to={'/sales/' + sale.slug} className="halcyon-button">More Info ></Link>
