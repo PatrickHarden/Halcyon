@@ -85,9 +85,9 @@ export default withRouteData(class Page extends React.Component {
         })
 
         console.log(salesArray[0])
-    }
 
-    componentDidMount(){
+        const siteRoot = 'https://halycon.netlify.com';
+        sales = ''
         sales = salesArray.map((sale, index) => {
             return (<div key={index} className="sale-single row">
                 <div className="col-sm-2">{(sale.acf.end_date)? <span>Ends<br/>{moment(sale.acf.end_date, 'YYYYMMDD').format('MM/DD')}</span> : ""}</div>         
@@ -100,15 +100,15 @@ export default withRouteData(class Page extends React.Component {
                     {(sale.acf.post_copy)? <div>{ReactHtmlParser(sale.acf.post_copy)}</div>:""}
                 </div>
                 <div className="col-sm-2">
-                    {/* <a href={'mailto:?body=' + window.location.href + '&subject=' + ReactHtmlParser(sale.title.rendered)}>
+                    <a href={'mailto:?body=' + siteRoot + '/dining/' + this.props.restaurant.slug + '&subject=' + ReactHtmlParser(sale.title.rendered)}>
                         mail
                     </a>
-                    <a to={'https://twitter.com/home?status=' + window.location.href} target="_blank">
+                    <a to={'https://twitter.com/home?status=' + siteRoot + '/dining/' + this.props.restaurant.slug} target="_blank">
                         twitter
                     </a>
-                    <a to={'https://www.facebook.com/sharer/sharer.php?u=' + window.location.href} target="_blank">
+                    <a to={'https://www.facebook.com/sharer/sharer.php?u=' +siteRoot + '/dining/' + this.props.restaurant.slug} target="_blank">
                         facebook
-                    </a> */}
+                    </a>
                     <Link to={'/sales/' + sale.slug} className="halcyon-button">More Info ></Link>
                 </div>
             </div>)

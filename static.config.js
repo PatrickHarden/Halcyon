@@ -6,7 +6,7 @@ var restaurants;
 export default {
   // The following is JSON data accessible globally, by any component, by using the withSiteData() call
   disableDuplicateRoutesWarning: true,
-  siteRoot: 'https://halycon.netlify.com/',
+  siteRoot: 'https://halycon.netlify.com',
   getSiteData: async () => {
     const baseURL = 'https://halcyon.dev.v3.imaginuitycenters.com'
     const { data: menus } = await axios.get(baseURL + '/wp-json/wp-api-menus/v2/menus/2')
