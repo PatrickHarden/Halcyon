@@ -98,7 +98,9 @@ export default withRouteData(class Page extends React.Component {
                     <div>{moment(sale.acf.start_date, 'YYYYMMDD').format('MMM DD')} - {moment(sale.acf.end_date, 'YYYYMMDD').format('MMM DD')} at {this.props.restaurant.title.rendered}</div>
                     <h5>{sale.title.rendered}</h5>
                     {(sale.acf.post_copy)? <div>{ReactHtmlParser(sale.acf.post_copy)}</div>:""}
-                    <a href={'mailto:?body=' + window.location.href + '&subject=' + ReactHtmlParser(sale.title.rendered)}>
+                </div>
+                <div className="col-sm-2">
+                    {/* <a href={'mailto:?body=' + window.location.href + '&subject=' + ReactHtmlParser(sale.title.rendered)}>
                         mail
                     </a>
                     <a to={'https://twitter.com/home?status=' + window.location.href} target="_blank">
@@ -106,9 +108,7 @@ export default withRouteData(class Page extends React.Component {
                     </a>
                     <a to={'https://www.facebook.com/sharer/sharer.php?u=' + window.location.href} target="_blank">
                         facebook
-                    </a>
-                </div>
-                <div className="col-sm-2">
+                    </a> */}
                     <Link to={'/sales/' + sale.slug} className="halcyon-button">More Info ></Link>
                 </div>
             </div>)
