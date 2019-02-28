@@ -33,9 +33,7 @@ export default withSiteData(class SaleDirectory extends React.Component {
 
     componentDidMount() {
         saleCounter = this.props.sales.map(sale => {
-            if (sale.acf.sale_type == "restaurant") {
                 return <div></div>
-            }
         })
         saleCounter = saleCounter.filter(function (el) {
             return el != null;
