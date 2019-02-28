@@ -1,7 +1,7 @@
 // Packages
 import React, { PropTypes, Component } from 'react';
-import {Link} from 'react-router';
-import { ReactBootstrap, Grid, Row, Col, Button, ButtonToolbar, Modal, ModalBody, ModalHeader, ModalFooter } from 'react-bootstrap';
+import {Link} from 'react-static';
+import { Grid, Row, Col, Button, ButtonToolbar, Modal } from 'reactstrap';
 import ReactHtmlParser from 'react-html-parser';
 let moment = require('moment');
 let momentRange = require('moment-range');
@@ -12,7 +12,7 @@ let entities = new Entities();
 import '../css/calendar.css'
 
 const SiteURL = window.location.protocol + '//' + document.location.hostname;
-const Images = SiteURL + "/wp-content/plugins/imaginuity-centers3/js/themes/LibertyCenter/lib/img/";
+// const Images = SiteURL + "/wp-content/plugins/imaginuity-centers3/js/themes/LibertyCenter/lib/img/";
 const EventCalendar = require('react-event-calendar').default;
 
 export default class EventsCalendar extends Component{
