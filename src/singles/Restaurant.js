@@ -96,7 +96,7 @@ export default withRouteData(class Page extends React.Component {
                 todaysHours = <span>{helpers.getWeekHours(this.props.restaurant, days[day], index, globalHours, globalHolidayHours)}</span>
                 temp++;
             }
-            return <div>{(index == 0) ? <span><strong>{days[counter]}</strong></span> : <span>{days[counter]}</span>}: {helpers.getWeekHours(this.props.restaurant, days[counter], index, globalHours, globalHolidayHours)}<div class="hidden">{counter++}</div></div>
+            return <div>{(index == 0) ? <span className='day'><strong>{days[counter]}:</strong></span> : <span className='day'>{days[counter]}:</span>}<span className='hours'>{helpers.getWeekHours(this.props.restaurant, days[counter], index, globalHours, globalHolidayHours)}</span><div class="hidden">{counter++}</div></div>
         })
 
         const siteRoot = 'https://halycon.netlify.com';
