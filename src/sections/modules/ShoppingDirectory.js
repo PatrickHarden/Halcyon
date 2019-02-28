@@ -95,7 +95,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
             document.getElementById('loadMore').style.display = 'none';
         }
         if (categoryId == '' && this.state.search == '' && this.state.amount <= el.length + 1) {
-            document.getElementById('loadMore').style.display = 'inline-block';
+            document.getElementById('loadMore').style.display = 'flex';
         }
     }
 
