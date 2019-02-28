@@ -210,6 +210,17 @@ export default withRouteData(class Page extends React.Component {
                                     </PopoverBody>
                                 </Popover>
                             </div>
+                            <div className='restaurant-buttons'>
+                                {restaurant.acf.menu && 
+                                <a className='halcyon-button' href={restaurant.acf.menu.url} target='_blank'>Menu</a>
+                                }
+                                {restaurant.acf.pickup_link &&
+                                <a className='halcyon-button' href={restaurant.acf.pickup_link} target='_blank'>Pickup</a>
+                                }
+                                {restaurant.acf.delivery_link &&
+                                <a className='halcyon-button' href={restaurant.acf.delivery_link} target='_blank'>Delivery</a>
+                                }
+                            </div>
                             {ReactHtmlParser(restaurant.acf.store_copy)}
                         </Col>
                     </Row>
