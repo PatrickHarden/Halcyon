@@ -69,7 +69,7 @@ export default withSiteData(class EventsDirectory extends React.Component {
 
         return (
             <div className='diningDirectory'>
-            {console.log(events)}
+            {console.log(events, this.props.section)}
                 <div className='heading-container'>
                     <Container>
                         <h2>{this.props.section.heading}</h2>
