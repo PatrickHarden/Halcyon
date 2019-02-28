@@ -22,7 +22,6 @@ var todaysHours;
 var temp = 0;
 var salesArray = [];
 var sales;
-var counter = 0;
 
 export default withRouteData(class Page extends React.Component {
 
