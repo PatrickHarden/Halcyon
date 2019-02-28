@@ -1,8 +1,30 @@
 /* Popover styles */
-#hourPopover {cursor:pointer;}
-.popover {top: 5px !important;}
-.popover-inner {padding:10px;}
-    .popover-inner strong, .popover h3{opacity: .9;}
-    .popover-header, .popover-body {font-family: 'FreightText Pro',serif;}
-    .popover-header {font-size:1.6rem; margin-top:0; margin-bottom:5px; }
-    .popover-body {font-size:1.4rem;}
+#hourPopover {
+    cursor:pointer;
+    padding: 1rem;
+    transition: .3s;
+}
+#hourPopover:hover {
+    transform: translateY(2px);
+}
+.popover .popover-inner {
+    padding:1rem;
+}
+.popover .popover-inner strong, .popover h3{
+    opacity: .9;
+}
+.popover .popover-header, .popover .popover-body {
+    font-family: 'FreightText Pro',serif;
+}
+.popover .popover-header {
+    font-size:1.6rem; 
+    margin-top:0; 
+    margin-bottom:5px; 
+}
+.popover .popover-body {
+    font-size:1.4rem;
+}
+.popover .popover-body .day {
+    min-width: 80px;
+    display: inline-block;
+}

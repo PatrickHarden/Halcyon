@@ -8,7 +8,9 @@ import '../css/components/retailerContent.css'
 import '../css/components/mobileFloatingNav.css'
 import ModuleController from '../sections/modules/ModuleController.js';
 let moment = require('moment');
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/fontawesome-free-brands'
+import { faPhone, faMapMarkerAlt, faGlobe } from '@fortawesome/free-solid-svg-icons'
 import helpers from '../helpers.js'
 import DownArrow from '../images/downArrrow.png'
 //
@@ -92,7 +94,7 @@ export default withRouteData(class Page extends React.Component {
         todaysHours = <span>{helpers.getWeekHours(this.props.retailer, days[day], index, globalHours, globalHolidayHours)}</span>
         temp++;
       }
-      return <div>{(index == 0) ? <span><strong>{days[counter]}</strong></span> : <span>{days[counter]}</span>}: {helpers.getWeekHours(this.props.retailer, days[counter], index, globalHours, globalHolidayHours)}<div class="hidden">{counter++}</div></div>
+      return <div>{(index == 0) ? <span className='day'><strong>{days[counter]}:</strong></span> : <span className='day'>{days[counter]}:</span>}<span className='hours'>{helpers.getWeekHours(this.props.retailer, days[counter], index, globalHours, globalHolidayHours)}</span><div class="hidden">{counter++}</div></div>
     })
 
     const siteRoot = 'https://halycon.netlify.com';
@@ -143,29 +145,60 @@ export default withRouteData(class Page extends React.Component {
         </Head>
         <div>
           <div id="heroSection">
-            {(retailer.acf.hero_image_desktop) ? <img className="hidden-xs" src={retailer.acf.hero_image_desktop.url} alt={retailer.acf.hero_image_desktop.alt} /> : ""}
-            {(retailer.acf.hero_image_mobile) ? <img className="visible-xs" src={retailer.acf.hero_image_mobile.url} alt={retailer.acf.hero_image_mobile.alt} /> : ""}
+            {(retailer.acf.hero_image_desktop) ? <img className="hidden-xs hero-image" src={retailer.acf.hero_image_desktop.url} alt={retailer.acf.hero_image_desktop.alt} /> : ""}
+            {(retailer.acf.hero_image_mobile) ? <img className="visible-xs hero-image" src={retailer.acf.hero_image_mobile.url} alt={retailer.acf.hero_image_mobile.alt} /> : ""}
             <div className="store-container">
-              {(retailer.acf.featured_image) ? <img className="featuredImage" src={retailer.acf.featured_image} /> : ""}
+              <div className="logo-wrapper">
+                {(retailer.acf.logo) ? <img className="logo" src={retailer.acf.logo} alt={retailer.title.rendered + ' logo'} /> : ""}
+              </div>
               <div className="featuredContent">
-                {(retailer.acf.subheading) ? <h5>{ReactHtmlParser(retailer.acf.subheading)}</h5> : ""}
-                {(retailer.acf.blurb) ? <p>{ReactHtmlParser(retailer.acf.blurb)}</p> : ""}
-                {(retailer.acf.street_address) ? <a href={'//maps.google.com/?q=' + retailer.acf.street_address} target="_blank">Location</a> : ""}
-                {(retailer.acf.website) ? <a href={retailer.acf.website} target="_blank">website</a> : ""}
-                {(retailer.acf.phone) ? <a href={retailer.acf.phone} target="_blank">phone</a> : ""}
-                {(retailer.acf.facebook) ? <a href={retailer.acf.facebook} target="_blank">facebook</a> : ""}
-                {(retailer.acf.instagram) ? <a href={retailer.acf.instagram} target="_blank">instagram</a> : ""}
-                {(retailer.acf.twitter) ? <a href={retailer.acf.twitter} target="_blank">twitter</a> : ""}
+                <div className="inner-wrapper">
+                  {(retailer.acf.subheading) ? <h2 className='subheading'>{ReactHtmlParser(retailer.acf.subheading)}</h2> : ""}
+                  {(retailer.acf.blurb) ? <p>{ReactHtmlParser(retailer.acf.blurb)}</p> : ""}
+                  <div className='icon-container'>
+                    <div className='icon-row'>
+                      {(retailer.acf.street_address) ? <a href={'//maps.google.com/?q=' + retailer.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon' /></a> : ""}
+                      {(retailer.acf.website) ? <a href={retailer.acf.website} target="_blank"><FontAwesomeIcon icon={faGlobe} className='icon' /></a> : ""}
+                      {(retailer.acf.phone_number) ? <a href={'tel:' + retailer.acf.phone_number} target="_blank"><FontAwesomeIcon icon={faPhone} className='icon' /></a> : ""}
+                    </div>
+                    <div className='icon-row bottom'>
+                      {(retailer.acf.facebook) ? <a href={retailer.acf.facebook} target="_blank"><FontAwesomeIcon icon={faFacebookF} className='icon' /></a> : ""}
+                      {(retailer.acf.instagram) ? <a href={retailer.acf.instagram} target="_blank"><FontAwesomeIcon icon={faInstagram} className='icon' /></a> : ""}
+                      {(retailer.acf.twitter) ? <a href={retailer.acf.twitter} target="_blank"><FontAwesomeIcon icon={faTwitter} className='icon' /></a> : ""}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="container text-center">
           <Row>
-            <Col xs="12">
+            <Col sm={12}>
               {(retailer.title.rendered) ? <h1>{retailer.title.rendered}</h1> : ""}
-              <p>1234 Magnolia Ave, Forsyth, GA 31029  |  (972)000-1234  |  www.ninandleigh.com  |  Today's Hours: {todaysHours} <img src={DownArrow} id="hourPopover" type="button" onClick={this.toggle} />
-              </p>
+              <div className='store-details'>
+                {retailer.acf.street_address &&
+                  <div className='address'>
+                    {retailer.acf.street_address}
+                    <span className='hidden-xs'>|</span>
+                  </div>
+                }
+                {retailer.acf.phone_number &&
+                  <div className='phone'>
+                    {retailer.acf.phone_number}
+                    <span className='hidden-xs'>|</span>
+                  </div>
+                }
+                {retailer.acf.website &&
+                  <div className='website'>
+                    {retailer.acf.website}
+                    <span className='hidden-xs'>|</span>
+                  </div>
+                }
+                <div className='hours'>
+                  Today's Hours: {todaysHours} <img src={DownArrow} id="hourPopover" type="button" onClick={this.toggle} />
+                </div>
+              </div>
               <div>
                 <Popover placement="bottom" isOpen={this.state.popoverOpen} target="hourPopover" toggle={this.toggle}>
                   <PopoverHeader>This week's hours:</PopoverHeader>
@@ -178,6 +211,7 @@ export default withRouteData(class Page extends React.Component {
             </Col>
           </Row>
         </div>
+
         {this.isSale(retailer) ?
           <div>
             <div className='heading-container'>

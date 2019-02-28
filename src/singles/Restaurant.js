@@ -5,6 +5,11 @@ import ModuleController from '../sections/modules/ModuleController.js';
 import ReactHtmlParser from 'react-html-parser'
 import helpers from '../helpers.js'
 import DownArrow from '../images/downArrrow.png'
+import OpenTableIcon from '../images/icon-open-table-white.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/fontawesome-free-brands'
+import { faPhone, faMapMarkerAlt, faGlobe } from '@fortawesome/free-solid-svg-icons'
+
 let moment = require('moment');
 //
 import '../css/components/pageContent.css'
@@ -143,29 +148,60 @@ export default withRouteData(class Page extends React.Component {
                 </Head>
                 <div>
                     <div id="heroSection">
-                        {(restaurant.acf.hero_image_desktop) ? <img className="hidden-xs" src={restaurant.acf.hero_image_desktop.url} alt={restaurant.acf.hero_image_desktop.alt} /> : ""}
-                        {(restaurant.acf.hero_image_mobile) ? <img className="visible-xs" src={restaurant.acf.hero_image_mobile.url} alt={restaurant.acf.hero_image_mobile.alt} /> : ""}
+                        {(restaurant.acf.hero_image_desktop) ? <img className="hidden-xs hero-image" src={restaurant.acf.hero_image_desktop.url} alt={restaurant.acf.hero_image_desktop.alt} /> : ""}
+                        {(restaurant.acf.hero_image_mobile) ? <img className="visible-xs hero-image" src={restaurant.acf.hero_image_mobile.url} alt={restaurant.acf.hero_image_mobile.alt} /> : ""}
                         <div className="store-container">
-                            {(restaurant.acf.featured_image) ? <img className="featuredImage" src={restaurant.acf.featured_image} /> : ""}
+                            <div className="logo-wrapper">
+                                {(restaurant.acf.logo) ? <img className="logo" src={restaurant.acf.logo} alt={restaurant.title.rendered + ' logo'} /> : ""}
+                            </div>
                             <div className="featuredContent">
-                                {(restaurant.acf.subheading) ? <h5>{ReactHtmlParser(restaurant.acf.subheading)}</h5> : ""}
-                                {(restaurant.acf.blurb) ? <p>{ReactHtmlParser(restaurant.acf.blurb)}</p> : ""}
-                                {(restaurant.acf.street_address) ? <a href={'//maps.google.com/?q=' + restaurant.acf.street_address} target="_blank">Location</a> : ""}
-                                {(restaurant.acf.website) ? <a href={restaurant.acf.website} target="_blank">website</a> : ""}
-                                {(restaurant.acf.phone) ? <a href={restaurant.acf.phone} target="_blank">phone</a> : ""}
-                                {(restaurant.acf.facebook) ? <a href={restaurant.acf.facebook} target="_blank">facebook</a> : ""}
-                                {(restaurant.acf.instagram) ? <a href={restaurant.acf.instagram} target="_blank">instagram</a> : ""}
-                                {(restaurant.acf.twitter) ? <a href={restaurant.acf.twitter} target="_blank">twitter</a> : ""}
+                                <div className="inner-wrapper">
+                                    {(restaurant.acf.subheading) ? <h2 className='subheading'>{ReactHtmlParser(restaurant.acf.subheading)}</h2> : ""}
+                                    {(restaurant.acf.blurb) ? <p>{ReactHtmlParser(restaurant.acf.blurb)}</p> : ""}
+                                    <div className='icon-container'>
+                                        <div className='icon-row'>
+                                            {(restaurant.acf.street_address) ? <a href={'//maps.google.com/?q=' + restaurant.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon' /></a> : ""}
+                                            {(restaurant.acf.open_table) ? <a href={restaurant.acf.open_table} target="_blank"><img src={OpenTableIcon} alt='open table icon' className='icon' /></a> : ""}
+                                            {(restaurant.acf.phone_number) ? <a href={'tel:' + restaurant.acf.phone_number} target="_blank"><FontAwesomeIcon icon={faPhone} className='icon' /></a> : ""}
+                                        </div>
+                                        <div className='icon-row bottom'>
+                                            {(restaurant.acf.facebook) ? <a href={restaurant.acf.facebook} target="_blank"><FontAwesomeIcon icon={faFacebookF} className='icon' /></a> : ""}
+                                            {(restaurant.acf.instagram) ? <a href={restaurant.acf.instagram} target="_blank"><FontAwesomeIcon icon={faInstagram} className='icon' /></a> : ""}
+                                            {(restaurant.acf.twitter) ? <a href={restaurant.acf.twitter} target="_blank"><FontAwesomeIcon icon={faTwitter} className='icon' /></a> : ""}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="container text-center">
                     <Row>
-                        <Col xs="12">
+                        <Col sm={12}>
                             {(restaurant.title.rendered) ? <h1>{restaurant.title.rendered}</h1> : ""}
-                            <p>1234 Magnolia Ave, Forsyth, GA 31029  |  (972)000-1234  |  www.ninandleigh.com  |  Today's Hours: {todaysHours} <img src={DownArrow} id="hourPopover" type="button" onClick={this.toggle} />
-                            </p>
+                            <div className='store-details'>
+                                {restaurant.acf.street_address &&
+                                    <div className='address'>
+                                        {restaurant.acf.street_address}
+                                        <span className='hidden-xs'>|</span>
+                                    </div>
+                                }
+                                {restaurant.acf.phone_number &&
+                                    <div className='phone'>
+                                        {restaurant.acf.phone_number}
+                                        <span className='hidden-xs'>|</span>
+                                    </div>
+                                }
+                                {restaurant.acf.website &&
+                                    <div className='website'>
+                                        {restaurant.acf.website.replace('http://','').replace('https://','')}
+                                        <span className='hidden-xs'>|</span>
+                                    </div>
+                                }
+                                <div className='hours'>
+                                    Today's Hours: {todaysHours} <img src={DownArrow} id="hourPopover" type="button" onClick={this.toggle} />
+                                </div>
+                            </div>
                             <div>
                                 <Popover placement="bottom" isOpen={this.state.popoverOpen} target="hourPopover" toggle={this.toggle}>
                                     <PopoverHeader>This week's hours:</PopoverHeader>
