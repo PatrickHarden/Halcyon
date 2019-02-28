@@ -12,7 +12,7 @@ let entities = new Entities();
 import '../css/calendar.css'
 
 const SiteURL = window.location.protocol + '//' + document.location.hostname;
-const Images = SiteURL + "/wp-content/plugins/imaginuity-centers3/js/themes/LibertyCenter/lib/img/";
+// const Images = SiteURL + "/wp-content/plugins/imaginuity-centers3/js/themes/LibertyCenter/lib/img/";
 const EventCalendar = require('react-event-calendar').default;
 
 export default class EventsCalendar extends Component{
