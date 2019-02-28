@@ -194,7 +194,7 @@ export default withRouteData(class Page extends React.Component {
                                 }
                                 {restaurant.acf.website &&
                                     <div className='website'>
-                                        {restaurant.acf.website.replace('http://','').replace('https://','')}
+                                        {restaurant.acf.website.replace('http://', '').replace('https://', '')}
                                         <span className='hidden-xs'>|</span>
                                     </div>
                                 }
