@@ -52,7 +52,6 @@ export default withSiteData(class DiningDirectory extends React.Component {
         storeCounter = storeCounter.filter(function (el) {
             return el != null;
         });
-        console.log(this.props.temp)
     }
 
     componentWillUpdate(){
@@ -66,13 +65,13 @@ export default withSiteData(class DiningDirectory extends React.Component {
 
         return (   
             <div className='diningDirectory'>
+            {(this.props.section.heading) ?
                 <div className='heading-container'>
                     <Container>
                             <h2>{this.props.section.heading}</h2>
                     </Container>
-                </div>
+                </div> : ""}
                 <Container className="diningRows">
-                {console.log(this.state.amount)}
                     {stores.slice(0, this.state.amount).map((store, index) => (
                         (store.acf.store_type == "restaurant") ? 
                         <div key={index} className='store-single'>

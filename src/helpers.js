@@ -1,5 +1,3 @@
-import React from 'react'
-
 var todaysDate = new Date();
 var day = new Date().getDay();
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -8,7 +6,6 @@ var excerpt;
 var regex = /(<([^>]+)>)/ig;
 
 const helpers = {
-
     // get store hours respective to the day the client hits the website
     // custom store holiday hours > custom store hours > global holiday hours > global hours
     getHours: function(store, globalHours, globalHolidayHours){
@@ -20,7 +17,7 @@ const helpers = {
             for (var i = 0; i < hourArray.length; i++){
                 var testDate = new Date(store.acf.alternate_hours[i].date_picker)
                 if(testDate.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)) {
-                    console.log('Custom store holiday hours:', store.acf.alternate_hours)
+                    // console.log('Custom store holiday hours:', store.acf.alternate_hours)
                     customStoreHolidayHours = true
                     if (store.acf.alternate_hours[i].closed == true){
                         return store.acf.alternate_hours[i].start_time + " - " + store.acf.alternate_hours[i].end_time
@@ -32,7 +29,7 @@ const helpers = {
         }
         // If store custom hours are present and store custom holiday hours are not in range
         if (store.acf.custom_hours == true && customStoreHolidayHours == false){
-            console.log('Custom store hours:', store.acf.standard_hours[0])
+            // console.log('Custom store hours:', store.acf.standard_hours[0])
             if (days[day] == "Monday"){
                 if (store.acf.standard_hours[0].monday_closed == false){
                     return store.acf.standard_hours[0].monday_open + " - " + store.acf.standard_hours[0].monday_close
@@ -84,7 +81,7 @@ const helpers = {
                 for (var i = 0; i < hourArray.length; i++){
                     var testDate = new Date(globalHolidayHours[i].date_picker)
                     if(testDate.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)) {
-                        console.log('Global holiday hours:', globalHolidayHours[i])
+                        // console.log('Global holiday hours:', globalHolidayHours[i])
                         holidayHours = true
                         if (globalHolidayHours[i].closed == true) {
                             return globalHolidayHours[i].start_time + " - " + globalHolidayHours[i].end_time
@@ -98,7 +95,7 @@ const helpers = {
         // If all other hours are non-existent, use global store hours
         if (store.acf.custom_hours == false && customStoreHolidayHours == false && holidayHours == false){
             if (globalHours.length != 0){
-                console.log('Global hours:', globalHours[0])
+                // console.log('Global hours:', globalHours[0])
                 if (days[day] == "Monday"){
                     if (globalHours[0].monday_closed == false){
                         return globalHours[0].monday_open + " - " + globalHours[0].monday_close
@@ -144,6 +141,142 @@ const helpers = {
                 } 
             }
         }    
+    },
+
+    // get hours for the current day and the next seven days. Passing in currendDay instead of inherititng it form array above
+    // index is used to iterate days forward, so 0 would start at the current day (tuesday) and 6 would be the 7th day (monday)
+    getWeekHours: function(store, currendDay, index, globalHours, globalHolidayHours){
+        var customStoreHolidayHours = false
+        var holidayHours = false
+        if (store.acf.alternate_hours.length != 0){
+            var hourArray = store.acf.alternate_hours
+            for (var i = 0; i < hourArray.length; i++){
+                var testDate = new Date(store.acf.alternate_hours[i].date_picker)
+                if(testDate.setHours(0,0,0,0) == todaysDate.setHours((24 * index),0,0,0)) {
+                    // console.log('Custom store holiday hours:', store.acf.alternate_hours)
+                    customStoreHolidayHours = true
+                    if (store.acf.alternate_hours[i].closed == true){
+                        return store.acf.alternate_hours[i].start_time + " - " + store.acf.alternate_hours[i].end_time
+                    } else {
+                        return 'Closed'
+                    }
+                }
+            }
+        }
+
+        if (store.acf.custom_hours == true && customStoreHolidayHours == false){
+            // console.log('Custom store hours:', store.acf.standard_hours[0], currendDay)
+            if (currendDay == "Monday"){
+                if (store.acf.standard_hours[0].monday_closed == false){
+                    return store.acf.standard_hours[0].monday_open + " - " + store.acf.standard_hours[0].monday_close
+                } else {
+                    return 'Closed'
+                }
+            } else if (currendDay == "Tuesday"){
+                if (store.acf.standard_hours[0].tuesday_closed == false){
+                    return store.acf.standard_hours[0].tuesday_open + " - " + store.acf.standard_hours[0].tuesday_close
+                } else {
+                    return 'Closed'
+                }
+            } else if (currendDay == "Wednesday"){
+                if (store.acf.standard_hours[0].wednesday_closed == false){
+                    return store.acf.standard_hours[0].wednesday_open + " - " + store.acf.standard_hours[0].wednesday_close
+                } else {
+                    return 'Closed'
+                }
+            } else if (currendDay == "Thursday"){
+                if (store.acf.standard_hours[0].thursday_closed == false){
+                    return store.acf.standard_hours[0].thursday_open + " - " + store.acf.standard_hours[0].thursday_close
+                } else {
+                    return 'Closed'
+                }
+            } else if (currendDay == "Friday"){
+                if (store.acf.standard_hours[0].friday_closed == false){
+                    return store.acf.standard_hours[0].friday_open + " - " + store.acf.standard_hours[0].friday_close
+                } else {
+                    return 'Closed'
+                }
+            } else if (currendDay == "Saturday"){
+                if (store.acf.standard_hours[0].saturday_closed == false){
+                    return store.acf.standard_hours[0].saturday_open + " - " + store.acf.standard_hours[0].saturday_close
+                } else {
+                    return 'Closed'
+                }
+            } else if (currendDay == "Sunday"){
+                if (store.acf.standard_hours[0].sunday_closed == false){
+                    return store.acf.standard_hours[0].sunday_open + " - " + store.acf.standard_hours[0].sunday_close
+                } else {
+                    return 'Closed'
+                }
+            }
+        }
+        // If store custom hours and custom holiday hours are false, check to see if global holiday hours are present and today
+        if (store.acf.custom_hours == false && customStoreHolidayHours == false){
+            if (globalHolidayHours.length != 0){
+                var hourArray = globalHolidayHours
+                for (var i = 0; i < hourArray.length; i++){
+                    var testDate = new Date(globalHolidayHours[i].date_picker)
+                    if(testDate.setHours(0,0,0,0) == todaysDate.setHours((24 * index),0,0,0)) {
+                        // console.log('Global holiday hours:', globalHolidayHours[i])
+                        holidayHours = true
+                        if (globalHolidayHours[i].closed == true) {
+                            return globalHolidayHours[i].start_time + " - " + globalHolidayHours[i].end_time
+                        } else {
+                            return 'Closed'
+                        }
+                    }
+                }
+            }
+        }
+        // If all other hours are non-existent, use global store hours
+        if (store.acf.custom_hours == false && customStoreHolidayHours == false && holidayHours == false){
+            if (globalHours.length != 0){
+                // console.log('Global hours:', globalHours[0])
+                if (currendDay == "Monday"){
+                    if (globalHours[0].monday_closed == false){
+                        return globalHours[0].monday_open + " - " + globalHours[0].monday_close
+                    } else {
+                        return 'Closed'
+                    }
+                } else if (currendDay == "Tuesday"){
+                    if (globalHours[0].tuesday_closed == false){
+                        return globalHours[0].tuesday_open + " - " + globalHours[0].tuesday_close
+                    } else {
+                        return 'Closed'
+                    }
+                } else if (currendDay == "Wednesday"){
+                    if (globalHours[0].wednesday_closed == false){
+                        return globalHours[0].wednesday_open + " - " + globalHours[0].wednesday_close
+                    } else {
+                        return 'Closed'
+                    }
+                } else if (currendDay == "Thursday"){
+                    if (globalHours[0].thursday_closed == false){
+                        return globalHours[0].thursday_open + " - " + globalHours[0].thursday_close
+                    } else {
+                        return 'Closed'
+                    }
+                } else if (currendDay == "Friday"){
+                    if (globalHours[0].friday_closed == false){
+                        return globalHours[0].friday_open + " - " + globalHours[0].friday_close
+                    } else {
+                        return 'Closed'
+                    }
+                } else if (currendDay == "Saturday"){
+                    if (globalHours[0].saturday_closed == false){
+                        return globalHours[0].saturday_open + " - " + globalHours[0].saturday_close
+                    } else {
+                        return 'Closed'
+                    }
+                } else if (currendDay == "Sunday"){
+                    if (globalHours[0].sunday_closed == false){
+                        return globalHours[0].sunday_open + " - " + globalHours[0].sunday_close
+                    } else {
+                        return 'Closed'
+                    }
+                } 
+            }
+        }  
     },
 
     // Convert url received from wordpress to one that functions within react-static

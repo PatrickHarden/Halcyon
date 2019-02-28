@@ -5,6 +5,7 @@ import { Container, Row, Col } from 'reactstrap';
 
 import FooterLogo from '../images/footerLogo.png';
 import AccessibilityIcon from '../images/footerAccessIcon.png';
+import TagManager from 'react-gtm-module'
 
 var isContrast = false;
 
@@ -32,9 +33,12 @@ export default withSiteData(class SiteFooter extends React.Component {
 
     render() {
         const siteTitle = this.props.title
-        const siteCreator = this.props.siteCreator
-        const siteCreatorURL = this.props.siteCreatorURL
+        // const siteCreator = this.props.siteCreator
+        // const siteCreatorURL = this.props.siteCreatorURL
         const menu = this.props.footerMenu
+        const tagManagerArgs = {
+            gtmId: this.props.centerInfo.acf.google_tag_manager_ID
+        }
 
         if (typeof document === 'undefined') {
             return null
@@ -70,6 +74,7 @@ export default withSiteData(class SiteFooter extends React.Component {
                             <img className='hidden-xs eyeball' src={AccessibilityIcon} onClick={this.changeContrast} />
                         </Container>
                     </div>
+                    <div className='hidden'>{(tagManagerArgs) ? setTimeout(TagManager.initialize(tagManagerArgs), 1) : ""}</div>
                 </footer>
             )
         }

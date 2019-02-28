@@ -8,37 +8,12 @@ import '../css/components/mobileFloatingNav.css'
 import ReactHtmlParser from 'react-html-parser'
 import ModuleController from '../sections/modules/ModuleController.js';
 import MobileFloatingNav from '../sections/MobileFloatingNav.js'
+import helpers from '../helpers'
 
 export default withRouteData(class Page extends React.Component {
 
   constructor(props) {
     super(props);
-  }
-
-  convertLink(url) {
-    var words = url.split('/');
-    if (words[4] == "") {
-      return words[3]
-    } else {
-      if (words[3] == "events") {
-        return "/events/" + words[4]
-      } else if (words[3] == "sales") {
-        return "/sales/" + words[4]
-      } else if (words[3] == "stores") {
-        return "/shopping/" + words[4]
-      } else if (words[3] == "blog") {
-        return "/blogs/" + words[4]
-      }
-    }
-  }
-
-  getTitleFromUrl(url) {
-    var words = url.split('/');
-    if (words[4] == "") {
-      return words[3].replace(/-/g, ' ')
-    } else {
-      return words[4].replace(/-/g, ' ')
-    }
   }
 
   render() {
@@ -63,17 +38,17 @@ export default withRouteData(class Page extends React.Component {
             <div className='button-container hidden-xs'>
               {page.acf.button_1 &&
                 <div class='button-wrap'>
-                  <Link className="halcyon-button" to={this.convertLink(page.acf.button_1.url)}>{(page.acf.button_1.title) ? <div>{ReactHtmlParser(page.acf.button_1.title)}</div> : <div>{this.getTitleFromUrl(page.acf.button_1.url)}</div>}</Link>
+                  <Link className="halcyon-button" to={helpers.convertLink(page.acf.button_1.url, this.props.title.toLowerCase())}>{(page.acf.button_1.title) ? <div>{ReactHtmlParser(page.acf.button_1.title)}</div> : <div>{helpers.getTitleFromUrl(page.acf.button_1.url, this.props.title.toLowerCase())}</div>}</Link>
                 </div>
               }
               {page.acf.button_2 &&
                 <div class='button-wrap'>
-                  <Link className="halcyon-button" to={this.convertLink(page.acf.button_2.url)}>{(page.acf.button_2.title) ? <div>{ReactHtmlParser(page.acf.button_2.title)}</div> : <div>{this.getTitleFromUrl(page.acf.button_2.url)}</div>}</Link>
+                  <Link className="halcyon-button" to={helpers.convertLink(page.acf.button_2.url, this.props.title.toLowerCase())}>{(page.acf.button_2.title) ? <div>{ReactHtmlParser(page.acf.button_2.title)}</div> : <div>{helpers.getTitleFromUrl(page.acf.button_2.url, this.props.title.toLowerCase())}</div>}</Link>
                 </div>
               }
               {page.acf.button_3 &&
                 <div class='button-wrap'>
-                  <Link className="halcyon-button" to={this.convertLink(page.acf.button_3.url)}>{(page.acf.button_3.title) ? <div>{ReactHtmlParser(page.acf.button_3.title)}</div> : <div>{this.getTitleFromUrl(page.acf.button_3.url)}</div>}</Link>
+                  <Link className="halcyon-button" to={helpers.convertLink(page.acf.button_3.url, this.props.title.toLowerCase())}>{(page.acf.button_3.title) ? <div>{ReactHtmlParser(page.acf.button_3.title)}</div> : <div>{helpers.getTitleFromUrl(page.acf.button_3.url, this.props.title.toLowerCase())}</div>}</Link>
                 </div>
               }
             </div>
@@ -94,19 +69,19 @@ export default withRouteData(class Page extends React.Component {
             {(page.acf.subheading) ? <h2 className='visible-xs hero-subhead'>{ReactHtmlParser(page.acf.subheading)}</h2> : ""}
             {(page.acf.content) ? <div className='visible-xs'>{ReactHtmlParser(page.acf.content)}</div> : ""}
             <div className='button-container visible-xs'>
-              {page.acf.button_1 &&
+            {page.acf.button_1 &&
                 <div class='button-wrap'>
-                  <Link className="halcyon-button" to={this.convertLink(page.acf.button_1.url)}>{(page.acf.button_1.title) ? <div>{ReactHtmlParser(page.acf.button_1.title)}</div> : <div>{this.getTitleFromUrl(page.acf.button_1.url)}</div>}</Link>
+                  <Link className="halcyon-button" to={helpers.convertLink(page.acf.button_1.url, this.props.title.toLowerCase())}>{(page.acf.button_1.title) ? <div>{ReactHtmlParser(page.acf.button_1.title)}</div> : <div>{helpers.getTitleFromUrl(page.acf.button_1.url, this.props.title.toLowerCase())}</div>}</Link>
                 </div>
               }
               {page.acf.button_2 &&
                 <div class='button-wrap'>
-                  <Link className="halcyon-button" to={this.convertLink(page.acf.button_2.url)}>{(page.acf.button_2.title) ? <div>{ReactHtmlParser(page.acf.button_2.title)}</div> : <div>{this.getTitleFromUrl(page.acf.button_2.url)}</div>}</Link>
+                  <Link className="halcyon-button" to={helpers.convertLink(page.acf.button_2.url, this.props.title.toLowerCase())}>{(page.acf.button_2.title) ? <div>{ReactHtmlParser(page.acf.button_2.title)}</div> : <div>{helpers.getTitleFromUrl(page.acf.button_2.url, this.props.title.toLowerCase())}</div>}</Link>
                 </div>
               }
               {page.acf.button_3 &&
                 <div class='button-wrap'>
-                  <Link className="halcyon-button" to={this.convertLink(page.acf.button_3.url)}>{(page.acf.button_3.title) ? <div>{ReactHtmlParser(page.acf.button_3.title)}</div> : <div>{this.getTitleFromUrl(page.acf.button_3.url)}</div>}</Link>
+                  <Link className="halcyon-button" to={helpers.convertLink(page.acf.button_3.url, this.props.title.toLowerCase())}>{(page.acf.button_3.title) ? <div>{ReactHtmlParser(page.acf.button_3.title)}</div> : <div>{helpers.getTitleFromUrl(page.acf.button_3.url, this.props.title.toLowerCase())}</div>}</Link>
                 </div>
               }
             </div>

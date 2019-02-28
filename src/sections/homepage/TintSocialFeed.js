@@ -1,9 +1,6 @@
 // Packages
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 import Script from 'react-load-script';
-let moment = require('moment');
-let momentRange = require('moment-range');
-moment = momentRange.extendMoment(moment);
 
 export default class TintSocialFeed extends Component{
     constructor(props){
@@ -11,11 +8,12 @@ export default class TintSocialFeed extends Component{
 
         this.state = {
             scriptLoaded: false,
+            counter: 5
         }
     }
 
     componentWillMount(){
-        console.log(this.props.optionsData);
+        this.setState({ scriptLoaded: false, counter: this.state.counter++ })
     }
 
     handleScriptCreate() {
@@ -28,7 +26,7 @@ export default class TintSocialFeed extends Component{
 
     render(){
         return(
-            <div className="tint-social-feed">
+            <div className="tint-social-feed" id="frameTarget">
                 <div
                     className="tintup"
                     data-id={this.props.optionsData.acf.data_id}

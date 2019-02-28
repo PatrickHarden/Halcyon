@@ -8,6 +8,8 @@ import PageSearch from './PageSearch'
 import EventSearch from './EventSearch'
 import StoreSearch from './StoreSearch'
 import '../css/components/searchComponent.css'
+import { BrowserRouter, Route } from 'react-router-dom'
+
 
 const fullWidth = {
   width: '100%'
@@ -44,15 +46,22 @@ export default withSiteData(class SearchComponent extends React.Component {
     }
   }
 
+  // keyPress(e){
+  //   if(e.keyCode == 13){
+  //      console.log('value', e.target.value);
+  //      window.location.href = window.location + '/shopping'
+  //   }
+  // }
+
   render() {
 
     if (typeof document !== 'undefined') {
       return (
         <div id="searchComponent">
         <Container>
-            <input className='search-bar' placeholder="Search..." value={this.state.term} onChange = {event => this.setState({term : event.target.value})} />
+            <input className='search-bar' placeholder="Search..." value={this.state.term} onKeyDown={this.keyPress} onChange = {event => this.setState({term : event.target.value})} />
             <div id="theResults">
-            { (this.state.term != '') ?
+            { (this.state.term.length > 3) ?
                 <div>
                 {this.hideContent()}
                 <PageSearch searchResult={this.state.term} />

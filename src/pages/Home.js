@@ -1,30 +1,16 @@
 import React from 'react'
-import { withSiteData, Link, withRouteData, Head } from 'react-static'
-import {Helmet} from "react-helmet";
+import { Link, withRouteData, Head } from 'react-static'
 import ReactHtmlParser from 'react-html-parser';
-import { 
-  Container, Row, Col
-} from 'reactstrap';
-  import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-  import { faPhone, faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
-  import { Redirect } from 'react-router-dom'
+import { Container } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPhone, faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 
 import HeroSlider from '../sections/homepage/HeroSlider';
-import ImageCarousel from '../sections/modules/ImageCarousel.js'
-import GlobalImageGrid from '../sections/modules/GlobalImageGrid.js'
-import FeaturedEvents from '../sections/modules/FeaturedEvents.js'
-import ContentArea from '../sections/modules/ContentArea.js'
-import FeaturedStores from '../sections/modules/FeaturedStores.js'
+import ModuleController from '../sections/modules/ModuleController.js'
 import TintSocialFeed from '../sections/homepage/TintSocialFeed.js';
-import rightArrow from '../images/rightArrow.png';
+import helpers from '../helpers.js'
 
-const fullWidth = {
-  width: '100%'
-}
 
-var excerpt;
-var regex = /(<([^>]+)>)/ig;
-var selectedStores = [];
 var featuredStores = [];
 
 export default withRouteData(class Home extends React.Component {
@@ -37,43 +23,8 @@ export default withRouteData(class Home extends React.Component {
         eventExist: false,
         storeExist: false,
         imageArray: [],
+        tint: 5,
     };
-  }
-
-  compressText(store){
-    if (store.length > 80){
-      excerpt = store.replace(regex, "").substr(0, 80)
-      excerpt = excerpt.substr(0, excerpt.lastIndexOf(" "))
-      return excerpt + "...";
-    } else {
-      return store;
-    }
-  }
-
-    convertLink(url){
-    var words = url.split('/');
-    if (words[4] == ""){
-      return words[3]
-    } else {
-      if (words[3] == "events") {
-        return "/events/" + words[4]
-      } else if (words[3] == "sales"){
-        return "/sales/" + words[4]
-      }  else if (words[3] == "stores"){
-        return "/stores/" + words[4]
-      } else if (words[3] == "blog"){
-        return "/blogs/" + words[4]
-      }
-    }
-  }
-
-  getTitleFromUrl(url){
-    var words = url.split('/');
-    if (words[4] == ""){
-      return words[3].replace(/-/g, ' ')
-    } else {
-      return words[4].replace(/-/g, ' ')
-    }
   }
 
   componentWillMount(){
@@ -102,7 +53,7 @@ export default withRouteData(class Home extends React.Component {
           <img src={store.acf.featured_image} className="featuredEventImage" />
           <div className="eventOverlay">
             <h4>{store.title.rendered}</h4>
-            <div>{ReactHtmlParser(this.compressText(store.acf.post_copy))}</div>
+            <div>{ReactHtmlParser(helpers.compressText(store.acf.post_copy, 80))}</div>
           </div>
           </Link>
         </div>
@@ -115,7 +66,6 @@ export default withRouteData(class Home extends React.Component {
     // Pull only 3 featured events per design
     featuredStores = featuredStores.slice(0,3)
   }
-
 
   render() {
 
@@ -159,29 +109,18 @@ export default withRouteData(class Home extends React.Component {
             <Container className='top-cta'>
               <h1>{home.acf.title_h1}</h1>
               <div>{ReactHtmlParser(home.acf.content_area)}</div>
-                {(home.acf.button) ? <Link className="halcyon-button" to={this.convertLink(home.acf.button.url)} target={home.acf.button.target}>{ReactHtmlParser(home.acf.button.title)}</Link> : ""}           
+                {(home.acf.button) ? <Link className="halcyon-button" to={helpers.convertLink(home.acf.button.url, this.props.title.toLowerCase())} target={home.acf.button.target}>{ReactHtmlParser(home.acf.button.title)}</Link> : ""}           
             </Container>
             {(home.acf.layout) ? 
               <div>
-                {home.acf.layout.map((section, index) => {
-                  if (section.acf_fc_layout == 'content_area'){
-                    return <Container key={index}><ContentArea section={section} /></Container>
-                  } else if (section.acf_fc_layout == 'image_carousel'){
-                    return <div key={index}><ImageCarousel section={section} /></div>
-                  } else if (section.acf_fc_layout == 'image_grid') {
-                    return <div key={index}><GlobalImageGrid section={section} /></div>
-                  } else if (section.acf_fc_layout == 'featured_events') {
-                    return <div key={index}><FeaturedEvents section={section} /></div>
-                  } else if (section.acf_fc_layout == 'featured_stores') {
-                    return <div key={index}><FeaturedStores pageData={home} section={section} /></div>
-                  }
-                })}
+              <ModuleController page={home} />
               </div> : "" }
             <Container className='social-feed-container'>
-            {console.log(this.props.property_options)}
             {(this.props.property_options.acf.data_id) ? <div>
               <h2>@HALCYONFORSYTH</h2>
-              <TintSocialFeed optionsData={this.props.property_options} key={this.props.property_options.acf.data_id} />
+                <div id="thisTarget">
+                  <TintSocialFeed optionsData={this.props.property_options} />
+                </div>
             </div> : ""}
             </Container>
           </div>
