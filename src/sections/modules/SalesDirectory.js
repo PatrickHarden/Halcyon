@@ -85,7 +85,7 @@ export default withSiteData(class SaleDirectory extends React.Component {
                 {(sale.acf.post_copy) ? <div>{ReactHtmlParser(sale.acf.post_copy)}</div> : ""}
               </div>
               <div className="col-sm-2">
-                {/* <a href={'mailto:?body=' + siteRoot + '/dining/' + this.props.retailer.slug + '&subject=' + ReactHtmlParser(sale.title.rendered)}>
+                <a href={'mailto:?body=' + siteRoot + '/dining/' + this.props.retailer.slug + '&subject=' + ReactHtmlParser(sale.title.rendered)}>
                   mail
                           </a>
                 <a href={'https://twitter.com/home?status=' + siteRoot + '/dining/' + this.props.retailer.slug} target="_blank">
@@ -93,7 +93,7 @@ export default withSiteData(class SaleDirectory extends React.Component {
                           </a>
                 <a href={'https://www.facebook.com/sharer/sharer.php?u=' + siteRoot + '/dining/' + this.props.retailer.slug} target="_blank">
                   facebook
-                          </a> */}
+                </a>
                 <Link to={'/sales/' + sale.slug} className="halcyon-button">More Info ></Link>
               </div>
               </div>)
