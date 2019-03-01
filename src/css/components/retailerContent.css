@@ -54,7 +54,9 @@
     color: #4F4B48;
     font-size: 3rem;
 }
-
+.single-blog #heroSection .store-container .featuredContent .icon-container .icon-row:not(.bottom) a .icon {
+    font-size: 5rem;
+}
 .single-blog .content h1 {
     font-size: 2rem;
     text-transform: uppercase;
@@ -66,9 +68,64 @@
 .single-blog .content .store-details > div {
     padding-bottom: .25rem;
 }
+.single-blog .content .store-details > div > a {
+    color: #4e5859;
+}
 .single-blog .content .restaurant-buttons .halcyon-button {
     background:#4F4B48;
 }
+.single-blog .content .restaurant-buttons .halcyon-button:hover {
+    color: #4F4B48;
+    background: #fff;
+}
+
+/* Sales */
+.sale-single {
+    margin: 1rem 0 1rem 6rem;
+    box-shadow: 3px 3px 6px rgba(0,0,0,.2);
+    border-radius: 10px;
+    padding: 1rem 1rem 1rem 4rem;
+    position: relative;
+}
+.sale-single .share-links {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+.sale-single .share-links .icon {
+    background: #8F1838;
+    padding: 1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin-right: 1rem;
+    font-size: 2rem;
+    color: #fff;
+}
+.sale-single .date-ball {
+    width: 75px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: #8F1838;
+    border-radius: 50%;
+    font-family: 'Flama', sans-serif;
+    text-align: center;
+    font-size: 2rem;
+    position: absolute;
+    top: 30%;
+    left: -54px;
+    box-shadow: 3px 3px 6px rgba(0,0,0,.4);
+}
+.sale-single .date-ball .ends {
+    font-size: 1.4rem;
+}
+
 @media screen and (min-width: 768px) {
     .single-blog #heroSection .hero-image {
         width: auto;

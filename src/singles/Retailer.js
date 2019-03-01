@@ -10,9 +10,11 @@ import ModuleController from '../sections/modules/ModuleController.js';
 let moment = require('moment');
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/fontawesome-free-brands'
-import { faPhone, faMapMarkerAlt, faGlobe } from '@fortawesome/free-solid-svg-icons'
+import { faMapMarkerAlt, faGlobe, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import helpers from '../helpers.js'
 import DownArrow from '../images/downArrrow.png'
+import PhoneIcon from '../images/phone-icon.png'
+
 //
 var weeksHours;
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -102,28 +104,28 @@ export default withRouteData(class Page extends React.Component {
     if (sales) {
     } else {
       sales = salesArray.map((sale, index) => {
-        return (<div key={index} className="sale-single row">
-          <div className="col-sm-2">{(sale.acf.end_date) ? <span>Ends<br />{moment(sale.acf.end_date, 'YYYYMMDD').format('MM/DD')}</span> : ""}</div>
-          <div className='image-wrapper col-sm-3'>
-            <img className='hidden-xs' src={sale.acf.featured_image} />
+        return (<div key={index} className="sale-single">
+          <div className="date-ball">{(sale.acf.end_date) ? <span><span className='ends'>Ends</span><br />{moment(sale.acf.end_date, 'YYYYMMDD').format('MM/DD')}</span> : ""}</div>
+          <div className='image-wrapper hidden-xs'>
+            <img src={sale.acf.featured_image} alt={sale.title.rendered} />
           </div>
-          <div className="col-sm-5">
+          <div className="content-wrapper">
             <div>{moment(sale.acf.start_date, 'YYYYMMDD').format('MMM DD')} - {moment(sale.acf.end_date, 'YYYYMMDD').format('MMM DD')} at {this.props.retailer.title.rendered}</div>
             <h5>{sale.title.rendered}</h5>
             {(sale.acf.post_copy) ? <div>{ReactHtmlParser(sale.acf.post_copy)}</div> : ""}
           </div>
-          <div className="col-sm-2">
+          <div className="share-links hidden-xs">
             <a href={'mailto:?body=' + siteRoot + '/dining/' + this.props.retailer.slug + '&subject=' + ReactHtmlParser(sale.title.rendered)}>
-              mail
-                      </a>
+              <FontAwesomeIcon icon={faEnvelope} className='icon' />
+            </a>
             <a href={'https://twitter.com/home?status=' + siteRoot + '/dining/' + this.props.retailer.slug} target="_blank">
-              twitter
-                      </a>
+              <FontAwesomeIcon icon={faTwitter} className='icon' />
+            </a>
             <a href={'https://www.facebook.com/sharer/sharer.php?u=' + siteRoot + '/dining/' + this.props.retailer.slug} target="_blank">
-              facebook
-                      </a>
-            <Link to={'/sales/' + sale.slug} className="halcyon-button">More Info ></Link>
+              <FontAwesomeIcon icon={faFacebookF} className='icon' />
+            </a>
           </div>
+          <Link to={'/sales/' + sale.slug} className="halcyon-button arrow">More Info</Link>
         </div>)
       })
     }
@@ -159,7 +161,7 @@ export default withRouteData(class Page extends React.Component {
                     <div className='icon-row'>
                       {(retailer.acf.street_address) ? <a href={'//maps.google.com/?q=' + retailer.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon' /></a> : ""}
                       {(retailer.acf.website) ? <a href={retailer.acf.website} target="_blank"><FontAwesomeIcon icon={faGlobe} className='icon' /></a> : ""}
-                      {(retailer.acf.phone_number) ? <a href={'tel:' + retailer.acf.phone_number} target="_blank"><FontAwesomeIcon icon={faPhone} className='icon' /></a> : ""}
+                      {(retailer.acf.phone_number) ? <a href={'tel:' + retailer.acf.phone_number}><img src={PhoneIcon} alt='phone icon' className='icon' /></a> : ""}
                     </div>
                     <div className='icon-row bottom'>
                       {(retailer.acf.facebook) ? <a href={retailer.acf.facebook} target="_blank"><FontAwesomeIcon icon={faFacebookF} className='icon' /></a> : ""}
@@ -179,19 +181,19 @@ export default withRouteData(class Page extends React.Component {
               <div className='store-details'>
                 {retailer.acf.street_address &&
                   <div className='address'>
-                    {retailer.acf.street_address}
+                    <a href={'//maps.google.com/?q=' + retailer.acf.street_address} target='_blank'>{retailer.acf.street_address}</a>
                     <span className='hidden-xs'>|</span>
                   </div>
                 }
                 {retailer.acf.phone_number &&
                   <div className='phone'>
-                    {retailer.acf.phone_number}
+                    <a href={'tel:' + retailer.acf.phone_number}>{retailer.acf.phone_number}</a>
                     <span className='hidden-xs'>|</span>
                   </div>
                 }
                 {retailer.acf.website &&
                   <div className='website'>
-                    {retailer.acf.website}
+                    <a href={retailer.acf.website} target="_blank">{retailer.acf.website.replace('http://', '').replace('https://', '')}</a>
                     <span className='hidden-xs'>|</span>
                   </div>
                 }
