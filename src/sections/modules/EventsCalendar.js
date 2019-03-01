@@ -81,7 +81,6 @@ export default class EventsCalendar extends React.Component {
         }
       }
     })
-    console.log(this.state.events)
   }
 
   calculateNextWeeksDate(startDate){
@@ -114,7 +113,6 @@ export default class EventsCalendar extends React.Component {
     this.setState({
       modal: !this.state.modal
     });
-    console.log(event)
     modal = <div class="modal fade" tabindex="-1" role="dialog" id="calendarModal" style={styles}>
       <div class="modal-dialog">
         <div class="modal-content">
