@@ -66,7 +66,9 @@
 .single-blog .content .store-details > div {
     padding-bottom: .25rem;
 }
-
+.single-blog .content .restaurant-buttons .halcyon-button {
+    background:#4F4B48;
+}
 @media screen and (min-width: 768px) {
     .single-blog #heroSection .hero-image {
         width: auto;

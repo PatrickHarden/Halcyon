@@ -67,7 +67,7 @@ export default withSiteData(class SaleDirectory extends React.Component {
                     {(this.state.search == '') ?
                         <div>
                             {sales.slice(0, this.state.amount).map((sale, index) => (
-                                <div key={index} class="row">
+                                <div key={index} className="row">
                                     <div className="col-sm-2">{(sale.acf.end_date) ? <span>Ends<br />{moment(sale.acf.end_date, 'YYYYMMDD').format('MM/DD')}</span> : ""}</div>
                                     <div className='image-wrapper col-sm-3'>
                                         <img className='hidden-xs' src={sale.acf.featured_image} />
@@ -91,13 +91,13 @@ export default withSiteData(class SaleDirectory extends React.Component {
                                     </div>
                                 </div>
                             ))}
-                            <div class="loadmore-button" id="loadMore" onClick={this.loadMore}><FontAwesomeIcon icon={faPlus} className='icon' />Load More</div>
+                            <div className="loadmore-button" id="loadMore" onClick={this.loadMore}><FontAwesomeIcon icon={faPlus} className='icon' />Load More</div>
                         </div>
                         :
                         <div>
                             {sales.map((sale, index) => (
                                 (sale.title.rendered.toLowerCase().includes(this.state.search.toLowerCase())) ?
-                                    <div key={index} class="row">
+                                    <div key={index} className="row">
                                         <div className="col-sm-2">{(sale.acf.end_date) ? <span>Ends<br />{moment(sale.acf.end_date, 'YYYYMMDD').format('MM/DD')}</span> : ""}</div>
                                         <div className='image-wrapper col-sm-3'>
                                             <img className='hidden-xs' src={sale.acf.featured_image} />

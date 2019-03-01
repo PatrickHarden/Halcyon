@@ -88,7 +88,7 @@ export default withSiteData(class EventsDirectory extends React.Component {
                                     <div></div>
                                 </div>
                             ))}
-                            <div class="loadmore-button" id="loadMore" onClick={this.loadMore}><FontAwesomeIcon icon={faPlus} className='icon' />Load More</div>
+                            <div className="loadmore-button" id="loadMore" onClick={this.loadMore}><FontAwesomeIcon icon={faPlus} className='icon' />Load More</div>
                         </div>
                         :
                         <div>

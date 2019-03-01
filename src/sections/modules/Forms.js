@@ -296,7 +296,7 @@ export default class Forms extends React.Component {
                         <Form action={"https://formspree.io/" + this.state.email}
                     method="POST" >
                         {this.state.fields}
-                        <input type="submit" value="Send" class="halcyon-button"></input>
+                        <input type="submit" value="Send" className="halcyon-button"></input>
                         </Form>
                     </Row>
                 </Container>
