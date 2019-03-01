@@ -2,6 +2,7 @@
 .search-page-bar {margin-top:30px;}
 #initialHeroImage img {width:100%;}
 form input[type=date].form-control {color:rgba(0,0,0,0.4)}
+.rbc-month-row {min-height:120px;}
 
 .hero-slider .slick-slide {
     position: relative;

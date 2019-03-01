@@ -333,7 +333,11 @@ const helpers = {
     compressText: function(store, amount){
         excerpt = store.replace(regex, "").substr(0, amount)
         excerpt = excerpt.substr(0, excerpt.lastIndexOf(" "))
-        return excerpt + "...";
+        if (excerpt == ''){
+            return excerpt
+        } else {
+            return excerpt + "...";
+        }
     }
     
 }
