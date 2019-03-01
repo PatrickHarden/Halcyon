@@ -66,3 +66,38 @@
 .single-blog .content .store-details > div {
     padding-bottom: .25rem;
 }
+.single-blog .content .restaurant-buttons .halcyon-button {
+    background:#4F4B48;
+}
+@media screen and (min-width: 768px) {
+    .single-blog #heroSection .hero-image {
+        width: auto;
+        min-width: 100%;
+        min-height: 100%;
+        max-width: none;
+    }
+    .single-blog #heroSection .store-container {
+        width: 360px;
+        float: right;
+    }
+    .single-blog .content .store-details {
+        display: flex;
+        justify-content: center;
+    }
+    .single-blog .content h1 {
+        font-size: 2.5rem;
+    }
+    .single-blog .content .store-details span {
+        padding: 0 1rem;
+    }
+    .single-blog .content .restaurant-buttons .halcyon-button {
+        width: 190px;
+        margin: 1rem;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .single-blog .content h1 {
+        font-size: 3rem;
+    }
+}

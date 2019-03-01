@@ -57,7 +57,7 @@ export default withSiteData(class MenuList extends React.Component {
                             <NavItem>
                                 <Link to={'/' + menu.object_slug} href={'/' + menu.object_slug} onClick={toggle}  className="nav-link">
                                 {(menu.object_slug == 'hours-directions') ? <div className='nav-icon directions'><svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-	 viewBox="0 0 200 200" enable-background="new 0 0 200 200">
+	 viewBox="0 0 200 200" enableBackground="new 0 0 200 200">
 <g>
 	<path fill="#58595B" d="M146.1,50.8c0-11.3-9.2-20.4-20.4-20.4c-11.3,0-20.4,9.2-20.4,20.4c0,11.3,9.2,20.4,20.4,20.4
 		C137,71.2,146.1,62.1,146.1,50.8z M113.8,50.8c0-6.6,5.3-11.9,11.9-11.9c6.6,0,11.9,5.3,11.9,11.9c0,6.6-5.3,11.9-11.9,11.9
@@ -73,8 +73,8 @@ export default withSiteData(class MenuList extends React.Component {
 		C172.5,188.7,171.7,189.5,170.8,189.5z"/>
 </g>
 </svg></div> : ""}
-                                {(menu.object_slug == 'cinebistro') ? <div className='nav-icon cmx'><svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 281.49 88.68"><title>CMX Logo</title><polygon class="cls-1" points="111.3 85.11 111.32 85.11 111.32 85.1 111.3 85.11"/><polygon class="cls-2" points="264.56 3.78 234.27 3.78 249.69 25.82 264.56 3.78"/><path class="cls-3" d="M49,135.88A39.23,39.23,0,1,1,81.66,75l4.08-3.15a44.36,44.36,0,1,0,.69,48.49l-4.18-3A39.24,39.24,0,0,1,49,135.88Z" transform="translate(-4.63 -52.32)"/><path class="cls-3" d="M49,116.41A19.76,19.76,0,1,1,66.17,87L80.65,75.8a38,38,0,1,0,.56,40.82L66.38,106A19.75,19.75,0,0,1,49,116.41Z" transform="translate(-4.63 -52.32)"/><polygon class="cls-3" points="176.02 85.11 150.1 85.11 176.04 43.61 176.02 85.11"/><rect class="cls-3" x="89.24" y="3.8" width="5.11" height="81.3"/><polygon class="cls-3" points="151.84 3.8 132.44 35.27 113.05 3.8 95.62 3.8 95.62 85.11 111.65 85.11 111.65 38.41 132.44 70.24 132.81 70.24 175.66 4.34 176.03 3.8 151.84 3.8"/><polygon class="cls-4" points="265.42 85.11 208.53 3.78 202.7 3.78 258.59 85.11 265.42 85.11"/><polygon class="cls-4" points="181.15 3.78 207.89 43.77 180.02 85.11 208.64 85.11 222.62 63.16 236.49 85.11 257.05 85.11 201.16 3.78 181.15 3.78"/><path class="cls-4" d="M279.24,136.08c0,.58.43.81.95.81s.8-.28.8-.57a.45.45,0,0,0-.31-.46c-.26-.1-.61-.17-1.12-.31a1,1,0,0,1-.83-1c0-.75.69-1.1,1.37-1.1s1.44.41,1.44,1.2h-.65c0-.48-.36-.66-.82-.66-.3,0-.69.11-.69.49s.18.41.45.48l1.09.29a1,1,0,0,1,.73,1c0,.84-.75,1.18-1.5,1.18s-1.55-.41-1.57-1.35Z" transform="translate(-4.63 -52.32)"/><path class="cls-4" d="M282.21,133.58h.93l1,2.94h0l1-2.94h.92v3.76h-.63v-2.9h0l-1,2.9h-.55l-1-2.9h0v2.9h-.63Z" transform="translate(-4.63 -52.32)"/></svg></div> : ""}
-                                {(menu.object_slug == 'dining') ? <div className='nav-icon dining'><svg version="1.1" xmlns="http://www.w3.org/2000/svg"  x="40px" y="40px" viewBox="0 0 200 200" enable-background="new 0 0 200 200"><g><path fill="#58595B" d="M195.5,22.9c0-1.6-0.8-3-2.1-4c-1.3-0.9-2.9-1.1-4.4-0.7c-2.7,0.9-6.4,2.9-9.2,7.7
+                                {(menu.object_slug == 'cinebistro') ? <div className='nav-icon cmx'><svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 281.49 88.68"><title>CMX Logo</title><polygon className="cls-1" points="111.3 85.11 111.32 85.11 111.32 85.1 111.3 85.11"/><polygon className="cls-2" points="264.56 3.78 234.27 3.78 249.69 25.82 264.56 3.78"/><path className="cls-3" d="M49,135.88A39.23,39.23,0,1,1,81.66,75l4.08-3.15a44.36,44.36,0,1,0,.69,48.49l-4.18-3A39.24,39.24,0,0,1,49,135.88Z" transform="translate(-4.63 -52.32)"/><path className="cls-3" d="M49,116.41A19.76,19.76,0,1,1,66.17,87L80.65,75.8a38,38,0,1,0,.56,40.82L66.38,106A19.75,19.75,0,0,1,49,116.41Z" transform="translate(-4.63 -52.32)"/><polygon className="cls-3" points="176.02 85.11 150.1 85.11 176.04 43.61 176.02 85.11"/><rect className="cls-3" x="89.24" y="3.8" width="5.11" height="81.3"/><polygon className="cls-3" points="151.84 3.8 132.44 35.27 113.05 3.8 95.62 3.8 95.62 85.11 111.65 85.11 111.65 38.41 132.44 70.24 132.81 70.24 175.66 4.34 176.03 3.8 151.84 3.8"/><polygon className="cls-4" points="265.42 85.11 208.53 3.78 202.7 3.78 258.59 85.11 265.42 85.11"/><polygon className="cls-4" points="181.15 3.78 207.89 43.77 180.02 85.11 208.64 85.11 222.62 63.16 236.49 85.11 257.05 85.11 201.16 3.78 181.15 3.78"/><path className="cls-4" d="M279.24,136.08c0,.58.43.81.95.81s.8-.28.8-.57a.45.45,0,0,0-.31-.46c-.26-.1-.61-.17-1.12-.31a1,1,0,0,1-.83-1c0-.75.69-1.1,1.37-1.1s1.44.41,1.44,1.2h-.65c0-.48-.36-.66-.82-.66-.3,0-.69.11-.69.49s.18.41.45.48l1.09.29a1,1,0,0,1,.73,1c0,.84-.75,1.18-1.5,1.18s-1.55-.41-1.57-1.35Z" transform="translate(-4.63 -52.32)"/><path className="cls-4" d="M282.21,133.58h.93l1,2.94h0l1-2.94h.92v3.76h-.63v-2.9h0l-1,2.9h-.55l-1-2.9h0v2.9h-.63Z" transform="translate(-4.63 -52.32)"/></svg></div> : ""}
+                                {(menu.object_slug == 'dining') ? <div className='nav-icon dining'><svg version="1.1" xmlns="http://www.w3.org/2000/svg"  x="40px" y="40px" viewBox="0 0 200 200" enableBackground="new 0 0 200 200"><g><path fill="#58595B" d="M195.5,22.9c0-1.6-0.8-3-2.1-4c-1.3-0.9-2.9-1.1-4.4-0.7c-2.7,0.9-6.4,2.9-9.2,7.7
 		c-4.5,7.7-8.1,28.2-11,62.6c-0.5,5.5,2.2,10.7,6.8,13.6l2.7,1.7c0.8,0.5,1.4,1.5,1.3,2.5l-1.1,65.3c0,2.8,1,5.5,3,7.5
 		c2,2,4.6,3.1,7.4,3.1c2.8,0,5.5-1.1,7.5-3.2c2-2,3-4.7,2.9-7.5L195.5,22.9C195.5,22.9,195.5,22.9,195.5,22.9z M192.4,175
 		c-1.7,1.8-4.8,1.8-6.6,0c-0.9-0.9-1.3-2.1-1.3-3.3l1.1-65.3c0.1-3-1.5-5.9-4.1-7.5l-2.7-1.7c-2.8-1.7-4.4-4.9-4.1-8.1
@@ -98,7 +98,7 @@ export default withSiteData(class MenuList extends React.Component {
 </g>
 </svg></div> : ""}
                                 {(menu.object_slug == 'events') ? <div className='nav-icon events'><svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-	 viewBox="0 0 200 200" enable-background="new 0 0 200 200">
+	 viewBox="0 0 200 200" enableBackground="new 0 0 200 200">
 <path fill="#58595B" d="M187.7,144.4l6.9-18.4l-5.6,1.7c-0.6,0.2-1.1,0.3-1.6,0.5c-0.1,0-0.2,0.1-0.2,0.1c-2.3-5.2-5.2-9.5-8.9-13.1
 	c-9.2-9.1-19.7-13.8-31.4-13.8c-4.1,0-8.3,0.6-12.6,1.7c-10.9,2.9-20.2,9.7-26.1,19.2c-5.9,9.4-8,20.7-6.1,31.9
 	c1.8,10.2,7.2,19.6,15.4,26.4c8.1,6.7,18.2,10.4,28.5,10.4c1.8,0,3.7-0.1,5.5-0.3c11.5-1.5,21.2-6.7,28.8-15.5
@@ -121,11 +121,11 @@ export default withSiteData(class MenuList extends React.Component {
 </svg></div> : ""}
                                 {(menu.object_slug == 'shopping') ? <img id="shoppingIcon" src={shoppingIcon} /> : ""}
                                 {(menu.object_slug == 'sign-up') ? <div className='nav-icon sign-up'><svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-	 viewBox="0 0 200 200" enable-background="new 0 0 200 200">
+	 viewBox="0 0 200 200" enableBackground="new 0 0 200 200">
 <g id="_x32_">
-	<path fill="none" stroke="#58595B" stroke-width="9" stroke-linecap="square" stroke-miterlimit="10" d="M125.2,62.6
+	<path fill="none" stroke="#58595B" strokeWidth="9" strokeLinecap="square" strokeMiterlimit="10" d="M125.2,62.6
 		c0,0-23.9-18.6-46.9,0.6c-8,6.7-11.9,15.6-15.4,26.1c-6.3,19.1-8.9,60.2,19.2,60.2c12.1,0,28.4-6.6,38.4-32.9L125.2,62.6z"/>
-	<path fill="none" stroke="#58595B" stroke-width="9" stroke-linecap="square" stroke-miterlimit="10" d="M120.7,120.8
+	<path fill="none" stroke="#58595B" strokeWidth="9" strokeLinecap="square" strokeMiterlimit="10" d="M120.7,120.8
 		c0.6,10.3,4.6,34.8,30,26.2c37.5-12.8,42.8-114.4-15.4-134.9C79.3-7.7,12.8,24.2,12.8,107.7c0,83.5,71.4,97.7,112.4,78.9"/>
 </g>
 </svg></div> : ""}

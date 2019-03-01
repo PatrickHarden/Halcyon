@@ -94,7 +94,7 @@ export default withRouteData(class Page extends React.Component {
         todaysHours = <span>{helpers.getWeekHours(this.props.retailer, days[day], index, globalHours, globalHolidayHours)}</span>
         temp++;
       }
-      return <div>{(index == 0) ? <span className='day'><strong>{days[counter]}:</strong></span> : <span className='day'>{days[counter]}:</span>}<span className='hours'>{helpers.getWeekHours(this.props.retailer, days[counter], index, globalHours, globalHolidayHours)}</span><div class="hidden">{counter++}</div></div>
+      return <div>{(index == 0) ? <span className='day'><strong>{days[counter]}:</strong></span> : <span className='day'>{days[counter]}:</span>}<span className='hours'>{helpers.getWeekHours(this.props.retailer, days[counter], index, globalHours, globalHolidayHours)}</span><div className="hidden">{counter++}</div></div>
     })
 
     const siteRoot = 'https://halycon.netlify.com';
@@ -138,7 +138,7 @@ export default withRouteData(class Page extends React.Component {
     return (
       <section>
         <Head>
-          <body className={'single-blog blog-id-' + retailer.id + ' ' + retailer.slug} />
+          <body className={'single-blog light-green blog-id-' + retailer.id + ' ' + retailer.slug} />
           {(retailer.yoast_meta.yoast_wpseo_title) ? <title>{retailer.yoast_meta.yoast_wpseo_title}</title> : <title>{title}</title>}
           {(retailer.yoast_meta.yoast_wpseo_metadesc) ? <meta name="description" content={retailer.yoast_meta.yoast_wpseo_metadesc} /> : <meta name="description" content={metaDescription} />}
           {(retailer.yoast_meta.yoast_wpseo_canonical) ? <link rel="canonical" href={retailer.yoast_meta.yoast_wpseo_canonical} /> : <link rel="canonical" href={siteRoot} />}
@@ -172,7 +172,7 @@ export default withRouteData(class Page extends React.Component {
             </div>
           </div>
         </div>
-        <div class="container text-center">
+        <div className="container text-center">
           <Row>
             <Col sm={12}>
               {(retailer.title.rendered) ? <h1>{retailer.title.rendered}</h1> : ""}

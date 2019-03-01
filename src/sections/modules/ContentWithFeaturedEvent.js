@@ -58,7 +58,7 @@ export default withSiteData(class contentWithFeaturedEvent extends React.Compone
                         {targetSale[0].acf.post_copy &&
                             <div clasName='content'>{ReactHtmlParser(helpers.compressText(targetSale[0].acf.post_copy), 200)}</div>
                         }
-                        <Link class="halcyon-button" to={'/sales/' + targetSale[0].slug}>More info</Link>
+                        <Link className="halcyon-button" to={'/sales/' + targetSale[0].slug}>More info</Link>
                     </Col>
                 </Row>
             </Container>

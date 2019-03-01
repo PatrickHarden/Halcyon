@@ -96,7 +96,7 @@ export default withRouteData(class Page extends React.Component {
                 todaysHours = <span>{helpers.getWeekHours(this.props.restaurant, days[day], index, globalHours, globalHolidayHours)}</span>
                 temp++;
             }
-            return <div>{(index == 0) ? <span><strong>{days[counter]}</strong></span> : <span>{days[counter]}</span>}: {helpers.getWeekHours(this.props.restaurant, days[counter], index, globalHours, globalHolidayHours)}<div class="hidden">{counter++}</div></div>
+            return <div>{(index == 0) ? <span className='day'><strong>{days[counter]}:</strong></span> : <span className='day'>{days[counter]}:</span>}<span className='hours'>{helpers.getWeekHours(this.props.restaurant, days[counter], index, globalHours, globalHolidayHours)}</span><div className="hidden">{counter++}</div></div>
         })
 
         const siteRoot = 'https://halycon.netlify.com';
@@ -141,7 +141,7 @@ export default withRouteData(class Page extends React.Component {
         return (
             <section>
                 <Head>
-                    <body className={'single-blog blog-id-' + restaurant.id + ' ' + restaurant.slug} />
+                    <body className={'single-blog dark-brown blog-id-' + restaurant.id + ' ' + restaurant.slug} />
                     {(restaurant.yoast_meta.yoast_wpseo_title) ? <title>{restaurant.yoast_meta.yoast_wpseo_title}</title> : <title>{title}</title>}
                     {(restaurant.yoast_meta.yoast_wpseo_metadesc) ? <meta name="description" content={restaurant.yoast_meta.yoast_wpseo_metadesc} /> : <meta name="description" content={metaDescription} />}
                     {(restaurant.yoast_meta.yoast_wpseo_canonical) ? <link rel="canonical" href={restaurant.yoast_meta.yoast_wpseo_canonical} /> : <link rel="canonical" href={siteRoot} />}
@@ -175,7 +175,7 @@ export default withRouteData(class Page extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div class="container text-center">
+                <div className="container text-center">
                     <Row>
                         <Col sm={12}>
                             {(restaurant.title.rendered) ? <h1>{restaurant.title.rendered}</h1> : ""}
@@ -194,7 +194,7 @@ export default withRouteData(class Page extends React.Component {
                                 }
                                 {restaurant.acf.website &&
                                     <div className='website'>
-                                        {restaurant.acf.website.replace('http://','').replace('https://','')}
+                                        {restaurant.acf.website.replace('http://', '').replace('https://', '')}
                                         <span className='hidden-xs'>|</span>
                                     </div>
                                 }
@@ -209,6 +209,17 @@ export default withRouteData(class Page extends React.Component {
                                         {weeksHours}
                                     </PopoverBody>
                                 </Popover>
+                            </div>
+                            <div className='restaurant-buttons'>
+                                {restaurant.acf.menu && 
+                                <a className='halcyon-button' href={restaurant.acf.menu.url} target='_blank'>Menu</a>
+                                }
+                                {restaurant.acf.pickup_link &&
+                                <a className='halcyon-button' href={restaurant.acf.pickup_link} target='_blank'>Pickup</a>
+                                }
+                                {restaurant.acf.delivery_link &&
+                                <a className='halcyon-button' href={restaurant.acf.delivery_link} target='_blank'>Delivery</a>
+                                }
                             </div>
                             {ReactHtmlParser(restaurant.acf.store_copy)}
                         </Col>

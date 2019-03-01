@@ -119,11 +119,31 @@ export default withSiteData(class EventsDirectory extends React.Component {
                             <div>
                                 {events.map((event, index) => (
                                     (event.title.rendered.toLowerCase().includes(this.state.search.toLowerCase())) ?
-                                        <div key={index}>
-                                            {ReactHtmlParser(event.title.rendered)}
-                                            {event.acf.start_date &&
-                                                <div>{moment(event.acf.start_date, 'YYYY-MM-DD').format('MM/DD')}</div>}
+                                    <div key={index}>
+                                        {event.acf.start_date &&
+                                            <div>{moment(event.acf.start_date, 'YYYY-MM-DD').format('MM/DD')}</div>}
+                                        {event.acf.featured_image &&
+                                            <div><img src={event.acf.featured_image} /></div>}
+                                        {event.acf.start_date && event.acf.end_date && event.acf.address && 
+                                            <div>{moment(event.acf.start_date, 'YYYY-MM-DD').format('MMM DD')} - {moment(event.acf.end_date, 'YYYYMMDD').format('MMM DD')} at {event.acf.address}</div>                        
+                                        }
+                                        <h4>{ReactHtmlParser(event.title.rendered)}</h4>
+                                        {(event.acf.post_copy != '') && 
+                                            <div>{ReactHtmlParser(helpers.compressText(event.acf.post_copy, 200))}</div>
+                                        }
+                                       <div>
+                                            <a href={'mailto:?body=' + siteRoot + '/events/' + event.slug + '&subject=' + ReactHtmlParser(event.title.rendered)}>
+                                                mail
+                                        </a>
+                                            <a href={'https://twitter.com/home?status=' + siteRoot + '/events/' + event.slug} target="_blank">
+                                                twitter
+                                        </a>
+                                            <a href={'https://www.facebook.com/sharer/sharer.php?u=' + siteRoot + '/events/' + event.slug} target="_blank">
+                                                facebook
+                                        </a>
+                                            <Link to={'/events/' + event.slug} className="halcyon-button">See Event Details></Link>
                                         </div>
+                                    </div>
                                         : ""
                                 ))}
                             </div>
