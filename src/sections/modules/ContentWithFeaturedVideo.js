@@ -4,21 +4,45 @@ import { Container, Row, Col } from 'reactstrap';
 import ReactHtmlParser from 'react-html-parser';
 import helpers from '../../helpers.js'
 import '../../css/modules/contentWithFeaturedImage.css';
+import { relative } from "path";
+import $ from 'jquery'
 
 var videoId;
 var iframeMarkup;
+
+const styles = {
+    position: relative
+}
+
+const mBottom = {
+    marginBottom: '30px'
+}
 
 export default withSiteData(class ContentWithFeaturedVideo extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            iframe: '',
+        }
+        this.disappear = this.disappear.bind(this);
     }
 
     componentWillMount(){
+        console.log(this.props.section)
         videoId = helpers.getVideoUrl(this.props.section.youtube_url);
-        iframeMarkup = '<iframe width="100%" height="315" src="//www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen></iframe>';
+        this.setState({
+            iframe: <iframe width="100%" id="targetVideo" height="350" src={'//www.youtube.com/embed/' + videoId} frameborder="0" allowfullscreen></iframe>
+        })
     }
     
+    disappear(){
+        document.getElementById('disappear').style.display = 'none'
+        this.setState({
+            iframe: <iframe width="100%" id="targetVideo" height="350" src={'//www.youtube.com/embed/' + videoId + '?autoplay=1&mute=1&enablejsapi=1'} frameborder="0" allowfullscreen></iframe>
+        })
+    }
+
     render() {
         return (<div>
                 {this.props.section.heading &&
@@ -31,7 +55,12 @@ export default withSiteData(class ContentWithFeaturedVideo extends React.Compone
                 <Container className='contentWithFeaturedVideo'>
                     <Row className={(this.props.section.display_options == 'video-left-content-right') ? 'content-right' : 'content-left'}>
                     <Col sm={6} lg={7} className='image-column'>
-                    {ReactHtmlParser(iframeMarkup)}
+                        <div style={styles} onClick={this.disappear} >
+                            {this.props.section.image_overlay && 
+                            <img className="imageOverlay" id="disappear" src={this.props.section.image_overlay} />}
+                            <span className="play">PlayButton</span>
+                            <div style={mBottom}>{this.state.iframe}</div>
+                        </div>
                     </Col>
                     <Col sm={6} lg={5} className='content-column'>
                         {this.props.section.heading &&
