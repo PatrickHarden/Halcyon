@@ -82,7 +82,6 @@ export default withSiteData(class EventsDirectory extends React.Component {
                     </Container>
                 </div>
                 <Container className="diningRows">
-                    {console.log(events)}
                     {(this.state.list) ?
                         (this.state.search == '') ?
                             <div>
@@ -148,7 +147,7 @@ export default withSiteData(class EventsDirectory extends React.Component {
                                 ))}
                             </div>
                         :
-                        <EventsCalendar eventsData={this.state.events} />
+                        <EventsCalendar eventsData={events} />
                     }
                 </Container>
             </div>
