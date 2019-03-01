@@ -70,7 +70,6 @@ export default class ModuleController extends React.Component {
                     <Container>
                         <Row>
                             <Col xs="12">
-                                {console.log(page)}
                                 {(page.acf.additional_content) ? <div></div> : <div>
                                 </div>
                                 }
