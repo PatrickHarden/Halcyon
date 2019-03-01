@@ -8,7 +8,8 @@ import DownArrow from '../images/downArrrow.png'
 import OpenTableIcon from '../images/icon-open-table-white.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/fontawesome-free-brands'
-import { faPhone, faMapMarkerAlt, faGlobe } from '@fortawesome/free-solid-svg-icons'
+import { faMapMarkerAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import PhoneIcon from '../images/phone-icon.png'
 
 let moment = require('moment');
 //
@@ -101,34 +102,33 @@ export default withRouteData(class Page extends React.Component {
 
         const siteRoot = 'https://halycon.netlify.com';
 
-        // If sales array is full, do nothing, otherwise build out sales arraay. Temporary debug for repeated foward/back abuse
         if (sales) {
         } else {
-            sales = salesArray.map((sale, index) => {
-                return (<div key={index} className="sale-single row">
-                    <div className="col-sm-2">{(sale.acf.end_date) ? <span>Ends<br />{moment(sale.acf.end_date, 'YYYYMMDD').format('MM/DD')}</span> : ""}</div>
-                    <div className='image-wrapper col-sm-3'>
-                        <img className='hidden-xs' src={sale.acf.featured_image} />
-                    </div>
-                    <div className="col-sm-5">
-                        <div>{moment(sale.acf.start_date, 'YYYYMMDD').format('MMM DD')} - {moment(sale.acf.end_date, 'YYYYMMDD').format('MMM DD')} at {this.props.restaurant.title.rendered}</div>
-                        <h5>{sale.title.rendered}</h5>
-                        {(sale.acf.post_copy) ? <div>{ReactHtmlParser(sale.acf.post_copy)}</div> : ""}
-                    </div>
-                    <div className="col-sm-2">
-                        <a href={'mailto:?body=' + siteRoot + '/dining/' + this.props.restaurant.slug + '&subject=' + ReactHtmlParser(sale.title.rendered)}>
-                            mail
-                        </a>
-                        <a href={'https://twitter.com/home?status=' + siteRoot + '/dining/' + this.props.restaurant.slug} target="_blank">
-                            twitter
-                        </a>
-                        <a href={'https://www.facebook.com/sharer/sharer.php?u=' + siteRoot + '/dining/' + this.props.restaurant.slug} target="_blank">
-                            facebook
-                        </a>
-                        <Link to={'/sales/' + sale.slug} className="halcyon-button">More Info ></Link>
-                    </div>
-                </div>)
-            })
+          sales = salesArray.map((sale, index) => {
+            return (<div key={index} className="sale-single">
+              <div className="date-ball">{(sale.acf.end_date) ? <span><span className='ends'>Ends</span><br />{moment(sale.acf.end_date, 'YYYYMMDD').format('MM/DD')}</span> : ""}</div>
+              <div className='image-wrapper hidden-xs'>
+                <img src={sale.acf.featured_image} alt={sale.title.rendered} />
+              </div>
+              <div className="content-wrapper">
+                <div>{moment(sale.acf.start_date, 'YYYYMMDD').format('MMM DD')} - {moment(sale.acf.end_date, 'YYYYMMDD').format('MMM DD')} at {this.props.restaurant.title.rendered}</div>
+                <h5>{sale.title.rendered}</h5>
+                {(sale.acf.post_copy) ? <div>{ReactHtmlParser(sale.acf.post_copy)}</div> : ""}
+              </div>
+              <div className="share-links hidden-xs">
+                <a href={'mailto:?body=' + siteRoot + '/dining/' + this.props.restaurant.slug + '&subject=' + ReactHtmlParser(sale.title.rendered)}>
+                  <FontAwesomeIcon icon={faEnvelope} className='icon' />
+                </a>
+                <a href={'https://twitter.com/home?status=' + siteRoot + '/dining/' + this.props.restaurant.slug} target="_blank">
+                  <FontAwesomeIcon icon={faTwitter} className='icon' />
+                </a>
+                <a href={'https://www.facebook.com/sharer/sharer.php?u=' + siteRoot + '/dining/' + this.props.restaurant.slug} target="_blank">
+                  <FontAwesomeIcon icon={faFacebookF} className='icon' />
+                </a>
+              </div>
+              <Link to={'/sales/' + sale.slug} className="halcyon-button arrow">More Info</Link>
+            </div>)
+          })
         }
     }
 
@@ -162,7 +162,7 @@ export default withRouteData(class Page extends React.Component {
                                         <div className='icon-row'>
                                             {(restaurant.acf.street_address) ? <a href={'//maps.google.com/?q=' + restaurant.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon' /></a> : ""}
                                             {(restaurant.acf.open_table) ? <a href={restaurant.acf.open_table} target="_blank"><img src={OpenTableIcon} alt='open table icon' className='icon' /></a> : ""}
-                                            {(restaurant.acf.phone_number) ? <a href={'tel:' + restaurant.acf.phone_number} target="_blank"><FontAwesomeIcon icon={faPhone} className='icon' /></a> : ""}
+                                            {(restaurant.acf.phone_number) ? <a href={'tel:' + restaurant.acf.phone_number} target="_blank"><img src={PhoneIcon} alt='phone icon' className='icon' /></a> : ""}
                                         </div>
                                         <div className='icon-row bottom'>
                                             {(restaurant.acf.facebook) ? <a href={restaurant.acf.facebook} target="_blank"><FontAwesomeIcon icon={faFacebookF} className='icon' /></a> : ""}
@@ -182,19 +182,19 @@ export default withRouteData(class Page extends React.Component {
                             <div className='store-details'>
                                 {restaurant.acf.street_address &&
                                     <div className='address'>
-                                        {restaurant.acf.street_address}
+                                        <a href={'//maps.google.com/?q=' + restaurant.acf.street_address} target='_blank'>{restaurant.acf.street_address}</a>
                                         <span className='hidden-xs'>|</span>
                                     </div>
                                 }
                                 {restaurant.acf.phone_number &&
                                     <div className='phone'>
-                                        {restaurant.acf.phone_number}
+                                        <a href={'tel:' + restaurant.acf.phone_number}>{restaurant.acf.phone_number}</a>
                                         <span className='hidden-xs'>|</span>
                                     </div>
                                 }
                                 {restaurant.acf.website &&
                                     <div className='website'>
-                                        {restaurant.acf.website.replace('http://', '').replace('https://', '')}
+                                        <a href={restaurant.acf.website} target="_blank">{restaurant.acf.website.replace('http://', '').replace('https://', '')}</a>
                                         <span className='hidden-xs'>|</span>
                                     </div>
                                 }
@@ -211,14 +211,14 @@ export default withRouteData(class Page extends React.Component {
                                 </Popover>
                             </div>
                             <div className='restaurant-buttons'>
-                                {restaurant.acf.menu && 
-                                <a className='halcyon-button' href={restaurant.acf.menu.url} target='_blank'>Menu</a>
+                                {restaurant.acf.menu &&
+                                    <a className='halcyon-button' href={restaurant.acf.menu.url} target='_blank'>Menu</a>
                                 }
                                 {restaurant.acf.pickup_link &&
-                                <a className='halcyon-button' href={restaurant.acf.pickup_link} target='_blank'>Pickup</a>
+                                    <a className='halcyon-button' href={restaurant.acf.pickup_link} target='_blank'>Pickup</a>
                                 }
                                 {restaurant.acf.delivery_link &&
-                                <a className='halcyon-button' href={restaurant.acf.delivery_link} target='_blank'>Delivery</a>
+                                    <a className='halcyon-button' href={restaurant.acf.delivery_link} target='_blank'>Delivery</a>
                                 }
                             </div>
                             {ReactHtmlParser(restaurant.acf.store_copy)}

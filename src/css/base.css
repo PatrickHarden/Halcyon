@@ -65,7 +65,7 @@ img {
     font-size: 1.4rem;
     max-width: 250px;
     font-family: 'Flama', sans-serif;
-    border: 2px solid;
+    border: 2px solid transparent;
     text-align: center;
     -webkit-font-smoothing: antialiased;
 }
@@ -73,6 +73,7 @@ img {
     color: #4E5859;
     text-decoration: none;
     background: #fff;
+    border-color: #4E5859;
 }
 .halcyon-button.arrow {
     padding: 1rem 4rem 1rem 2rem;
