@@ -29,7 +29,6 @@ export default withSiteData(class FeaturedEvents extends React.Component {
     }
 
     componentWillMount(){
-        console.log(this.props.events)
         if (this.props.section.select_events){
             this.props.section.events.map(theEvent => {
                 eventArray.push(theEvent.event.post_name)
