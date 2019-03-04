@@ -55,11 +55,9 @@ function getTitleArray(){
 
 function setClickEvent(){
     $('#tenantSlider .slick-arrow').click(function(){
-        console.log('arrow clicked');
         setTimeout(getTitleArray, 200);
     })
     $('#tenantSlider .slick-dots > li').click(function(){
-        console.log('dot clicked');
         setTimeout(getTitleArray, 200);
     })
 }

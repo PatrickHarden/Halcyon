@@ -39,7 +39,7 @@ export default withSiteData(class SiteFooter extends React.Component {
         const tagManagerArgs = {
             gtmId: this.props.centerInfo.acf.google_tag_manager_ID
         }
-
+        
         if (typeof document === 'undefined') {
             return null
         } else {

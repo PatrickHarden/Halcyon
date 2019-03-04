@@ -29,7 +29,6 @@ export default withSiteData(class ContentWithFeaturedVideo extends React.Compone
     }
 
     componentWillMount(){
-        console.log(this.props.section)
         videoId = helpers.getVideoUrl(this.props.section.youtube_url);
         this.setState({
             iframe: <iframe width="100%" id="targetVideo" height="350" src={'//www.youtube.com/embed/' + videoId} frameborder="0" allowfullscreen></iframe>

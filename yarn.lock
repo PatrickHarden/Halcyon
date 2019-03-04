@@ -6378,7 +6378,6 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
 react-big-calendar@^0.20.3:
   version "0.20.3"
   resolved "https://registry.yarnpkg.com/react-big-calendar/-/react-big-calendar-0.20.3.tgz#a895e11fb6b2ac6ad8cec87a261b7e7c24dbaab0"
-  integrity sha512-4GntO6XoEJnfJIMJpJRgzGPUvBA9Y7x9VYYL0VqqnkSVhYqBF9e/0LCssRn+8vDrnzRTUDTHSpyb2qTkS0AfPQ==
   dependencies:
     "@babel/runtime" "^7.1.5"
     classnames "^2.2.6"
@@ -6539,6 +6538,10 @@ react-html-parser@^2.0.2:
 react-is@^16.3.1, react-is@^16.3.2, react-is@^16.6.0, react-is@^16.8.1:
   version "16.8.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.2.tgz#09891d324cad1cb0c1f2d91f70a71a4bee34df0f"
+
+react-juicer-feed@^0.0.2-alpha:
+  version "0.0.2-alpha"
+  resolved "https://registry.yarnpkg.com/react-juicer-feed/-/react-juicer-feed-0.0.2-alpha.tgz#19e9fa4b09f20729ce50295b0e7ea0b381d2f33d"
 
 react-lazy-hero@^0.4.0:
   version "0.4.0"

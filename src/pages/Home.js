@@ -9,6 +9,7 @@ import HeroSlider from '../sections/homepage/HeroSlider';
 import ModuleController from '../sections/modules/ModuleController.js'
 import TintSocialFeed from '../sections/homepage/TintSocialFeed.js';
 import helpers from '../helpers.js'
+import JuicerFeed from 'react-juicer-feed';
 
 
 var featuredStores = [];
@@ -119,7 +120,8 @@ export default withRouteData(class Home extends React.Component {
             {(this.props.property_options.acf.data_id) ? <div>
               <h2>@HALCYONFORSYTH</h2>
                 <div id="thisTarget">
-                  <TintSocialFeed optionsData={this.props.property_options} />
+                  <JuicerFeed feedId='imaginuity-ba275954-4d89-4453-8ef8-80e94361aeb4' />
+                  {/* imaginuity-ba275954-4d89-4453-8ef8-80e94361aeb4 */}
                 </div>
             </div> : ""}
             </Container>

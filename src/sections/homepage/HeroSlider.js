@@ -35,8 +35,8 @@ export default class HeroSlider extends React.Component {
 
   componentDidMount(){
     var element = document.getElementById("fadeHeroIn");
-    element.style.display = 'block'
-    document.getElementById('initialHeroImage').style.display = 'none';    
+    element.style.visibility = 'visible'
+    // document.getElementById('initialHeroImage').style.display = 'none';    
   }
 
   render() {
@@ -50,9 +50,9 @@ export default class HeroSlider extends React.Component {
     };
     return (
       <div>
-        <div id="initialHeroImage">
+        {/* <div id="initialHeroImage">
           <img src={this.props.home[0].acf.hero_slider[0].desktop_image.url} />
-        </div>
+        </div> */}
         <div className='hero-slider-wrapper' id="fadeHeroIn">
           <Slider className='hero-slider' {...settings}>
             {heroArray}

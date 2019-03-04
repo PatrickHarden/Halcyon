@@ -21,10 +21,7 @@ export default withSiteData(class contentWithFeaturedEvent extends React.Compone
 
     componentWillMount() {
 
-        console.log(this.props.section)
         targetStore = this.props.section.event.post_name
-        console.log(targetStore)
-        console.log(this.props.events)
         targetSale = this.props.events.map(event => {
             if (event.slug == targetStore) {
                 return event
@@ -33,7 +30,6 @@ export default withSiteData(class contentWithFeaturedEvent extends React.Compone
         targetSale = targetSale.filter(function (el) {
             return el != null;
         });
-        console.log('Sale:', targetSale)
     }
 
     render() {

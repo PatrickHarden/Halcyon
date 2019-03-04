@@ -32,7 +32,6 @@ export default withSiteData(class contentWithFeaturedSale extends React.Componen
         targetSale = targetSale.filter(function (el) {
             return el != null;
         });
-        console.log('Sale:', targetSale)
     }
 
 

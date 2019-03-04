@@ -16,6 +16,8 @@ export default withRouteData(class Page extends React.Component {
     super(props);
   }
 
+
+
   render() {
     const page = this.props.page
     const siteRoot = this.props.siteRoot
