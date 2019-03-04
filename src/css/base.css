@@ -277,6 +277,39 @@ nav .container {
     height: 40px;
     max-width: 78px;
 }
+/* Nav Icon styles */
+	
+.nav-icon.directions .st0{
+    fill:#58595B;
+}
+.nav-icon.dining .st0{
+    fill:#58595B;
+    stroke:#58595B;
+    stroke-miterlimit:10;
+}
+.nav-icon.events .st0{
+    fill:#58595B;
+    stroke:#FFFFFF;
+    stroke-width:0.5;
+    stroke-miterlimit:10;
+}
+.nav-icon.events .st1{
+    fill:#58595B;
+    stroke:#FFFFFF;
+    stroke-miterlimit:10;
+}
+.nav-icon.events .st2{
+    fill:#58595B;
+    stroke:#FFFFFF;
+    stroke-width:2;
+    stroke-miterlimit:10;
+}
+.nav-icon.shopping .st0{
+    fill:#58595B;
+    stroke:#58595B;
+    stroke-width:3;
+    stroke-miterlimit:10;
+}
 /* CMX Colors */
 .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-icon.cmx .cls-1{
     fill:#cc5c22;
@@ -348,6 +381,7 @@ main.content {
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo):hover svg polygon,
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo):hover svg rect {
         fill: #fff;
+        stroke: #fff;
     }
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo):hover .nav-icon.sign-up svg path {
         stroke: #fff;
