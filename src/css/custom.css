@@ -5,6 +5,7 @@ form input[type=date].form-control {color:rgba(0,0,0,0.4)}
 .rbc-month-row {min-height:120px;}
 .imageOverlay {position:absolute; top:0; right:0; left:0; bottom:0; z-index:5;}
 .play { position: absolute;  top: 40%; left: 40%;z-index: 6; font-size:16px; color: #fff; cursor:pointer;}
+#thisTarget h1 {display:none}
 
 .hero-slider .slick-slide {
     position: relative;
