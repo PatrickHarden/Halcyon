@@ -24,19 +24,15 @@ export default withSiteData(class ContentWithFeaturedVideo extends React.Compone
     componentWillMount() {
         videoId = helpers.getVideoUrl(this.props.section.youtube_url);
         this.setState({
-            iframe: <iframe width="100%" id="targetVideo" height="350" src={'//www.youtube.com/embed/' + videoId} frameBorder="0" allowFullScreen></iframe>
+            iframe: <iframe width="100%" height="350" src={'//www.youtube.com/embed/' + videoId} frameBorder="0" allowFullScreen></iframe>
         })
     }
 
-    disappear(e) {
-        // document.getElementById('disappear').style.display = 'none'
-        // let videoWrapper = $('.contentWithFeaturedVideo .videoWrapper');
-        let videoWrapper = $(e).find('.videoWrapper');
-
-        videoWrapper.addClass('active');
+    disappear = (e) => {
+        $(e.target).parents('.videoWrapper').addClass('active');
 
         this.setState({
-            iframe: <iframe width="100%" id="targetVideo" height="350" src={'//www.youtube.com/embed/' + videoId + '?autoplay=1&mute=1&enablejsapi=1'} frameBorder="0" allowFullScreen></iframe>
+            iframe: <iframe width="100%" height="350" src={'//www.youtube.com/embed/' + videoId + '?autoplay=1&mute=1&enablejsapi=1'} frameBorder="0" allowFullScreen></iframe>
         })
     }
 
@@ -53,7 +49,7 @@ export default withSiteData(class ContentWithFeaturedVideo extends React.Compone
                 <Row className={(this.props.section.display_options == 'video-left-content-right') ? 'column-wrap content-right' : 'column-wrap content-left'}>
                     <Col sm={6} className='image-column'>
                         <div className='videoWrapper'>
-                            <span className="play" onClick={this.disappear}></span>
+                            <span className="play" onClick={((e) => this.disappear(e))}></span>
                             {this.props.section.image_overlay &&
                                 <img className="imageOverlay" src={this.props.section.image_overlay} />}
                             {this.state.iframe}
