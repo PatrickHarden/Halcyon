@@ -70,8 +70,6 @@ form input[type=date].form-control {color:rgba(0,0,0,0.4)}
 }
 /* Fixes issue of slides stacking on page load */
 
-#fadeHeroIn {display:none}
-
 #searchBar {
     background:#8F1838;
      display:block; 
