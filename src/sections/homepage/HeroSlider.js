@@ -33,11 +33,11 @@ export default class HeroSlider extends React.Component {
     })
   }
 
-  // componentDidMount(){
-  //   var element = document.getElementById("fadeHeroIn");
-  //   element.style.display = 'block'
-  //   document.getElementById('initialHeroImage').style.display = 'none';    
-  // }
+  componentDidMount(){
+    var element = document.getElementById("fadeHeroIn");
+    element.style.visibility = 'visible'
+    // document.getElementById('initialHeroImage').style.display = 'none';    
+  }
 
   render() {
     var settings = {
