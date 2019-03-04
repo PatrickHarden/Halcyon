@@ -55,7 +55,7 @@ export default withSiteData(class contentWithFeaturedSale extends React.Componen
                             <div className='heading'><h2>{targetSale[0].title.rendered}</h2></div>
                         }
                         {targetSale[0].acf.post_copy &&
-                            <div clasName='content'>{ReactHtmlParser(targetSale[0].acf.post_copy)}</div>
+                            <div className='content'>{ReactHtmlParser(targetSale[0].acf.post_copy)}</div>
                         }
                         <Link className="halcyon-button" to={'/sales/' + targetSale[0].slug}>More info</Link>
                     </Col>

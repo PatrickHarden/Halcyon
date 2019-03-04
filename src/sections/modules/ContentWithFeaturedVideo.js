@@ -24,17 +24,19 @@ export default withSiteData(class ContentWithFeaturedVideo extends React.Compone
     componentWillMount() {
         videoId = helpers.getVideoUrl(this.props.section.youtube_url);
         this.setState({
-            iframe: <iframe width="100%" id="targetVideo" height="350" src={'//www.youtube.com/embed/' + videoId} frameborder="0" allowfullscreen></iframe>
+            iframe: <iframe width="100%" id="targetVideo" height="350" src={'//www.youtube.com/embed/' + videoId} frameBorder="0" allowFullScreen></iframe>
         })
     }
 
-    disappear() {
+    disappear(e) {
         // document.getElementById('disappear').style.display = 'none'
-        let videoWrapper = $('.contentWithFeaturedVideo .videoWrapper');
+        // let videoWrapper = $('.contentWithFeaturedVideo .videoWrapper');
+        let videoWrapper = $(e).find('.videoWrapper');
+
         videoWrapper.addClass('active');
 
         this.setState({
-            iframe: <iframe width="100%" id="targetVideo" height="350" src={'//www.youtube.com/embed/' + videoId + '?autoplay=1&mute=1&enablejsapi=1'} frameborder="0" allowfullscreen></iframe>
+            iframe: <iframe width="100%" id="targetVideo" height="350" src={'//www.youtube.com/embed/' + videoId + '?autoplay=1&mute=1&enablejsapi=1'} frameBorder="0" allowFullScreen></iframe>
         })
     }
 
@@ -64,7 +66,7 @@ export default withSiteData(class ContentWithFeaturedVideo extends React.Compone
                                     <div className='heading'><h4>{this.props.section.content_heading}</h4></div>
                                 }
                                 {this.props.section.description &&
-                                    <div clasName='content'>{ReactHtmlParser(this.props.section.description)}</div>
+                                    <div className='content'>{ReactHtmlParser(this.props.section.description)}</div>
                                 }
                                 {(this.props.section.button) ? <Link className="halcyon-button" to={helpers.convertLink(this.props.section.button.url, this.props.title.toLowerCase())}>{(this.props.section.button.title) ? <div>{ReactHtmlParser(this.props.section.button.title)}</div> : <div>{helpers.getTitleFromUrl(this.props.section.button.url, this.props.title.toLowerCase())}</div>}</Link> : ""}
                             </div>

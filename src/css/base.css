@@ -182,11 +182,11 @@ nav{
 }
 
 .navbar-dark .navbar-nav .nav-link:hover,.navbar-dark .navbar-nav .nav-link:active,.navbar-dark .navbar-nav .nav-link:focus{
-    color:#209056;
+    /* color:#209056; */
     transition-duration:.3s
 }
 .navbar-expand-lg .navbar-nav .nav-link.nav-phone{
-    color:#209056;
+    /* color:#209056; */
     text-decoration:none;
     font-weight:600
 }
