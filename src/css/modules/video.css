@@ -1,0 +1,94 @@
+.contentWithFeaturedVideo {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+.contentWithFeaturedVideo .image-column .imageOverlay {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 5;
+    transform: translate(-50%,-50%);
+    min-height: 100%;
+    min-width: 100%;
+    max-width: none;
+}
+.contentWithFeaturedVideo .image-column .videoWrapper {
+    position: relative;
+    padding-bottom: 58.5%;
+    padding-top: 25px;
+    height: 0;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.contentWithFeaturedVideo .image-column .videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.contentWithFeaturedVideo .image-column .videoWrapper .play { 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 6;
+    transform: translate(-50%,-50%);
+    cursor: pointer;
+    padding: 2rem;
+    background: #EBBA16;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding-right: 1rem;
+    opacity: .8;
+    transition: .3s;
+}
+.contentWithFeaturedVideo .image-column .videoWrapper .play:after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 27px solid transparent;
+    border-bottom: 27px solid transparent;
+    border-left: 40px solid #fff;
+}
+.contentWithFeaturedVideo .image-column .videoWrapper .play:hover {
+    opacity: 1;
+}
+.contentWithFeaturedVideo .image-column .videoWrapper.active .imageOverlay,
+.contentWithFeaturedVideo .image-column .videoWrapper.active .play {
+    display: none;
+}
+.contentWithFeaturedVideo .content-column {
+    text-align: center;
+}
+.contentWithFeaturedVideo .content-column .heading {
+    font-family: 'Flama', sans-serif;
+}
+
+@media screen and (min-width: 768px) {
+    .contentWithFeaturedVideo .column-wrap {
+        display: flex;
+    }
+    .contentWithFeaturedVideo .column-wrap .content-column {
+        background: #EDECE2;
+        text-align: left;
+        padding: 2rem 0 2rem 2rem;
+    }
+    .contentWithFeaturedVideo .column-wrap .content-column .inner-wrapper {
+        background: #fff;
+        padding: 2rem;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .contentWithFeaturedVideo .column-wrap.content-left .image-column {
+        order: 2;
+    }
+    .contentWithFeaturedVideo .column-wrap.content-left .content-column {
+        padding: 2rem 2rem 2rem 0;
+    }
+}
