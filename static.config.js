@@ -17,18 +17,26 @@ export default {
     const { data: footerMenu } = await axios.get(baseURL + '/wp-json/wp-api-menus/v2/menus/3')
     const { data: pages } = await axios.get(baseURL + '/index.php/wp-json/wp/v2/pages?per_page=99')
     const { data: posts } = await axios.get(baseURL + '/index.php/wp-json/wp/v2/posts?per_page=6')
-    const { data: events } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100')
+    var { data: events } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100')
     const { data: stores } = await axios.get(baseURL + '/wp-json/wp/v2/stores/')
     const { data: sales } = await axios.get(baseURL + '/wp-json/wp/v2/sales?per_page=100')
     const { data: storeCategories } = await axios.get(baseURL + '/wp-json/wp/v2/imag_taxonomy_store_category?per_page=100')
 
-    var { data: moreEvents } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100&page=2').catch(error => {
-      console.log(error.response)
-    });
-    if (moreEvents) {
-      for (var i = 0; i < moreEvents.length; i++) {
-        events.push(moreEvents[i])
+    // Getting headers for events,stores, sales, blogs, and pages to see if there exist more than 100, if so, pull more
+    const { headers: moreEvents } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100')
+    // const { headers: stores } = await axios.get(baseURL + '/wp-json/wp/v2/stores/')
+    // const { headers: sales } = await axios.get(baseURL + '/wp-json/wp/v2/sales?per_page=100')
+
+    let theCount = moreEvents['x-wp-totalpages']
+    let x = 2;
+    while (x <= theCount) {
+      var { data: moreEvents2 } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100&page=' + x)
+      if (moreEvents2) {
+        for (var i = 0; i < moreEvents2.length; i++) {
+          events.push(moreEvents2[i])
+        }
       }
+      x++
     }
 
     return {

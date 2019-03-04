@@ -55,7 +55,7 @@ export default withSiteData(class FeaturedEvents extends React.Component {
             featuredStores = this.props.events.map(store => {
                 if (store.acf.featured_image){
                 return <div className="featuredEvent">
-                    <Link to={store.slug}>
+                    <Link to={'/events/' + store.slug}>
                         <img src={store.acf.featured_image} className="featuredEventImage" />
                         <div className="eventOverlay">
                         <h4>{store.title.rendered}</h4>

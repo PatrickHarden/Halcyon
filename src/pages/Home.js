@@ -9,7 +9,7 @@ import HeroSlider from '../sections/homepage/HeroSlider';
 import ModuleController from '../sections/modules/ModuleController.js'
 import TintSocialFeed from '../sections/homepage/TintSocialFeed.js';
 import helpers from '../helpers.js'
-// import JuicerFeed from 'react-juicer-feed';
+import JuicerFeed from 'react-juicer-feed';
 
 
 var featuredStores = [];
@@ -117,7 +117,7 @@ export default withRouteData(class Home extends React.Component {
               <ModuleController page={home} />
               </div> : "" }
             <Container className='social-feed-container'>
-            {(this.props.property_options.acf.data_id && (typeof document !== 'undefined')) ? <div>
+            {(this.props.property_options.acf.data_id && typeof document != 'undefined') ? <div>
               <h2>@HALCYONFORSYTH</h2>
                 <div id="thisTarget">
                   <JuicerFeed feedId='imaginuity-ba275954-4d89-4453-8ef8-80e94361aeb4' />

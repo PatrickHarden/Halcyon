@@ -41,6 +41,7 @@
     "react-gtm-module": "^2.0.4",
     "react-helmet": "^5.2.0",
     "react-html-parser": "^2.0.2",
+    "react-hot-loader": "^4.0.0-beta.21",
     "react-juicer-feed": "^0.0.2-alpha",
     "react-lazy-hero": "^0.4.0",
     "react-load-script": "^0.0.6",
