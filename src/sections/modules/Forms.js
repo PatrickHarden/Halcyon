@@ -277,8 +277,101 @@ export default class Forms extends React.Component {
                 this.state.email = this.props.section.form.notifications[key].to
         }
     }
+
     
 
+    handleSubmit(event) {
+
+        if ($('input[type="file"]').length){
+
+            console.log('File upload function triggered');
+            // var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
+    
+            // var fd = new FormData();
+            // var file = $(document).find('input[type="file"]');
+            // var individual_file = file[0].files[0];
+            // fd.append("file", individual_file);
+            // fd.append('action', 'file_upload_callback');  
+        
+            let file_json = {
+                'action': 'file_upload_callback',
+                'data': 'test',
+            };
+
+            $.ajax({
+                type: 'post',
+                url: SiteURL + "/wp-admin/admin-ajax.php",
+                data: file_json,
+                contentType: false,
+                processData: false,
+                success: function(response){
+                    console.log(response);
+                }
+            });
+        }
+
+        let component = this;
+        // Build a form submission authentication URL (similar to the form input field retrieval authentication URL)
+        let signature = this.gformAuth(this.props.gformID, this.state.publicKey, this.state.privateKey, "POST");
+        let gformURL = SiteURL + '/gravityformsapi/forms/' + this.props.gformID + '/submissions?api_key=' + this.state.publicKey + '&signature=' + signature;
+        // Build the gForms submission object
+        let entry = {
+            "input_values":{
+
+            }
+        };
+
+        $('#submit-button').prop('disabled', true);
+        // Using the previously built form ID list, retrieve corresponding values and add them to the submission object
+        this.state.fieldList.map(function(field){
+            let fieldSanitized = field.replace('.', '_');
+            entry.input_values['input_'+ fieldSanitized ] = typeof component.state[field] === 'undefined' ? ' ' : component.state[field];
+        });
+
+        let entry_json = JSON.stringify(entry);
+
+        if(!document.getElementById("honeypot").value) {
+            $.ajax({
+                url: gformURL,
+                type: 'POST',
+                crossDomain: true,
+                data: entry_json,
+                dataType: 'json',
+                success: function (data) {
+                    if (data.status <= 202) {
+                        if(data.response.is_valid){
+                            $('#gform-' + component.props.gformID + ' input[type="submit"]').addClass('hidden');
+                            $('#gform-' + component.props.gformID + ' .confirmation .message').html(data.response.confirmation_message);
+                            $('#gform-' + component.props.gformID + ' .confirmation').removeClass('hidden');
+                            $('#gform-' + component.props.gformID + ' .fields').fadeOut();
+                            $('.gform .error').addClass('hidden');
+                        }
+                        else if(!data.response.is_valid){
+                            $('.validation-error').remove();
+                            let messages = data.response.validation_messages;
+                            for(let i in messages){
+                                component.handleValidationError(i, messages[i]);
+                            }
+                        }
+                    }
+                    else{
+                        component.handleSoftError(component.state.gformTitle + ' form submission was not valid. Please review your form data to ensure completion and try again.');
+                        console.log("Response code: " + data.status);
+                        console.log(data);
+                    }
+                },
+                error: function (jqXHR, textStatus) {
+                    component.handleError(component.state.gformTitle + ' form submission. This was caused by a problem with the ajax POST of this form.');
+                    console.log(jqXHR.responseText);
+                    console.log(textStatus);
+                }
+            });
+        }else{
+            component.handleError("Honeypot detected");
+        }
+        event.preventDefault();
+    }
+    
     render() {
 
         return (
@@ -293,7 +386,7 @@ export default class Forms extends React.Component {
                         {this.props.section.blurb &&
                             <Col sm={12} className='blurb'>{this.props.section.blurb}</Col>
                         }
-                        <Form action={"https://formspree.io/" + this.state.email}
+                        <Form onSubmit={this.handleSubmit} className="gform"
                     method="POST" >
                         {this.state.fields}
                         <input type="submit" value="Send" className="halcyon-button"></input>
