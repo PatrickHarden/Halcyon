@@ -75,7 +75,7 @@ export default withSiteData(class SiteFooter extends React.Component {
                         </Container>
                     </div>
                     {/* Removed for testing different gtm module */}
-                    {/* <div className='hidden'>{(tagManagerArgs) ? setTimeout(TagManager.initialize(tagManagerArgs), 1) : ""}</div> */}
+                    <div className='hidden'>{(tagManagerArgs) ? setTimeout(TagManager.initialize(tagManagerArgs), 1) : ""}</div>
                 </footer>
             )
         }

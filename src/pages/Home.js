@@ -117,7 +117,7 @@ export default withRouteData(class Home extends React.Component {
               <ModuleController page={home} />
               </div> : "" }
             <Container className='social-feed-container'>
-            {(this.props.property_options.acf.data_id) ? <div>
+            {(this.props.property_options.acf.data_id && (typeof document !== 'undefined')) ? <div>
               <h2>@HALCYONFORSYTH</h2>
                 <div id="thisTarget">
                   <JuicerFeed feedId='imaginuity-ba275954-4d89-4453-8ef8-80e94361aeb4' />
