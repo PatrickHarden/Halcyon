@@ -39,7 +39,7 @@ export default class Forms extends React.Component {
                                             if (!input.isHidden) {
                                                 return (
                                                     <label for={input.id}
-                                                           className="col-xs-12 col-sm-6">
+                                                        className="col-xs-12 col-sm-6">
                                                         <span className="sr-only">{input.label}</span>
                                                         <input
                                                             type="text"
@@ -67,16 +67,16 @@ export default class Forms extends React.Component {
                                 >
                                     <div className="row">
                                         <label for={field.label} className="col-xs-12">
-                                        <textarea
-                                            type={field.type}
-                                            id={field.id}
-                                            className="form-control"
-                                            name={field.label}
-                                            placeholder={field.label + (field.isRequired ? '*' : '')}
-                                            value={component.state[field.id]}
-                                            onChange={component.handleInputChange}
-                                            required={field.isRequired}
-                                        />
+                                            <textarea
+                                                type={field.type}
+                                                id={field.id}
+                                                className="form-control"
+                                                name={field.label}
+                                                placeholder={field.label + (field.isRequired ? '*' : '')}
+                                                value={component.state[field.id]}
+                                                onChange={component.handleInputChange}
+                                                required={field.isRequired}
+                                            />
                                         </label>
                                     </div>
                                 </div>
@@ -84,7 +84,7 @@ export default class Forms extends React.Component {
                         case 'select':
                             return (
                                 <div
-                                    className={"col-xs-12 form-group" + (field.size !== 'large' ? ' col-sm-6' : '') +  (field.isRequired ? ' required' : '') + ' type-' + field.type}
+                                    className={"col-xs-12 form-group" + (field.size !== 'large' ? ' col-sm-6' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
                                     id={"group-" + field.id}
                                     data-name={field.label}
                                 >
@@ -92,7 +92,7 @@ export default class Forms extends React.Component {
 
                                         <div className='col-xs-12'>
                                             <label for={field.label}>
-                                                <b>{field.label + (field.isRequired ? '*' : '')}</b><br/>
+                                                <b>{field.label + (field.isRequired ? '*' : '')}</b><br />
                                                 <select
                                                     className="form-control"
                                                     type={field.type}
@@ -184,7 +184,7 @@ export default class Forms extends React.Component {
                                     <div className="row">
                                         <Col
                                             xs={12}
-                                            dangerouslySetInnerHTML={{__html: field.content}}></Col>
+                                            dangerouslySetInnerHTML={{ __html: field.content }}></Col>
                                     </div>
                                 </div>
                             );
@@ -221,7 +221,7 @@ export default class Forms extends React.Component {
                                     <div className="row">
                                         <label for={field.id} className="col-xs-12">
                                             {field.type === 'date' &&
-                                            <b>{field.label + (field.isRequired ? '*' : '')}</b>
+                                                <b>{field.label + (field.isRequired ? '*' : '')}</b>
                                             }
                                             <input
                                                 type={field.type}
@@ -278,12 +278,12 @@ export default class Forms extends React.Component {
         }
     }
 
-    gformAuth(gform, pubkey, privkey, ajaxMethod){
+    gformAuth(gform, pubkey, privkey, ajaxMethod) {
         // Generate an HMAC SHA1 hash, then convert it to a URL-encoded base64 string.
         // One of these authentication URLs must be generated to:
         //      1) to retrieve a list of form IDs based on the form name (this.props.gformTitle)
         //      2) to retrieve the fields and variables associated with the specified form
-        function CalculateSig(stringToSign, privateKey){
+        function CalculateSig(stringToSign, privateKey) {
             let hash = CryptoJS.HmacSHA1(stringToSign, privateKey);
             let base64 = hash.toString(CryptoJS.enc.Base64);
             return encodeURIComponent(base64);
@@ -302,17 +302,17 @@ export default class Forms extends React.Component {
 
     handleSubmit(event) {
 
-        if ($('input[type="file"]').length){
+        if ($('input[type="file"]').length) {
 
             console.log('File upload function triggered');
             // var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
-    
+
             // var fd = new FormData();
             // var file = $(document).find('input[type="file"]');
             // var individual_file = file[0].files[0];
             // fd.append("file", individual_file);
             // fd.append('action', 'file_upload_callback');  
-        
+
             let file_json = {
                 'action': 'file_upload_callback',
                 'data': 'test',
@@ -324,7 +324,7 @@ export default class Forms extends React.Component {
                 data: file_json,
                 contentType: false,
                 processData: false,
-                success: function(response){
+                success: function (response) {
                     console.log(response);
                 }
             });
@@ -336,21 +336,21 @@ export default class Forms extends React.Component {
         let gformURL = SiteURL + '/gravityformsapi/forms/' + this.props.gformID + '/submissions?api_key=' + this.state.publicKey + '&signature=' + signature;
         // Build the gForms submission object
         let entry = {
-            "input_values":{
+            "input_values": {
 
             }
         };
 
         $('#submit-button').prop('disabled', true);
         // Using the previously built form ID list, retrieve corresponding values and add them to the submission object
-        this.state.fieldList.map(function(field){
+        this.state.fieldList.map(function (field) {
             let fieldSanitized = field.replace('.', '_');
-            entry.input_values['input_'+ fieldSanitized ] = typeof component.state[field] === 'undefined' ? ' ' : component.state[field];
+            entry.input_values['input_' + fieldSanitized] = typeof component.state[field] === 'undefined' ? ' ' : component.state[field];
         });
 
         let entry_json = JSON.stringify(entry);
 
-        if(!document.getElementById("honeypot").value) {
+        if (!document.getElementById("honeypot").value) {
             $.ajax({
                 url: gformURL,
                 type: 'POST',
@@ -359,22 +359,22 @@ export default class Forms extends React.Component {
                 dataType: 'json',
                 success: function (data) {
                     if (data.status <= 202) {
-                        if(data.response.is_valid){
+                        if (data.response.is_valid) {
                             $('#gform-' + component.props.gformID + ' input[type="submit"]').addClass('hidden');
                             $('#gform-' + component.props.gformID + ' .confirmation .message').html(data.response.confirmation_message);
                             $('#gform-' + component.props.gformID + ' .confirmation').removeClass('hidden');
                             $('#gform-' + component.props.gformID + ' .fields').fadeOut();
                             $('.gform .error').addClass('hidden');
                         }
-                        else if(!data.response.is_valid){
+                        else if (!data.response.is_valid) {
                             $('.validation-error').remove();
                             let messages = data.response.validation_messages;
-                            for(let i in messages){
+                            for (let i in messages) {
                                 component.handleValidationError(i, messages[i]);
                             }
                         }
                     }
-                    else{
+                    else {
                         component.handleSoftError(component.state.gformTitle + ' form submission was not valid. Please review your form data to ensure completion and try again.');
                         console.log("Response code: " + data.status);
                         console.log(data);
@@ -386,12 +386,12 @@ export default class Forms extends React.Component {
                     console.log(textStatus);
                 }
             });
-        }else{
+        } else {
             component.handleError("Honeypot detected");
         }
         event.preventDefault();
     }
-    
+
     render() {
 
         return (
@@ -406,11 +406,15 @@ export default class Forms extends React.Component {
                         {this.props.section.blurb &&
                             <Col sm={12} className='blurb'>{this.props.section.blurb}</Col>
                         }
-                        <Form onSubmit={this.handleSubmit} className="gform"
-                    method="POST" >
-                        {this.state.fields}
-                        <input type="submit" value="Send" className="halcyon-button"></input>
-                        </Form>
+                        <form onSubmit={this.handleSubmit} className="gform">
+                            {this.state.fields}
+                            <input type="submit" value="Send" className="halcyon-button"></input>
+                            <div style={{ display: 'none' }}>
+                                <label>Keep this field blank for spam filtering purposes
+                                        <input type="text" name="honeypot" id="honeypot" />
+                                </label>
+                            </div>
+                        </form>
                     </Row>
                 </Container>
             </div>
