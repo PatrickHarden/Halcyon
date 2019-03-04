@@ -57,15 +57,15 @@ export default withSiteData(class SearchComponent extends React.Component {
 
   render() {
 
-    const tagManagerArgs = {
-      gtmId: this.props.centerInfo.acf.google_tag_manager_ID,
-      dataLayer: {
-        event: 'VirtualPageview',
-            virtualPageURL: window.location.href,
-            virtualPageTitle: document.title,
-         },
-      dataLayerName: 'PageDataLayer',
-  }
+  //   const tagManagerArgs = {
+  //     gtmId: this.props.centerInfo.acf.google_tag_manager_ID,
+  //     dataLayer: {
+  //       event: 'VirtualPageview',
+  //           virtualPageURL: window.location.href,
+  //           virtualPageTitle: document.title,
+  //        },
+  //     dataLayerName: 'PageDataLayer',
+  // }
 
     if (typeof document !== 'undefined') {
       return (
@@ -83,7 +83,7 @@ export default withSiteData(class SearchComponent extends React.Component {
             }
             </div>
             </Container>
-            <div className='hidden'>{(tagManagerArgs) ? setTimeout(TagManager.initialize(tagManagerArgs), 1) : ""}</div>
+            {/* <div className='hidden'>{(tagManagerArgs) ? setTimeout(TagManager.initialize(tagManagerArgs), 1) : ""}</div> */}
         </div>
       )
     } else {
