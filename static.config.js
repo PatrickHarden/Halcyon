@@ -24,8 +24,8 @@ export default {
 
     // Getting headers for events,stores, sales, blogs, and pages to see if there exist more than 100, if so, pull more
     const { headers: moreEvents } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100')
-    const { headers: stores } = await axios.get(baseURL + '/wp-json/wp/v2/stores/')
-    const { headers: sales } = await axios.get(baseURL + '/wp-json/wp/v2/sales?per_page=100')
+    // const { headers: stores } = await axios.get(baseURL + '/wp-json/wp/v2/stores/')
+    // const { headers: sales } = await axios.get(baseURL + '/wp-json/wp/v2/sales?per_page=100')
 
     let theCount = moreEvents['x-wp-totalpages']
     let x = 2;
