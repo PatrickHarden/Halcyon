@@ -278,7 +278,27 @@ export default class Forms extends React.Component {
         }
     }
 
-    
+    gformAuth(gform, pubkey, privkey, ajaxMethod){
+        // Generate an HMAC SHA1 hash, then convert it to a URL-encoded base64 string.
+        // One of these authentication URLs must be generated to:
+        //      1) to retrieve a list of form IDs based on the form name (this.props.gformTitle)
+        //      2) to retrieve the fields and variables associated with the specified form
+        function CalculateSig(stringToSign, privateKey){
+            let hash = CryptoJS.HmacSHA1(stringToSign, privateKey);
+            let base64 = hash.toString(CryptoJS.enc.Base64);
+            return encodeURIComponent(base64);
+        }
+
+        let d = new Date,
+            expiration = 3600, // 1 hour
+            unixtime = parseInt(d.getTime() / 1000),
+            future_unixtime = unixtime + expiration,
+            route = "forms/" + gform;
+
+        let stringToSign = pubkey + ":" + ajaxMethod + ":" + route + ":" + future_unixtime;
+        let sig = CalculateSig(stringToSign, privkey);
+        return sig + '&expires=' + future_unixtime;
+    }
 
     handleSubmit(event) {
 
