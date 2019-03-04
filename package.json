@@ -38,7 +38,7 @@
     "react-event-calendar": "^0.3.0",
     "react-google-maps": "^9.4.5",
     "react-google-tag-manager": "^2.2.1",
-    "react-gtm-module": "^2.0.2",
+    "react-gtm-module": "^2.0.4",
     "react-helmet": "^5.2.0",
     "react-html-parser": "^2.0.2",
     "react-juicer-feed": "^0.0.2-alpha",

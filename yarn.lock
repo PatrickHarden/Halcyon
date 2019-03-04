@@ -6502,7 +6502,7 @@ react-google-tag-manager@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/react-google-tag-manager/-/react-google-tag-manager-2.2.1.tgz#b0659c7b19d9263c7cb45d3c019f506529af9077"
 
-react-gtm-module@^2.0.2:
+react-gtm-module@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/react-gtm-module/-/react-gtm-module-2.0.4.tgz#0f23a1ee119a4abb95917cc9def7b845e66d9fbb"
 
