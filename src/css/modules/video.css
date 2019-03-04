@@ -65,9 +65,6 @@
 .contentWithFeaturedVideo .content-column {
     text-align: center;
 }
-.contentWithFeaturedVideo .content-column .heading {
-    font-family: 'Flama', sans-serif;
-}
 
 @media screen and (min-width: 768px) {
     .contentWithFeaturedVideo .column-wrap {
@@ -90,5 +87,8 @@
     }
     .contentWithFeaturedVideo .column-wrap.content-left .content-column {
         padding: 2rem 2rem 2rem 0;
+    }
+    .contentWithFeaturedVideo .image-column .videoWrapper {
+        border-radius: 0;
     }
 }
