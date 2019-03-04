@@ -6,17 +6,10 @@ import helpers from '../../helpers.js'
 import '../../css/modules/contentWithFeaturedImage.css';
 import { relative } from "path";
 import $ from 'jquery'
+import '../../css/modules/video.css'
 
 var videoId;
 var iframeMarkup;
-
-const styles = {
-    position: relative
-}
-
-const mBottom = {
-    marginBottom: '30px'
-}
 
 export default withSiteData(class ContentWithFeaturedVideo extends React.Component {
 
@@ -28,15 +21,18 @@ export default withSiteData(class ContentWithFeaturedVideo extends React.Compone
         this.disappear = this.disappear.bind(this);
     }
 
-    componentWillMount(){
+    componentWillMount() {
         videoId = helpers.getVideoUrl(this.props.section.youtube_url);
         this.setState({
             iframe: <iframe width="100%" id="targetVideo" height="350" src={'//www.youtube.com/embed/' + videoId} frameborder="0" allowfullscreen></iframe>
         })
     }
-    
-    disappear(){
-        document.getElementById('disappear').style.display = 'none'
+
+    disappear() {
+        // document.getElementById('disappear').style.display = 'none'
+        let videoWrapper = $('.contentWithFeaturedVideo .videoWrapper');
+        videoWrapper.addClass('active');
+
         this.setState({
             iframe: <iframe width="100%" id="targetVideo" height="350" src={'//www.youtube.com/embed/' + videoId + '?autoplay=1&mute=1&enablejsapi=1'} frameborder="0" allowfullscreen></iframe>
         })
@@ -44,34 +40,38 @@ export default withSiteData(class ContentWithFeaturedVideo extends React.Compone
 
     render() {
         return (<div>
-                {this.props.section.heading &&
+            {this.props.section.heading &&
                 <div className='heading-container'>
                     <Container>
-                    <h2>{this.props.section.heading}</h2>
+                        <h2>{this.props.section.heading}</h2>
                     </Container>
                 </div>
-                }  
-                <Container className='contentWithFeaturedVideo'>
-                    <Row className={(this.props.section.display_options == 'video-left-content-right') ? 'content-right' : 'content-left'}>
-                    <Col sm={6} lg={7} className='image-column'>
-                        <div style={styles} onClick={this.disappear} >
-                            {this.props.section.image_overlay && 
-                            <img className="imageOverlay" id="disappear" src={this.props.section.image_overlay} />}
-                            <span className="play">PlayButton</span>
-                            <div style={mBottom}>{this.state.iframe}</div>
+            }
+            <Container className='contentWithFeaturedVideo'>
+                <Row className={(this.props.section.display_options == 'video-left-content-right') ? 'column-wrap content-right' : 'column-wrap content-left'}>
+                    <Col sm={6} className='image-column'>
+                        <div className='videoWrapper'>
+                            <span className="play" onClick={this.disappear}></span>
+                            {this.props.section.image_overlay &&
+                                <img className="imageOverlay" src={this.props.section.image_overlay} />}
+                            {this.state.iframe}
                         </div>
                     </Col>
-                    <Col sm={6} lg={5} className='content-column'>
-                        {this.props.section.heading &&
-                            <div className='heading'><h2>{this.props.section.content_heading}</h2></div>
-                        }
-                        {this.props.section.description &&
-                            <div clasName='content'>{ReactHtmlParser(this.props.section.description)}</div>
-                        }
-                    {(this.props.section.button) ? <Link className="halcyon-button" to={helpers.convertLink(this.props.section.button.url, this.props.title.toLowerCase())}>{(this.props.section.button.title) ? <div>{ReactHtmlParser(this.props.section.button.title)}</div>: <div>{helpers.getTitleFromUrl(this.props.section.button.url, this.props.title.toLowerCase())}</div>}</Link> : ""} 
+                    <Col sm={6} className='content-column'>
+                        <div className='inner-wrapper'>
+                            <div>
+                                {this.props.section.heading &&
+                                    <div className='heading'><h4>{this.props.section.content_heading}</h4></div>
+                                }
+                                {this.props.section.description &&
+                                    <div clasName='content'>{ReactHtmlParser(this.props.section.description)}</div>
+                                }
+                                {(this.props.section.button) ? <Link className="halcyon-button" to={helpers.convertLink(this.props.section.button.url, this.props.title.toLowerCase())}>{(this.props.section.button.title) ? <div>{ReactHtmlParser(this.props.section.button.title)}</div> : <div>{helpers.getTitleFromUrl(this.props.section.button.url, this.props.title.toLowerCase())}</div>}</Link> : ""}
+                            </div>
+                        </div>
                     </Col>
-                    </Row> 
-                </Container>
+                </Row>
+            </Container>
         </div>
         );
     }
