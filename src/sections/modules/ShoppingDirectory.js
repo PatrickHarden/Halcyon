@@ -37,7 +37,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
         }));
     }
 
-    loadMore(){
+    loadMore() {
         this.setState({
             amount: this.state.amount + 10
         })
@@ -153,7 +153,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                         </div>
                         <div className='search'>
                             <input className='search-bar' placeholder="Search" value={this.state.search} onChange={event => this.handleSearch(event.target.value)} />
-                            <FontAwesomeIcon icon={faSearch} className='search-icon'/>
+                            <FontAwesomeIcon icon={faSearch} className='search-icon' />
                         </div>
                     </div>
                     <div>
@@ -162,36 +162,22 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                                 if (categoryId == '' && this.state.search == '') {
                                     return (
                                         <div key={store.id} className={store.id + ' storeRow'} categories={(store.imag_taxonomy_store_category[0]) ? store.imag_taxonomy_store_category : "-1"} slug={store.title.rendered}>
-                                        <div className='store-title-wrap'><Link to={`/shopping/${store.slug}/`}><h4 className='store-title'>{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : null}</h4></Link></div>
-                                        <div className='red-text'>{(store.acf.flags) ? <div>{store.acf.flags[0] + '!'}</div> : ""}{(this.isSale(store)) ? <div>Offer Available</div> : ""}</div>
-                                        <div className='center-container'>
-                                            <div className='store-phone'>{(store.acf.phone_number) ? <a href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
-                                            <div className='store-directions'>{(store.acf.street_address) ? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon visible-xs' /><img src={MapIconDesktop} className="hidden-xs icon" /></a> : ""}</div>
-                                            <div className='hours'>{helpers.getHours(store, globalHours, globalHolidayHours)}</div>
+                                            <div className='store-title-wrap'><Link to={`/shopping/${store.slug}/`}><h4 className='store-title'>{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : null}</h4></Link></div>
+                                            <div className='red-text'>{(store.acf.flags) ? <div>{store.acf.flags[0] + '!'}</div> : ""}{(this.isSale(store)) ? <div>Offer Available</div> : ""}</div>
+                                            <div className='center-container'>
+                                                <div className='store-phone'>{(store.acf.phone_number) ? <a href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
+                                                <div className='store-directions'>{(store.acf.street_address) ? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon visible-xs' /><img src={MapIconDesktop} className="hidden-xs icon" /></a> : ""}</div>
+                                                <div className='hours'>{helpers.getHours(store, globalHours, globalHolidayHours)}</div>
+                                            </div>
+                                            <div className='button-wrapper'><Link to={`/shopping/${store.slug}/`} className="halcyon-button arrow viewStoreButton"><div>View Store</div></Link></div>
                                         </div>
-                                        <div className='button-wrapper'><Link to={`/shopping/${store.slug}/`} className="halcyon-button arrow viewStoreButton"><div>View Store</div></Link></div>
-                                    </div>
                                     )
                                 } else {
                                     if (categoryId == '' && this.state.search != '') {
                                         if (store.title.rendered.toLowerCase().includes(this.state.search.toLowerCase())) {
                                             return (
                                                 <div key={store.id} className={store.id + ' storeRow'} categories={(store.imag_taxonomy_store_category[0]) ? store.imag_taxonomy_store_category : "-1"} slug={store.title.rendered}>
-                                                <div><Link to={`/shopping/${store.slug}/`}><h4 className='store-title'>{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : null}</h4></Link></div>
-                                                <div className='red-text'>{(store.acf.flags) ? <div>{store.acf.flags[0] + '!'}</div> : ""}{(this.isSale(store)) ? <div>Offer Available</div> : ""}</div>
-                                                <div className='center-container'>
-                                                    <div className='store-phone'>{(store.acf.phone_number) ? <a href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
-                                                    <div className='store-directions'>{(store.acf.street_address) ? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon visible-xs' /><img src={MapIconDesktop} className="hidden-xs icon" /></a> : ""}</div>
-                                                    <div className='hours'>{helpers.getHours(store, globalHours, globalHolidayHours)}</div>
-                                                </div>
-                                                <div className='button-wrapper'><Link to={`/shopping/${store.slug}/`} className="halcyon-button arrow viewStoreButton"><div>View Store</div></Link></div>
-                                            </div>
-                                            )
-                                        }
-                                    } else if (String(store.imag_taxonomy_store_category[0]).includes(categoryId[0]) && this.state.search == '') {
-                                        return (
-                                            <div key={store.id} className={store.id + ' storeRow'} categories={(store.imag_taxonomy_store_category[0]) ? store.imag_taxonomy_store_category : "-1"} slug={store.title.rendered}>
-                                                    <div><Link to={`/shopping/${store.slug}/`}><h4 className='store-title'>{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : null}</h4></Link></div>
+                                                    <div className='store-title-wrap'><Link to={`/shopping/${store.slug}/`}><h4 className='store-title'>{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : null}</h4></Link></div>
                                                     <div className='red-text'>{(store.acf.flags) ? <div>{store.acf.flags[0] + '!'}</div> : ""}{(this.isSale(store)) ? <div>Offer Available</div> : ""}</div>
                                                     <div className='center-container'>
                                                         <div className='store-phone'>{(store.acf.phone_number) ? <a href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
@@ -200,12 +186,26 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                                                     </div>
                                                     <div className='button-wrapper'><Link to={`/shopping/${store.slug}/`} className="halcyon-button arrow viewStoreButton"><div>View Store</div></Link></div>
                                                 </div>
+                                            )
+                                        }
+                                    } else if (String(store.imag_taxonomy_store_category[0]).includes(categoryId[0]) && this.state.search == '') {
+                                        return (
+                                            <div key={store.id} className={store.id + ' storeRow'} categories={(store.imag_taxonomy_store_category[0]) ? store.imag_taxonomy_store_category : "-1"} slug={store.title.rendered}>
+                                                <div className='store-title-wrap'><Link to={`/shopping/${store.slug}/`}><h4 className='store-title'>{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : null}</h4></Link></div>
+                                                <div className='red-text'>{(store.acf.flags) ? <div>{store.acf.flags[0] + '!'}</div> : ""}{(this.isSale(store)) ? <div>Offer Available</div> : ""}</div>
+                                                <div className='center-container'>
+                                                    <div className='store-phone'>{(store.acf.phone_number) ? <a href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
+                                                    <div className='store-directions'>{(store.acf.street_address) ? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon visible-xs' /><img src={MapIconDesktop} className="hidden-xs icon" /></a> : ""}</div>
+                                                    <div className='hours'>{helpers.getHours(store, globalHours, globalHolidayHours)}</div>
+                                                </div>
+                                                <div className='button-wrapper'><Link to={`/shopping/${store.slug}/`} className="halcyon-button arrow viewStoreButton"><div>View Store</div></Link></div>
+                                            </div>
                                         )
                                     } else if (String(store.imag_taxonomy_store_category[0]).includes(categoryId[0]) && this.state.search != '') {
                                         if (store.title.rendered.toLowerCase().includes(this.state.search.toLowerCase())) {
                                             return (
                                                 <div key={store.id} className={store.id + ' storeRow'} categories={(store.imag_taxonomy_store_category[0]) ? store.imag_taxonomy_store_category : "-1"} slug={store.title.rendered}>
-                                                    <div><Link to={`/shopping/${store.slug}/`}><h4 className='store-title'>{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : null}</h4></Link></div>
+                                                    <div className='store-title-wrap'><Link to={`/shopping/${store.slug}/`}><h4 className='store-title'>{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : null}</h4></Link></div>
                                                     <div className='red-text'>{(store.acf.flags) ? <div>{store.acf.flags[0] + '!'}</div> : ""}{(this.isSale(store)) ? <div>Offer Available</div> : ""}</div>
                                                     <div className='center-container'>
                                                         <div className='store-phone'>{(store.acf.phone_number) ? <a href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>

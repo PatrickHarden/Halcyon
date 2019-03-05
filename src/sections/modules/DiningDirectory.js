@@ -8,7 +8,7 @@ import RestaurantIcon from '../../images/restaurantIcon.png'
 import OpenTableIcon from '../../images/icon-open-table.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/fontawesome-free-brands'
-import { faPhone, faMapMarkerAlt, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faPhone, faMapMarkerAlt, faPlus, faSearch } from '@fortawesome/free-solid-svg-icons'
 import helpers from '../../helpers.js'
 
 import '../../css/modules/diningDirectory.css'
@@ -16,6 +16,8 @@ import '../../css/modules/diningDirectory.css'
 var globalHours = [];
 var globalHolidayHours = [];
 var storeCounter;
+var salesArray = [];
+
 
 export default withSiteData(class DiningDirectory extends React.Component {
 
@@ -36,6 +38,16 @@ export default withSiteData(class DiningDirectory extends React.Component {
 
     handleSearch(query) {
         this.setState({ search: query })
+    }
+
+    isSale(store) {
+        var result = false;
+        for (var i = 0; i < salesArray.length; i++) {
+            if (salesArray[i].acf.related_store.post_name == store.slug) {
+                result = true;
+            }
+        }
+        return result
     }
 
     componentWillMount() {
@@ -62,7 +74,7 @@ export default withSiteData(class DiningDirectory extends React.Component {
     componentWillUpdate() {
         if (storeCounter.length <= this.state.amount) {
             var loadButton = document.getElementById('loadMore');
-            if (typeof(loadButton) != 'undefined' && loadButton != null) {
+            if (typeof (loadButton) != 'undefined' && loadButton != null) {
                 loadButton.style.display = 'none';
             }
         }
@@ -77,11 +89,48 @@ export default withSiteData(class DiningDirectory extends React.Component {
                     <div className='heading-container'>
                         <Container>
                             <h2>{this.props.section.heading}</h2>
+                            <div className='restaurant-legend hidden-xs'>
+                                <div className='legend-row'>
+                                    <div className='legend-icon'><img src={BarIcon} className="barIcon icon" /></div>
+                                    <h2>Bar</h2>
+                                </div>
+                                <div className='legend-row'>
+                                    <div className='legend-icon'><img src={RestaurantIcon} className="diningIcon icon" /></div>
+                                    <h2>Restaurant</h2>
+                                </div>
+                                <div className='legend-row'>
+                                    <div className='legend-icon'><img src={FoodHallIcon} className="foodHallIcon icon" /></div>
+                                    <h2>Food Hall</h2>
+                                </div>
+                            </div>
                         </Container>
                     </div> : ""}
-                <div className='search'>
-                    <input className='search-bar' placeholder="Search..." value={this.state.search} onChange={event => this.handleSearch(event.target.value)} />
+                <div className='restaurant-legend visible-xs'>
+                    <div className='legend-row'>
+                        <Container>
+                            <div className='legend-icon'><img src={BarIcon} className="barIcon icon" /></div>
+                            <h2>Bar</h2>
+                        </Container>
+                    </div>
+                    <div className='legend-row'>
+                        <Container>
+                            <div className='legend-icon'><img src={RestaurantIcon} className="diningIcon icon" /></div>
+                            <h2>Restaurant</h2>
+                        </Container>
+                    </div>
+                    <div className='legend-row'>
+                        <Container>
+                            <div className='legend-icon'><img src={FoodHallIcon} className="foodHallIcon icon" /></div>
+                            <h2>Food Hall</h2>
+                        </Container>
+                    </div>
                 </div>
+                <Container className='controls-container'>
+                    <div className='search'>
+                        <input className='search-bar' placeholder="Search..." value={this.state.search} onChange={event => this.handleSearch(event.target.value)} />
+                        <FontAwesomeIcon icon={faSearch} className='search-icon' />
+                    </div>
+                </Container>
                 <Container className="diningRows">
                     {(this.state.search == '') ?
                         <div>
@@ -89,11 +138,12 @@ export default withSiteData(class DiningDirectory extends React.Component {
                                 (store.acf.store_type == "restaurant") ?
                                     <div key={index} className='store-single'>
                                         <div className='image-wrapper'>
-                                            <img className='hidden-xs' src={store.acf.featured_image} />
+                                            <Link to={`/dining/${store.slug}/`}><img className='hidden-xs' src={store.acf.featured_image} /></Link>
                                         </div>
                                         <div className='content-wrapper'>
-                                            <h4 className='store-title'>{ReactHtmlParser(store.title.rendered)}</h4>
+                                            <Link className='store-title-link' to={`/dining/${store.slug}/`}><h4 className='store-title'>{ReactHtmlParser(store.title.rendered)}</h4></Link>
                                             <div className='hours'>Hours: {helpers.getHours(store, globalHours, globalHolidayHours)}</div>
+                                            <div className='red-text'>{(store.acf.flags) ? <div>{store.acf.flags[0] + '!'}</div> : ""}{(this.isSale(store)) ? <div>Offer Available</div> : ""}</div>
                                             {(store.acf.store_copy) ? <div className='hidden-xs'>{ReactHtmlParser(helpers.compressText(store.acf.store_copy, 200))}</div> : ''}
                                         </div>
                                         <div className='action-corner'>
@@ -106,13 +156,13 @@ export default withSiteData(class DiningDirectory extends React.Component {
                                             <div className='icon-container'>
                                                 <div className='restaurant-type'>
                                                     {(store.acf.restaurant_type == 'restaurant') &&
-                                                        <img src={RestaurantIcon} className="diningIcon icon" />
+                                                        <div className='restaurant icon-wrap'><img src={RestaurantIcon} className="diningIcon icon" /></div>
                                                     }
                                                     {(store.acf.restaurant_type == 'bar') &&
-                                                        <img src={BarIcon} className="barIcon icon" />
+                                                        <div className='bar icon-wrap'><img src={BarIcon} className="barIcon icon" /></div>
                                                     }
                                                     {(store.acf.restaurant_type == 'food-hall') &&
-                                                        <img src={FoodHallIcon} className="foodHallIcon icon" />
+                                                        <div className='foodHall icon-wrap'><img src={FoodHallIcon} className="foodHallIcon icon" /></div>
                                                     }
                                                 </div>
                                                 {(store.acf.street_address) ? <a className='visible-xs' href={"//maps.google.com/?q=" + store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon' /></a> : ""}
@@ -125,7 +175,7 @@ export default withSiteData(class DiningDirectory extends React.Component {
                                     </div>
                                     : ""
                             ))}
-                        <div className="loadmore-button" id="loadMore" onClick={this.loadMore}><FontAwesomeIcon icon={faPlus} className='icon' />Load More</div>
+                            <div className="loadmore-button" id="loadMore" onClick={this.loadMore}><FontAwesomeIcon icon={faPlus} className='icon' />Load More</div>
                         </div>
                         :
                         <div>
@@ -134,11 +184,12 @@ export default withSiteData(class DiningDirectory extends React.Component {
                                     (store.title.rendered.toLowerCase().includes(this.state.search.toLowerCase())) ?
                                         <div key={index} className='store-single'>
                                             <div className='image-wrapper'>
-                                                <img className='hidden-xs' src={store.acf.featured_image} />
+                                                <Link to={`/dining/${store.slug}/`}><img className='hidden-xs' src={store.acf.featured_image} /></Link>
                                             </div>
                                             <div className='content-wrapper'>
-                                                <h4 className='store-title'>{ReactHtmlParser(store.title.rendered)}</h4>
+                                                <Link className='store-title-link' to={`/dining/${store.slug}/`}><h4 className='store-title'>{ReactHtmlParser(store.title.rendered)}</h4></Link>
                                                 <div className='hours'>Hours: {helpers.getHours(store, globalHours, globalHolidayHours)}</div>
+                                                <div className='red-text'>{(store.acf.flags) ? <div>{store.acf.flags[0] + '!'}</div> : ""}{(this.isSale(store)) ? <div>Offer Available</div> : ""}</div>
                                                 {(store.acf.store_copy) ? <div className='hidden-xs'>{ReactHtmlParser(helpers.compressText(store.acf.store_copy, 200))}</div> : ''}
                                             </div>
                                             <div className='action-corner'>
@@ -151,13 +202,13 @@ export default withSiteData(class DiningDirectory extends React.Component {
                                                 <div className='icon-container'>
                                                     <div className='restaurant-type'>
                                                         {(store.acf.restaurant_type == 'restaurant') &&
-                                                            <img src={RestaurantIcon} className="diningIcon icon" />
+                                                            <div className='restaurant icon-wrap'><img src={RestaurantIcon} className="diningIcon icon" /></div>
                                                         }
                                                         {(store.acf.restaurant_type == 'bar') &&
-                                                            <img src={BarIcon} className="barIcon icon" />
+                                                            <div className='bar icon-wrap'><img src={BarIcon} className="barIcon icon" /></div>
                                                         }
                                                         {(store.acf.restaurant_type == 'food-hall') &&
-                                                            <img src={FoodHallIcon} className="foodHallIcon icon" />
+                                                            <div className='foodHall icon-wrap'><img src={FoodHallIcon} className="foodHallIcon icon" /></div>
                                                         }
                                                     </div>
                                                     {(store.acf.street_address) ? <a className='visible-xs' href={"//maps.google.com/?q=" + store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon' /></a> : ""}
