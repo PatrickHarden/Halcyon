@@ -334,8 +334,13 @@ export default withSiteData(class Forms extends React.Component {
         // Build the gForms submission object
         let entry = {
             "input_values": {
-                "email": "test"
-            }
+                "input_1":      "test",
+                "field_values": "testt",
+            },
+            "input_values": {
+                "input_2":      "test",
+                "field_values": "testt",
+            },
         };
 
         $('#submit-button').prop('disabled', true);
@@ -354,7 +359,7 @@ export default withSiteData(class Forms extends React.Component {
                 url: gformURL,
                 type: 'POST',
                 crossDomain: true,
-                data: entry,
+                data: entry_json,
                 dataType: 'json',
                 success: function (data) {
                     if (data.status <= 202) {
