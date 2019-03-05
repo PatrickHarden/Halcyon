@@ -2,11 +2,14 @@ import React from "react";
 import { withSiteData } from 'react-static'
 import { Container, Row, Col, Button, Form, FormGroup, Input } from 'reactstrap'
 import '../../css/modules/form.css'
+import CryptoJS from 'crypto-js';
+import $ from 'jquery'
 
 export default withSiteData(class Forms extends React.Component {
 
     constructor(props) {
         super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
             form: [],
             fields: '',
@@ -285,7 +288,6 @@ export default withSiteData(class Forms extends React.Component {
                 this.state.email = this.props.section.form.notifications[key].to
         }
 
-        console.log(this.props.gformID, this.state.publicKey, this.state.privateKey)
     }
 
     gformAuth(gform, pubkey, privkey, ajaxMethod) {
@@ -322,28 +324,34 @@ export default withSiteData(class Forms extends React.Component {
 
     handleSubmit(event) {
         const SiteURL = 'https://halcyon.dev.v3.imaginuitycenters.com/'
+        event.preventDefault();
 
-        debugger;
         let component = this;
         // Build a form submission authentication URL (similar to the form input field retrieval authentication URL)
-        var signature = this.gformAuth(this.props.gformID, this.state.publicKey, this.state.privateKey, "GET");
+        var signature = this.gformAuth(this.props.gformID, this.state.publicKey, this.state.privateKey, "POST");
         console.log(signature)
         let gformURL = SiteURL + '/gravityformsapi/forms/' + this.props.gformID + '/submissions?api_key=' + this.state.publicKey + '&signature=' + signature;
         // Build the gForms submission object
         let entry = {
             "input_values": {
-
-            }
+                "input_1":      "test",
+                "field_values": "testt",
+            },
+            "input_values": {
+                "input_2":      "test",
+                "field_values": "testt",
+            },
         };
 
-        debugger;
         $('#submit-button').prop('disabled', true);
         // Using the previously built form ID list, retrieve corresponding values and add them to the submission object
-        this.state.fieldList.map(function (field) {
-            let fieldSanitized = field.replace('.', '_');
-            entry.input_values['input_' + fieldSanitized] = typeof component.state[field] === 'undefined' ? ' ' : component.state[field];
-        });
-        debugger;
+        // this.state.fields.map(field => {
+        //     let fieldSanitized = field.replace('.', '_');
+        //     entry.input_values['input_' + fieldSanitized] = typeof component.state[field] === 'undefined' ? ' ' : component.state[field];
+        // });
+
+        // https://halcyon.dev.v3.imaginuitycenters.com//gravityformsapi/forms/1/submissions?api_key=04f7c94448&signature=iLGqNMR87NBoMMDpbXZnvGC1rTI%3D&expires=1551811223
+
         let entry_json = JSON.stringify(entry);
 
         if (!document.getElementById("honeypot").value) {
@@ -372,7 +380,7 @@ export default withSiteData(class Forms extends React.Component {
                         }
                     }
                     else {
-                        component.handleSoftError(component.state.gformTitle + ' form submission was not valid. Please review your form data to ensure completion and try again.');
+                        console.log(component.state.gformTitle + ' form submission was not valid. Please review your form data to ensure completion and try again.');
                         console.log("Response code: " + data.status);
                         console.log(data);
                         debugger;
@@ -389,8 +397,16 @@ export default withSiteData(class Forms extends React.Component {
             component.handleError("Honeypot detected");
             debugger;
         }
-        event.preventDefault();
         debugger;
+    }
+
+    handleError(error){
+        $('.gform input[type="submit"]').addClass('hidden');
+        $('.gform .error').removeClass('hidden');
+        $('.gform .error .bg-danger').html(error);
+        $('.gform .fields').fadeOut();
+        console.log("Error description: " + error);
+        $('#submit-button').prop('disabled', false);
     }
 
     render() {

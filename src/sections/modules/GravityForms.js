@@ -1,14 +1,11 @@
 // Packages
 import React, {PropTypes, Component} from 'react';
-import { ReactBootstrap, Grid, Row, Col, Button } from 'react-bootstrap';
+import { ReactBootstrap, Grid, Row, Col } from 'reactstrap';
 import $ from 'jquery';
 import axios from 'axios';
 let Entities = require('html-entities').AllHtmlEntities;
 let entities = new Entities();
 import CryptoJS from 'crypto-js';
-
-//Component
-import Loader from './Loader';
 
 // Endpoints
 const SiteURL = 'https://halcyon.dev.v3.imaginuitycenters.com';
@@ -44,11 +41,9 @@ export default class GravityForm extends React.Component{
                 dataType: 'json',
                 success: function (data) {
 
-                    (data.acf.public_api_key === false ? console.log('gForm public key invalid') : null);
-                    (data.acf.private_api_key === false ? console.log('gForm private key invalid') : null);
                     component.setState({
-                        publicKey: data.acf.public_api_key,
-                        privateKey: data.acf.private_api_key
+                        publicKey: '04f7c94448',
+                        privateKey: '16658bbbf1acf17'
                     });
                     // Build an authentication url using Gravity Forms Web API
                     let signature = component.gformAuth(component.props.gformID, data.acf.public_api_key, data.acf.private_api_key, "GET");
@@ -481,6 +476,6 @@ export default class GravityForm extends React.Component{
                 </Row>
             )
         }
-        return <Loader />;
+        return <p>Error</p>;
     }
 }
