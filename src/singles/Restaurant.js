@@ -108,7 +108,8 @@ export default withRouteData(class Page extends React.Component {
             return (<div key={index} className="sale-single">
               <div className="date-ball">{(sale.acf.end_date) ? <span><span className='ends'>Ends</span><br />{moment(sale.acf.end_date, 'YYYYMMDD').format('MM/DD')}</span> : ""}</div>
               <div className='image-wrapper hidden-xs'>
-                <img src={sale.acf.featured_image} alt={sale.title.rendered} />
+              {sale.acf.featured_image && 
+                <img src={sale.acf.featured_image} alt={sale.title.rendered} /> }
               </div>
               <div className="content-wrapper">
                 <div>{moment(sale.acf.start_date, 'YYYYMMDD').format('MMM DD')} - {moment(sale.acf.end_date, 'YYYYMMDD').format('MMM DD')} at {this.props.restaurant.title.rendered}</div>

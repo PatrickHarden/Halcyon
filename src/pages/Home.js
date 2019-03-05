@@ -7,7 +7,7 @@ import { faPhone, faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg
 
 import HeroSlider from '../sections/homepage/HeroSlider';
 import ModuleController from '../sections/modules/ModuleController.js'
-import TintSocialFeed from '../sections/homepage/TintSocialFeed.js';
+// import TintSocialFeed from '../sections/homepage/TintSocialFeed.js';
 import helpers from '../helpers.js'
 import JuicerFeed from 'react-juicer-feed';
 
