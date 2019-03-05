@@ -350,8 +350,8 @@ export default withSiteData(class Forms extends React.Component {
 
         $('#submit-button').prop('disabled', true);
         // Using the previously built form ID list, retrieve corresponding values and add them to the submission object
-        console.log(this.state.fields)
-        this.state.fields.map(field => {
+        console.log(this.state.fieldList)
+        this.state.fieldList.map(field => {
             let fieldSanitized = field.replace('.', '_');
             entry.input_values['input_' + fieldSanitized] = typeof component.state[field] === 'undefined' ? ' ' : component.state[field];
         });
