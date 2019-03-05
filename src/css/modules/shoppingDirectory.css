@@ -1,3 +1,74 @@
+/* Filters */
+.shoppingDirectory .controls-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+}
+.shoppingDirectory .controls-container .filter .dropdown-toggle {
+    width: 100%;
+    border-radius: 20px;
+    font-family: 'Flama',sans-serif;
+    text-align: left;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    background: #fff;
+    box-shadow: 3px 3px 6px rgba(0,0,0,.4);
+    transition: .3s;
+}
+.shoppingDirectory .controls-container .filter .dropdown-toggle:hover {
+    box-shadow: 6px 6px 12px rgba(0,0,0,.4);
+}
+.shoppingDirectory .controls-container .filter {
+    order: 2;
+    width: 100%;
+}
+.shoppingDirectory .controls-container .filter .dropdown-toggle {
+    width: 100%;
+    border-radius: 20px;
+    font-family: 'Flama',sans-serif;
+    text-align: left;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    background: #fff;
+    box-shadow: 3px 3px 6px rgba(0,0,0,.4);
+}
+.shoppingDirectory .controls-container .search .search-bar {
+    width: 100%;
+    border: 0;
+    border-bottom: 3px solid #4E5859;
+    font-family: 'Flama',sans-serif;
+    font-size: 1.4rem;
+}
+
+.shoppingDirectory .controls-container .search {
+    width: 100%;
+    margin-bottom: 1rem;
+    position: relative;
+}
+.shoppingDirectory .controls-container .search .search-icon {
+    position: absolute;
+    right: 0;
+    font-size: 2rem;
+}
+.shoppingDirectory .controls-container .search .search-bar:focus,
+.shoppingDirectory .controls-container .filter .dropdown-toggle:focus {
+    outline: none;
+}
+.shoppingDirectory .controls-container .filter .dropdown-menu {
+    border-radius: 20px;
+}
+.shoppingDirectory .controls-container .filter .dropdown-menu .dropdown-item {
+    width: 100%;
+    text-transform: capitalize;
+    font-family: 'Flama', sans-serif;
+    text-transform: uppercase;
+    padding: 1rem;
+    text-decoration: underline;
+}
+/* Rows */
+.shoppingDirectory .shoppingRows {
+    margin-bottom: 1rem;
+}
 .shoppingDirectory .shoppingRows .storeRow {
     padding: 1rem;
     box-shadow: 3px 3px 10px #ccc;
@@ -7,6 +78,7 @@
 }
 .shoppingDirectory .shoppingRows .storeRow .store-title {
     color: #4E5859;
+    text-transform: uppercase;
 }
 .shoppingDirectory .shoppingRows .storeRow .red-text {
     color: #8F1838;
@@ -47,4 +119,96 @@
     background-color: #EDECE2;
     transform: translateY(-5px);
     box-shadow: 3px 5px 20px #aaa;
+}
+.shoppingDirectory .shoppingRows .storeRow .halcyon-button:hover {
+    border-color: #8f1838;
+    transition: .3s;
+}
+@media screen and (min-width: 768px) {
+    /* Filters */
+    .shoppingDirectory .controls-container {
+        align-items: center;
+        justify-content: space-between;
+        margin: 4rem 0;
+    }
+    .shoppingDirectory .controls-container .filter {
+        width: 200px;
+        order: 1;
+    }
+    .shoppingDirectory .controls-container .search {
+        width: 200px;
+        order: 2;
+    }
+    /* Rows */
+    .shoppingDirectory .shoppingRows {
+        margin-bottom: 2rem;
+    }
+    .shoppingDirectory .shoppingRows .storeRow {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .shoppingDirectory .shoppingRows .storeRow {
+        margin-bottom: 0;
+    }
+    .shoppingDirectory .shoppingRows .storeRow:nth-child(odd) {
+        box-shadow: 20px 20px 40px rgba(0,0,0,.1);
+    }
+    
+    .shoppingDirectory .shoppingRows .storeRow .store-title-wrap,
+    .shoppingDirectory .shoppingRows .storeRow .red-text {
+        width: 17%;
+    }
+    .shoppingDirectory .shoppingRows .storeRow .store-title {
+        font-size: 1.4rem;
+    }
+    .shoppingDirectory .shoppingRows .storeRow .center-container {
+        width: 41%;
+        justify-content: space-around;
+        margin: 0;
+    }
+
+    .shoppingDirectory .shoppingRows .storeRow .center-container .store-phone {
+        text-decoration: underline;
+        width: 40%;
+    }
+    .shoppingDirectory .shoppingRows .storeRow .center-container .store-directions {
+        order: 3;
+        width: 20%;
+        text-align: center;
+    }
+    .shoppingDirectory .shoppingRows .storeRow .center-container .hours {
+        width: 40%;
+    }
+    .shoppingDirectory .shoppingRows .storeRow .center-container .store-phone a {
+        color: #4e5859;
+        font-family: 'Flama', sans-serif;
+    }
+    .shoppingDirectory .shoppingRows .storeRow .store-phone a, 
+    .shoppingDirectory .shoppingRows .storeRow .store-directions a {
+        margin: 0;
+        font-size: 0;
+    }
+    .shoppingDirectory .shoppingRows .storeRow .center-container .store-phone a {
+        font-size: 1.4rem;
+    }
+    .shoppingDirectory .shoppingRows .storeRow .halcyon-button {
+        margin: 0;
+    }
+    .shoppingDirectory .shoppingRows .storeRow:hover {
+        background: #fff;
+        box-shadow: 3px 5px 20px #aaa;
+    }
+   
+}
+
+@media screen and (min-width: 1200px) {
+    .shoppingDirectory .shoppingRows .storeRow .store-title,
+    .shoppingDirectory .shoppingRows .storeRow .center-container .store-phone a, 
+    .shoppingDirectory .shoppingRows .storeRow .center-container .hours {
+        font-size: 1.8rem;
+    }
+    .shoppingDirectory .shoppingRows .storeRow {
+        padding: 1.5rem 1rem;
+    }
 }
