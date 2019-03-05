@@ -47,7 +47,7 @@ export default class ModuleController extends React.Component {
                             } else if (section.acf_fc_layout == 'content_with_featured_image') {
                                 return <div key={index}><ContentWithFeaturedImage section={section} /></div>
                             } else if (section.acf_fc_layout == 'form') {
-                                return <div key={index}><Forms section={section} /></div>
+                                return <div key={index}><Forms section={section} gformID={section.form.id} /></div>
                             } else if (section.acf_fc_layout == 'featured_content_carousel') {
                                 return <div key={index}><FeaturedContentCarousel section={section} /></div>
                             } else if (section.acf_fc_layout == 'dining_directory') {

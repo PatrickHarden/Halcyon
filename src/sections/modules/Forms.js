@@ -3,25 +3,33 @@ import { withSiteData } from 'react-static'
 import { Container, Row, Col, Button, Form, FormGroup, Input } from 'reactstrap'
 import '../../css/modules/form.css'
 
-export default class Forms extends React.Component {
+export default withSiteData(class Forms extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             form: [],
             fields: '',
+            gformTitle: this.props.section.form.title,
+            email: '',
+            publicKey: '04f7c94448',
+            privateKey: '16658bbbf1acf17',
             gformTitle: '',
-            email: ''
+            fieldList: '',
+            value: '',
+            confirmation: '',
+            newState: ''
         }
     }
 
     componentDidMount() {
 
+        console.log(this.props.section)
         let component = this;
         let data = this.props.section
         let title = this.props.section.heading
 
-        if (data) {
+        if (this.props.gformID) {
             let fields = data.form.fields.map(function (field) {
                 // Create input type based off gForm Web API response, as well as accompanying state variable to match
                 {
@@ -276,6 +284,8 @@ export default class Forms extends React.Component {
             if (this.props.section.form.notifications[key].hasOwnProperty("to"))
                 this.state.email = this.props.section.form.notifications[key].to
         }
+
+        console.log(this.props.gformID, this.state.publicKey, this.state.privateKey)
     }
 
     gformAuth(gform, pubkey, privkey, ajaxMethod) {
@@ -300,42 +310,24 @@ export default class Forms extends React.Component {
         return sig + '&expires=' + future_unixtime;
     }
 
+    // handleInputChange(event) {
+    //     let target = event.target;
+    //     let value = target.value; //target.type === 'checkbox' ? target.checked :
+    //     let id = target.id;
+    //     // Create state variable that holds the value of a corresponding input ID
+    //     let newState = {};
+    //     newState[id] = value;
+    //     this.setState({newState: newState});
+    // }
+
     handleSubmit(event) {
         const SiteURL = 'https://halcyon.dev.v3.imaginuitycenters.com/'
 
-        consoe
-
-        if ($('input[type="file"]').length) {
-
-            console.log('File upload function triggered');
-            // var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
-
-            // var fd = new FormData();
-            // var file = $(document).find('input[type="file"]');
-            // var individual_file = file[0].files[0];
-            // fd.append("file", individual_file);
-            // fd.append('action', 'file_upload_callback');  
-
-            let file_json = {
-                'action': 'file_upload_callback',
-                'data': 'test',
-            };
-
-            $.ajax({
-                type: 'post',
-                url: SiteURL + "/wp-admin/admin-ajax.php",
-                data: file_json,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    console.log(response);
-                }
-            });
-        }
-
+        debugger;
         let component = this;
         // Build a form submission authentication URL (similar to the form input field retrieval authentication URL)
-        let signature = this.gformAuth(this.props.gformID, this.state.publicKey, this.state.privateKey, "POST");
+        var signature = this.gformAuth(this.props.gformID, this.state.publicKey, this.state.privateKey, "GET");
+        console.log(signature)
         let gformURL = SiteURL + '/gravityformsapi/forms/' + this.props.gformID + '/submissions?api_key=' + this.state.publicKey + '&signature=' + signature;
         // Build the gForms submission object
         let entry = {
@@ -344,13 +336,14 @@ export default class Forms extends React.Component {
             }
         };
 
+        debugger;
         $('#submit-button').prop('disabled', true);
         // Using the previously built form ID list, retrieve corresponding values and add them to the submission object
         this.state.fieldList.map(function (field) {
             let fieldSanitized = field.replace('.', '_');
             entry.input_values['input_' + fieldSanitized] = typeof component.state[field] === 'undefined' ? ' ' : component.state[field];
         });
-
+        debugger;
         let entry_json = JSON.stringify(entry);
 
         if (!document.getElementById("honeypot").value) {
@@ -375,24 +368,29 @@ export default class Forms extends React.Component {
                             for (let i in messages) {
                                 component.handleValidationError(i, messages[i]);
                             }
+                            debugger;
                         }
                     }
                     else {
                         component.handleSoftError(component.state.gformTitle + ' form submission was not valid. Please review your form data to ensure completion and try again.');
                         console.log("Response code: " + data.status);
                         console.log(data);
+                        debugger;
                     }
                 },
                 error: function (jqXHR, textStatus) {
                     component.handleError(component.state.gformTitle + ' form submission. This was caused by a problem with the ajax POST of this form.');
                     console.log(jqXHR.responseText);
                     console.log(textStatus);
+                    debugger;
                 }
             });
         } else {
             component.handleError("Honeypot detected");
+            debugger;
         }
         event.preventDefault();
+        debugger;
     }
 
     render() {
@@ -423,4 +421,4 @@ export default class Forms extends React.Component {
             </div>
         );
     }
-}
+})
