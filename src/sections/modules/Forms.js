@@ -276,6 +276,7 @@ export default withSiteData(class Forms extends React.Component {
             });
 
             component.setState({
+                fieldList: fieldList,
                 gformTitle: title,
                 fields: fields,
             });
@@ -342,20 +343,18 @@ export default withSiteData(class Forms extends React.Component {
         let gformURL = SiteURL + '/gravityformsapi/forms/' + this.props.gformID + '/submissions?api_key=' + this.state.publicKey + '&signature=' + signature;
         // Build the gForms submission object
         let entry = {
-            "input_values": {
-                'input_2': "alex.patton@imaginuity.com",
-                'input_7': "Alex",
-                'input_15': "9032178858",
-                'input_16': "Patton"
-            },
+            "input_values":{
+
+            }
         };
 
         $('#submit-button').prop('disabled', true);
         // Using the previously built form ID list, retrieve corresponding values and add them to the submission object
-        // this.state.fields.map(field => {
-        //     let fieldSanitized = field.replace('.', '_');
-        //     entry.input_values['input_' + fieldSanitized] = typeof component.state[field] === 'undefined' ? ' ' : component.state[field];
-        // });
+        console.log(this.state.fields)
+        this.state.fields.map(field => {
+            let fieldSanitized = field.replace('.', '_');
+            entry.input_values['input_' + fieldSanitized] = typeof component.state[field] === 'undefined' ? ' ' : component.state[field];
+        });
 
         // https://halcyon.dev.v3.imaginuitycenters.com//gravityformsapi/forms/1/submissions?api_key=04f7c94448&signature=iLGqNMR87NBoMMDpbXZnvGC1rTI%3D&expires=1551811223
 
