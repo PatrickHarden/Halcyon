@@ -125,7 +125,15 @@
 .sale-single .date-ball .ends {
     font-size: 1.4rem;
 }
-
+.sale-single .content-wrapper .date {
+    font-size: 1.6rem;
+    font-family: 'Flama', sans-serif;
+}
+.sale-single .content-wrapper h5 {
+    font-family: 'Flama', sans-serif;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+}
 @media screen and (min-width: 768px) {
     .single-blog #heroSection .hero-image {
         width: auto;

@@ -107,12 +107,14 @@ export default withRouteData(class Page extends React.Component {
         return (<div key={index} className="sale-single">
           <div className="date-ball">{(sale.acf.end_date) ? <span><span className='ends'>Ends</span><br />{moment(sale.acf.end_date, 'YYYYMMDD').format('MM/DD')}</span> : ""}</div>
           <div className='image-wrapper hidden-xs'>
-            <img src={sale.acf.featured_image} alt={sale.title.rendered} />
+            {sale.acf.featured_image &&
+              <img src={sale.acf.featured_image} alt={sale.title.rendered} />
+            }
           </div>
           <div className="content-wrapper">
-            <div>{moment(sale.acf.start_date, 'YYYYMMDD').format('MMM DD')} - {moment(sale.acf.end_date, 'YYYYMMDD').format('MMM DD')} at {this.props.retailer.title.rendered}</div>
+            <div className='date'>{moment(sale.acf.start_date, 'YYYYMMDD').format('MMM DD')} - {moment(sale.acf.end_date, 'YYYYMMDD').format('MMM DD')} at {this.props.retailer.title.rendered}</div>
             <h5>{sale.title.rendered}</h5>
-            {(sale.acf.post_copy) ? <div>{ReactHtmlParser(sale.acf.post_copy)}</div> : ""}
+            {(sale.acf.post_copy) ? <div>{ReactHtmlParser(helpers.compressText(sale.acf.post_copy, 200))}</div> : ""}
           </div>
           <div className="share-links hidden-xs">
             <a href={'mailto:?body=' + siteRoot + '/dining/' + this.props.retailer.slug + '&subject=' + ReactHtmlParser(sale.title.rendered)}>
