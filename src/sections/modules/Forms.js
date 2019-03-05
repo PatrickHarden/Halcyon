@@ -6,6 +6,7 @@ import CryptoJS from 'crypto-js';
 import $ from 'jquery'
 
 var map = {};
+var temp = [];
 
 export default withSiteData(class Forms extends React.Component {
 
@@ -265,6 +266,7 @@ export default withSiteData(class Forms extends React.Component {
                             inputID = input.id.toString();
                         } else {
                             inputID = field.id + '_' + index.toString();
+                            // inputID = field.id + '_' + index.toString();
                         }
                         return inputID.toString();
                     });
@@ -331,6 +333,15 @@ export default withSiteData(class Forms extends React.Component {
         });
     }
 
+    getValue(field){
+        if (field.includes('.')){
+            var test = field.substr(0, field.indexOf('.'))
+            return $('#' + test).val()
+        } else {
+            return $('#' + field).val()
+        }
+    }
+
     handleSubmit(event) {
         const SiteURL = 'https://halcyon.dev.v3.imaginuitycenters.com/'
         event.preventDefault();
@@ -352,14 +363,14 @@ export default withSiteData(class Forms extends React.Component {
         console.log(this.state.fieldList)
         this.state.fieldList.map((field, index) => {
             let fieldSanitized = field.replace('.', '_');
-            entry.input_values['input_' + fieldSanitized] = $('#' + field).val();
+            entry.input_values['input_' + fieldSanitized] = this.getValue(field);
         });
 
         // https://halcyon.dev.v3.imaginuitycenters.com//gravityformsapi/forms/1/submissions?api_key=04f7c94448&signature=iLGqNMR87NBoMMDpbXZnvGC1rTI%3D&expires=1551811223
 
         console.log(entry)
         let entry_json = JSON.stringify(entry);
-
+        debugger;
         if (!document.getElementById("honeypot").value) {
             $.ajax({
                 url: gformURL,
