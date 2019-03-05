@@ -64,6 +64,9 @@
     text-transform: uppercase;
     padding: 1rem;
     text-decoration: underline;
+    -webkit-appearance: none;
+    border: none;
+    border-radius: 20px;
 }
 /* Rows */
 .shoppingDirectory .shoppingRows {
