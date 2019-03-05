@@ -410,7 +410,7 @@ export default withSiteData(class Forms extends React.Component {
     }
 
     handleError(error){
-        $('.gform input[type="submit"]').addClass('hidden');
+        // $('.gform input[type="submit"]').addClass('hidden');
         $('.gform .error').removeClass('hidden');
         $('.gform .error .bg-danger').html(error);
         $('.gform .fields').fadeOut();
