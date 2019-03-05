@@ -288,7 +288,6 @@ export default withSiteData(class Forms extends React.Component {
                 this.state.email = this.props.section.form.notifications[key].to
         }
 
-        console.log(this.props.gformID, this.state.publicKey, this.state.privateKey)
     }
 
     gformAuth(gform, pubkey, privkey, ajaxMethod) {

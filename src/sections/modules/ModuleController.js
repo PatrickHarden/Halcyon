@@ -17,6 +17,7 @@ import ContentWithFeaturedVideo from './ContentWithFeaturedVideo.js'
 import ContentWithFeaturedEvent from './ContentWithFeaturedEvent.js'
 import SalesDirectory from './SalesDirectory.js'
 import EventsDirectory from './EventsDirectory.js'
+import GravityForms from './GravityForms.js'
 
 {/* <ModuleController page={page} /> or  <ModuleController page={event} /> or  <ModuleController page={store} /> */ }
 
@@ -47,7 +48,10 @@ export default class ModuleController extends React.Component {
                             } else if (section.acf_fc_layout == 'content_with_featured_image') {
                                 return <div key={index}><ContentWithFeaturedImage section={section} /></div>
                             } else if (section.acf_fc_layout == 'form') {
-                                return <div key={index}><Forms section={section} gformID={section.form.id} /></div>
+                                return <div key={index}>
+                                <Forms section={section} gformID={section.form.id} />
+                                <GravityForms section={section} />
+                                </div>
                             } else if (section.acf_fc_layout == 'featured_content_carousel') {
                                 return <div key={index}><FeaturedContentCarousel section={section} /></div>
                             } else if (section.acf_fc_layout == 'dining_directory') {
