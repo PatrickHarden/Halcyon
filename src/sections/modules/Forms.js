@@ -334,16 +334,18 @@ export default withSiteData(class Forms extends React.Component {
         // Build the gForms submission object
         let entry = {
             "input_values": {
-
+                "email": "test"
             }
         };
 
         $('#submit-button').prop('disabled', true);
         // Using the previously built form ID list, retrieve corresponding values and add them to the submission object
-        // this.state.fields.map(function (field) {
+        // this.state.fields.map(field => {
         //     let fieldSanitized = field.replace('.', '_');
         //     entry.input_values['input_' + fieldSanitized] = typeof component.state[field] === 'undefined' ? ' ' : component.state[field];
         // });
+
+        // https://halcyon.dev.v3.imaginuitycenters.com//gravityformsapi/forms/1/submissions?api_key=04f7c94448&signature=iLGqNMR87NBoMMDpbXZnvGC1rTI%3D&expires=1551811223
 
         let entry_json = JSON.stringify(entry);
 
@@ -352,7 +354,7 @@ export default withSiteData(class Forms extends React.Component {
                 url: gformURL,
                 type: 'POST',
                 crossDomain: true,
-                data: entry_json,
+                data: entry,
                 dataType: 'json',
                 success: function (data) {
                     if (data.status <= 202) {
@@ -373,7 +375,7 @@ export default withSiteData(class Forms extends React.Component {
                         }
                     }
                     else {
-                        component.handleSoftError(component.state.gformTitle + ' form submission was not valid. Please review your form data to ensure completion and try again.');
+                        console.log(component.state.gformTitle + ' form submission was not valid. Please review your form data to ensure completion and try again.');
                         console.log("Response code: " + data.status);
                         console.log(data);
                         debugger;
@@ -391,6 +393,15 @@ export default withSiteData(class Forms extends React.Component {
             debugger;
         }
         debugger;
+    }
+
+    handleError(error){
+        $('.gform input[type="submit"]').addClass('hidden');
+        $('.gform .error').removeClass('hidden');
+        $('.gform .error .bg-danger').html(error);
+        $('.gform .fields').fadeOut();
+        console.log("Error description: " + error);
+        $('#submit-button').prop('disabled', false);
     }
 
     render() {
