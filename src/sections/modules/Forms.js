@@ -375,7 +375,7 @@ export default withSiteData(class Forms extends React.Component {
                             $('#gform-' + component.props.gformID + ' .confirmation').removeClass('hidden');
                             $('#gform-' + component.props.gformID + ' .fields').fadeOut();
                             $('.gform .error').addClass('hidden');
-                            $('.gform ').replaceWith('<div class="confirmation col-xs-12"><p class="bg-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><span class="message"><div id="gform_confirmation_wrapper_1" class="gform_confirmation_wrapper "><div id="gform_confirmation_message_1" class="gform_confirmation_message_1 gform_confirmation_message">Thanks for contacting us! We will get in touch with you shortly. Test</div></div></span></p></div>');
+                            $('.gform ').replaceWith('<div class="confirmation col-xs-12"><p class="bg-success">Thanks for contacting us! We will get in touch with you shortly.</p></div>');
                         }
                         else if (!data.response.is_valid) {
                             $('.validation-error').remove();
