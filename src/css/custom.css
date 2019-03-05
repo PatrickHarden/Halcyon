@@ -137,7 +137,8 @@ body.baby-blue .heading-container {
 }
 body.red .heading-container,
 body.red #heroSection .hero-heading,
-body.red #mobileFloatingNav {
+body.red #mobileFloatingNav,
+body.red .restaurant-legend .legend-row {
     background-color: #8F1838;
     color: #fff;
 }
@@ -149,7 +150,9 @@ body.dark-green .heading-container,
 body.dark-green #heroSection .hero-heading,
 body.light-green #heroSection .hero-heading,
 body.dark-green #mobileFloatingNav,
-body.light-green #mobileFloatingNav {
+body.light-green #mobileFloatingNav,
+body.dark-green .restaurant-legend .legend-row,
+body.light-green .restaurant-legend .legend-row {
     background-color: #718472;
     color: #fff;
 }
@@ -157,13 +160,16 @@ body.dark-grey .heading-container,
 body.baby-blue #heroSection .hero-heading,
 body.dark-grey #heroSection .hero-heading,
 body.baby-blue #mobileFloatingNav,
-body.dark-grey #mobileFloatingNav {
+body.dark-grey #mobileFloatingNav,
+body.dark-grey .restaurant-legend .legend-row,
+body.baby-blue .restaurant-legend .legend-row {
     background-color: #4E5859;
     color: #fff;
 }
 body.dark-brown .heading-container,
 body.dark-brown #heroSection .hero-heading,
-body.dark-brown #mobileFloatingNav {
+body.dark-brown #mobileFloatingNav,
+body.dark-brown .restaurant-legend .legend-row {
     background-color: #4F4B48;
     color: #fff;
 }

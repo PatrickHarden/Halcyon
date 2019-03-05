@@ -68,6 +68,7 @@ img {
     border: 2px solid transparent;
     text-align: center;
     -webkit-font-smoothing: antialiased;
+    transition: .3s;
 }
 .halcyon-button:hover {
     color: #4E5859;
@@ -90,10 +91,13 @@ img {
     display: inline-block;
     padding: 5px;
     transform: rotate(-45deg);
+    transition: .3s;
 }
 .halcyon-button.arrow:hover:after {
     border-color: #4E5859;
+    transform: translateX(3px)rotate(-45deg);
 }
+
 #loadMore {
     font-size: 2rem;
     font-family: 'Flama', sans-serif;

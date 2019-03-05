@@ -92,6 +92,8 @@
 .shoppingDirectory .button-wrapper .halcyon-button:hover {
     color: #8f1838;
     background: #fff;
+    border-color: #8f1838;
+    transition: .3s;
 }
 .shoppingDirectory .button-wrapper .halcyon-button:hover:after {
     border-color: #8f1838;
@@ -120,10 +122,7 @@
     transform: translateY(-5px);
     box-shadow: 3px 5px 20px #aaa;
 }
-.shoppingDirectory .shoppingRows .storeRow .halcyon-button:hover {
-    border-color: #8f1838;
-    transition: .3s;
-}
+
 @media screen and (min-width: 768px) {
     /* Filters */
     .shoppingDirectory .controls-container {
