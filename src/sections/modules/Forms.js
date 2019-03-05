@@ -2,11 +2,14 @@ import React from "react";
 import { withSiteData } from 'react-static'
 import { Container, Row, Col, Button, Form, FormGroup, Input } from 'reactstrap'
 import '../../css/modules/form.css'
+import CryptoJS from 'crypto-js';
+import $ from 'jquery'
 
 export default withSiteData(class Forms extends React.Component {
 
     constructor(props) {
         super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
             form: [],
             fields: '',
@@ -322,11 +325,11 @@ export default withSiteData(class Forms extends React.Component {
 
     handleSubmit(event) {
         const SiteURL = 'https://halcyon.dev.v3.imaginuitycenters.com/'
+        event.preventDefault();
 
-        debugger;
         let component = this;
         // Build a form submission authentication URL (similar to the form input field retrieval authentication URL)
-        var signature = this.gformAuth(this.props.gformID, this.state.publicKey, this.state.privateKey, "GET");
+        var signature = this.gformAuth(this.props.gformID, this.state.publicKey, this.state.privateKey, "POST");
         console.log(signature)
         let gformURL = SiteURL + '/gravityformsapi/forms/' + this.props.gformID + '/submissions?api_key=' + this.state.publicKey + '&signature=' + signature;
         // Build the gForms submission object
@@ -389,7 +392,6 @@ export default withSiteData(class Forms extends React.Component {
             component.handleError("Honeypot detected");
             debugger;
         }
-        event.preventDefault();
         debugger;
     }
 
