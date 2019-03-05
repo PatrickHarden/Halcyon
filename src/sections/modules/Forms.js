@@ -352,7 +352,7 @@ export default withSiteData(class Forms extends React.Component {
         console.log(this.state.fieldList)
         this.state.fieldList.map((field, index) => {
             let fieldSanitized = field.replace('.', '_');
-            entry.input_values['input_' + fieldSanitized] = index + '';
+            entry.input_values['input_' + fieldSanitized] = $('#' + field).val();
         });
 
         // https://halcyon.dev.v3.imaginuitycenters.com//gravityformsapi/forms/1/submissions?api_key=04f7c94448&signature=iLGqNMR87NBoMMDpbXZnvGC1rTI%3D&expires=1551811223
@@ -415,15 +415,16 @@ export default withSiteData(class Forms extends React.Component {
     }
 
     handleInputChange(event) {
-        let target = event.target;
-        let value = target.value; //target.type === 'checkbox' ? target.checked :
-        let id = target.id;
-        // Create state variable that holds the value of a corresponding input ID
-        let newState = {};
-        newState[id] = value;
-        console.log(event)
-        console.log(newState[id])
-        // this.setState({newState: newState});
+        // let target = event.target;
+        // let value = target.value; //target.type === 'checkbox' ? target.checked :
+        // let id = target.id;
+        // // Create state variable that holds the value of a corresponding input ID
+        // let newState = {};
+        // newState[id] = value;
+        // console.log(event)
+        // console.log(newState[id])
+        // // this.setState({newState: newState});
+        console.log('input')
     }
 
     render() {
