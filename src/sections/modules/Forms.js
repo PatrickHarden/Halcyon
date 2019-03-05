@@ -276,6 +276,7 @@ export default withSiteData(class Forms extends React.Component {
             });
 
             component.setState({
+                fieldList: fieldList,
                 gformTitle: title,
                 fields: fields,
             });
@@ -342,25 +343,22 @@ export default withSiteData(class Forms extends React.Component {
         let gformURL = SiteURL + '/gravityformsapi/forms/' + this.props.gformID + '/submissions?api_key=' + this.state.publicKey + '&signature=' + signature;
         // Build the gForms submission object
         let entry = {
-            "input_values": {
-                "input_1":      "test",
-                "field_values": "testt",
-            },
-            "input_values": {
-                "input_2":      "test",
-                "field_values": "testt",
-            },
+            "input_values":{
+
+            }
         };
 
         $('#submit-button').prop('disabled', true);
         // Using the previously built form ID list, retrieve corresponding values and add them to the submission object
-        // this.state.fields.map(field => {
-        //     let fieldSanitized = field.replace('.', '_');
-        //     entry.input_values['input_' + fieldSanitized] = typeof component.state[field] === 'undefined' ? ' ' : component.state[field];
-        // });
+        console.log(this.state.fieldList)
+        this.state.fieldList.map(field => {
+            let fieldSanitized = field.replace('.', '_');
+            entry.input_values['input_' + fieldSanitized] = typeof component.state[field] === 'undefined' ? ' ' : component.state[field];
+        });
 
         // https://halcyon.dev.v3.imaginuitycenters.com//gravityformsapi/forms/1/submissions?api_key=04f7c94448&signature=iLGqNMR87NBoMMDpbXZnvGC1rTI%3D&expires=1551811223
 
+        console.log(entry)
         let entry_json = JSON.stringify(entry);
 
         if (!document.getElementById("honeypot").value) {
@@ -434,7 +432,7 @@ export default withSiteData(class Forms extends React.Component {
                         }
                         <form onSubmit={this.handleSubmit} className="gform">
                             {this.state.fields}
-                            <input type="submit" value="Send" className="halcyon-button"></input>
+                            <input type="submit" value="Send" className="halcyon-button display"></input>
                             <div style={{ display: 'none' }}>
                                 <label>Keep this field blank for spam filtering purposes
                                         <input type="text" name="honeypot" id="honeypot" />
