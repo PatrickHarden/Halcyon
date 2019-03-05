@@ -144,7 +144,7 @@
     .diningDirectory .restaurant-legend {
         display: flex;
         justify-content: flex-end;
-        width: 100%;
+        width: 68%;
     }
     .diningDirectory .restaurant-legend .legend-row {
         display: flex;
@@ -159,6 +159,7 @@
     .diningDirectory .heading-container .container {
         display: flex;
         align-items: center;
+        justify-content: space-between;
     }
 
     /* Filters */
@@ -167,7 +168,6 @@
         margin: 4rem auto;
         align-items: center;
     }
-    
     .diningDirectory .controls-container .search {
         width: 200px;
         margin-bottom: 1rem;
