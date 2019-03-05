@@ -322,6 +322,15 @@ export default withSiteData(class Forms extends React.Component {
     //     this.setState({newState: newState});
     // }
 
+    handleValidationError(id, error){
+        console.log(id);
+        console.log(error);
+        $('#submit-button').prop('disabled', false);
+        $('#group-' + id).addClass('bg-danger');
+        $('.gform .error').removeClass('hidden');
+        $('.gform .error .bg-danger').append('<p>Form field <b>' + $('#group-' + id).data('name') + '</b>: ' + error + '</p>');
+    }
+
     handleSubmit(event) {
         const SiteURL = 'https://halcyon.dev.v3.imaginuitycenters.com/'
         event.preventDefault();
