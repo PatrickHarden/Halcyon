@@ -44,7 +44,7 @@ export default withSiteData(class Forms extends React.Component {
                         case 'address':
                             return (
                                 <div
-                                    className={"col-xs-12 form-group" + (field.isRequired ? ' required' : '') + ' type-' + field.type}
+                                    className={"col-xs-12 form-group" + (field.size == 'large' ? ' col-sm-12' : '') + (field.size == 'medium' ? ' col-sm-6' : '') + (field.size == 'small' ? ' col-sm-4' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
                                     id={"group-" + field.id}
                                     data-name={field.label}
                                 >
@@ -75,7 +75,7 @@ export default withSiteData(class Forms extends React.Component {
                         case 'textarea':
                             return (
                                 <div
-                                    className={"col-xs-12 form-group" + (field.isRequired ? ' required' : '') + ' type-' + field.type}
+                                    className={"col-xs-12 form-group" + (field.size == 'large' ? ' col-sm-12' : '') + (field.size == 'medium' ? ' col-sm-6' : '') + (field.size == 'small' ? ' col-sm-4' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
                                     id={"group-" + field.id}
                                     data-name={field.label}
                                 >
@@ -98,7 +98,7 @@ export default withSiteData(class Forms extends React.Component {
                         case 'select':
                             return (
                                 <div
-                                    className={"col-xs-12 form-group" + (field.size !== 'large' ? ' col-sm-6' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
+                                    className={"col-xs-12 form-group" + (field.size == 'large' ? ' col-sm-12' : '') + (field.size == 'medium' ? ' col-sm-6' : '') + (field.size == 'small' ? ' col-sm-4' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
                                     id={"group-" + field.id}
                                     data-name={field.label}
                                 >
@@ -130,7 +130,7 @@ export default withSiteData(class Forms extends React.Component {
                         case 'checkbox':
                             return (
                                 <div
-                                    className={"col-xs-12 form-group checkbox-group" + (field.isRequired ? ' required' : '') + ' type-' + field.type}
+                                    className={"col-xs-12 form-group checkbox-group" + (field.size == 'large' ? ' col-sm-12' : '') + (field.size == 'medium' ? ' col-sm-6' : '') + (field.size == 'small' ? ' col-sm-4' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
                                     id={"group-" + field.id}
                                     data-name={field.label}
                                 >
@@ -160,7 +160,7 @@ export default withSiteData(class Forms extends React.Component {
                         case 'radio':
                             return (
                                 <div
-                                    className={"col-xs-12 form-group" + (field.isRequired ? ' required' : '') + ' type-' + field.type}
+                                    className={"col-xs-12 form-group" + (field.size == 'large' ? ' col-sm-12' : '') + (field.size == 'medium' ? ' col-sm-6' : '') + (field.size == 'small' ? ' col-sm-4' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
                                     id={"group-" + field.id}
                                     data-name={field.label}
                                 >
@@ -191,7 +191,7 @@ export default withSiteData(class Forms extends React.Component {
                         case 'html':
                             return (
                                 <div
-                                    className={"col-xs-12 form-group" + ' type-' + field.type}
+                                    className={"col-xs-12 form-group" + (field.size == 'large' ? ' col-sm-12' : '') + (field.size == 'medium' ? ' col-sm-6' : '') + (field.size == 'small' ? ' col-sm-4' : '') + ' type-' + field.type}
                                     id={"group-" + field.id}
                                     data-name={field.label}
                                 >
@@ -205,7 +205,7 @@ export default withSiteData(class Forms extends React.Component {
                         case 'time':
                             return (
                                 <div
-                                    className={"col-xs-12 form-group" + (field.size !== 'large' ? ' col-sm-6' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
+                                    className={"col-xs-12 form-group" + (field.size == 'large' ? ' col-sm-12' : '') + (field.size == 'medium' ? ' col-sm-6' : '') + (field.size == 'small' ? ' col-sm-4' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
                                     id={"group-" + field.id}
                                     data-name={field.label}
                                 >
@@ -228,7 +228,7 @@ export default withSiteData(class Forms extends React.Component {
                         default:
                             return (
                                 <div
-                                    className={"col-xs-12 form-group" + (field.size !== 'large' ? ' col-sm-6' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
+                                    className={"col-xs-12 form-group" + (field.size == 'large' ? ' col-sm-12' : '') + (field.size == 'medium' ? ' col-sm-6' : '') + (field.size == 'small' ? ' col-sm-4' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
                                     id={"group-" + field.id}
                                     data-name={field.label}
                                 >
