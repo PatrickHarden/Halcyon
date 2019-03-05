@@ -343,12 +343,10 @@ export default withSiteData(class Forms extends React.Component {
         // Build the gForms submission object
         let entry = {
             "input_values": {
-                "input_1":      "test",
-                "field_values": "testt",
-            },
-            "input_values": {
-                "input_2":      "test",
-                "field_values": "testt",
+                'input_2': "alex.patton@imaginuity.com",
+                'input_7': "Alex",
+                'input_15': "9032178858",
+                'input_16': "Patton"
             },
         };
 
@@ -361,6 +359,7 @@ export default withSiteData(class Forms extends React.Component {
 
         // https://halcyon.dev.v3.imaginuitycenters.com//gravityformsapi/forms/1/submissions?api_key=04f7c94448&signature=iLGqNMR87NBoMMDpbXZnvGC1rTI%3D&expires=1551811223
 
+        console.log(entry)
         let entry_json = JSON.stringify(entry);
 
         if (!document.getElementById("honeypot").value) {
@@ -434,7 +433,7 @@ export default withSiteData(class Forms extends React.Component {
                         }
                         <form onSubmit={this.handleSubmit} className="gform">
                             {this.state.fields}
-                            <input type="submit" value="Send" className="halcyon-button"></input>
+                            <input type="submit" value="Send" className="halcyon-button display"></input>
                             <div style={{ display: 'none' }}>
                                 <label>Keep this field blank for spam filtering purposes
                                         <input type="text" name="honeypot" id="honeypot" />
