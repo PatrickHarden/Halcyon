@@ -332,7 +332,6 @@ export default withSiteData(class Forms extends React.Component {
             map[$(this).attr("name")] = $(this).val();
         });
     }
-
     getValue(field){
         if (field.includes('.')){
             var test = field.substr(0, field.indexOf('.'))
