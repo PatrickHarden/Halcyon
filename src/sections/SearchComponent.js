@@ -3,14 +3,12 @@ import { withSiteData, Link } from 'react-static'
 import {
   Container,
 } from 'reactstrap';
-// import PageSearch from './PageSearch'
-// import EventSearch from './EventSearch'
-// import StoreSearch from './StoreSearch'
+
 import '../css/components/searchComponent.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import ReactHtmlParser from 'react-html-parser';
-
+import helpers from '../helpers.js'
 
 var theContent;
 var restaurants;
@@ -71,7 +69,7 @@ export default withSiteData(class SearchComponent extends React.Component {
     restaurants = restaurants.filter(function (el) {
       return el != null;
     });
-    console.log(retailers, restaurants)
+    console.log(retailers)
   }
 
   render() {
@@ -94,13 +92,16 @@ export default withSiteData(class SearchComponent extends React.Component {
                         {this.props.pages.map(page => (
                           (page.title.rendered.toLowerCase().includes(this.state.term.toLowerCase())) ?
                             <div key={page.id}>
+                            {console.log(page)}
                               <div class="panel panel-default">
                                 <div class="panel-heading">
                                   <Link onClick={this.clearSearch} to={`/${page.slug}`}><h3 class="panel-title">{(page.title.rendered) ? <div>{ReactHtmlParser(page.title.rendered)}</div> : ""}</h3></Link>
                                 </div>
                                 <div class="panel-body">
-                                  <div>{ReactHtmlParser(page.acf.post_copy)}</div>
-                                  <div>{ReactHtmlParser(page.content.rendered)}</div>
+                                {page.acf.content && 
+                                  <div>{ReactHtmlParser(helpers.compressText(page.acf.content, 250))}</div>}
+                                {page.content.rendered && 
+                                  <div>{ReactHtmlParser(helpers.compressText(page.content.rendered, 250))}</div>}
                                   <div><small>{page.date.substr(0, page.date.length - 9)}</small></div>
                                 </div>
                               </div>
@@ -120,7 +121,7 @@ export default withSiteData(class SearchComponent extends React.Component {
                                   <Link onClick={this.clearSearch} to={`/events/${event.slug}/`}><h3 class="panel-title">{(event.title.rendered) ? <div>{ReactHtmlParser(event.title.rendered)}</div> : ""}</h3></Link>
                                 </div>
                                 <div class="panel-body">
-                                  <div>{ReactHtmlParser(event.acf.post_copy)}</div>
+                                  <div>{ReactHtmlParser(helpers.compressText(event.acf.post_copy, 250))}</div>
                                   <div><small>{event.date.substr(0, event.date.length - 9)}</small></div>
                                 </div>
                               </div>
@@ -140,8 +141,8 @@ export default withSiteData(class SearchComponent extends React.Component {
                                   <Link onClick={this.clearSearch} to={`/shopping/${store.slug}/`}><h3 class="panel-title">{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : ""}</h3></Link>
                                 </div>
                                 <div class="panel-body">
-                                  <div>{ReactHtmlParser(store.acf.post_copy)}</div>
-                                  <div><small>{store.date.substr(0, store.date - 9)}</small></div>
+                                  <div>{ReactHtmlParser(helpers.compressText(store.acf.store_copy, 250))}</div>
+                                  {/* <div><small>{store.date.substr(0, store.date.length - 9)}</small></div> */}
                                 </div>
                               </div>
                             </div>
@@ -160,8 +161,8 @@ export default withSiteData(class SearchComponent extends React.Component {
                                   <Link onClick={this.clearSearch} to={`/dining/${store.slug}/`}><h3 class="panel-title">{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : ""}</h3></Link>
                                 </div>
                                 <div class="panel-body">
-                                  <div>{ReactHtmlParser(store.acf.post_copy)}</div>
-                                  <div><small>{store.date.substr(0, store.date - 9)}</small></div>
+                                  <div>{ReactHtmlParser(helpers.compressText(store.acf.store_copy, 250))}</div>
+                                  {/* <div><small>{store.date.substr(0, store.date.length - 9)}</small></div> */}
                                 </div>
                               </div>
                             </div>

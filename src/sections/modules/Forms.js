@@ -326,8 +326,6 @@ export default withSiteData(class Forms extends React.Component {
 
 
     handleValidationError(id, error) {
-        console.log(id);
-        console.log(error);
         $('#submit-button').prop('disabled', false);
         $('#group-' + id).addClass('bg-danger');
         $('.gform .error').removeClass('hidden');
@@ -393,26 +391,22 @@ export default withSiteData(class Forms extends React.Component {
                             for (let i in messages) {
                                 component.handleValidationError(i, messages[i]);
                             }
-                            debugger;
                         }
                     }
                     else {
                         console.log(component.state.gformTitle + ' form submission was not valid. Please review your form data to ensure completion and try again.');
                         console.log("Response code: " + data.status);
                         console.log(data);
-                        debugger;
                     }
                 },
                 error: function (jqXHR, textStatus) {
                     component.handleError(component.state.gformTitle + ' form submission. This was caused by a problem with the ajax POST of this form.');
                     console.log(jqXHR.responseText);
                     console.log(textStatus);
-                    debugger;
                 }
             });
         } else {
             component.handleError("Honeypot detected");
-            debugger;
         }
     }
 
