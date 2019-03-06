@@ -18,8 +18,8 @@ export default withSiteData(class Forms extends React.Component {
             fields: '',
             gformTitle: this.props.section.form.title,
             email: '',
-            publicKey: '04f7c94448',
-            privateKey: '16658bbbf1acf17',
+            publicKey: '',
+            privateKey: '',
             gformTitle: '',
             fieldList: '',
             value: '',
@@ -28,9 +28,14 @@ export default withSiteData(class Forms extends React.Component {
         }
     }
 
-    componentDidMount() {
+    componentWillMount(){
+        this.setState({
+            publicKey: this.props.centerInfo.acf.gravity_forms_public_api_key,
+            privateKey: this.props.centerInfo.acf.gravity_forms_private_api_key
+        })
+    }
 
-        console.log(this.props.section)
+    componentDidMount() {
         let component = this;
         let data = this.props.section
         let title = this.props.section.heading
@@ -327,11 +332,6 @@ export default withSiteData(class Forms extends React.Component {
         $('.gform .error .bg-danger').append('<p>Form field <b>' + $('#group-' + id).data('name') + '</b>: ' + error + '</p>');
     }
 
-    getValues(index){
-        $(".gform form-control").each(function() {
-            map[$(this).attr("name")] = $(this).val();
-        });
-    }
     getValue(field){
         if (field.includes('.')){
             var test = field.substr(0, field.indexOf('.'))
@@ -348,7 +348,7 @@ export default withSiteData(class Forms extends React.Component {
         let component = this;
         // Build a form submission authentication URL (similar to the form input field retrieval authentication URL)
         var signature = this.gformAuth(this.props.gformID, this.state.publicKey, this.state.privateKey, "POST");
-        console.log(signature)
+
         let gformURL = SiteURL + '/gravityformsapi/forms/' + this.props.gformID + '/submissions?api_key=' + this.state.publicKey + '&signature=' + signature;
         // Build the gForms submission object
         let entry = {

@@ -3,6 +3,9 @@
 #theResults img{max-width:100%;}
 #theResults {overflow:hidden}
 #searchComponent svg {position:relative; left:-24px; z-index:5; color:#333;}
+#searchComponent textarea:focus, #searchComponent input:focus{
+    outline: none !important;
+}
 
 @media screen and (max-width:767px) {
     #searchComponent {display:none; position:absolute; top:0; right: 0; left:0; bottom:0;background-color:#fff; z-index:4;}

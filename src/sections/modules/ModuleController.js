@@ -17,6 +17,7 @@ import ContentWithFeaturedVideo from './ContentWithFeaturedVideo.js'
 import ContentWithFeaturedEvent from './ContentWithFeaturedEvent.js'
 import SalesDirectory from './SalesDirectory.js'
 import EventsDirectory from './EventsDirectory.js'
+import SocialFeed from './SocialFeed.js'
 
 {/* <ModuleController page={page} /> or  <ModuleController page={event} /> or  <ModuleController page={store} /> */ }
 
@@ -64,6 +65,8 @@ export default class ModuleController extends React.Component {
                                 return <div key={index}><SalesDirectory section={section} /></div>
                             }  else if (section.acf_fc_layout == 'events_directory'){
                                 return <div key={index}><EventsDirectory section={section} /></div>
+                            } else if (section.acf_fc_layout == 'social_feed'){
+                                return <div key={index}><SocialFeed section={section} /></div>
                             }
                         })}
                     </div> :
