@@ -5,18 +5,15 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
-  Container,
-  Row,
-  Col } from 'reactstrap';
+  Container, } from 'reactstrap';
 import navLogo from './images/halcyon-nav-logo.png';
 import navToggle from './images/nav-toggle.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import AccessibilityIcon from './images/eyeball-dark.png';
-import { library, config } from '@fortawesome/fontawesome-svg-core'
+import { config } from '@fortawesome/fontawesome-svg-core'
 config.autoAddCss = false
 import '@fortawesome/fontawesome-svg-core/styles.css'
 

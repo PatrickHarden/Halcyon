@@ -69,7 +69,6 @@ export default withSiteData(class SearchComponent extends React.Component {
     restaurants = restaurants.filter(function (el) {
       return el != null;
     });
-    console.log(retailers)
   }
 
   render() {
