@@ -10,6 +10,8 @@ import StoreSearch from './StoreSearch'
 import '../css/components/searchComponent.css'
 import { BrowserRouter, Route } from 'react-router-dom'
 import TagManager from 'react-gtm-module'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 const fullWidth = {
   width: '100%'
@@ -71,7 +73,9 @@ export default withSiteData(class SearchComponent extends React.Component {
       return (
         <div id="searchComponent">
         <Container>
+        <div>
             <input className='search-bar' placeholder="Search..." value={this.state.term} onKeyDown={this.keyPress} onChange = {event => this.setState({term : event.target.value})} />
+            <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></div>
             <div id="theResults">
             { (this.state.term.length > 3) ?
                 <div>

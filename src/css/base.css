@@ -53,6 +53,11 @@ img {
     margin-top:46px;
     padding:0
 }
+.bg-success {
+    background-color: #CDE2E0 !important;
+    padding: 10px;
+    font-size: 1.4rem;
+}
 
 .halcyon-button {
     display: block;
