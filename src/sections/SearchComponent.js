@@ -11,6 +11,8 @@ import ReactHtmlParser from 'react-html-parser';
 import helpers from '../helpers.js'
 
 var theContent;
+var pages;
+var events;
 var restaurants;
 var retailers;
 
@@ -49,23 +51,93 @@ export default withSiteData(class SearchComponent extends React.Component {
     })
   }
 
-  componentWillMount() {
-    retailers = this.props.stores.map(store => {
-      if (store.acf.store_type == "retailer") {
-        return store
+  getPages() {
+    pages = this.props.pages.map((page, index) => {
+      if (page.title.rendered.toLowerCase().includes(this.state.term.toLowerCase())) {
+        return (
+          <div key={index}>
+            {console.log(page)}
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <Link onClick={this.clearSearch} to={`/${page.slug}`}><h3 class="panel-title">{(page.title.rendered) ? <div>{ReactHtmlParser(page.title.rendered)}</div> : ""}</h3></Link>
+              </div>
+              <div class="panel-body">
+                {page.acf.content &&
+                  <div>{ReactHtmlParser(helpers.compressText(page.acf.content, 250))}</div>}
+                {page.content.rendered &&
+                  <div>{ReactHtmlParser(helpers.compressText(page.content.rendered, 250))}</div>}
+                <div><small>{page.date.substr(0, page.date.length - 9)}</small></div>
+              </div>
+            </div>
+          </div>
+        )
       }
     })
-    // Remove nulls
+    pages = pages.filter(function (el) {
+      return el != null;
+    });
+  }
+
+  getEvents() {
+    events = this.props.events.map((event, index) => {
+      if (event.title.rendered.toLowerCase().includes(this.state.term.toLowerCase())) {
+        return (
+          <div key={index}>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <Link onClick={this.clearSearch} to={`/events/${event.slug}/`}><h3 class="panel-title">{(event.title.rendered) ? <div>{ReactHtmlParser(event.title.rendered)}</div> : ""}</h3></Link>
+              </div>
+              <div class="panel-body">
+                <div>{ReactHtmlParser(helpers.compressText(event.acf.post_copy, 250))}</div>
+                <div><small>{event.date.substr(0, event.date.length - 9)}</small></div>
+              </div>
+            </div>
+          </div>
+        )
+      }
+    })
+    events = events.filter(function (el) {
+      return el != null;
+    });
+  }
+
+  getRetailers(){
+    retailers = this.props.stores.map((store, index) => {
+      if  (store.title.rendered.toLowerCase().includes(this.state.term.toLowerCase()) && store.acf.store_type == "retailer") {
+        return (<div key={index}>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <Link onClick={this.clearSearch} to={`/shopping/${store.slug}/`}><h3 class="panel-title">{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : ""}</h3></Link>
+          </div>
+          <div class="panel-body">
+            <div>{ReactHtmlParser(helpers.compressText(store.acf.store_copy, 250))}</div>
+          </div>
+        </div>
+      </div>
+        )
+      }
+    })
     retailers = retailers.filter(function (el) {
       return el != null;
     });
+  }
 
-    restaurants = this.props.stores.map(store => {
-      if (store.acf.store_type == "restaurant") {
-        return store
+  getRestaurants(){
+    restaurants = this.props.stores.map((store, index) => {
+      if  (store.title.rendered.toLowerCase().includes(this.state.term.toLowerCase()) && store.acf.store_type == "restaurant") {
+        return (<div key={index}>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <Link onClick={this.clearSearch} to={`/shopping/${store.slug}/`}><h3 class="panel-title">{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : ""}</h3></Link>
+          </div>
+          <div class="panel-body">
+            <div>{ReactHtmlParser(helpers.compressText(store.acf.store_copy, 250))}</div>
+          </div>
+        </div>
+      </div>
+        )
       }
     })
-    // Remove nulls
     restaurants = restaurants.filter(function (el) {
       return el != null;
     });
@@ -85,87 +157,35 @@ export default withSiteData(class SearchComponent extends React.Component {
                 <div>
                   {this.hideContent()}
                   <article id="searchPage">
-                    <h4>Pages: </h4>
                     {(this.state.term != '') ?
-                      <div className="eventCount">
-                        {this.props.pages.map(page => (
-                          (page.title.rendered.toLowerCase().includes(this.state.term.toLowerCase())) ?
-                            <div key={page.id}>
-                            {console.log(page)}
-                              <div class="panel panel-default">
-                                <div class="panel-heading">
-                                  <Link onClick={this.clearSearch} to={`/${page.slug}`}><h3 class="panel-title">{(page.title.rendered) ? <div>{ReactHtmlParser(page.title.rendered)}</div> : ""}</h3></Link>
-                                </div>
-                                <div class="panel-body">
-                                {page.acf.content && 
-                                  <div>{ReactHtmlParser(helpers.compressText(page.acf.content, 250))}</div>}
-                                {page.content.rendered && 
-                                  <div>{ReactHtmlParser(helpers.compressText(page.content.rendered, 250))}</div>}
-                                  <div><small>{page.date.substr(0, page.date.length - 9)}</small></div>
-                                </div>
-                              </div>
-                            </div>
-                            : ""))}</div> : <div></div>
+                      <div>
+                        <h4>Pages: {this.getPages()} {pages.length}</h4>
+                        <div className="eventCount">{pages}</div>
+                      </div> : ""
                     }
                   </article>
                   <article id="searchPage">
-                    <h4>Events:</h4>
                     {(this.state.term != '') ?
-                      <div className="eventCount">
-                        {this.props.events.map(event => (
-                          (event.title.rendered.toLowerCase().includes(this.state.term.toLowerCase())) ?
-                            <div key={event.id}>
-                              <div class="panel panel-default">
-                                <div class="panel-heading">
-                                  <Link onClick={this.clearSearch} to={`/events/${event.slug}/`}><h3 class="panel-title">{(event.title.rendered) ? <div>{ReactHtmlParser(event.title.rendered)}</div> : ""}</h3></Link>
-                                </div>
-                                <div class="panel-body">
-                                  <div>{ReactHtmlParser(helpers.compressText(event.acf.post_copy, 250))}</div>
-                                  <div><small>{event.date.substr(0, event.date.length - 9)}</small></div>
-                                </div>
-                              </div>
-                            </div>
-                            : ""))}</div> : <p>Content</p>
+                      <div>
+                        <h4>Events: {this.getEvents()} {events.length}</h4>
+                        <div className="eventCount">{events}</div>
+                      </div> : ""
                     }
                   </article>
                   <article id="searchPage">
-                    <h4>Retailers:</h4>
-                    {(this.state.term != '') ?
-                      <div className="eventCount">
-                        {retailers.map(store => (
-                          (store.title.rendered.toLowerCase().includes(this.state.term.toLowerCase())) ?
-                            <div key={store.id}>
-                              <div class="panel panel-default">
-                                <div class="panel-heading">
-                                  <Link onClick={this.clearSearch} to={`/shopping/${store.slug}/`}><h3 class="panel-title">{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : ""}</h3></Link>
-                                </div>
-                                <div class="panel-body">
-                                  <div>{ReactHtmlParser(helpers.compressText(store.acf.store_copy, 250))}</div>
-                                  {/* <div><small>{store.date.substr(0, store.date.length - 9)}</small></div> */}
-                                </div>
-                              </div>
-                            </div>
-                            : ""))}</div> : <p>Content</p>
+                  {(this.state.term != '') ?
+                      <div>
+                        <h4>Retailers: {this.getRetailers()} {retailers.length}</h4>
+                        <div className="eventCount">{retailers}</div>
+                      </div> : ""
                     }
                   </article>
                   <article id="searchPage">
-                    <h4>Dining:</h4>
-                    {(this.state.term != '') ?
-                      <div className="eventCount">
-                        {restaurants.map(store => (
-                          (store.title.rendered.toLowerCase().includes(this.state.term.toLowerCase())) ?
-                            <div key={store.id}>
-                              <div class="panel panel-default">
-                                <div class="panel-heading">
-                                  <Link onClick={this.clearSearch} to={`/dining/${store.slug}/`}><h3 class="panel-title">{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : ""}</h3></Link>
-                                </div>
-                                <div class="panel-body">
-                                  <div>{ReactHtmlParser(helpers.compressText(store.acf.store_copy, 250))}</div>
-                                  {/* <div><small>{store.date.substr(0, store.date.length - 9)}</small></div> */}
-                                </div>
-                              </div>
-                            </div>
-                            : ""))}</div> : <p>Content</p>
+                  {(this.state.term != '') ?
+                      <div>
+                        <h4>Restaurants: {this.getRestaurants()} {restaurants.length}</h4>
+                        <div className="eventCount">{restaurants}</div>
+                      </div> : ""
                     }
                   </article>
                 </div> : <div>{this.showContent()} </div>
