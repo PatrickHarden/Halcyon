@@ -1,8 +1,7 @@
 import React from "react";
-import { Link, withSiteData} from 'react-static';
+import { withSiteData} from 'react-static';
 import Slider from "react-slick";
 import ReactHtmlParser from 'react-html-parser';
-import Button from 'reactstrap';
 import { 
     Container, Row, Col
   } from 'reactstrap';

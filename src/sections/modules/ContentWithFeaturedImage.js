@@ -3,7 +3,6 @@ import { Link, withSiteData } from 'react-static'
 import { Container, Row, Col } from 'reactstrap';
 import ReactHtmlParser from 'react-html-parser';
 import '../../css/modules/contentWithFeaturedImage.css';
-import DarkFeather from '../../images/feather-dark.png';
 import helpers from '../../helpers.js'
 
 export default withSiteData(class ContentWithFeaturedImage extends React.Component {

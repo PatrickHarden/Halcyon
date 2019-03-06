@@ -4,7 +4,6 @@ import { Container, Row, Col } from 'reactstrap';
 import ReactHtmlParser from 'react-html-parser';
 import helpers from '../../helpers.js'
 import '../../css/modules/contentWithFeaturedImage.css';
-import { relative } from "path";
 import $ from 'jquery'
 import '../../css/modules/video.css'
 

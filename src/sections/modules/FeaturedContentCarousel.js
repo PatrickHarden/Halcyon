@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, withSiteData } from 'react-static'
-import { Container, Row, Col } from 'reactstrap';
+import { Container } from 'reactstrap';
 import ReactHtmlParser from 'react-html-parser';
 import Slider from "react-slick";
 import helpers from '../../helpers.js'

@@ -1,5 +1,5 @@
 // Packages
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-static';
 import { Row, Col, Button, Container, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import ReactHtmlParser from 'react-html-parser';

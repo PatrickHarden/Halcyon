@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, withSiteData } from 'react-static'
-import { Container, Row, Col } from 'reactstrap';
+import { Container } from 'reactstrap';
 import ReactHtmlParser from 'react-html-parser';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

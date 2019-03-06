@@ -1,6 +1,5 @@
 import React from "react"
 import { Container, Row, Col } from 'reactstrap'
-import ReactHtmlParser from 'react-html-parser'
 
 import ImageCarousel from './ImageCarousel.js'
 import GlobalImageGrid from './GlobalImageGrid.js'

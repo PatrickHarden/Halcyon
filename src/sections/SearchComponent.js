@@ -1,6 +1,5 @@
 import React from 'react'
-import { withSiteData, Link, withRouteData, Head } from 'react-static'
-import ReactHtmlParser from 'react-html-parser';
+import { withSiteData} from 'react-static'
 import { 
   Container,
 } from 'reactstrap';
@@ -8,8 +7,6 @@ import PageSearch from './PageSearch'
 import EventSearch from './EventSearch'
 import StoreSearch from './StoreSearch'
 import '../css/components/searchComponent.css'
-import { BrowserRouter, Route } from 'react-router-dom'
-import TagManager from 'react-gtm-module'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 

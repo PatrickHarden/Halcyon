@@ -1,6 +1,6 @@
 import React from "react";
 import { withSiteData } from 'react-static'
-import { Container, Row, Col, Button, Form, FormGroup, Input } from 'reactstrap'
+import { Container, Row, Col } from 'reactstrap'
 import '../../css/modules/form.css'
 import CryptoJS from 'crypto-js';
 import $ from 'jquery'

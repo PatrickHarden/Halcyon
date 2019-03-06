@@ -3,7 +3,6 @@ import { Link, withSiteData } from 'react-static'
 import { Container, Row, Col } from 'reactstrap';
 import ReactHtmlParser from 'react-html-parser';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import helpers from '../../helpers.js'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import '../../css/modules/diningDirectory.css'
 let moment = require('moment');

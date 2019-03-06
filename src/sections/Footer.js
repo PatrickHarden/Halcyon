@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, SiteData, withSiteData } from 'react-static'
+import { Link, withSiteData } from 'react-static'
 import ReactHtmlParser from 'react-html-parser'
 import { Container, Row, Col } from 'reactstrap';
 

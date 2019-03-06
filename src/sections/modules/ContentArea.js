@@ -1,6 +1,6 @@
 import React from "react";
 import {Link, withSiteData} from 'react-static';
-import { Container, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import ReactHtmlParser from 'react-html-parser'
 import helpers from '../../helpers.js'
 import '../../css/modules/contentArea.css';

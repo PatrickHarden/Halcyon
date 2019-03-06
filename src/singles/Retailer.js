@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouteData, Link, Head } from 'react-static'
-import { Container, Button, Popover, PopoverBody, PopoverHeader, Row, Col, UncontrolledPopover } from 'reactstrap';
+import { Container, Button, Popover, PopoverBody, PopoverHeader, Row, Col } from 'reactstrap';
 
 import ReactHtmlParser from 'react-html-parser'
 import '../css/components/pageContent.css'
