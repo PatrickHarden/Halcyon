@@ -359,7 +359,6 @@ export default withSiteData(class Forms extends React.Component {
 
         $('#submit-button').prop('disabled', true);
         // Using the previously built form ID list, retrieve corresponding values and add them to the submission object
-        console.log(this.state.fieldList)
         this.state.fieldList.map((field, index) => {
             let fieldSanitized = field.replace('.', '_');
             entry.input_values['input_' + fieldSanitized] = this.getValue(field);
@@ -367,7 +366,6 @@ export default withSiteData(class Forms extends React.Component {
 
         // https://halcyon.dev.v3.imaginuitycenters.com//gravityformsapi/forms/1/submissions?api_key=04f7c94448&signature=iLGqNMR87NBoMMDpbXZnvGC1rTI%3D&expires=1551811223
 
-        console.log(entry)
         let entry_json = JSON.stringify(entry);
         debugger;
         if (!document.getElementById("honeypot").value) {
