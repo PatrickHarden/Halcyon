@@ -104,32 +104,35 @@ export default withRouteData(class Page extends React.Component {
 
         if (sales) {
         } else {
-          sales = salesArray.map((sale, index) => {
-            return (<div key={index} className="sale-single">
-              <div className="date-ball">{(sale.acf.end_date) ? <span><span className='ends'>Ends</span><br />{moment(sale.acf.end_date, 'YYYYMMDD').format('MM/DD')}</span> : ""}</div>
-              <div className='image-wrapper hidden-xs'>
-              {sale.acf.featured_image && 
-                <img src={sale.acf.featured_image} alt={sale.title.rendered} /> }
-              </div>
-              <div className="content-wrapper">
-                <div>{moment(sale.acf.start_date, 'YYYYMMDD').format('MMM DD')} - {moment(sale.acf.end_date, 'YYYYMMDD').format('MMM DD')} at {this.props.restaurant.title.rendered}</div>
-                <h5>{sale.title.rendered}</h5>
-                {(sale.acf.post_copy) ? <div>{ReactHtmlParser(sale.acf.post_copy)}</div> : ""}
-              </div>
-              <div className="share-links hidden-xs">
-                <a href={'mailto:?body=' + siteRoot + '/dining/' + this.props.restaurant.slug + '&subject=' + ReactHtmlParser(sale.title.rendered)}>
-                  <FontAwesomeIcon icon={faEnvelope} className='icon' />
-                </a>
-                <a href={'https://twitter.com/home?status=' + siteRoot + '/dining/' + this.props.restaurant.slug} target="_blank">
-                  <FontAwesomeIcon icon={faTwitter} className='icon' />
-                </a>
-                <a href={'https://www.facebook.com/sharer/sharer.php?u=' + siteRoot + '/dining/' + this.props.restaurant.slug} target="_blank">
-                  <FontAwesomeIcon icon={faFacebookF} className='icon' />
-                </a>
-              </div>
-              <Link to={'/sales/' + sale.slug} className="halcyon-button arrow">More Info</Link>
-            </div>)
-          })
+            sales = salesArray.map((sale, index) => {
+                return (<div key={index} className="sale-single">
+                    <div className="date-ball">{(sale.acf.end_date) ? <span><span className='ends'>Ends</span><br />{moment(sale.acf.end_date, 'YYYYMMDD').format('MM/DD')}</span> : ""}</div>
+                    <div className='image-wrapper hidden-xs'>
+                        {sale.acf.featured_image &&
+                            <Link to={'/sales/' + sale.slug}><img src={sale.acf.featured_image} alt={sale.title.rendered} /></Link>
+                        }
+                    </div>
+                    <div className="content-wrapper">
+                        <div className='date'>{moment(sale.acf.start_date, 'YYYYMMDD').format('MMM DD')} - {moment(sale.acf.end_date, 'YYYYMMDD').format('MMM DD')} at {this.props.restaurant.title.rendered}</div>
+                        <Link to={'/sales/' + sale.slug}><h5>{sale.title.rendered}</h5></Link>
+                        {(sale.acf.post_copy) ? <div>{ReactHtmlParser(helpers.compressText(sale.acf.post_copy, 200))}</div> : ""}
+                    </div>
+                    <div className='action-corner'>
+                        <div className="share-links hidden-xs">
+                            <a href={'mailto:?body=' + siteRoot + '/dining/' + this.props.restaurant.slug + '&subject=' + ReactHtmlParser(sale.title.rendered)}>
+                                <FontAwesomeIcon icon={faEnvelope} className='icon' />
+                            </a>
+                            <a href={'https://twitter.com/home?status=' + siteRoot + '/dining/' + this.props.restaurant.slug} target="_blank">
+                                <FontAwesomeIcon icon={faTwitter} className='icon' />
+                            </a>
+                            <a href={'https://www.facebook.com/sharer/sharer.php?u=' + siteRoot + '/dining/' + this.props.restaurant.slug} target="_blank">
+                                <FontAwesomeIcon icon={faFacebookF} className='icon' />
+                            </a>
+                        </div>
+                        <Link to={'/sales/' + sale.slug} className="halcyon-button arrow">More Info</Link>
+                    </div>
+                </div>)
+            })
         }
     }
 
