@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'reactstrap'
 import '../../css/modules/form.css'
 import CryptoJS from 'crypto-js';
 import $ from 'jquery'
+import ReactHtmlParser from 'react-html-parser'
 
 var map = {};
 var temp = [];
@@ -28,7 +29,7 @@ export default withSiteData(class Forms extends React.Component {
         }
     }
 
-    componentWillMount(){
+    componentWillMount() {
         this.setState({
             publicKey: this.props.centerInfo.acf.gravity_forms_public_api_key,
             privateKey: this.props.centerInfo.acf.gravity_forms_private_api_key
@@ -111,7 +112,8 @@ export default withSiteData(class Forms extends React.Component {
 
                                         <div className='col-xs-12'>
                                             <label for={field.label}>
-                                                <b>{field.label + (field.isRequired ? '*' : '')}</b><br />
+                                                {field.label &&
+                                                    <div><b>{field.label + (field.isRequired ? '*' : '')}</b> <br /></div>}
                                                 <select
                                                     className="form-control"
                                                     type={field.type}
@@ -323,7 +325,7 @@ export default withSiteData(class Forms extends React.Component {
     }
 
 
-    handleValidationError(id, error){
+    handleValidationError(id, error) {
         console.log(id);
         console.log(error);
         $('#submit-button').prop('disabled', false);
@@ -332,8 +334,8 @@ export default withSiteData(class Forms extends React.Component {
         $('.gform .error .bg-danger').append('<p>Form field <b>' + $('#group-' + id).data('name') + '</b>: ' + error + '</p>');
     }
 
-    getValue(field){
-        if (field.includes('.')){
+    getValue(field) {
+        if (field.includes('.')) {
             var test = field.substr(0, field.indexOf('.'))
             return $('#' + test).val()
         } else {
@@ -352,7 +354,7 @@ export default withSiteData(class Forms extends React.Component {
         let gformURL = SiteURL + '/gravityformsapi/forms/' + this.props.gformID + '/submissions?api_key=' + this.state.publicKey + '&signature=' + signature;
         // Build the gForms submission object
         let entry = {
-            "input_values":{
+            "input_values": {
 
             }
         };
@@ -414,7 +416,7 @@ export default withSiteData(class Forms extends React.Component {
         }
     }
 
-    handleError(error){
+    handleError(error) {
         // $('.gform input[type="submit"]').addClass('hidden');
         $('.gform .error').removeClass('hidden');
         $('.gform .error .bg-danger').html(error);
@@ -448,11 +450,13 @@ export default withSiteData(class Forms extends React.Component {
                 <Container>
                     <Row>
                         {this.props.section.blurb &&
-                            <Col sm={12} className='blurb'>{this.props.section.blurb}</Col>
+                            <Container><Col sm={12} className='blurb'>{ReactHtmlParser(this.props.section.blurb)}</Col></Container>
                         }
                         <form onSubmit={this.handleSubmit} className="gform">
-                            {this.state.fields}
-                            <input type="submit" value="Send" className="halcyon-button display"></input>
+                            <div id="formFields">
+                                {this.state.fields}
+                            </div>
+                            <Container><input type="submit" value="Send" className="halcyon-button display" /></Container>
                             <div style={{ display: 'none' }}>
                                 <label>Keep this field blank for spam filtering purposes
                                         <input type="text" name="honeypot" id="honeypot" />

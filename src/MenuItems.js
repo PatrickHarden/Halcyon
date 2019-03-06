@@ -9,14 +9,6 @@ import {
 } from 'reactstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import ReactHtmlParser from 'react-html-parser'
-import ReactSVG from 'react-svg'
-
-import directionsIcon from './images/directions_icon.png';
-import cinebistroIcon from './images/cinebistro_icon.png';
-import DiningIcon from './images/Dining.svg';
-import eventsIcon from './images/events_icon.png';
-import shoppingIcon from './images/shopping_icon.png';
-import signupIcon from './images/signup_icon.png';
 
 export default withSiteData(class MenuList extends React.Component {
 

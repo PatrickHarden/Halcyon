@@ -5,7 +5,7 @@ form input[type=date].form-control {color:rgba(0,0,0,0.4)}
 .rbc-month-row {min-height:120px;}
 #thisTarget h1 {display:none}
 .social-feed-container {margin-bottom:60px;}
-/* .display {display:block !important;} */
+.eventCount {column-count: 3}
 
 .hero-slider .slick-slide {
     position: relative;

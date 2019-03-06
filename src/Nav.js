@@ -48,6 +48,7 @@ var isContrast = false;
     }
   }
   toggle() {
+    this.refs.searchInput.value = '';
     var width = document.body.clientWidth;
     if (width <= 767) {
       this.setState({

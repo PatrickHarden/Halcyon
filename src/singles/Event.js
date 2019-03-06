@@ -31,7 +31,7 @@ export default withRouteData(class Page extends React.Component {
         <Container>
           <Row>
             <Col xs="12">
-              <h1>{event.title.rendered}</h1>
+              <h1>{ReactHtmlParser(event.title.rendered)}</h1>
               {ReactHtmlParser(event.acf.post_copy)}
             </Col>
           </Row>

@@ -3,9 +3,17 @@
 #theResults img{max-width:100%;}
 #theResults {overflow:hidden}
 #searchComponent svg {position:relative; left:-24px; z-index:5; color:#333;}
+#searchPage {
+    display: block;
+    float: left;
+    width: 100%;
+}
+#searchPage iframe {max-width:100%;}
+#theResults > div > article:last-of-type { margin-bottom: 90px;}
 #searchComponent textarea:focus, #searchComponent input:focus{
     outline: none !important;
 }
+#searchComponent .panel {page-break-inside: avoid;box-shadow:none;}
 
 @media screen and (max-width:767px) {
     #searchComponent {display:none; position:absolute; top:0; right: 0; left:0; bottom:0;background-color:#fff; z-index:4;}

@@ -51,7 +51,8 @@ img {
 .blog .content,
 .single-blog .content{
     margin-top:46px;
-    padding:0
+    padding:0;
+    min-height: 10vh;
 }
 .bg-success {
     background-color: #CDE2E0 !important;
