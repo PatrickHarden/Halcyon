@@ -97,7 +97,7 @@ export default withSiteData(class EventsDirectory extends React.Component {
                                 {events.slice(0, this.state.amount).map((event, index) => (
                                     <div key={index} className={(event.acf.featured_image) ? "event-single whiteEvent" : "event-single greenEvent" }>
                                         {event.acf.start_date &&
-                                            <div className="date-ball">{moment(event.acf.start_date, 'YYYY-MM-DD').format('MM/DD')}</div>}
+                                            <div className="date-ball">{ReactHtmlParser(moment(event.acf.start_date, 'YYYY-MM-DD').format('MM/DD'))}</div>}
                                         {event.acf.featured_image &&
                                             <div className="eventImage" style={{backgroundImage: 'url(' + event.acf.featured_image + ')'}}></div>}
                                         <div className="event-single-content">

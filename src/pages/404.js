@@ -12,7 +12,7 @@ export default withSiteData(({siteRoot, title, metaDescription }) => (
     </Head>
     <Container>
       <Row>
-        <Col xs="12">
+        <Col xs="12 mT">
           <h1>404 - Oh no! We couldn't find that page :(</h1>
         </Col>
       </Row>
