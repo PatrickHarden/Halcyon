@@ -5,10 +5,32 @@ form input[type=date].form-control {color:rgba(0,0,0,0.4)}
 .rbc-month-row {min-height:120px;}
 #thisTarget h1 {display:none}
 .social-feed-container {margin-bottom:60px;}
+.social-feed-container h2 {font-family:'Flama'; color:#8F1838;}
 .eventCount {column-count: 3}
 .eyeball {margin-left:35px; margin-bottom:3px;}
 .mT {margin-top:60px;margin-bottom:30px;}
 .date-ball > span {position:relative; top:-3px;}
+#socialHeader {display:flex; justify-content: space-between;align-items:baseline; padding:0 0 0 1rem;position:relative;z-index:1;padding:0 60px;}
+#socialHeader .social-icon{
+    background: #8F1838;
+    padding: 1rem;
+    border-radius: 50%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    margin-right: 1rem;
+    color:#fff;
+    font-size:23px;
+    transition:.2s ease all;
+}
+#socialHeader .social-icon:hover {transform:scale(1.1)}
+#socialHeader > div:nth-of-type(2) {display:flex;}
+#socialHeader > div:nth-of-type(2) > .social-icon:nth-of-type(3) {margin-right:0;}
 
 .hero-slider-wrapper {position:absolute; top:0;left:0;right:0;bottom:0;z-index:0}
 #heroContainer {position:relative;overflow: hidden;}
@@ -77,9 +99,6 @@ form input[type=date].form-control {color:rgba(0,0,0,0.4)}
     display: inline-block;
     vertical-align: top;
 }
-/* Fixes issue of slides stacking on page load */
-
-/* #fadeHeroIn {visibility: hidden;} */
 
 #searchBar {
     background:#8F1838;
