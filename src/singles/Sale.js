@@ -30,7 +30,7 @@ export default withRouteData(class Sale extends React.Component {
         </Head>
         <Container>
           <Row>
-            <Col xs="12" class="noHero">
+            <Col xs="12 mT">
               <h1>{sale.title.rendered}</h1>
               {sale.acf.post_copy && 
               <div>{ReactHtmlParser(sale.acf.post_copy)}</div>}

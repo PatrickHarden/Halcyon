@@ -14,6 +14,7 @@ import { faMapMarkerAlt, faGlobe, faEnvelope } from '@fortawesome/free-solid-svg
 import helpers from '../helpers.js'
 import DownArrow from '../images/downArrrow.png'
 import PhoneIcon from '../images/phone-icon.png'
+import RightArrow from '../images/rightArrow.png'
 
 //
 var weeksHours;
@@ -226,6 +227,12 @@ export default withRouteData(class Page extends React.Component {
             </div>
             <Container className="retailerRows">
               {sales}
+              <div className="moreSales">
+                <Link to="/sales-offers">
+                  <span className="viewAll">View All</span>
+                  <img src={RightArrow} />
+                </Link>
+              </div>
             </Container>
           </div> : ""}
         <ModuleController page={retailer} />

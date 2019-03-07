@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouteData, Link, Head } from 'react-static'
-import { Container, Button, Popover, PopoverBody, PopoverHeader, Row, Col } from 'reactstrap';
+import { Container, Popover, PopoverBody, PopoverHeader, Row, Col } from 'reactstrap';
 import ModuleController from '../sections/modules/ModuleController.js';
 import ReactHtmlParser from 'react-html-parser'
 import helpers from '../helpers.js'
@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/fontawesome-free-brands'
 import { faMapMarkerAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import PhoneIcon from '../images/phone-icon.png'
+import RightArrow from '../images/rightArrow.png'
 
 let moment = require('moment');
 //
@@ -238,6 +239,12 @@ export default withRouteData(class Page extends React.Component {
                         </div>
                         <Container className="diningRows">
                             {sales}
+                            <div className="moreSales">
+                            <Link to="/sales-offers">
+                                <span className="viewAll">View All</span>
+                                <img src={RightArrow} />
+                            </Link>
+                            </div>
                         </Container>
                     </div> : ""}
                 <ModuleController page={restaurant} />

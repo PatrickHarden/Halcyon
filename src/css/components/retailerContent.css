@@ -1,3 +1,16 @@
+.moreSales {
+    margin: 30px 18px 45px 0;
+    float: right;
+}
+.container > .sale-single:first-of-type {margin-top:45px;}
+.viewAll{
+    color: #333;
+    margin: 0;
+    padding: .125rem 1rem;
+    text-transform: uppercase;
+}
+.moreSales a { transition:.2s ease all; position:relative;}
+.moreSales a:hover {text-decoration: none; top:-1px;}
 .single-blog #heroSection .hero-image {
     position: absolute;
     z-index: -1;

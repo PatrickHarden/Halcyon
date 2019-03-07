@@ -1,5 +1,5 @@
 import React from 'react'
-import {Head, withSiteData} from 'react-static'
+import {Head, withSiteData, Link} from 'react-static'
 import { Container, Row, Col } from 'reactstrap';
 //
 
@@ -14,6 +14,7 @@ export default withSiteData(({siteRoot, title, metaDescription }) => (
       <Row>
         <Col xs="12 mT">
           <h1>404 - Oh no! We couldn't find that page :(</h1>
+          <p>Please click <Link to="/">here</Link> to go back to the home page.</p>
         </Col>
       </Row>
     </Container>
