@@ -10,8 +10,8 @@ export default withSiteData(class Redirect extends React.Component {
 
         if (typeof document !== 'undefined') {
             return (
-                <div>
-                    Redirecting...
+                <div className="mT">
+                    <h2>Redirecting...</h2>
                     {window.location.replace(this.props.redirectURL)}
                 </div>
             )

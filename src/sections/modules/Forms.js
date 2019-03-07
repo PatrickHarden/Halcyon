@@ -109,7 +109,7 @@ export default withSiteData(class Forms extends React.Component {
                                     data-name={field.label}
                                 >
                                     <div className="row">
-
+                                    {console.log(field)}
                                         <div className='col-xs-12'>
                                             <label for={field.label}>
                                                 {field.label &&
@@ -123,7 +123,7 @@ export default withSiteData(class Forms extends React.Component {
                                                     onChange={component.handleInputChange}
                                                     required={field.isRequired}
                                                 >
-                                                    <option value="none-selected">-</option>
+                                                    <option value="none-selected">Select an option:</option>
                                                     {field.choices.map(function (choice) {
                                                         return (<option
                                                             value={choice.value}>{choice.text}</option>);
