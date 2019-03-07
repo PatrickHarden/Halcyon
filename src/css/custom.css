@@ -8,6 +8,7 @@ form input[type=date].form-control {color:rgba(0,0,0,0.4)}
 .eventCount {column-count: 3}
 .eyeball {margin-left:35px; margin-bottom:3px;}
 .mT {margin-top:60px;margin-bottom:30px;}
+.date-ball > span {position:relative; top:-4px;}
 
 .hero-slider-wrapper {position:absolute; top:0;left:0;right:0;bottom:0;z-index:0}
 #heroContainer {position:relative;overflow: hidden;}
