@@ -83,7 +83,7 @@ form input[type=date].form-control {color:rgba(0,0,0,0.4)}
      width:100%;
     position: relative;
     z-index: 1;
-    margin-top: -6px;
+    margin-top: 0;
 }
 #searchBar .container {
     display: flex;
