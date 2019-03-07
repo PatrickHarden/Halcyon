@@ -50,3 +50,11 @@
 .search.invis {visibility: hidden;}
 .invis {visibility: hidden}
 .modal-footer .btn+.btn {background-color:#8F1838; border-color:#ccc}
+
+@media screen and (max-width: 767px) {
+    .event-single {width:100% !important;}
+    .eventsDirectory > .heading-container {height:auto;}
+    .eventsDirectory > .heading-container h2 {text-align:center;margin:10px 0;}
+    .eventsDirectory .controls-container {margin:0 !important;justify-content: center;align-items:center;margin-bottom:10px !important;}
+    .eventsDirectory .controls-container .search {width:70%;}
+}

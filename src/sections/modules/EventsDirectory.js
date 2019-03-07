@@ -15,7 +15,7 @@ let moment = require('moment');
 
 var eventCounter;
 var recentEvents = [];
-var events;
+// var events;
 
 export default withSiteData(class EventsDirectory extends React.Component {
 
@@ -69,6 +69,10 @@ export default withSiteData(class EventsDirectory extends React.Component {
     //             return event
     //         }
     //     })
+    //     events = events.sort((a,b) => {
+    //         return new Date(a.scheduled_for).getTime() - 
+    //             new Date(b.scheduled_for).getTime()
+    //     }).reverse();
     //     events = events.filter(function (el) {
     //         return el != null;
     //     });
@@ -122,7 +126,7 @@ export default withSiteData(class EventsDirectory extends React.Component {
                                 {events.slice(0, this.state.amount).map((event, index) => (
                                     <div key={index} className={(event.acf.featured_image) ? "event-single whiteEvent" : "event-single greenEvent"}>
                                         {event.acf.end_date &&
-                                            <div className="date-ball">{ReactHtmlParser(moment(event.acf.end_date, 'YYYY-MM-DD').format('MM/DD'))}</div>}
+                                                     <div className="date-ball">{(event.acf.end_date) ? <span><span className='ends'>Ends</span><br />{moment(event.acf.end_date, 'YYYYMMDD').format('MM/DD')}</span> : ""}</div>}
                                         {event.acf.featured_image &&
                                             <div className="eventImage" style={{ backgroundImage: 'url(' + event.acf.featured_image + ')' }}></div>}
                                         <div className="event-single-content">
