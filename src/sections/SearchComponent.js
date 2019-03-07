@@ -15,6 +15,7 @@ var pages;
 var events;
 var restaurants;
 var retailers;
+var sales;
 
 export default withSiteData(class SearchComponent extends React.Component {
 
@@ -143,6 +144,24 @@ export default withSiteData(class SearchComponent extends React.Component {
     });
   }
 
+  getSales(){
+    sales = this.props.sales.map((sale, index) => {
+      if (sale.title.rendered.toLowerCase().includes(this.state.term.toLowerCase())){
+        return (<div key={index}>
+          <div class="panel panel-default">
+          <div class="panel-heading">
+            <Link onClick={this.clearSearch} to={`/sales/${sale.slug}/`}><h3 class="panel-title">{(sale.title.rendered) ? <div>{ReactHtmlParser(sale.title.rendered)}</div> : ""}</h3></Link>
+          </div>
+          <div class="panel-body">
+             {sale.acf.store_copy && <div>{ReactHtmlParser(helpers.compressText(sale.acf.store_copy, 250))}</div>}
+          </div>
+        </div>
+      </div>
+        )
+      }
+    })
+  }
+
   render() {
 
     if (typeof document !== 'undefined') {
@@ -185,6 +204,14 @@ export default withSiteData(class SearchComponent extends React.Component {
                       <div>
                         <h4>Restaurants: {this.getRestaurants()} {restaurants.length}</h4>
                         <div className="eventCount">{restaurants}</div>
+                      </div> : ""
+                    }
+                  </article>
+                  <article id="searchPage">
+                  {(this.state.term != '') ?
+                      <div>
+                        <h4>Sales: {this.getSales()} {sales.length}</h4>
+                        <div className="eventCount">{sales}</div>
                       </div> : ""
                     }
                   </article>
