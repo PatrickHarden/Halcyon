@@ -63,16 +63,16 @@ export default withSiteData(class EventsDirectory extends React.Component {
         }
     }
 
-    componentWillMount() {
-        events = this.props.events.map(event => {
-            if (this.isEventFuture(event)) {
-                return event
-            }
-        })
-        events = events.filter(function (el) {
-            return el != null;
-        });
-    }
+    // componentWillMount() {
+    //     events = this.props.events.map(event => {
+    //         if (this.isEventFuture(event)) {
+    //             return event
+    //         }
+    //     })
+    //     events = events.filter(function (el) {
+    //         return el != null;
+    //     });
+    // }
 
     componentDidMount() {
         // this.offerAvailable(this.props.restaurant.slug);
@@ -95,6 +95,7 @@ export default withSiteData(class EventsDirectory extends React.Component {
     }
 
     render() {
+        const events = this.props.events
         const siteRoot = 'https://halycon.netlify.com';
 
         return (
@@ -120,8 +121,8 @@ export default withSiteData(class EventsDirectory extends React.Component {
                             <div className="eventContainer">
                                 {events.slice(0, this.state.amount).map((event, index) => (
                                     <div key={index} className={(event.acf.featured_image) ? "event-single whiteEvent" : "event-single greenEvent"}>
-                                        {event.acf.start_date &&
-                                            <div className="date-ball">{ReactHtmlParser(moment(event.acf.start_date, 'YYYY-MM-DD').format('MM/DD'))}</div>}
+                                        {event.acf.end_date &&
+                                            <div className="date-ball">{ReactHtmlParser(moment(event.acf.end_date, 'YYYY-MM-DD').format('MM/DD'))}</div>}
                                         {event.acf.featured_image &&
                                             <div className="eventImage" style={{ backgroundImage: 'url(' + event.acf.featured_image + ')' }}></div>}
                                         <div className="event-single-content">
