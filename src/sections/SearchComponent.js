@@ -90,7 +90,7 @@ export default withSiteData(class SearchComponent extends React.Component {
               </div>
               <div class="panel-body">
                 <div>{ReactHtmlParser(helpers.compressText(event.acf.post_copy, 250))}</div>
-                <div><small>{event.date.substr(0, event.date.length - 9)}</small></div>
+                <div><small>{event.acf.start_date} - {event.acf.end_date}</small></div>
               </div>
             </div>
           </div>
@@ -100,21 +100,22 @@ export default withSiteData(class SearchComponent extends React.Component {
     events = events.filter(function (el) {
       return el != null;
     });
+    console.log(this.props.events)
   }
 
-  getRetailers(){
+  getRetailers() {
     retailers = this.props.stores.map((store, index) => {
-      if  (store.title.rendered.toLowerCase().includes(this.state.term.toLowerCase()) && store.acf.store_type == "retailer") {
+      if (store.title.rendered.toLowerCase().includes(this.state.term.toLowerCase()) && store.acf.store_type == "retailer") {
         return (<div key={index}>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <Link onClick={this.clearSearch} to={`/shopping/${store.slug}/`}><h3 class="panel-title">{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : ""}</h3></Link>
-          </div>
-          <div class="panel-body">
-            <div>{ReactHtmlParser(helpers.compressText(store.acf.store_copy, 250))}</div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <Link onClick={this.clearSearch} to={`/shopping/${store.slug}/`}><h3 class="panel-title">{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : ""}</h3></Link>
+            </div>
+            <div class="panel-body">
+              <div>{ReactHtmlParser(helpers.compressText(store.acf.store_copy, 250))}</div>
+            </div>
           </div>
         </div>
-      </div>
         )
       }
     })
@@ -123,19 +124,19 @@ export default withSiteData(class SearchComponent extends React.Component {
     });
   }
 
-  getRestaurants(){
+  getRestaurants() {
     restaurants = this.props.stores.map((store, index) => {
-      if  (store.title.rendered.toLowerCase().includes(this.state.term.toLowerCase()) && store.acf.store_type == "restaurant") {
+      if (store.title.rendered.toLowerCase().includes(this.state.term.toLowerCase()) && store.acf.store_type == "restaurant") {
         return (<div key={index}>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <Link onClick={this.clearSearch} to={`/shopping/${store.slug}/`}><h3 class="panel-title">{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : ""}</h3></Link>
-          </div>
-          <div class="panel-body">
-            <div>{ReactHtmlParser(helpers.compressText(store.acf.store_copy, 250))}</div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <Link onClick={this.clearSearch} to={`/shopping/${store.slug}/`}><h3 class="panel-title">{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : ""}</h3></Link>
+            </div>
+            <div class="panel-body">
+              <div>{ReactHtmlParser(helpers.compressText(store.acf.store_copy, 250))}</div>
+            </div>
           </div>
         </div>
-      </div>
         )
       }
     })
@@ -144,22 +145,25 @@ export default withSiteData(class SearchComponent extends React.Component {
     });
   }
 
-  getSales(){
+  getSales() {
     sales = this.props.sales.map((sale, index) => {
-      if (sale.title.rendered.toLowerCase().includes(this.state.term.toLowerCase())){
+      if (sale.title.rendered.toLowerCase().includes(this.state.term.toLowerCase())) {
         return (<div key={index}>
           <div class="panel panel-default">
-          <div class="panel-heading">
-            <Link onClick={this.clearSearch} to={`/sales/${sale.slug}/`}><h3 class="panel-title">{(sale.title.rendered) ? <div>{ReactHtmlParser(sale.title.rendered)}</div> : ""}</h3></Link>
-          </div>
-          <div class="panel-body">
-             {sale.acf.store_copy && <div>{ReactHtmlParser(helpers.compressText(sale.acf.store_copy, 250))}</div>}
+            <div class="panel-heading">
+              <Link onClick={this.clearSearch} to={`/sales/${sale.slug}/`}><h3 class="panel-title">{(sale.title.rendered) ? <div>{ReactHtmlParser(sale.title.rendered)}</div> : ""}</h3></Link>
+            </div>
+            <div class="panel-body">
+              {sale.acf.post_copy && <div>{ReactHtmlParser(helpers.compressText(sale.acf.post_copy, 250))}</div>}
+            </div>
           </div>
         </div>
-      </div>
         )
       }
     })
+    sales = sales.filter(function (el) {
+      return el != null;
+    });
   }
 
   render() {
@@ -192,7 +196,7 @@ export default withSiteData(class SearchComponent extends React.Component {
                     }
                   </article>
                   <article id="searchPage">
-                  {(this.state.term != '') ?
+                    {(this.state.term != '') ?
                       <div>
                         <h4>Retailers: {this.getRetailers()} {retailers.length}</h4>
                         <div className="eventCount">{retailers}</div>
@@ -200,7 +204,7 @@ export default withSiteData(class SearchComponent extends React.Component {
                     }
                   </article>
                   <article id="searchPage">
-                  {(this.state.term != '') ?
+                    {(this.state.term != '') ?
                       <div>
                         <h4>Restaurants: {this.getRestaurants()} {restaurants.length}</h4>
                         <div className="eventCount">{restaurants}</div>
@@ -208,7 +212,7 @@ export default withSiteData(class SearchComponent extends React.Component {
                     }
                   </article>
                   <article id="searchPage">
-                  {(this.state.term != '') ?
+                    {(this.state.term != '') ?
                       <div>
                         <h4>Sales: {this.getSales()} {sales.length}</h4>
                         <div className="eventCount">{sales}</div>
@@ -219,7 +223,6 @@ export default withSiteData(class SearchComponent extends React.Component {
               }
             </div>
           </Container>
-          {/* <div className='hidden'>{(tagManagerArgs) ? setTimeout(TagManager.initialize(tagManagerArgs), 1) : ""}</div> */}
         </div>
       )
     } else {
@@ -227,22 +230,3 @@ export default withSiteData(class SearchComponent extends React.Component {
     }
   }
 })
-
-
-  // If we want to add a redirect to the searchResults page
-  // keyPress(e){
-  //   if(e.keyCode == 13){
-  //      console.log('value', e.target.value);
-  //      window.location.href = window.location + '/shopping'
-  //   }
-  // }
-
-    //   const tagManagerArgs = {
-    //     gtmId: this.props.centerInfo.acf.google_tag_manager_ID,
-    //     dataLayer: {
-    //       event: 'VirtualPageview',
-    //           virtualPageURL: window.location.href,
-    //           virtualPageTitle: document.title,
-    //        },
-    //     dataLayerName: 'PageDataLayer',
-    // }

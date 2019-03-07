@@ -317,11 +317,10 @@ const helpers = {
         }
     },
 
-    // Converts youtube url to an ID which is inserted into an iframe
+    // Converts youtube url to an ID which is later inserted into an iframe
     getVideoUrl: function(url){
         var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-        var match = url.match(regExp);
-    
+        var match = url.match(regExp); 
         if (match && match[2].length == 11) {
             return match[2];
         } else {
@@ -329,14 +328,18 @@ const helpers = {
         }
     },
 
-    // Compress text, or clamp it
-    compressText: function(store, amount){
-        excerpt = store.replace(regex, "").substr(0, amount)
-        excerpt = excerpt.substr(0, excerpt.lastIndexOf(" "))
-        if (excerpt == ''){
-            return excerpt
+    // Compress or clamp text. Adds ellipsis to the end of the text if the text is above the amount passed in
+    compressText: function(text, amount){
+        if (text.length <= amount){
+            return text
         } else {
-            return excerpt + "...";
+            excerpt = text.replace(regex, "").substr(0, amount)
+            excerpt = excerpt.substr(0, excerpt.lastIndexOf(" "))
+            if (excerpt == ''){
+                return excerpt
+            } else {
+                return excerpt + "...";
+            }
         }
     }
     

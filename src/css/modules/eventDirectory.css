@@ -1,0 +1,51 @@
+.eventContainer {display:flex; flex-wrap:wrap;}
+.event-single {page-break-inside: avoid; width: calc(50% - 40px); margin:45px 20px; box-shadow: rgba(0,0,0,0.16) 3px 3px 6px;position:relative;}
+.greenEvent {background-color:#718472; color:#fff;}
+.eventContainer .date-ball {
+    width: 75px;
+    height: 75px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #fff;
+    background: #8F1838;
+    border-radius: 50%;
+    font-family: 'Flama', sans-serif;
+    text-align: center;
+    font-size: 2rem;
+    position: absolute;
+    top: -30px;
+    right:-30px;
+    -webkit-box-shadow: 3px 3px 6px rgba(0,0,0,.4);
+    box-shadow: 3px 3px 6px rgba(0,0,0,.4);
+}
+.eventContainer .halcyon-button.arrow {
+    background:#8F1838;
+    position:absolute;
+    bottom:-30px;
+    right:-20px;
+}
+.eventContainer .halcyon-button.arrow:hover {color:#fff;border:none;}
+.eventContainer .halcyon-button.arrow:after {color:#fff;border-color:#fff}
+.event-single-content {padding:30px 30px 60px 30px;width:50%; float:right;}
+.greenEvent .event-single-content {width:100%;}
+.eventImage {    width: 50%;
+    float: left;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+.eventContainer .event-single-content .social-container {justify-content: flex-start;margin-top:15px;}
+.eventsDirectory .search .search-bar {background:transparent;border-bottom: 3px solid #fff !important; color:#fff !important;position:relative;top:3px;}
+.eventsDirectory .search .search-bar::placeholder {color:#fff !important;}
+.eventControl {
+    cursor:pointer;
+    padding-left:10px;
+}
+.eventsDirectory .controls-container {margin:0 !important; margin-left:40% !important;}
+.search.invis {visibility: hidden;}
+.modal-footer .btn+.btn {background-color:#8F1838; border-color:#ccc}

@@ -1,9 +1,9 @@
 import React from "react";
-import { withSiteData} from 'react-static';
+import { withSiteData, Link} from 'react-static';
 import Slider from "react-slick";
 import ReactHtmlParser from 'react-html-parser';
 import { 
-    Container, Row, Col
+    Container
   } from 'reactstrap';
 import '../../css/modules/featuredStores.css';
 import leftArrow from '../../images/leftArrow.png';
@@ -12,10 +12,7 @@ import $ from 'jquery';
 import helpers from '../../helpers.js'
 
 var storeArray = [];
-var prevTitle;
-var nextTitle;
 var titleArray = [];
-var indexArray = [];
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -119,9 +116,8 @@ export default withSiteData(class FeaturesStores extends React.Component {
                                             <h4 key={store.slug}>{ReactHtmlParser(store.title.rendered)}</h4>
                                             <div className="tenantText">
                                             {ReactHtmlParser(helpers.compressText(store.acf.store_copy, 200))}
-                                            {/* {ReactHtmlParser(store.acf.store_copy)} */}
                                             </div>
-                                            <a className='halcyon-button' href={`/shopping/${store.slug}/`}>Learn More</a>
+                                            <Link className='halcyon-button' to={(store.acf.store_type == "retailer") ? `/shopping/${store.slug}/` : `/dining/${store.slug}/`}>Learn More</Link>
                                         </div>
                                     </div>
                                 </div>

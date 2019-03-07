@@ -1,7 +1,7 @@
 // Packages
 import React from 'react';
 import { Link } from 'react-static';
-import { Row, Col, Button, Container, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Row, Col, Button, Container } from 'reactstrap';
 import ReactHtmlParser from 'react-html-parser';
 let moment = require('moment');
 let momentRange = require('moment-range');
@@ -12,6 +12,7 @@ let Entities = require('html-entities').AllHtmlEntities;
 let entities = new Entities();
 
 import 'react-big-calendar/lib/css/react-big-calendar.css'
+import '../../css/components/calendar.css'
 
 var modal;
 

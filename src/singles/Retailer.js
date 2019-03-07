@@ -217,7 +217,6 @@ export default withRouteData(class Page extends React.Component {
             </Col>
           </Row>
         </div>
-
         {this.isSale(retailer) ?
           <div>
             <div className='heading-container'>

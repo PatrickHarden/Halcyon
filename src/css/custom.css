@@ -6,7 +6,7 @@ form input[type=date].form-control {color:rgba(0,0,0,0.4)}
 #thisTarget h1 {display:none}
 .social-feed-container {margin-bottom:60px;}
 .eventCount {column-count: 3}
-.eyeball {margin-left:35px; margin-bottom:4px;}
+.eyeball {margin-left:35px; margin-bottom:3px;}
 
 .hero-slider .slick-slide {
     position: relative;

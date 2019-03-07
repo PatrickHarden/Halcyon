@@ -11,6 +11,7 @@
     margin-top: 0;
     font-family: 'Flama', sans-serif;
 }
+.mTop {margin-top:15px !important;}
 
 @media screen and (min-width: 768px) {
     .contentWithFeaturedImage {

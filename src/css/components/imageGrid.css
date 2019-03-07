@@ -4,7 +4,7 @@
 }
 .image_grid .col-xs-6, .image_grid .col-xs-12 {padding:0;    display: block;}
 
-.image_grid figure {background-size:cover;position:absolute;top:0; bottom:0; left:0; right:0;}
+.image_grid figure {background-size:cover;position:absolute;top:0; bottom:0; left:0; right:0;background-repeat:no-repeat;height:100%; width:100%;}
 .image_group > div {position:relative;}
 .image-group-1 > div {width:100%; height:400px;}
 /* .image-group-1 > div > figure:nth-last-of-type(2) {top:-400px;} */
