@@ -8,6 +8,7 @@ import ReactHtmlParser from 'react-html-parser'
 
 var map = {};
 var temp = [];
+var datePick;
 
 export default withSiteData(class Forms extends React.Component {
 
@@ -291,6 +292,9 @@ export default withSiteData(class Forms extends React.Component {
                 gformTitle: title,
                 fields: fields,
             });
+
+            // component.checkIfDate(fieldList)
+
         } else {
             return 'The requested form is not available.';
         }
@@ -301,6 +305,16 @@ export default withSiteData(class Forms extends React.Component {
         }
 
     }
+
+    // checkIfDate(fieldList){
+    //     temp = fieldList;
+    //     for (var i = 0; i < fieldList.length; i++){
+    //         console.log($('#' + temp[i]))
+    //         if ($('#' + temp[i]).length){
+    //             console.log('date exists')
+    //         }
+    //     }
+    // }
 
     gformAuth(gform, pubkey, privkey, ajaxMethod) {
         // Generate an HMAC SHA1 hash, then convert it to a URL-encoded base64 string.
@@ -333,12 +347,17 @@ export default withSiteData(class Forms extends React.Component {
     }
 
     getValue(field) {
-        if (field.includes('.')) {
-            var test = field.substr(0, field.indexOf('.'))
-            return $('#' + test).val()
-        } else {
-            return $('#' + field).val()
-        }
+        // var test = $("input[type='date']");
+        // if (test.length && test.is('#' + field)){
+        //        return datePick;
+        // } else {
+            if (field.includes('.')) {
+                var test = field.substr(0, field.indexOf('.'))
+                return $('#' + test).val()
+            } else {
+                return $('#' + field).val()
+            }
+        // }
     }
 
     handleSubmit(event) {
@@ -367,6 +386,7 @@ export default withSiteData(class Forms extends React.Component {
         // https://halcyon.dev.v3.imaginuitycenters.com//gravityformsapi/forms/1/submissions?api_key=04f7c94448&signature=iLGqNMR87NBoMMDpbXZnvGC1rTI%3D&expires=1551811223
 
         let entry_json = JSON.stringify(entry);
+        console.log(entry)
         debugger;
         if (!document.getElementById("honeypot").value) {
             $.ajax({
@@ -420,16 +440,17 @@ export default withSiteData(class Forms extends React.Component {
     }
 
     handleInputChange(event) {
-        // let target = event.target;
-        // let value = target.value; //target.type === 'checkbox' ? target.checked :
-        // let id = target.id;
-        // // Create state variable that holds the value of a corresponding input ID
-        // let newState = {};
-        // newState[id] = value;
-        // console.log(event)
-        // console.log(newState[id])
-        // // this.setState({newState: newState});
-        console.log('input')
+        let target = event.target;
+        let value = target.value; //target.type === 'checkbox' ? target.checked :
+        let id = target.id;
+        // Create state variable that holds the value of a corresponding input ID
+        let newState = {};
+        newState[id] = value;
+        if (target.type == "date"){
+            datePick = newState[id]
+            console.log(datePick)
+        }
+        // this.setState({newState: newState});
     }
 
     render() {
