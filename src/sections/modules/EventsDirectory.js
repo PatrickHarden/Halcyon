@@ -82,6 +82,9 @@ export default withSiteData(class EventsDirectory extends React.Component {
                         <div className={(this.state.list) ? "search" : "search invis" }>
                             <input className='search-bar' placeholder="Search..." value={this.state.search} onChange={event => this.handleSearch(event.target.value)} />
                         </div>
+                        <div className={(this.state.list) ? "" : "invis" }>
+                            <FontAwesomeIcon icon={faSearch} className="icon" />
+                        </div>
                         <div className="eventControl" onClick={this.toggleList}><img src={ListIcon} /></div>
                         <div className="eventControl" onClick={this.toggleCalendar}><img src={CalendarIcon} /></div>
                         </div>
