@@ -1,4 +1,4 @@
-#searchComponent {position:absolute; top:54px;}
+#searchComponent {position:absolute; top:54px;width:100%;}
 .home #searchComponent {top:100px;}
 #searchComponent .search-bar {position:relative; z-index:5; border-radius: 15px;text-indent: 8px;}
 #theResults img{max-width:100%;}
