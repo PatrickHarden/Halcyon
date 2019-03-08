@@ -330,3 +330,7 @@ body.dark-brown .restaurant-legend .legend-row {
         font-size: 3rem;
     }
 }
+
+@media screen and (max-width:767px){
+    #socialHeader > div:nth-of-type(2) {display:none}
+}

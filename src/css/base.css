@@ -231,7 +231,7 @@ nav .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 70px;
+    min-height: 50px;
 }
 .navWrapper .navRow .nav-inner .left {
     display: flex !important;
@@ -519,6 +519,7 @@ footer > .container > .row {
     footer .footer-heading {
         font-size: 4rem;
     }
+    .navbar {min-height:80px;}
 }
 /* Visibility Classes */
 
