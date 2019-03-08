@@ -231,7 +231,7 @@ nav .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 50px;
+    min-height: 70px;
 }
 .navWrapper .navRow .nav-inner .left {
     display: flex !important;

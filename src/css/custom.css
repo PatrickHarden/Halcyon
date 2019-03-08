@@ -31,7 +31,6 @@ form input[type=date].form-control {color:rgba(0,0,0,0.4)}
 #socialHeader .social-icon:hover {transform:scale(1.1)}
 #socialHeader > div:nth-of-type(2) {display:flex;}
 #socialHeader > div:nth-of-type(2) > .social-icon:nth-of-type(3) {margin-right:0;}
-.navbar > .container {min-height:80px;}
 
 .hero-slider-wrapper {position:absolute; top:0;left:0;right:0;bottom:0;z-index:0}
 #heroContainer {position:relative;overflow: hidden;}

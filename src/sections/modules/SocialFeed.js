@@ -16,7 +16,6 @@ export default withSiteData(class SocialFeed extends React.Component {
     render() {
         return (
             <Container className='social-feed-container'>
-                {console.log(this.props.centerInfo)}
                 {(this.props.centerInfo.acf.data_id && typeof document != 'undefined') ? <div>
                     <div id="socialHeader">
                         <div>
