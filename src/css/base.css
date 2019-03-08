@@ -527,6 +527,9 @@ footer > .container > .row {
     .hidden-xs {
         display: none;
     }
+    main.content {
+        padding-top: 52px;
+    }
 }
 
 
