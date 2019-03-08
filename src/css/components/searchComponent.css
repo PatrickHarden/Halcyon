@@ -1,4 +1,4 @@
-#searchComponent {position:absolute; top:54px; opacity:0;}
+#searchComponent {position:absolute; top:54px;}
 .home #searchComponent {top:100px;}
 #searchComponent .search-bar {position:relative; z-index:5; border-radius: 15px;text-indent: 8px;}
 #theResults img{max-width:100%;}
@@ -17,7 +17,7 @@
 #searchComponent .panel {page-break-inside: avoid;box-shadow:none;}
 
 @media screen and (max-width:767px) {
-    #searchComponent {display:none; position:absolute; top:0; right: 0; left:0; bottom:0;background-color:#fff; z-index:4;}
+    #searchComponent {display:none; position:absolute; top:0px !important; right: 0; left:0; bottom:0;background-color:#fff; z-index:4;}
     #searchComponent .search-bar {top:80px; border:solid 1px #333}
     #theResults {top:80px; position:relative;}
 }

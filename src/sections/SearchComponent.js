@@ -50,6 +50,8 @@ export default withSiteData(class SearchComponent extends React.Component {
     this.setState({
       term: ''
     })
+      theContent = document.getElementsById('searchComponent');
+      theContent.style.display = 'none'
   }
 
   getPages() {
@@ -166,10 +168,10 @@ export default withSiteData(class SearchComponent extends React.Component {
     });
   }
 
-  componentDidMount(){
-    var element = document.getElementById("searchComponent")
-    helpers.unfade(element)
-  }
+  // componentDidMount(){
+  //   var element = document.getElementById("searchComponent")
+  //   helpers.unfade(element)
+  // }
 
   render() {
 

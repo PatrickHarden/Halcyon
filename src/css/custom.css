@@ -333,4 +333,5 @@ body.dark-brown .restaurant-legend .legend-row {
 
 @media screen and (max-width:767px){
     #socialHeader > div:nth-of-type(2) {display:none}
+    .eventCount {column-count: 1}
 }
