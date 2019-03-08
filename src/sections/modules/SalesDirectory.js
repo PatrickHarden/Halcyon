@@ -3,7 +3,7 @@ import { Link, withSiteData } from 'react-static'
 import { Container, Row, Col } from 'reactstrap';
 import ReactHtmlParser from 'react-html-parser';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faMapMarkerAlt, faGlobe, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import '../../css/components/retailerContent.css'
 import '../../css/modules/diningDirectory.css'
 import helpers from '../../helpers.js'

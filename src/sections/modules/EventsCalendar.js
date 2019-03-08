@@ -1,7 +1,7 @@
 // Packages
 import React from 'react';
 import { Link } from 'react-static';
-import { Row, Col, Button, Container } from 'reactstrap';
+import { Row, Col, Container } from 'reactstrap';
 import ReactHtmlParser from 'react-html-parser';
 let moment = require('moment');
 let momentRange = require('moment-range');

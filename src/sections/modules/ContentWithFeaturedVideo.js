@@ -8,7 +8,6 @@ import $ from 'jquery'
 import '../../css/modules/video.css'
 
 var videoId;
-var iframeMarkup;
 
 export default withSiteData(class ContentWithFeaturedVideo extends React.Component {
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, withSiteData } from 'react-static'
-import { Container, Button } from 'reactstrap';
+import { Container } from 'reactstrap';
 import ReactHtmlParser from 'react-html-parser';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import helpers from '../../helpers.js'
@@ -14,8 +14,6 @@ import ListIcon from '../../images/listIcon.png'
 let moment = require('moment');
 
 var eventCounter;
-var recentEvents = [];
-// var events;
 
 export default withSiteData(class EventsDirectory extends React.Component {
 

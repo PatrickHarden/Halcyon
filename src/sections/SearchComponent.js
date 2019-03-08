@@ -168,10 +168,6 @@ export default withSiteData(class SearchComponent extends React.Component {
     });
   }
 
-  // componentDidMount(){
-  //   var element = document.getElementById("searchComponent")
-  //   helpers.unfade(element)
-  // }
 
   render() {
 
