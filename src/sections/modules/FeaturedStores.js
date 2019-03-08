@@ -174,7 +174,6 @@ export default withSiteData(class FeaturesStores extends React.Component {
             </div>
             </Container>
         </div>
-        
     );
   }
 })
