@@ -114,17 +114,17 @@ export default class EventsCalendar extends React.Component {
     this.setState({
       modal: !this.state.modal
     });
-    modal = <div class="modal fade" tabindex="-1" role="dialog" id="calendarModal" style={styles}>
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">{event.title} 
+    modal = <div className="modal fade" tabindex="-1" role="dialog" id="calendarModal" style={styles}>
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header">
+            <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 className="modal-title">{event.title} 
             {event.startTime && event.endTime &&
               <small>{event.startTime} - {event.endTime} </small>
             }</h4>
           </div>
-          <div class="modal-body">
+          <div className="modal-body">
             {event.start && event.end && (event.start != event.end) &&
                <div>{moment(event.start, 'YYYY-MM-DD').format('MMM DD')} - {moment(event.end, 'YYYYMMDD').format('MMM DD')}</div>
             }
@@ -133,9 +133,9 @@ export default class EventsCalendar extends React.Component {
             {event.eventContent && 
             <div>{ReactHtmlParser(event.eventContent)}</div> }
           </div>
-          <div class="modal-footer">
-            <button type="button" onClick={this.toggle} class="btn btn-default" data-dismiss="modal">Close</button>
-            <Link type="button" to={'/events/' + event.slug} class="btn btn-primary">View Details</Link>
+          <div className="modal-footer">
+            <button type="button" onClick={this.toggle} className="btn btn-default" data-dismiss="modal">Close</button>
+            <Link type="button" to={'/events/' + event.slug} className="btn btn-primary">View Details</Link>
           </div>
         </div>
       </div>
