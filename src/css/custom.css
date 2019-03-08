@@ -7,7 +7,6 @@ form input[type=date].form-control {color:rgba(0,0,0,0.4)}
 .social-feed-container {margin-bottom:60px;}
 .social-feed-container h2 {font-family:'Flama'; color:#8F1838;}
 .eventCount {column-count: 3}
-.eyeball {margin-left:35px; margin-bottom:3px;}
 .mT {margin-top:60px;margin-bottom:30px;}
 .date-ball > span {position:relative; top:-3px;}
 #socialHeader {display:flex; justify-content: space-between;align-items:baseline; padding:0 0 0 1rem;position:relative;z-index:1;padding:0 60px;}
@@ -335,3 +334,4 @@ body.dark-brown .restaurant-legend .legend-row {
     #socialHeader > div:nth-of-type(2) {display:none}
     .eventCount {column-count: 1}
 }
+footer .eyeball {margin-left:35px; margin-bottom:3px;}
