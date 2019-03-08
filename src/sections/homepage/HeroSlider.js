@@ -1,7 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import helpers from '../../helpers.js'
-import DiningHero from '../../images/dining-hero.png'
+// import DiningHero from '../../images/dining-hero.png'
 
 var heroArray = [];
 
@@ -38,8 +38,7 @@ export default class HeroSlider extends React.Component {
   componentDidMount(){
     var element = document.getElementById("fadeHeroIn");
     element.style.zIndex = '2'
-    helpers.unfade(element);
-    // document.getElementById('initialHeroImage').style.display = 'none';    
+    helpers.unfade(element); 
   }
 
   render() {
@@ -55,8 +54,7 @@ export default class HeroSlider extends React.Component {
       <div id="heroContainer">
         <div id="initialHeroImage">
           <img className='hidden-xs' src={this.props.home[0].acf.hero_slider[0].desktop_image.url} />
-          <img className="visible-xs" src={DiningHero} />
-          {/* <h2 className='hero-heading'>{this.props.home[0].acf.hero_slider[0].heading}</h2> */}
+          <img className="visible-xs" src={this.props.home[0].acf.hero_slider[0].mobile_image.url} />
         </div>
         <div className='hero-slider-wrapper' id="fadeHeroIn">
           <Slider className='hero-slider' {...settings}>
