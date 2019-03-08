@@ -20,4 +20,36 @@
     #searchComponent {display:none; position:absolute; top:0px !important; right: 0; left:0; bottom:0;background-color:#fff; z-index:4;}
     #searchComponent .search-bar {top:80px; border:solid 1px #333}
     #theResults {top:80px; position:relative;}
+    #searchComponent .search-bar {    width: 100%;
+        border: 0;
+        border-bottom: 3px solid #4E5859;
+        font-family: 'Flama',sans-serif;
+        font-size: 1.4rem;
+    }
+    #searchComponent svg {
+        position: relative;
+        z-index: 5;
+        color: #333;
+        float: left;
+        font-size: 22px;
+        margin-left: 5%;
+        margin-top: 2px;
+    }
+    #searchComponent .search-bar {
+        width: 75%;
+        border: 0;
+        border-bottom: 3px solid #4E5859;
+        font-family: 'Flama',sans-serif;
+        font-size: 1.4rem;
+        float: left;
+        border-radius: 0;
+        top:0;
+    }
+    #searchComponent > div > div {
+        display: flex;
+        justify-content: flex-start;
+        position: relative;
+        top: 45px;
+        margin-bottom:15px;
+    }
 }
