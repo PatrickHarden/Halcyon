@@ -1,5 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
+import helpers from '../../helpers.js'
 
 var heroArray = [];
 
@@ -33,23 +34,10 @@ export default class HeroSlider extends React.Component {
     })
   }
 
-  unfade(element) {
-    var op = 0.1;  // initial opacity
-    element.style.display = 'block';
-    var timer = setInterval(function () {
-        if (op >= 1){
-            clearInterval(timer);
-        }
-        element.style.opacity = op;
-        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-        op += op * 0.1;
-    }, 10);
-  }
-
   componentDidMount(){
     var element = document.getElementById("fadeHeroIn");
     element.style.zIndex = '2'
-    this.unfade(element);
+    helpers.unfade(element);
     // document.getElementById('initialHeroImage').style.display = 'none';    
   }
 
@@ -67,6 +55,7 @@ export default class HeroSlider extends React.Component {
         <div id="initialHeroImage">
           <img className='hidden-xs' src={this.props.home[0].acf.hero_slider[0].desktop_image.url} />
           <img className="visible-xs" src={this.props.home[0].acf.hero_slider[0].mobile_image.url} />
+          {/* <h2 className='hero-heading'>{this.props.home[0].acf.hero_slider[0].heading}</h2> */}
         </div>
         <div className='hero-slider-wrapper' id="fadeHeroIn">
           <Slider className='hero-slider' {...settings}>

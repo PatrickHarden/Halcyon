@@ -16,6 +16,7 @@ import AccessibilityIcon from './images/eyeball-dark.png';
 import { config } from '@fortawesome/fontawesome-svg-core'
 config.autoAddCss = false
 import '@fortawesome/fontawesome-svg-core/styles.css'
+import helpers from './helpers'
 
 
 var isContrast = false;
@@ -62,11 +63,16 @@ var isContrast = false;
     }
   }
 
+  componentDidMount(){
+    var element = document.getElementsByTagName("header")[0]
+    helpers.unfade(element)
+  }
+
   render() {
     const logo = this.props.centerInfo.companyLogo
 
     return (
-      <div className="navWrapper">
+      <div className="navWrapper" id="unfade">
         <Navbar color="white" dark fixed="top" expand="lg">
             <Container>
                 <div className="navRow">
