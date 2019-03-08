@@ -65,7 +65,7 @@ var isContrast = false;
 
   componentDidMount(){
     var element = document.getElementsByTagName("header")[0]
-    helpers.unfade(element)
+    setTimeout(helpers.unfade(element), 200)
   }
 
   render() {
