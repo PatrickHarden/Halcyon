@@ -14,12 +14,11 @@ import SiteFooter from './sections/Footer'
 const App = () => (
   <Router>
     <div id="site">
-      <SiteHeader>
+      <SiteHeader />
       <SearchComponent />
       <main className="content">
         <Routes />
       </main>
-      </SiteHeader>
       <SiteFooter />
   </div>
   </Router>

@@ -14,7 +14,6 @@ export default withSiteData(class SiteHeader extends React.Component {
 
     render() {
         const options = this.props.centerInfo
-        const { children } = this.props;
 
         if (typeof document === 'undefined') {
             return null
@@ -33,7 +32,6 @@ export default withSiteData(class SiteHeader extends React.Component {
                     </Head>
                     <Navigation />
                 </header>
-                {children}
                 </div>
             )
         }
