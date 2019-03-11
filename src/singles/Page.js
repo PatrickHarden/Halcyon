@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { withRouteData, Link, Head } from 'react-static'
-import { Container, Row, Col } from 'reactstrap'
+import { Container } from 'reactstrap'
 import '../css/components/pageContent.css'
 import '../css/components/mobileFloatingNav.css'
 

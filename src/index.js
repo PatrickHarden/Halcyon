@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'css/base.css'
-import 'css/mobile.css'
 import 'css/custom.css'
 
 // Your top level component

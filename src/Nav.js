@@ -16,7 +16,6 @@ import AccessibilityIcon from './images/eyeball-dark.png';
 import { config } from '@fortawesome/fontawesome-svg-core'
 config.autoAddCss = false
 import '@fortawesome/fontawesome-svg-core/styles.css'
-import helpers from './helpers'
 
 
 var isContrast = false;

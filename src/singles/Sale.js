@@ -1,5 +1,5 @@
 import React from 'react'
-import { withRouteData, Link, Head } from 'react-static'
+import { withRouteData, Head } from 'react-static'
 import { Container,
          Row,
          Col,} from 'reactstrap';
