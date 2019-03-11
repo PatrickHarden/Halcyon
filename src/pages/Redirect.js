@@ -1,5 +1,5 @@
 import React from 'react'
-import {Head, withSiteData} from 'react-static'
+import {withSiteData} from 'react-static'
 //
 
 export default withSiteData(class Redirect extends React.Component {

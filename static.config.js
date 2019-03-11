@@ -268,9 +268,6 @@ export default {
       {
         path: '/sales',
         component: 'src/pages/Sales',
-        getData: () => ({
-          sales, siteRoot, title, metaDescription, pages
-        }),
         children: sales.map(sale => ({
           path: `/${sale.slug}`,
           component: 'src/singles/Sale',
@@ -282,9 +279,6 @@ export default {
       {
         path: '/shopping',
         component: 'src/pages/Stores',
-        getData: () => ({
-          stores, siteRoot, title, metaDescription, pages, sales
-        }),
         children: retailers.map(retailer => ({
           path: `/${retailer.slug}`,
           component: 'src/singles/Retailer',
@@ -296,9 +290,6 @@ export default {
       {
         path: '/dining',
         component: 'src/pages/Dining',
-        getData: () => ({
-          stores, siteRoot, title, metaDescription, pages
-        }),
         children: restaurants.map(restaurant => ({
           path: `/${restaurant.slug}`,
           component: 'src/singles/Restaurant',
@@ -306,13 +297,6 @@ export default {
             restaurant, siteRoot, title, metaDescription, property_options, sales
           }),
         })),
-      },
-      {
-        path: '/search-results',
-        component: 'src/pages/SearchResults',
-        getData: () => ({
-          stores, events, pages, metaDescription
-        }),
       },
       {
         path: '/admin',
