@@ -11,6 +11,7 @@ import { faFacebookF, faTwitter } from '@fortawesome/fontawesome-free-brands'
 import { faPlus, faEnvelope, faSearch } from '@fortawesome/free-solid-svg-icons'
 import CalendarIcon from '../../images/calendarIcon.png'
 import ListIcon from '../../images/listIcon.png'
+import { LinkContainer } from 'react-router-bootstrap'
 let moment = require('moment');
 
 var eventCounter;
@@ -147,7 +148,7 @@ export default withSiteData(class EventsDirectory extends React.Component {
                                                 </a>
                                             </div>
                                         </div>
-                                        <Link to={'/events/' + event.slug} className="halcyon-button arrow">See Event Details</Link>
+                                        <LinkContainer to={'/events/' + event.slug}><Link to={'/events/' + event.slug} className="halcyon-button arrow">See Event Details</Link></LinkContainer>
                                     </div>
                                 ))}
                                 <div class="loadmore-button" id="loadMore" onClick={this.loadMore}><FontAwesomeIcon icon={faPlus} className='icon' />Load More</div>

@@ -102,6 +102,7 @@ export default {
       postCount++
     }
 
+    // Defines the JSON objects which are accessible globally, Here we will change the url's below for new sites
     return {
       title: 'Halcyon',
       siteCreator: 'Imaginuity',
