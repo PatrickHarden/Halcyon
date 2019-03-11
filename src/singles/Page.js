@@ -16,8 +16,6 @@ export default withRouteData(class Page extends React.Component {
     super(props);
   }
 
-
-
   render() {
     const page = this.props.page
     const siteRoot = this.props.siteRoot
@@ -28,9 +26,12 @@ export default withRouteData(class Page extends React.Component {
       <section>
         <Head>
           <body className={'single-page page-id-' + page.id + ' ' + page.slug + ' ' + page.acf.global_page_color} />
-          {(page.yoast_meta.yoast_wpseo_title) ? <title>{page.yoast_meta.yoast_wpseo_title}</title> : <title>{title}</title>}
+          {(page.yoast_meta.yoast_wpseo_title) ? <title>{page.yoast_meta.yoast_wpseo_title}</title> : <title>{page.title.rendered}</title>}
           {(page.yoast_meta.yoast_wpseo_metadesc) ? <meta name="description" content={page.yoast_meta.yoast_wpseo_metadesc} /> : <meta name="description" content={metaDescription} />}
           {(page.yoast_meta.yoast_wpseo_canonical) ? <link rel="canonical" href={page.yoast_meta.yoast_wpseo_canonical} /> : <link rel="canonical" href={siteRoot} />}
+          <meta property="og:title" content={page.title.rendered} />
+          <meta property="og:url" content={this.props.siteRoot + page.slug} />
+          {page.acf.desktop_image && <meta property="og:image" content={page.acf.desktop_image.url} /> }
         </Head>
         {(page.acf.desktop_image) ?
           <div id="heroSection">
@@ -40,17 +41,17 @@ export default withRouteData(class Page extends React.Component {
             <div className='button-container hidden-xs'>
               {page.acf.button_1 &&
                 <div className='button-wrap'>
-                  <Link className="halcyon-button" to={helpers.convertLink(page.acf.button_1.url, this.props.title.toLowerCase())}>{(page.acf.button_1.title) ? <div>{ReactHtmlParser(page.acf.button_1.title)}</div> : <div>{helpers.getTitleFromUrl(page.acf.button_1.url, this.props.title.toLowerCase())}</div>}</Link>
+                  <Link className="halcyon-button" target={(page.acf.button_1.target) ? "_blank" : ""}  to={helpers.convertLink(page.acf.button_1.url, this.props.title.toLowerCase())}>{(page.acf.button_1.title) ? <div>{ReactHtmlParser(page.acf.button_1.title)}</div> : <div>{helpers.getTitleFromUrl(page.acf.button_1.url, this.props.title.toLowerCase())}</div>}</Link>
                 </div>
               }
               {page.acf.button_2 &&
                 <div className='button-wrap'>
-                  <Link className="halcyon-button" to={helpers.convertLink(page.acf.button_2.url, this.props.title.toLowerCase())}>{(page.acf.button_2.title) ? <div>{ReactHtmlParser(page.acf.button_2.title)}</div> : <div>{helpers.getTitleFromUrl(page.acf.button_2.url, this.props.title.toLowerCase())}</div>}</Link>
+                  <Link className="halcyon-button" target={(page.acf.button_2.target) ? "_blank" : ""}  to={helpers.convertLink(page.acf.button_2.url, this.props.title.toLowerCase())}>{(page.acf.button_2.title) ? <div>{ReactHtmlParser(page.acf.button_2.title)}</div> : <div>{helpers.getTitleFromUrl(page.acf.button_2.url, this.props.title.toLowerCase())}</div>}</Link>
                 </div>
               }
               {page.acf.button_3 &&
                 <div className='button-wrap'>
-                  <Link className="halcyon-button" to={helpers.convertLink(page.acf.button_3.url, this.props.title.toLowerCase())}>{(page.acf.button_3.title) ? <div>{ReactHtmlParser(page.acf.button_3.title)}</div> : <div>{helpers.getTitleFromUrl(page.acf.button_3.url, this.props.title.toLowerCase())}</div>}</Link>
+                  <Link className="halcyon-button" target={(page.acf.button_3.target) ? "_blank" : ""}  to={helpers.convertLink(page.acf.button_3.url, this.props.title.toLowerCase())}>{(page.acf.button_3.title) ? <div>{ReactHtmlParser(page.acf.button_3.title)}</div> : <div>{helpers.getTitleFromUrl(page.acf.button_3.url, this.props.title.toLowerCase())}</div>}</Link>
                 </div>
               }
             </div>
@@ -73,17 +74,17 @@ export default withRouteData(class Page extends React.Component {
             <div className='button-container visible-xs'>
             {page.acf.button_1 &&
                 <div className='button-wrap'>
-                  <Link className="halcyon-button" to={helpers.convertLink(page.acf.button_1.url, this.props.title.toLowerCase())}>{(page.acf.button_1.title) ? <div>{ReactHtmlParser(page.acf.button_1.title)}</div> : <div>{helpers.getTitleFromUrl(page.acf.button_1.url, this.props.title.toLowerCase())}</div>}</Link>
+                  <Link className="halcyon-button" target={(page.acf.button_1.target) ? "_blank" : ""} to={helpers.convertLink(page.acf.button_1.url, this.props.title.toLowerCase())}>{(page.acf.button_1.title) ? <div>{ReactHtmlParser(page.acf.button_1.title)}</div> : <div>{helpers.getTitleFromUrl(page.acf.button_1.url, this.props.title.toLowerCase())}</div>}</Link>
                 </div>
               }
               {page.acf.button_2 &&
                 <div className='button-wrap'>
-                  <Link className="halcyon-button" to={helpers.convertLink(page.acf.button_2.url, this.props.title.toLowerCase())}>{(page.acf.button_2.title) ? <div>{ReactHtmlParser(page.acf.button_2.title)}</div> : <div>{helpers.getTitleFromUrl(page.acf.button_2.url, this.props.title.toLowerCase())}</div>}</Link>
+                  <Link className="halcyon-button" target={(page.acf.button_2.target) ? "_blank" : ""} to={helpers.convertLink(page.acf.button_2.url, this.props.title.toLowerCase())}>{(page.acf.button_2.title) ? <div>{ReactHtmlParser(page.acf.button_2.title)}</div> : <div>{helpers.getTitleFromUrl(page.acf.button_2.url, this.props.title.toLowerCase())}</div>}</Link>
                 </div>
               }
               {page.acf.button_3 &&
                 <div className='button-wrap'>
-                  <Link className="halcyon-button" to={helpers.convertLink(page.acf.button_3.url, this.props.title.toLowerCase())}>{(page.acf.button_3.title) ? <div>{ReactHtmlParser(page.acf.button_3.title)}</div> : <div>{helpers.getTitleFromUrl(page.acf.button_3.url, this.props.title.toLowerCase())}</div>}</Link>
+                  <Link className="halcyon-button" target={(page.acf.button_3.target) ? "_blank" : ""}  to={helpers.convertLink(page.acf.button_3.url, this.props.title.toLowerCase())}>{(page.acf.button_3.title) ? <div>{ReactHtmlParser(page.acf.button_3.title)}</div> : <div>{helpers.getTitleFromUrl(page.acf.button_3.url, this.props.title.toLowerCase())}</div>}</Link>
                 </div>
               }
             </div>

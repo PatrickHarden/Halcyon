@@ -5,6 +5,7 @@ import { Container,
          Col,} from 'reactstrap';
 
 import ReactHtmlParser from 'react-html-parser'
+import ModuleController from '../sections/modules/ModuleController.js';
 //
 
 export default withRouteData(class Sale extends React.Component {
@@ -37,6 +38,7 @@ export default withRouteData(class Sale extends React.Component {
             </Col>
           </Row>
         </Container>
+        <ModuleController page={sale} />
       </section>
       )
   } else {

@@ -5,6 +5,7 @@ import { Container,
          Col,} from 'reactstrap';
 
 import ReactHtmlParser from 'react-html-parser'
+import ModuleController from '../sections/modules/ModuleController.js';
 //
 
 export default withRouteData(class Post extends React.Component {
@@ -37,6 +38,7 @@ export default withRouteData(class Post extends React.Component {
             </Col>
           </Row>
         </Container>
+        <ModuleController page={post} />
       </section>
       )
     } else {
