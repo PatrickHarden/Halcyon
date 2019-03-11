@@ -32,6 +32,7 @@ export default withRouteData(class Page extends React.Component {
           <meta property="og:title" content={page.title.rendered} />
           <meta property="og:url" content={this.props.siteRoot + page.slug} />
           {page.acf.desktop_image && <meta property="og:image" content={page.acf.desktop_image.url} /> }
+          {page.yoast_meta.yoast_wpseo_metadesc && <meta property="og:description" content={page.yoast_meta.yoast_wpseo_metadesc} />}
         </Head>
         {(page.acf.desktop_image) ?
           <div id="heroSection">
