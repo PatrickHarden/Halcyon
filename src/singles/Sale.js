@@ -19,7 +19,6 @@ export default withRouteData(class Sale extends React.Component {
   render(){
     const sale = this.props.sale
     const siteRoot = this.props.siteRoot
-    const title = this.props.title
     const metaDescription = this.props.metaDescription
 
   if (typeof document !== 'undefined') {
@@ -27,7 +26,7 @@ export default withRouteData(class Sale extends React.Component {
         <section>
         <Head>
           <body className={'single-blog blog-id-'+sale.id + ' ' + sale.slug + ' red'} />
-          {(sale.yoast_meta.yoast_wpseo_title) ? <title>{sale.yoast_meta.yoast_wpseo_title}</title> : <title>{title}</title>}
+          {(sale.yoast_meta.yoast_wpseo_title) ? <title>{sale.yoast_meta.yoast_wpseo_title}</title> : <title>{sale.title.rendered}</title>}
           {(sale.yoast_meta.yoast_wpseo_metadesc) ? <meta name="description" content={sale.yoast_meta.yoast_wpseo_metadesc} /> : <meta name="description" content={metaDescription} />}
           {(sale.yoast_meta.yoast_wpseo_canonical) ? <link rel="canonical" href={sale.yoast_meta.yoast_wpseo_canonical} /> : <link rel="canonical" href={siteRoot} /> }
         </Head>

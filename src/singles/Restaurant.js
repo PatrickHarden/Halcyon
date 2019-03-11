@@ -140,14 +140,13 @@ export default withRouteData(class Page extends React.Component {
     render() {
         const restaurant = this.props.restaurant
         const siteRoot = this.props.siteRoot
-        const title = this.props.title
         const metaDescription = this.props.metaDescription
 
         return (
             <section>
                 <Head>
                     <body className={'single-blog dark-brown blog-id-' + restaurant.id + ' ' + restaurant.slug} />
-                    {(restaurant.yoast_meta.yoast_wpseo_title) ? <title>{restaurant.yoast_meta.yoast_wpseo_title}</title> : <title>{title}</title>}
+                    {(restaurant.yoast_meta.yoast_wpseo_title) ? <title>{restaurant.yoast_meta.yoast_wpseo_title}</title> : <title>{restaurant.title.rendered}</title>}
                     {(restaurant.yoast_meta.yoast_wpseo_metadesc) ? <meta name="description" content={restaurant.yoast_meta.yoast_wpseo_metadesc} /> : <meta name="description" content={metaDescription} />}
                     {(restaurant.yoast_meta.yoast_wpseo_canonical) ? <link rel="canonical" href={restaurant.yoast_meta.yoast_wpseo_canonical} /> : <link rel="canonical" href={siteRoot} />}
                 </Head>
