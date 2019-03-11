@@ -4,6 +4,7 @@ import { Container,
          Row,
          Col,} from 'reactstrap';
 import '../css/components/pageContent.css'
+import helpers from '../helpers'
 import ReactHtmlParser from 'react-html-parser'
 import ModuleController from '../sections/modules/ModuleController.js';
 //

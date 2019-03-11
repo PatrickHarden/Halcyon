@@ -6,6 +6,7 @@ import {
   Col,
 } from 'reactstrap';
 
+import helpers from '../helpers'
 import ReactHtmlParser from 'react-html-parser'
 import ModuleController from '../sections/modules/ModuleController.js';
 import '../css/components/pageContent.css'
