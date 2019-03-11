@@ -59,7 +59,6 @@ export default withSiteData(class SearchComponent extends React.Component {
       if (page.title.rendered.toLowerCase().includes(this.state.term.toLowerCase())) {
         return (
           <div key={index}>
-            {console.log(page)}
             <div class="panel panel-default">
               <div class="panel-heading">
                 <Link onClick={this.clearSearch} to={`/${page.slug}`}><h3 class="panel-title">{(page.title.rendered) ? <div>{ReactHtmlParser(page.title.rendered)}</div> : ""}</h3></Link>
@@ -102,7 +101,6 @@ export default withSiteData(class SearchComponent extends React.Component {
     events = events.filter(function (el) {
       return el != null;
     });
-    console.log(this.props.events)
   }
 
   getRetailers() {

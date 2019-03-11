@@ -144,7 +144,6 @@ export default withRouteData(class Page extends React.Component {
 
     return (
       <section>
-        {console.log(retailer)}
         <Head>
           <body className={'single-blog light-green blog-id-' + retailer.id + ' ' + retailer.slug} />
           {(retailer.yoast_meta.yoast_wpseo_title) ? <title>{retailer.yoast_meta.yoast_wpseo_title}</title> : <title>{title}</title>}

@@ -110,7 +110,6 @@ export default withSiteData(class Forms extends React.Component {
                                     data-name={field.label}
                                 >
                                     <div className="row">
-                                    {console.log(field)}
                                         <div className='col-xs-12'>
                                             <label for={field.label}>
                                                 {field.label &&
