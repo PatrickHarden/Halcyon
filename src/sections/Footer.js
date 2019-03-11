@@ -44,7 +44,7 @@ export default withSiteData(class SiteFooter extends React.Component {
             return null
         } else {
             return (
-                <footer>
+                <footer id="theFooter">
                     <Container>
                     <Row>
                         <Col xs={12}>
