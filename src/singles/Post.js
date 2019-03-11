@@ -60,7 +60,7 @@ export default withRouteData(class Post extends React.Component {
                   {(post.acf.content) ? <div>{ReactHtmlParser(post.acf.content)}</div> : ""}
                 </div>
               }
-              <div className="hero-heading">{(post.acf.title_h1) ? <h1>{post.acf.title_h1}</h1> : <h1>{post.title.rendered}</h1>}</div>
+              <div className="hero-heading">{(post.acf.title_h1) ? <h1>{ReactHtmlParser(post.acf.title_h1)}</h1> : <h1>{ReactHtmlParser(post.title.rendered)}</h1>}</div>
             </div>
           </div>
           : ""}
