@@ -62,7 +62,7 @@ export default withSiteData(class ContentWithFeaturedVideo extends React.Compone
                                 {this.props.section.description &&
                                     <div className='content'>{ReactHtmlParser(this.props.section.description)}</div>
                                 }
-                                {(this.props.section.button) ? <Link className="halcyon-button" to={helpers.convertLink(this.props.section.button.url, this.props.title.toLowerCase())}>{(this.props.section.button.title) ? <div>{ReactHtmlParser(this.props.section.button.title)}</div> : <div>{helpers.getTitleFromUrl(this.props.section.button.url, this.props.title.toLowerCase())}</div>}</Link> : ""}
+                                {(this.props.section.button) ? <Link target={(this.props.section.button.target) ? "_blank" : ""} className="halcyon-button" to={helpers.convertLink(this.props.section.button.url, this.props.title.toLowerCase())}>{(this.props.section.button.title) ? <div>{ReactHtmlParser(this.props.section.button.title)}</div> : <div>{helpers.getTitleFromUrl(this.props.section.button.url, this.props.title.toLowerCase())}</div>}</Link> : ""}
                             </div>
                         </div>
                     </Col>

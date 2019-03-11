@@ -26,7 +26,7 @@ export default withSiteData(class ContentWithFeaturedImage extends React.Compone
                     {this.props.section.content &&
                         <div className='content'>{ReactHtmlParser(this.props.section.content)}</div>
                     }
-                    {(this.props.section.button) ? <Link className="halcyon-button" to={helpers.convertLink(this.props.section.button.url, this.props.title.toLowerCase())}>{(this.props.section.button.title) ? <div>{ReactHtmlParser(this.props.section.button.title)}</div>: <div>{helpers.getTitleFromUrl(this.props.section.button.url, this.props.title.toLowerCase())}</div>}</Link> : ""} 
+                    {(this.props.section.button) ? <Link className="halcyon-button" target={(this.props.section.button.target) ? "_blank" : ""} to={helpers.convertLink(this.props.section.button.url, this.props.title.toLowerCase())}>{(this.props.section.button.title) ? <div>{ReactHtmlParser(this.props.section.button.title)}</div>: <div>{helpers.getTitleFromUrl(this.props.section.button.url, this.props.title.toLowerCase())}</div>}</Link> : ""} 
                 </Col>
             </Row> 
         </Container>
