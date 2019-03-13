@@ -10,6 +10,7 @@ import helpers from '../helpers'
 import ReactHtmlParser from 'react-html-parser'
 import ModuleController from '../sections/modules/ModuleController.js';
 import '../css/components/pageContent.css'
+import Navigation from '../Nav.js'
 //
 
 export default withRouteData(class Page extends React.Component {
@@ -26,6 +27,7 @@ export default withRouteData(class Page extends React.Component {
     if (typeof document !== 'undefined') {
       return (
         <section>
+          <Navigation />
           <Head>
             <body className={'single-blog blog-id-' + event.id + ' ' + event.slug + ' dark-brown'} />
             {(event.yoast_meta.yoast_wpseo_title) ? <title>{event.yoast_meta.yoast_wpseo_title}</title> : <title>{event.title.rendered}</title>}

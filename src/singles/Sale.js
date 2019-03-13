@@ -8,6 +8,7 @@ import '../css/components/pageContent.css'
 import helpers from '../helpers'
 import ReactHtmlParser from 'react-html-parser'
 import ModuleController from '../sections/modules/ModuleController.js';
+import Navigation from '../Nav.js'
 //
 
 export default withRouteData(class Sale extends React.Component {
@@ -24,6 +25,7 @@ export default withRouteData(class Sale extends React.Component {
   if (typeof document !== 'undefined') {
       return (
         <section>
+          <Navigation />
         <Head>
           <body className={'single-blog blog-id-'+sale.id + ' ' + sale.slug + ' red'} />
           {(sale.yoast_meta.yoast_wpseo_title) ? <title>{sale.yoast_meta.yoast_wpseo_title}</title> : <title>{sale.title.rendered}</title>}

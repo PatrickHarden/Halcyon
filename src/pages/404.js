@@ -1,10 +1,12 @@
 import React from 'react'
 import {Head, withSiteData, Link} from 'react-static'
 import { Container, Row, Col } from 'reactstrap';
+import Navigation from '../Nav.js'
 //
 
 export default withSiteData(({siteRoot, title, metaDescription }) => (
   <div>
+    <Navigation />
     <Head>
     <title>{title} | 404 Page</title>
       <meta name="description" content={metaDescription} />

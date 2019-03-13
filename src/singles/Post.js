@@ -7,6 +7,7 @@ import '../css/components/pageContent.css'
 import helpers from '../helpers'
 import ReactHtmlParser from 'react-html-parser'
 import ModuleController from '../sections/modules/ModuleController.js';
+import Navigation from '../Nav.js'
 //
 
 export default withRouteData(class Post extends React.Component {
@@ -24,6 +25,7 @@ export default withRouteData(class Post extends React.Component {
     if (typeof document !== 'undefined') {
       return (
         <section>
+          <Navigation />
         <Head>
           <body className={'single-blog blog-id-'+post.id + ' ' + post.slug + ' dark-green'} />
           {(post.yoast_meta.yoast_wpseo_title) ? <title>{post.yoast_meta.yoast_wpseo_title}</title> : <title>{post.title.rendered}</title>}

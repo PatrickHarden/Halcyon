@@ -12,6 +12,7 @@ import { Container,
          CardSubtitle } from 'reactstrap';
 
 import ReactHtmlParser from 'react-html-parser'
+import Navigation from '../Nav.js'
 //
 
 var newTitle;
@@ -30,6 +31,7 @@ function setMetaData(pages){
 export default withRouteData(({ posts, siteRoot, title, metaDescription, pages  }) => (
 
   <section>
+    <Navigation />
     {setMetaData(pages)}
     <Head>
       <body className="blog" />
