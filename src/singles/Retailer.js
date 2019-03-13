@@ -15,7 +15,7 @@ import helpers from '../helpers.js'
 import DownArrow from '../images/downArrrow.png'
 import PhoneIcon from '../images/phone-icon.png'
 import RightArrow from '../images/rightArrow.png'
-
+import Navigation from '../Nav.js'
 //
 var weeksHours;
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -144,6 +144,7 @@ export default withRouteData(class Page extends React.Component {
 
     return (
       <section>
+        <Navigation />
         <Head>
           <body className={'single-blog light-green blog-id-' + retailer.id + ' ' + retailer.slug} />
           {(retailer.yoast_meta.yoast_wpseo_title) ? <title>{retailer.yoast_meta.yoast_wpseo_title}</title> : <title>{retailer.title.rendered}</title>}

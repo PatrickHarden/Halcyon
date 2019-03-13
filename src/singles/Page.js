@@ -9,6 +9,7 @@ import ReactHtmlParser from 'react-html-parser'
 import ModuleController from '../sections/modules/ModuleController.js';
 import MobileFloatingNav from '../sections/MobileFloatingNav.js'
 import helpers from '../helpers'
+import Navigation from '../Nav.js'
 
 export default withRouteData(class Page extends React.Component {
 
@@ -23,6 +24,7 @@ export default withRouteData(class Page extends React.Component {
 
     return (
       <section>
+        <Navigation />
         <Head>
           <body className={'single-page page-id-' + page.id + ' ' + page.slug + ' ' + page.acf.global_page_color} />
           {(page.yoast_meta.yoast_wpseo_title) ? <title>{page.yoast_meta.yoast_wpseo_title}</title> : <title>{page.title.rendered}</title>}

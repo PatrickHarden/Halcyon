@@ -11,6 +11,7 @@ import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/fontawesome-fr
 import { faMapMarkerAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import PhoneIcon from '../images/phone-icon.png'
 import RightArrow from '../images/rightArrow.png'
+import Navigation from '../Nav.js'
 
 let moment = require('moment');
 //
@@ -144,6 +145,7 @@ export default withRouteData(class Page extends React.Component {
 
         return (
             <section>
+                <Navigation />
                 <Head>
                     <body className={'single-blog dark-brown blog-id-' + restaurant.id + ' ' + restaurant.slug} />
                     {(restaurant.yoast_meta.yoast_wpseo_title) ? <title>{restaurant.yoast_meta.yoast_wpseo_title}</title> : <title>{restaurant.title.rendered}</title>}
