@@ -8,7 +8,7 @@ import { faPhone, faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg
 import HeroSlider from '../sections/homepage/HeroSlider';
 import ModuleController from '../sections/modules/ModuleController.js'
 import helpers from '../helpers.js'
-
+import Navigation from '../Nav.js'
 
 var featuredStores = [];
 
@@ -72,6 +72,7 @@ export default withRouteData(class Home extends React.Component {
 
     return (
       <article id="home">
+      <Navigation />
         <Head>
           <body className={'home ' + home.acf.global_page_color} />
           {(home.yoast_meta.yoast_wpseo_title) ? <title>{home.yoast_meta.yoast_wpseo_title}</title> : ""}
