@@ -3,8 +3,12 @@
     font-family: Flama;
     src: url(../fonts/Flama-Basic.ttf);
   }
+  @font-face {
+    font-family: Sony;
+    src: url(../fonts/sony.ttf);
+  }
 body{
-    font-family:'FreightText Pro',serif;
+    font-family:'Sony',serif;
     margin:0;
     font-size:1.2rem;
 }
