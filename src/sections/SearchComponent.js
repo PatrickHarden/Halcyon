@@ -27,11 +27,6 @@ export default withSiteData(class SearchComponent extends React.Component {
     this.clearSearch = this.clearSearch.bind(this);
   }
 
-  componentDidMount(){
-    var element = document.getElementById("searchComponent");
-    setTimeout(helpers.unfade(element), 200);
-  }
-
   hideContent() {
     var width = document.body.clientWidth;
     if (width >= 768) {
