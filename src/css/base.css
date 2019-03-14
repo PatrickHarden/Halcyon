@@ -539,4 +539,10 @@ footer > .container > .row {
 
 
 
-
+.navbar-nav > div:nth-child(-n+4) {
+   order:1 !important;
+}
+.logo {order:2;}
+.navbar-nav > div:nth-child(n+6) {
+    order:3 !important;
+}

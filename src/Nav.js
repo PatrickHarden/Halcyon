@@ -46,7 +46,7 @@ var isContrast = false;
   }
   toggle() {
     var width = document.body.clientWidth;
-    if (width <= 767) {
+    if (width <= 1024) {
       this.setState({
         isOpen: !this.state.isOpen
       });
