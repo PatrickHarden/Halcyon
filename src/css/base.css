@@ -341,7 +341,7 @@ nav .container {
 main.content {
     padding-top: 82px;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 992px) {
     .navWrapper .navRow .nav-inner .navbar-collapse {
         top: 0;
         padding: 0;
@@ -373,7 +373,7 @@ main.content {
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo) {
         max-width: 70px;
         margin: 0 1rem;
-        padding: 0 .5rem;
+        padding: 0 1rem;
         position: relative;
     }
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo) img {
@@ -434,7 +434,7 @@ main.content {
     }
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo) {
         max-width: 85px;
-        margin: 0 1.5rem;
+        margin: 0 1rem;
     }
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item.logo img {
         max-width: 220px;
@@ -446,6 +446,12 @@ main.content {
         height: 14px;
         width: 85px;
         top: -14px;
+    }
+}
+
+@media screen and (max-width:991px){
+    main.content {
+        padding-top: 52px !important;
     }
 }
 
@@ -536,13 +542,45 @@ footer > .container > .row {
     }
 }
 
+@media (min-width: 768px){
+    div > .navbar-collapse.collapse {
+        display: none!important;
+        height: auto!important;
+        padding-bottom: 0;
+        overflow: hidden!important;
+    }
+    div > .navbar-collapse.collapse.show {
+        display: block!important;
+        height: auto!important;
+        padding-bottom: 0;
+        overflow: hidden!important;
+    }
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav {width:100%;}
+}
+@media screen and (max-width:991) {
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item.logo {display:none;}
+}
 
+@media (min-width:992px){
+    div > .navbar-collapse.collapse {
+        display: block!important;
+        height: auto!important;
+        padding-bottom: 0;
+        overflow: visible!important;
+    }
+}
 
-
-/* .navbar-nav > div:nth-child(-n+4) {
+@media screen and (max-width:991px){
+    .nav-logo.desktop {display:block;}
+    .logo.mobile {display:none;}
+}
+@media screen and (min-width:992px){
+    .nav-logo.desktop {display:none;}
+}
+.navbar-nav > div:nth-child(-n+4) {
    order:1 !important;
 }
 .logo {order:2;}
 .navbar-nav > div:nth-child(n+6) {
     order:3 !important;
-} */
+}
