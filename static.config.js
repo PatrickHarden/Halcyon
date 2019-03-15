@@ -18,7 +18,7 @@ export default {
   // call is reserved to the getSiteData, getRouteData methods. However, the repeated functionality is responsible for pulling
   // more than 100 post types if there exists more than 100.
   getSiteData: async () => {
-    const baseURL = 'https://halcyon.dev.v3.imaginuitycenters.com'
+    const baseURL = 'https://halcyon.v3.imaginuitycenters.com'
     const { data: menus } = await axios.get(baseURL + '/wp-json/wp-api-menus/v2/menus/2')
     const { data: centerInfo } = await axios.get(baseURL + '/wp-json/acf/v3/options/property_options')
     const { data: menuLocations } = await axios.get(baseURL + '/wp-json/wp-api-menus/v2/menu-locations')
@@ -107,7 +107,7 @@ export default {
       title: 'Halcyon',
       siteCreator: 'Imaginuity',
       siteCreatorURL: 'https://www.imaginuity.com/',
-      redirectURL: 'https://halcyon.dev.v3.imaginuitycenters.com/wp-admin',
+      redirectURL: 'https://halcyon.v3.imaginuitycenters.com/wp-admin',
       siteRoot: 'https://halycon.netlify.com/',
       menus,
       centerInfo,
@@ -125,7 +125,7 @@ export default {
 
   // JSON data available only to the route which it is passed to. Accessed by withRouteData()
   getRoutes: async () => {
-    const baseURL = 'https://halcyon.dev.v3.imaginuitycenters.com'
+    const baseURL = 'https://halcyon.v3.imaginuitycenters.com'
     var { data: pages } = await axios.get(baseURL + '/index.php/wp-json/wp/v2/pages?per_page=100')
     var { data: posts } = await axios.get(baseURL + '/index.php/wp-json/wp/v2/posts?per_page=100')
     var { data: events } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100')
