@@ -42,6 +42,7 @@ export default withSiteData(class EventsDirectory extends React.Component {
         })
         var element = document.getElementsByClassName("controls-container")[0];
         element.classList.remove("opaque");
+        document.getElementById('sTarget').disabled = false;
     }
 
     toggleCalendar() {
@@ -50,6 +51,7 @@ export default withSiteData(class EventsDirectory extends React.Component {
         })
         var element = document.getElementsByClassName("controls-container")[0];
         element.classList.add("opaque");
+        document.getElementById('sTarget').disabled = true;
     }
 
     handleSearch(query) {
@@ -112,7 +114,7 @@ export default withSiteData(class EventsDirectory extends React.Component {
                         <h2>{this.props.section.heading}</h2>
                         <div className="controls-container">
                             <div className={(this.state.list) ? "search" : "search"}>
-                                <input className='search-bar' placeholder="Search..." value={this.state.search} onChange={event => this.handleSearch(event.target.value)} />
+                                <input className='search-bar' id="sTarget" placeholder="Search..." value={this.state.search} onChange={event => this.handleSearch(event.target.value)} />
                             </div>
                             <div className={(this.state.list) ? "" : ""}>
                                 <FontAwesomeIcon icon={faSearch} className="icon" />
