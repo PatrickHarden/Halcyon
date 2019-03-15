@@ -430,7 +430,7 @@ main.content {
 
 @media screen and (min-width: 1200px) {
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-link {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
     }
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo) {
         max-width: 85px;
