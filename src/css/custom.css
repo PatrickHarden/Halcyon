@@ -334,4 +334,6 @@ body.dark-brown .restaurant-legend .legend-row {
     #socialHeader > div:nth-of-type(2) {display:none}
     .eventCount {column-count: 1}
 }
+.rbc-toolbar > span:nth-of-type(3){display:none;}
+.rbc-toolbar > .rbc-toolbar-label {text-align:right !important;}
 footer .eyeball {margin-left:35px; margin-bottom:3px;}
