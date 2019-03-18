@@ -48,7 +48,7 @@ export default withSiteData(class MenuList extends React.Component {
                         ) :
                             <NavItem>
                                 <Link to={'/' + menu.object_slug} href={'/' + menu.object_slug} onClick={toggle}  className="nav-link">
-                                {(menu.object_slug == 'hours-directions') ? <div className='nav-icon directions'><svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                {(menu.object_slug == 'hours-directions') ? <span className='nav-icon directions'><svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
 	 viewBox="0 0 162.5 195">
 <g>
 	<path className="st0" d="M127.6,47.8c0-11.3-9.2-20.4-20.4-20.4c-11.3,0-20.4,9.2-20.4,20.4c0,11.3,9.2,20.4,20.4,20.4
@@ -64,9 +64,9 @@ export default withSiteData(class MenuList extends React.Component {
 		 M8.5,184.8v-32.1h23.1v33.8H10.2C9.3,186.5,8.5,185.7,8.5,184.8z M152.3,186.5h-17.1v-33.8H154v32.1
 		C154,185.7,153.2,186.5,152.3,186.5z"/>
 </g>
-</svg></div> : ""}
-                                {(menu.object_slug == 'cinebistro') ? <div className='nav-icon cmx'><svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 281.49 88.68"><title>CMX Logo</title><polygon className="cls-1" points="111.3 85.11 111.32 85.11 111.32 85.1 111.3 85.11"/><polygon className="cls-2" points="264.56 3.78 234.27 3.78 249.69 25.82 264.56 3.78"/><path className="cls-3" d="M49,135.88A39.23,39.23,0,1,1,81.66,75l4.08-3.15a44.36,44.36,0,1,0,.69,48.49l-4.18-3A39.24,39.24,0,0,1,49,135.88Z" transform="translate(-4.63 -52.32)"/><path className="cls-3" d="M49,116.41A19.76,19.76,0,1,1,66.17,87L80.65,75.8a38,38,0,1,0,.56,40.82L66.38,106A19.75,19.75,0,0,1,49,116.41Z" transform="translate(-4.63 -52.32)"/><polygon className="cls-3" points="176.02 85.11 150.1 85.11 176.04 43.61 176.02 85.11"/><rect className="cls-3" x="89.24" y="3.8" width="5.11" height="81.3"/><polygon className="cls-3" points="151.84 3.8 132.44 35.27 113.05 3.8 95.62 3.8 95.62 85.11 111.65 85.11 111.65 38.41 132.44 70.24 132.81 70.24 175.66 4.34 176.03 3.8 151.84 3.8"/><polygon className="cls-4" points="265.42 85.11 208.53 3.78 202.7 3.78 258.59 85.11 265.42 85.11"/><polygon className="cls-4" points="181.15 3.78 207.89 43.77 180.02 85.11 208.64 85.11 222.62 63.16 236.49 85.11 257.05 85.11 201.16 3.78 181.15 3.78"/><path className="cls-4" d="M279.24,136.08c0,.58.43.81.95.81s.8-.28.8-.57a.45.45,0,0,0-.31-.46c-.26-.1-.61-.17-1.12-.31a1,1,0,0,1-.83-1c0-.75.69-1.1,1.37-1.1s1.44.41,1.44,1.2h-.65c0-.48-.36-.66-.82-.66-.3,0-.69.11-.69.49s.18.41.45.48l1.09.29a1,1,0,0,1,.73,1c0,.84-.75,1.18-1.5,1.18s-1.55-.41-1.57-1.35Z" transform="translate(-4.63 -52.32)"/><path className="cls-4" d="M282.21,133.58h.93l1,2.94h0l1-2.94h.92v3.76h-.63v-2.9h0l-1,2.9h-.55l-1-2.9h0v2.9h-.63Z" transform="translate(-4.63 -52.32)"/></svg></div> : ""}
-                                {(menu.object_slug == 'dining') ? <div className='nav-icon dining'><svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+</svg></span> : ""}
+                                {(menu.object_slug == 'cinebistro') ? <span className='nav-icon cmx'><svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 281.49 88.68"><title>CMX Logo</title><polygon className="cls-1" points="111.3 85.11 111.32 85.11 111.32 85.1 111.3 85.11"/><polygon className="cls-2" points="264.56 3.78 234.27 3.78 249.69 25.82 264.56 3.78"/><path className="cls-3" d="M49,135.88A39.23,39.23,0,1,1,81.66,75l4.08-3.15a44.36,44.36,0,1,0,.69,48.49l-4.18-3A39.24,39.24,0,0,1,49,135.88Z" transform="translate(-4.63 -52.32)"/><path className="cls-3" d="M49,116.41A19.76,19.76,0,1,1,66.17,87L80.65,75.8a38,38,0,1,0,.56,40.82L66.38,106A19.75,19.75,0,0,1,49,116.41Z" transform="translate(-4.63 -52.32)"/><polygon className="cls-3" points="176.02 85.11 150.1 85.11 176.04 43.61 176.02 85.11"/><rect className="cls-3" x="89.24" y="3.8" width="5.11" height="81.3"/><polygon className="cls-3" points="151.84 3.8 132.44 35.27 113.05 3.8 95.62 3.8 95.62 85.11 111.65 85.11 111.65 38.41 132.44 70.24 132.81 70.24 175.66 4.34 176.03 3.8 151.84 3.8"/><polygon className="cls-4" points="265.42 85.11 208.53 3.78 202.7 3.78 258.59 85.11 265.42 85.11"/><polygon className="cls-4" points="181.15 3.78 207.89 43.77 180.02 85.11 208.64 85.11 222.62 63.16 236.49 85.11 257.05 85.11 201.16 3.78 181.15 3.78"/><path className="cls-4" d="M279.24,136.08c0,.58.43.81.95.81s.8-.28.8-.57a.45.45,0,0,0-.31-.46c-.26-.1-.61-.17-1.12-.31a1,1,0,0,1-.83-1c0-.75.69-1.1,1.37-1.1s1.44.41,1.44,1.2h-.65c0-.48-.36-.66-.82-.66-.3,0-.69.11-.69.49s.18.41.45.48l1.09.29a1,1,0,0,1,.73,1c0,.84-.75,1.18-1.5,1.18s-1.55-.41-1.57-1.35Z" transform="translate(-4.63 -52.32)"/><path className="cls-4" d="M282.21,133.58h.93l1,2.94h0l1-2.94h.92v3.76h-.63v-2.9h0l-1,2.9h-.55l-1-2.9h0v2.9h-.63Z" transform="translate(-4.63 -52.32)"/></svg></span> : ""}
+                                {(menu.object_slug == 'dining') ? <span className='nav-icon dining'><svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
 	 viewBox="0 0 200.8 165.2">
 <g>
 	<path className="st0" d="M196.5,5.4c0-1.6-0.8-3-2.1-4c-1.3-0.9-2.9-1.1-4.4-0.7c-2.7,0.9-6.4,2.9-9.2,7.7c-4.5,7.7-8.1,28.2-11,62.6
@@ -87,8 +87,8 @@ export default withSiteData(class MenuList extends React.Component {
 		l2.5,97.1c0,1.2-0.4,2.4-1.3,3.3c-1.7,1.8-4.8,1.8-6.5,0c-0.9-0.9-1.3-2-1.3-3.3l2.5-97.1c0-0.8-0.3-1.5-0.8-2.1s-1.3-0.9-2.1-0.9
 		C8.8,54.1,6.3,51.6,6.3,48.5z"/>
 </g>
-</svg></div> : ""}
-                                {(menu.object_slug == 'events') ? <div className='nav-icon events'><svg version="1.1"  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+</svg></span> : ""}
+                                {(menu.object_slug == 'events') ? <span className='nav-icon events'><svg version="1.1"  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
 	 viewBox="0 0 189.7 184.2">
 <path className="st0" d="M182.4,137.4l6.9-18.4l-5.6,1.7c-0.6,0.2-1.1,0.3-1.6,0.5c-0.1,0-0.2,0.1-0.2,0.1c-2.3-5.2-5.2-9.5-8.9-13.1
 	c-9.2-9.1-19.7-13.8-31.4-13.8c-4.1,0-8.3,0.6-12.6,1.7c-10.9,2.9-20.2,9.7-26.1,19.2c-5.9,9.4-8,20.7-6.1,31.9
@@ -109,8 +109,8 @@ export default withSiteData(class MenuList extends React.Component {
 	c0,36,0,72.1,0,108.1c0,10.9,7.9,18.8,18.8,18.8c24.5,0,49,0,73.5,0c-1.4-3.4-2.4-6.9-3.1-10.6c-0.1-0.5-0.2-1-0.2-1.5
 	c-23.3,0-46.6,0-69.9,0c-4.6,0-7.1-2.5-7.1-7.1c0-18,0-36,0-54c0-10.8,0-21.6,0-32.4h133.9c0,10.8,0,21.6,0,32.4V88
 	C151.1,88.5,155.1,89.4,159,90.9z"/>
-</svg></div> : ""}
-                                {(menu.object_slug == 'shopping') ? <div className='nav-icon shopping'><svg version="1.1"  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+</svg></span> : ""}
+                                {(menu.object_slug == 'shopping') ? <span className='nav-icon shopping'><svg version="1.1"  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
 	 viewBox="0 0 160.4 182">
 <g>
 	<g>
@@ -132,8 +132,8 @@ export default withSiteData(class MenuList extends React.Component {
 		c0.3-3.3,3.1-5.8,6.4-5.8h16.6V39H26.5c-7.2,0-13.1,5.4-13.8,12.5L1.6,167.3c-0.3,3.4,0.8,6.8,3.1,9.3c2.3,2.5,5.5,4,8.9,4h133.2
 		c3.4,0,6.7-1.4,8.9-4C158,174,159.1,170.7,158.8,167.3z"/>
 </g>
-</svg></div> : ""}
-                                {(menu.object_slug == 'sign-up') ? <div className='nav-icon sign-up'><svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+</svg></span> : ""}
+                                {(menu.object_slug == 'sign-up') ? <span className='nav-icon sign-up'><svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
 	 viewBox="0 0 200 200" enableBackground="new 0 0 200 200">
 <g id="_x32_">
 	<path fill="none" stroke="#58595B" strokeWidth="9" strokeLinecap="square" strokeMiterlimit="10" d="M125.2,62.6
@@ -141,13 +141,13 @@ export default withSiteData(class MenuList extends React.Component {
 	<path fill="none" stroke="#58595B" strokeWidth="9" strokeLinecap="square" strokeMiterlimit="10" d="M120.7,120.8
 		c0.6,10.3,4.6,34.8,30,26.2c37.5-12.8,42.8-114.4-15.4-134.9C79.3-7.7,12.8,24.2,12.8,107.7c0,83.5,71.4,97.7,112.4,78.9"/>
 </g>
-</svg></div> : ""}
-{(menu.object_slug == 'sales-offers') ? <div className="nav-icon sales-offers">
+</svg></span> : ""}
+{(menu.object_slug == 'sales-offers') ? <span className="nav-icon sales-offers">
 	<svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 163.3 167.85"><path class="cls-1" d="M81.86,163.05a79.22,79.22,0,1,0-79-79.22A79.22,79.22,0,0,0,81.86,163.05Zm0-152.23A73,73,0,1,1,9,83.83,73,73,0,0,1,81.86,10.82Z"/><path class="cls-2" d="M82,108.57c-4.68,0-6.79-2.29-6.88-7.45l0-3.05H54.39l0,3.13c.12,13.59,6.77,23,18.37,26.09v9.29H90.7v-9.19c11.39-3.11,18.6-12.48,18.6-24.5,0-16.17-11.89-23.14-21.46-28.73-6-3.54-11.25-6.6-11.25-10.76,0-3.66,2.86-4.42,5.27-4.42,2.71,0,5.51.76,5.62,6.42l.06,3h20.65l0-3.14C108,52.63,101.57,43.5,90.7,40.4V31.08H72.78v9.36C62.38,43.55,56,52,56,63.05c0,15.31,11.49,22.34,20.72,28C83,94.88,88.4,98.18,88.4,102.77,88.4,106.62,86.24,108.57,82,108.57ZM80,85.75c-8.73-5.34-17.76-10.87-17.76-22.7,0-8.9,5.34-15.31,14.28-17.15L79,45.39v-8.1h5.5v8.14l2.53.48c8.57,1.61,13.72,7.36,14.74,16.33H93.4c-1.13-6-5.28-9.48-11.54-9.48C75,52.76,70.37,57,70.37,63.4c0,7.72,7,11.8,14.33,16.11,9,5.3,18.39,10.77,18.39,23.38,0,9.9-6.15,17.17-16,19l-2.55.46v8.05H79V122.2l-2.55-.46c-9.14-1.66-14.62-7.81-15.64-17.46h8.36c1.15,6.64,5.77,10.5,12.81,10.5,7.68,0,12.64-4.71,12.64-12C94.61,94.7,87.5,90.36,80,85.75Z"/></svg>
-</div> : ""}
-{(menu.object_slug == 'leasing') ? <div className="nav-icon leasing">
+</span> : ""}
+{(menu.object_slug == 'leasing') ? <span className="nav-icon leasing">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 148.34 162.64"><path class="cls-1" d="M118,160.89a3.16,3.16,0,0,1-1.3.28L6,161.1a3.14,3.14,0,0,1-3.16-3.16L2.87,5.39A3.16,3.16,0,0,1,6,2.23l110.78.06A3.16,3.16,0,0,1,120,5.43l.07,12.2-6.33,0,0-9L9.2,8.56,9.12,154.78l104.47.06L114,83.89l6.33,0L119.89,158A3.16,3.16,0,0,1,118,160.89Z"/><rect class="cls-1" x="26.01" y="32.22" width="71.71" height="6.33"/><rect class="cls-1" x="50.87" y="44.21" width="6.33" height="56.1" transform="matrix(0, -1, 1, 0, -18.48, 125.96)"/><rect class="cls-1" x="46.32" y="66.91" width="6.33" height="47.02" transform="translate(-41.21 139.4) rotate(-89.68)"/><rect class="cls-1" x="25.97" y="105.28" width="38.51" height="6.33" transform="translate(-0.12 0.05) rotate(-0.06)"/><rect class="cls-1" x="25.96" y="124.38" width="40.38" height="6.33"/><path class="cls-1" d="M82.5,124.16c-2.8,1.27-7.9,3.13-10.58,1.43-4.78-3.06-4.6-17.35-.78-23.73C74.66,96,118.36,20,118.8,19.25a3.16,3.16,0,0,1,4.32-1.17l17,9.74a3.17,3.17,0,0,1,1.17,4.32C139.53,35.24,97.83,108,93.62,115,90.67,119.93,85.39,122.86,82.5,124.16Zm-7.17-4.28a19,19,0,0,0,4.57-1.49c3.76-1.7,6.78-4.12,8.29-6.63,3.72-6.23,38.21-66.36,46.05-80l-11.52-6.6c-8,13.94-42.94,74.61-46.14,80C74.08,109.27,74.36,117.2,75.33,119.88Z"/><path class="cls-1" d="M135.37,30.28a3.17,3.17,0,0,1-4.06-4.45l4.56-8.06-1-1-5,8.3a3.16,3.16,0,1,1-5.42-3.26L131.64,9.9a3.16,3.16,0,0,1,5-.54l5.42,5.77a3.16,3.16,0,0,1,.45,3.72L136.82,29A3.2,3.2,0,0,1,135.37,30.28Z"/><path class="cls-1" d="M124.6,78.32a3.43,3.43,0,0,1-1,.27l-4.37.41a3.16,3.16,0,1,1-.6-6.3l2.74-.26,18.51-32.28-4-8.32a3.15,3.15,0,0,1,1.49-4.22l.06,0a3.16,3.16,0,0,1,4.16,1.52l4.69,9.82a3.18,3.18,0,0,1-.12,2.94L126,77A3.2,3.2,0,0,1,124.6,78.32Z"/><path class="cls-1" d="M106.45,87.88a3.16,3.16,0,0,1-2.88-.13L88.49,79.1a3.16,3.16,0,0,1,3.15-5.49l15.08,8.65a3.16,3.16,0,0,1-.27,5.62Z"/><path class="cls-1" d="M72.73,129.4a3.13,3.13,0,0,1-3-.18,3.17,3.17,0,0,1-1-4.35l2.19-3.6a3.17,3.17,0,0,1,5.41,3.3l-2.2,3.6A3.18,3.18,0,0,1,72.73,129.4Z"/></svg>
-</div> : ""}
+</span> : ""}
                                 {ReactHtmlParser(menu.title)}</Link>
                             </NavItem>
                         }                     
