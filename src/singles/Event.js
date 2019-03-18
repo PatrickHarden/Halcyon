@@ -30,7 +30,7 @@ export default withRouteData(class Page extends React.Component {
           <Navigation />
           <Head>
             <body className={'single-blog blog-id-' + event.id + ' ' + event.slug + ' dark-brown'} />
-            {(event.yoast_meta.yoast_wpseo_title) ? <title>{event.yoast_meta.yoast_wpseo_title}</title> : <title>{event.title.rendered}</title>}
+            {(event.yoast_meta.yoast_wpseo_title) ? <title>{event.yoast_meta.yoast_wpseo_title}</title> : <title>{'Event -' + event.title.rendered}</title>}
             {(event.yoast_meta.yoast_wpseo_metadesc) ? <meta name="description" content={event.yoast_meta.yoast_wpseo_metadesc} /> : <meta name="description" content={metaDescription} />}
             {(event.yoast_meta.yoast_wpseo_canonical) ? <link rel="canonical" href={event.yoast_meta.yoast_wpseo_canonical} /> : <link rel="canonical" href={siteRoot} />}
           </Head>
