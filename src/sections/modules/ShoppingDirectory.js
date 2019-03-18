@@ -154,7 +154,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                         </div>
                         <div className='search'>
                             <label for="search-shopping" className="sr-only">Search through the retailers</label>
-                            <input className='search-bar' id="search-shopping" placeholder="Search" value={this.state.search} onChange={event => this.handleSearch(event.target.value)} />
+                            <input className='search-bar' type="submit" id="search-shopping" placeholder="Search" value={this.state.search} onChange={event => this.handleSearch(event.target.value)} />
                             <FontAwesomeIcon icon={faSearch} className='search-icon' />
                         </div>
                     </div>

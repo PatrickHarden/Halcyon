@@ -115,7 +115,7 @@ export default withSiteData(class EventsDirectory extends React.Component {
                         <div className="controls-container">
                             <div className={(this.state.list) ? "search" : "search"}>
                             <label for="sTarget" className="sr-only">Search through current and upcoming events.</label>
-                            <input className='search-bar' id="sTarget" placeholder="Search..." value={this.state.search} onChange={event => this.handleSearch(event.target.value)} />                         
+                            <input className='search-bar' type="submit" id="sTarget" placeholder="Search..." value={this.state.search} onChange={event => this.handleSearch(event.target.value)} />                         
                             </div>
                             <div className={(this.state.list) ? "" : ""}>
                                 <FontAwesomeIcon icon={faSearch} className="icon" />
