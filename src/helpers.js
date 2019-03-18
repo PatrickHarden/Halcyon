@@ -283,7 +283,6 @@ const helpers = {
     convertLink: function (url, title) {
         if (url.includes(title.toLowerCase())) {
             var words = url.split('/');
-            console.log(words)
             if ((words[4] == "" || words[4] == null) && words[3] != "") {
                 return words[3]
             } else {

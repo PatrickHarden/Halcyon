@@ -179,7 +179,9 @@ export default withSiteData(class SearchComponent extends React.Component {
         <div id="searchComponent">
           <Container>
             <div>
+            <label for="search">
               <input className='search-bar' ref="searchInput" placeholder="Search..." value={this.state.term} onKeyDown={this.keyPress} onChange={event => this.setState({ term: event.target.value })} />
+              </label>
               <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></div>
             <div id="theResults">
               {(this.state.term.length > 2) ?

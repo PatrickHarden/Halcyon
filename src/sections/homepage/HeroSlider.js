@@ -19,15 +19,15 @@ export default class HeroSlider extends React.Component {
       if (hero.link){
           return <div className='hero-slide' key={index}>
                     <Link to={helpers.convertLink(hero.link.url, this.props.title)} target={(hero.link.target) ? "_blank" : ""}>
-                      <img className='visible-xs' key={hero.mobile_image.link} src={hero.mobile_image.link} />
-                      <img className='hidden-xs' key={hero.desktop_image.link} src={hero.desktop_image.link} />
+                      <img className='visible-xs' key={hero.mobile_image.url} src={hero.mobile_image.url} alt={hero.mobile_image.alt + " mobile"} />
+                      <img className='hidden-xs' key={hero.desktop_image.url} src={hero.desktop_image.url} alt={hero.desktop_image.alt} />
                       <h2 className='hero-heading'>{hero.heading}</h2>
                     </Link>
                   </div>
       } else if(!hero.link) {
           return  <div className='hero-slide' key={index}>
-                    <img className='visible-xs' key={hero.mobile_image.link} src={hero.mobile_image.link} />
-                    <img className='hidden-xs' key={hero.desktop_image.link} src={hero.desktop_image.link} />
+                    <img className='visible-xs' key={hero.mobile_image.url} src={hero.mobile_image.url} alt={hero.mobile_image.alt + " mobile"} />
+                    <img className='hidden-xs' key={hero.desktop_image.url} src={hero.desktop_image.url} alt={hero.desktop_image.alt} />
                     <h2 className='hero-heading'>{hero.heading}</h2>
                    </div>
       } else {
