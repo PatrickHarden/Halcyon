@@ -154,7 +154,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                         </div>
                         <div className='search'>
                             <label for="search-shopping" className="sr-only">Search through the retailers</label>
-                            <input className='search-bar' type="submit" id="search-shopping" placeholder="Search" value={this.state.search} onChange={event => this.handleSearch(event.target.value)} />
+                            <input className='search-bar' type="submit" id="search-shopping" placeholder="Search" title="search shopping" value={this.state.search} onChange={event => this.handleSearch(event.target.value)} />
                             <FontAwesomeIcon icon={faSearch} className='search-icon' />
                         </div>
                     </div>
@@ -164,7 +164,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                                 if (categoryId == '' && this.state.search == '') {
                                     return (
                                         <div key={store.id} className={store.id + ' storeRow'} categories={(store.imag_taxonomy_store_category[0]) ? store.imag_taxonomy_store_category : "-1"} slug={store.title.rendered}>
-                                            <LinkContainer to={`/shopping/${store.slug}/`} className='store-title-wrap'><Link to={`/shopping/${store.slug}/`}><h4 className='store-title'>{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : null}</h4></Link></LinkContainer>
+                                            <LinkContainer to={`/shopping/${store.slug}/`} className='store-title-wrap'><Link to={`/shopping/${store.slug}/`}><h4 className='store-title'>{(store.title.rendered) ? <span>{ReactHtmlParser(store.title.rendered)}</span> : null}</h4></Link></LinkContainer>
                                             <div className='red-text'>{(store.acf.flags) ? <div>{store.acf.flags[0] + '!'}</div> : ""}{(this.isSale(store)) ? <div>Offer Available</div> : ""}</div>
                                             <div className='center-container'>
                                                 <div className='store-phone'>{(store.acf.phone_number) ? <a href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
@@ -179,7 +179,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                                         if (store.title.rendered.toLowerCase().includes(this.state.search.toLowerCase())) {
                                             return (
                                                 <div key={store.id} className={store.id + ' storeRow'} categories={(store.imag_taxonomy_store_category[0]) ? store.imag_taxonomy_store_category : "-1"} slug={store.title.rendered}>
-                                                    <div className='store-title-wrap'><Link to={`/shopping/${store.slug}/`}><h4 className='store-title'>{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : null}</h4></Link></div>
+                                                    <div className='store-title-wrap'><Link to={`/shopping/${store.slug}/`}><h4 className='store-title'>{(store.title.rendered) ? <span>{ReactHtmlParser(store.title.rendered)}</span> : null}</h4></Link></div>
                                                     <div className='red-text'>{(store.acf.flags) ? <div>{store.acf.flags[0] + '!'}</div> : ""}{(this.isSale(store)) ? <div>Offer Available</div> : ""}</div>
                                                     <div className='center-container'>
                                                         <div className='store-phone'>{(store.acf.phone_number) ? <a href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
@@ -193,7 +193,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                                     } else if (String(store.imag_taxonomy_store_category[0]).includes(categoryId[0]) && this.state.search == '') {
                                         return (
                                             <div key={store.id} className={store.id + ' storeRow'} categories={(store.imag_taxonomy_store_category[0]) ? store.imag_taxonomy_store_category : "-1"} slug={store.title.rendered}>
-                                                <div className='store-title-wrap'><Link to={`/shopping/${store.slug}/`}><h4 className='store-title'>{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : null}</h4></Link></div>
+                                                <div className='store-title-wrap'><Link to={`/shopping/${store.slug}/`}><h4 className='store-title'>{(store.title.rendered) ? <span>{ReactHtmlParser(store.title.rendered)}</span> : null}</h4></Link></div>
                                                 <div className='red-text'>{(store.acf.flags) ? <div>{store.acf.flags[0] + '!'}</div> : ""}{(this.isSale(store)) ? <div>Offer Available</div> : ""}</div>
                                                 <div className='center-container'>
                                                     <div className='store-phone'>{(store.acf.phone_number) ? <a href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
@@ -207,7 +207,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                                         if (store.title.rendered.toLowerCase().includes(this.state.search.toLowerCase())) {
                                             return (
                                                 <div key={store.id} className={store.id + ' storeRow'} categories={(store.imag_taxonomy_store_category[0]) ? store.imag_taxonomy_store_category : "-1"} slug={store.title.rendered}>
-                                                    <div className='store-title-wrap'><Link to={`/shopping/${store.slug}/`}><h4 className='store-title'>{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : null}</h4></Link></div>
+                                                    <div className='store-title-wrap'><Link to={`/shopping/${store.slug}/`}><h4 className='store-title'>{(store.title.rendered) ? <span>{ReactHtmlParser(store.title.rendered)}</span> : null}</h4></Link></div>
                                                     <div className='red-text'>{(store.acf.flags) ? <div>{store.acf.flags[0] + '!'}</div> : ""}{(this.isSale(store)) ? <div>Offer Available</div> : ""}</div>
                                                     <div className='center-container'>
                                                         <div className='store-phone'>{(store.acf.phone_number) ? <a href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
