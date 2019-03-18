@@ -127,9 +127,8 @@ export default withSiteData(class DiningDirectory extends React.Component {
                 </div>
                 <Container className='controls-container'>
                     <div className='search'>
-                        <label for="search-dining">
+                        <label for="search-dining" className="sr-only">Search through the restaurants</label>
                         <input className='search-bar' id="search-dining" placeholder="Search..." value={this.state.search} onChange={event => this.handleSearch(event.target.value)} />
-                        </label>
                         <FontAwesomeIcon icon={faSearch} className='search-icon' />
                     </div>
                 </Container>

@@ -65,9 +65,8 @@ export default withSiteData(class SaleDirectory extends React.Component {
                 </div>
                 <Container>
                 <div className='search pull-right'>
-                <label for="search-sales">
+                <label for="search-sales" className="sr-only"> Search through active and upcoming sales </label>
                 <input className='search-bar' id="search-sales" placeholder="Search..." value={this.state.search} onChange={event => this.handleSearch(event.target.value)} />
-                </label>
                 </div>
                 </Container>
                 <Container className="diningRows">

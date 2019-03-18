@@ -179,9 +179,8 @@ export default withSiteData(class SearchComponent extends React.Component {
         <div id="searchComponent">
           <Container>
             <div>
-            <label for="search">
-              <input className='search-bar' ref="searchInput" placeholder="Search..." value={this.state.term} onKeyDown={this.keyPress} onChange={event => this.setState({ term: event.target.value })} />
-              </label>
+            <label for="global-search" className="sr-only">Search all pages, events, stores, and posts.</label>
+              <input className='search-bar' id="global-search" ref="searchInput" placeholder="Search..." value={this.state.term} onKeyDown={this.keyPress} onChange={event => this.setState({ term: event.target.value })} />
               <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></div>
             <div id="theResults">
               {(this.state.term.length > 2) ?
