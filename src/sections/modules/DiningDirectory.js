@@ -149,10 +149,10 @@ export default withSiteData(class DiningDirectory extends React.Component {
                                         </div>
                                         <div className='action-corner'>
                                             <div className='social-container hidden-xs'>
-                                                {(store.acf.open_table) ? <a className='open-table' href={store.acf.open_table} target="_blank"><img src={OpenTableIcon} alt='open table logo' /></a> : ""}
-                                                {(store.acf.twitter) ? <a className='social-icon' href={store.acf.twitter} target="_blank"><FontAwesomeIcon icon={faTwitter} className='icon' /></a> : ""}
-                                                {(store.acf.facebook) ? <a className='social-icon' href={store.acf.facebook} target="_blank"><FontAwesomeIcon icon={faFacebookF} className='icon' /></a> : ""}
-                                                {(store.acf.instagram) ? <a className='social-icon' href={store.acf.instagram} target="_blank"><FontAwesomeIcon icon={faInstagram} className='icon' /></a> : ""}
+                                                {(store.acf.open_table) ? <a className='open-table' href={store.acf.open_table} target="_blank" alt="open table icon"><img src={OpenTableIcon} alt='open table logo' /></a> : ""}
+                                                {(store.acf.twitter) ? <a className='social-icon' href={store.acf.twitter} target="_blank" alt="twitter icon"><FontAwesomeIcon icon={faTwitter} className='icon' /></a> : ""}
+                                                {(store.acf.facebook) ? <a className='social-icon' href={store.acf.facebook} target="_blank" alt="facebook icon"><FontAwesomeIcon icon={faFacebookF} className='icon' /></a> : ""}
+                                                {(store.acf.instagram) ? <a className='social-icon' href={store.acf.instagram} target="_blank" alt="instagram icon"><FontAwesomeIcon icon={faInstagram} className='icon' /></a> : ""}
                                             </div>
                                             <div className='icon-container'>
                                                 <div className='restaurant-type'>
@@ -166,8 +166,8 @@ export default withSiteData(class DiningDirectory extends React.Component {
                                                         <div className='foodHall icon-wrap'><img src={FoodHallIcon} alt="Food Mall Icon" className="foodHallIcon icon" /></div>
                                                     }
                                                 </div>
-                                                {(store.acf.street_address) ? <a className='visible-xs' href={"//maps.google.com/?q=" + store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon' /></a> : ""}
-                                                {(store.acf.phone_number) ? <a className='visible-xs' href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} className='icon' /></a> : ""}
+                                                {(store.acf.street_address) ? <a className='visible-xs' href={"//maps.google.com/?q=" + store.acf.street_address} alt="google maps link" target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon' /></a> : ""}
+                                                {(store.acf.phone_number) ? <a className='visible-xs' href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} alt="store phone number" className='icon' /></a> : ""}
                                             </div>
                                             <div className='button-wrapper'>
                                                 <Link to={`/dining/${store.slug}/`} className="halcyon-button arrow">View Details</Link>
@@ -195,10 +195,10 @@ export default withSiteData(class DiningDirectory extends React.Component {
                                             </div>
                                             <div className='action-corner'>
                                                 <div className='social-container hidden-xs'>
-                                                    {(store.acf.open_table) ? <a className='open-table' href={store.acf.open_table} target="_blank"><img src={OpenTableIcon} alt='open table logo' /></a> : ""}
-                                                    {(store.acf.twitter) ? <a className='social-icon' href={store.acf.twitter} target="_blank"><FontAwesomeIcon icon={faTwitter} className='icon' /></a> : ""}
-                                                    {(store.acf.facebook) ? <a className='social-icon' href={store.acf.facebook} target="_blank"><FontAwesomeIcon icon={faFacebookF} className='icon' /></a> : ""}
-                                                    {(store.acf.instagram) ? <a className='social-icon' href={store.acf.instagram} target="_blank"><FontAwesomeIcon icon={faInstagram} className='icon' /></a> : ""}
+                                                    {(store.acf.open_table) ? <a className='open-table' href={store.acf.open_table} target="_blank" alt="open table icon"><img src={OpenTableIcon} alt='open table logo' /></a> : ""}
+                                                    {(store.acf.twitter) ? <a className='social-icon' href={store.acf.twitter} target="_blank" alt="twitter icon"><FontAwesomeIcon icon={faTwitter} className='icon' /></a> : ""}
+                                                    {(store.acf.facebook) ? <a className='social-icon' href={store.acf.facebook} target="_blank" alt="facebook icon"><FontAwesomeIcon icon={faFacebookF} className='icon' /></a> : ""}
+                                                    {(store.acf.instagram) ? <a className='social-icon' href={store.acf.instagram} target="_blank" alt="instagram icon"><FontAwesomeIcon icon={faInstagram} className='icon' /></a> : ""}
                                                 </div>
                                                 <div className='icon-container'>
                                                     <div className='restaurant-type'>
@@ -212,8 +212,8 @@ export default withSiteData(class DiningDirectory extends React.Component {
                                                             <div className='foodHall icon-wrap'><img src={FoodHallIcon} alt="Food Mall Icon" className="foodHallIcon icon" /></div>
                                                         }
                                                     </div>
-                                                    {(store.acf.street_address) ? <a className='visible-xs' href={"//maps.google.com/?q=" + store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon' /></a> : ""}
-                                                    {(store.acf.phone_number) ? <a className='visible-xs' href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} className='icon' /></a> : ""}
+                                                    {(store.acf.street_address) ? <a className='visible-xs' href={"//maps.google.com/?q=" + store.acf.street_address} alt="google maps link" target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon' /></a> : ""}
+                                                    {(store.acf.phone_number) ? <a className='visible-xs' href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} alt="store phone number" className='icon' /></a> : ""}
                                                 </div>
                                                 <div className='button-wrapper'>
                                                     <Link to={`/dining/${store.slug}/`} className="halcyon-button arrow">View Details</Link>

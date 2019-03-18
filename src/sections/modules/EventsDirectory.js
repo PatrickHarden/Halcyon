@@ -144,13 +144,13 @@ export default withSiteData(class EventsDirectory extends React.Component {
                                                 <div>{ReactHtmlParser(helpers.compressText(event.acf.post_copy, 200))}</div>
                                             }
                                             <div className="social-container">
-                                                <a href={'mailto:?body=' + siteRoot + '/events/' + event.slug + '&subject=' + ReactHtmlParser(event.title.rendered)} className="social-icon">
+                                                <a href={'mailto:?body=' + siteRoot + '/events/' + event.slug + '&subject=' + ReactHtmlParser(event.title.rendered)} alt="email event" className="social-icon">
                                                     <FontAwesomeIcon icon={faEnvelope} className='icon' />
                                                 </a>
-                                                <a href={'https://twitter.com/home?status=' + siteRoot + '/events/' + event.slug} className="social-icon" target="_blank">
+                                                <a href={'https://twitter.com/home?status=' + siteRoot + '/events/' + event.slug} className="social-icon" alt="Connect via Twitter" target="_blank">
                                                     <FontAwesomeIcon icon={faTwitter} className='icon' />
                                                 </a>
-                                                <a href={'https://www.facebook.com/sharer/sharer.php?u=' + siteRoot + '/events/' + event.slug} className="social-icon" target="_blank">
+                                                <a href={'https://www.facebook.com/sharer/sharer.php?u=' + siteRoot + '/events/' + event.slug} className="social-icon" alt="Connect via Facebook" target="_blank">
                                                     <FontAwesomeIcon icon={faFacebookF} className='icon' />
                                                 </a>
                                             </div>
@@ -178,13 +178,13 @@ export default withSiteData(class EventsDirectory extends React.Component {
                                                     <div>{ReactHtmlParser(helpers.compressText(event.acf.post_copy, 200))}</div>
                                                 }
                                                 <div className="social-container">
-                                                    <a href={'mailto:?body=' + siteRoot + '/events/' + event.slug + '&subject=' + ReactHtmlParser(event.title.rendered)} className="social-icon">
+                                                    <a href={'mailto:?body=' + siteRoot + '/events/' + event.slug + '&subject=' + ReactHtmlParser(event.title.rendered)} alt="email event" className="social-icon">
                                                         <FontAwesomeIcon icon={faEnvelope} className='icon' />
                                                     </a>
-                                                    <a href={'https://twitter.com/home?status=' + siteRoot + '/events/' + event.slug} className="social-icon" target="_blank">
+                                                    <a href={'https://twitter.com/home?status=' + siteRoot + '/events/' + event.slug} className="social-icon" alt="Connect via Twitter" target="_blank">
                                                         <FontAwesomeIcon icon={faTwitter} className='icon' />
                                                     </a>
-                                                    <a href={'https://www.facebook.com/sharer/sharer.php?u=' + siteRoot + '/events/' + event.slug} className="social-icon" target="_blank">
+                                                    <a href={'https://www.facebook.com/sharer/sharer.php?u=' + siteRoot + '/events/' + event.slug} className="social-icon" alt="Connect via Facebook" target="_blank">
                                                         <FontAwesomeIcon icon={faFacebookF} className='icon' />
                                                     </a>
                                                 </div>

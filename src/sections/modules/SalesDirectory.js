@@ -87,13 +87,13 @@ export default withSiteData(class SaleDirectory extends React.Component {
                                     </div>
                                     <div className='action-corner'>
                                         <div className="share-links hidden-xs">
-                                            <a href={'mailto:?body=' + siteRoot + '/dining/' + sale.slug + '&subject=' + ReactHtmlParser(sale.title.rendered)}>
+                                            <a href={'mailto:?body=' + siteRoot + '/dining/' + sale.slug + '&subject=' + ReactHtmlParser(sale.title.rendered)} alt="email sale">
                                                 <FontAwesomeIcon icon={faEnvelope} className='icon' />
                                             </a>
-                                            <a href={'https://twitter.com/home?status=' + siteRoot + '/dining/' + sale.slug} target="_blank">
+                                            <a href={'https://twitter.com/home?status=' + siteRoot + '/dining/' + sale.slug} target="_blank" alt="Connect via Twitter">
                                                 <FontAwesomeIcon icon={faTwitter} className='icon' />
                                             </a>
-                                            <a href={'https://www.facebook.com/sharer/sharer.php?u=' + siteRoot + '/dining/' + sale.slug} target="_blank">
+                                            <a href={'https://www.facebook.com/sharer/sharer.php?u=' + siteRoot + '/dining/' + sale.slug} target="_blank" alt="Connect via Facebook">
                                                 <FontAwesomeIcon icon={faFacebookF} className='icon' />
                                             </a>
                                         </div>
@@ -118,13 +118,13 @@ export default withSiteData(class SaleDirectory extends React.Component {
                                             {(sale.acf.post_copy) ? <div>{ReactHtmlParser(sale.acf.post_copy)}</div> : ""}
                                         </div>
                                         <div className="col-sm-2">
-                                            <a href={'mailto:?body=' + siteRoot + '/dining/' + sale.slug + '&subject=' + ReactHtmlParser(sale.title.rendered)}>
+                                            <a href={'mailto:?body=' + siteRoot + '/dining/' + sale.slug + '&subject=' + ReactHtmlParser(sale.title.rendered)} alt="email sale">
                                                 mail
                                         </a>
-                                            <a href={'https://twitter.com/home?status=' + siteRoot + '/dining/' + sale.slug} target="_blank">
+                                            <a href={'https://twitter.com/home?status=' + siteRoot + '/dining/' + sale.slug} target="_blank" alt="Connect via Twitter">
                                                 twitter
                                         </a>
-                                            <a href={'https://www.facebook.com/sharer/sharer.php?u=' + siteRoot + '/dining/' + sale.slug} target="_blank">
+                                            <a href={'https://www.facebook.com/sharer/sharer.php?u=' + siteRoot + '/dining/' + sale.slug} target="_blank" alt="Connect via Facebook">
                                                 facebook
                                         </a>
                                             <Link to={'/sales/' + sale.slug} className="halcyon-button">More Info ></Link>
