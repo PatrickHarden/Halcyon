@@ -127,7 +127,9 @@ export default withSiteData(class DiningDirectory extends React.Component {
                 </div>
                 <Container className='controls-container'>
                     <div className='search'>
+                        <label for="search dining">
                         <input className='search-bar' placeholder="Search..." value={this.state.search} onChange={event => this.handleSearch(event.target.value)} />
+                        </label>
                         <FontAwesomeIcon icon={faSearch} className='search-icon' />
                     </div>
                 </Container>
@@ -138,7 +140,7 @@ export default withSiteData(class DiningDirectory extends React.Component {
                                 (store.acf.store_type == "restaurant") ?
                                     <div key={index} className='store-single'>
                                         <div className='image-wrapper'>
-                                            <Link to={`/dining/${store.slug}/`}><img className='hidden-xs' src={store.acf.featured_image} /></Link>
+                                            <Link to={`/dining/${store.slug}/`}><img className='hidden-xs' src={store.acf.featured_image} alt="featured store image" /></Link>
                                         </div>
                                         <div className='content-wrapper'>
                                             <Link className='store-title-link' to={`/dining/${store.slug}/`}><h4 className='store-title'>{ReactHtmlParser(store.title.rendered)}</h4></Link>
@@ -156,13 +158,13 @@ export default withSiteData(class DiningDirectory extends React.Component {
                                             <div className='icon-container'>
                                                 <div className='restaurant-type'>
                                                     {(store.acf.restaurant_type == 'restaurant') &&
-                                                        <div className='restaurant icon-wrap'><img src={RestaurantIcon} className="diningIcon icon" /></div>
+                                                        <div className='restaurant icon-wrap'><img src={RestaurantIcon} alt="Restaurant Icon" className="diningIcon icon" /></div>
                                                     }
                                                     {(store.acf.restaurant_type == 'bar') &&
-                                                        <div className='bar icon-wrap'><img src={BarIcon} className="barIcon icon" /></div>
+                                                        <div className='bar icon-wrap'><img src={BarIcon} alt="Bar Icon" className="barIcon icon" /></div>
                                                     }
                                                     {(store.acf.restaurant_type == 'food-hall') &&
-                                                        <div className='foodHall icon-wrap'><img src={FoodHallIcon} className="foodHallIcon icon" /></div>
+                                                        <div className='foodHall icon-wrap'><img src={FoodHallIcon} alt="Food Mall Icon" className="foodHallIcon icon" /></div>
                                                     }
                                                 </div>
                                                 {(store.acf.street_address) ? <a className='visible-xs' href={"//maps.google.com/?q=" + store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon' /></a> : ""}
@@ -184,7 +186,7 @@ export default withSiteData(class DiningDirectory extends React.Component {
                                     (store.title.rendered.toLowerCase().includes(this.state.search.toLowerCase())) ?
                                         <div key={index} className='store-single'>
                                             <div className='image-wrapper'>
-                                                <Link to={`/dining/${store.slug}/`}><img className='hidden-xs' src={store.acf.featured_image} /></Link>
+                                                <Link to={`/dining/${store.slug}/`}><img className='hidden-xs' alt="featured store image" src={store.acf.featured_image} /></Link>
                                             </div>
                                             <div className='content-wrapper'>
                                                 <Link className='store-title-link' to={`/dining/${store.slug}/`}><h4 className='store-title'>{ReactHtmlParser(store.title.rendered)}</h4></Link>
@@ -202,13 +204,13 @@ export default withSiteData(class DiningDirectory extends React.Component {
                                                 <div className='icon-container'>
                                                     <div className='restaurant-type'>
                                                         {(store.acf.restaurant_type == 'restaurant') &&
-                                                            <div className='restaurant icon-wrap'><img src={RestaurantIcon} className="diningIcon icon" /></div>
+                                                            <div className='restaurant icon-wrap'><img src={RestaurantIcon} alt="Restaurant Icon" className="diningIcon icon" /></div>
                                                         }
                                                         {(store.acf.restaurant_type == 'bar') &&
-                                                            <div className='bar icon-wrap'><img src={BarIcon} className="barIcon icon" /></div>
+                                                            <div className='bar icon-wrap'><img src={BarIcon} alt="Bar Icon" className="barIcon icon" /></div>
                                                         }
                                                         {(store.acf.restaurant_type == 'food-hall') &&
-                                                            <div className='foodHall icon-wrap'><img src={FoodHallIcon} className="foodHallIcon icon" /></div>
+                                                            <div className='foodHall icon-wrap'><img src={FoodHallIcon} alt="Food Mall Icon" className="foodHallIcon icon" /></div>
                                                         }
                                                     </div>
                                                     {(store.acf.street_address) ? <a className='visible-xs' href={"//maps.google.com/?q=" + store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon' /></a> : ""}

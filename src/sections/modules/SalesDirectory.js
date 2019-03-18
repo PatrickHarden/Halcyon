@@ -65,7 +65,9 @@ export default withSiteData(class SaleDirectory extends React.Component {
                 </div>
                 <Container>
                 <div className='search pull-right'>
-                    <input className='search-bar' placeholder="Search..." value={this.state.search} onChange={event => this.handleSearch(event.target.value)} />
+                <label for="search sales">
+                <input className='search-bar' placeholder="Search..." value={this.state.search} onChange={event => this.handleSearch(event.target.value)} />
+                </label>
                 </div>
                 </Container>
                 <Container className="diningRows">
@@ -109,7 +111,7 @@ export default withSiteData(class SaleDirectory extends React.Component {
                                     <div key={index} className="row">
                                         <div className="col-sm-2">{(sale.acf.end_date) ? <span>Ends<br />{moment(sale.acf.end_date, 'YYYYMMDD').format('MM/DD')}</span> : ""}</div>
                                         <div className='image-wrapper col-sm-3'>
-                                            <img className='hidden-xs' src={sale.acf.featured_image} />
+                                            <img className='hidden-xs' src={sale.acf.featured_image} alt="Featured Sale Image" />
                                         </div>
                                         <div className="col-sm-5">
                                             <div>{moment(sale.acf.start_date, 'YYYYMMDD').format('MMM DD')} - {moment(sale.acf.end_date, 'YYYYMMDD').format('MMM DD')}</div>

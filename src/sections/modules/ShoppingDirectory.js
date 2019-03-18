@@ -153,7 +153,9 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                             </Dropdown>
                         </div>
                         <div className='search'>
+                            <label for="search shopping">
                             <input className='search-bar' placeholder="Search" value={this.state.search} onChange={event => this.handleSearch(event.target.value)} />
+                            </label>
                             <FontAwesomeIcon icon={faSearch} className='search-icon' />
                         </div>
                     </div>
@@ -167,7 +169,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                                             <div className='red-text'>{(store.acf.flags) ? <div>{store.acf.flags[0] + '!'}</div> : ""}{(this.isSale(store)) ? <div>Offer Available</div> : ""}</div>
                                             <div className='center-container'>
                                                 <div className='store-phone'>{(store.acf.phone_number) ? <a href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
-                                                <div className='store-directions'>{(store.acf.street_address) ? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon visible-xs' /><img src={MapIconDesktop} className="hidden-xs icon" /></a> : ""}</div>
+                                                <div className='store-directions'>{(store.acf.street_address) ? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon visible-xs' /><img src={MapIconDesktop} alt="Map Icon" className="hidden-xs icon" /></a> : ""}</div>
                                                 <div className='hours'>{helpers.getHours(store, globalHours, globalHolidayHours)}</div>
                                             </div>
                                             <LinkContainer to={`/shopping/${store.slug}/`} className='button-wrapper'><Link to={`/shopping/${store.slug}/`} className="halcyon-button arrow viewStoreButton"><div>View Store</div></Link></LinkContainer>
@@ -182,7 +184,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                                                     <div className='red-text'>{(store.acf.flags) ? <div>{store.acf.flags[0] + '!'}</div> : ""}{(this.isSale(store)) ? <div>Offer Available</div> : ""}</div>
                                                     <div className='center-container'>
                                                         <div className='store-phone'>{(store.acf.phone_number) ? <a href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
-                                                        <div className='store-directions'>{(store.acf.street_address) ? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon visible-xs' /><img src={MapIconDesktop} className="hidden-xs icon" /></a> : ""}</div>
+                                                        <div className='store-directions'>{(store.acf.street_address) ? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon visible-xs' /><img src={MapIconDesktop} alt="Map Icon"  className="hidden-xs icon" /></a> : ""}</div>
                                                         <div className='hours'>{helpers.getHours(store, globalHours, globalHolidayHours)}</div>
                                                     </div>
                                                     <div className='button-wrapper'><Link to={`/shopping/${store.slug}/`} className="halcyon-button arrow viewStoreButton"><div>View Store</div></Link></div>
@@ -196,7 +198,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                                                 <div className='red-text'>{(store.acf.flags) ? <div>{store.acf.flags[0] + '!'}</div> : ""}{(this.isSale(store)) ? <div>Offer Available</div> : ""}</div>
                                                 <div className='center-container'>
                                                     <div className='store-phone'>{(store.acf.phone_number) ? <a href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
-                                                    <div className='store-directions'>{(store.acf.street_address) ? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon visible-xs' /><img src={MapIconDesktop} className="hidden-xs icon" /></a> : ""}</div>
+                                                    <div className='store-directions'>{(store.acf.street_address) ? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon visible-xs' /><img src={MapIconDesktop} alt="Map Icon"  className="hidden-xs icon" /></a> : ""}</div>
                                                     <div className='hours'>{helpers.getHours(store, globalHours, globalHolidayHours)}</div>
                                                 </div>
                                                 <div className='button-wrapper'><Link to={`/shopping/${store.slug}/`} className="halcyon-button arrow viewStoreButton"><div>View Store</div></Link></div>
@@ -210,7 +212,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                                                     <div className='red-text'>{(store.acf.flags) ? <div>{store.acf.flags[0] + '!'}</div> : ""}{(this.isSale(store)) ? <div>Offer Available</div> : ""}</div>
                                                     <div className='center-container'>
                                                         <div className='store-phone'>{(store.acf.phone_number) ? <a href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
-                                                        <div className='store-directions'>{(store.acf.street_address) ? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon visible-xs' /><img src={MapIconDesktop} className="hidden-xs icon" /></a> : ""}</div>
+                                                        <div className='store-directions'>{(store.acf.street_address) ? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon visible-xs' /><img src={MapIconDesktop} alt="Map Icon"  className="hidden-xs icon" /></a> : ""}</div>
                                                         <div className='hours'>{helpers.getHours(store, globalHours, globalHolidayHours)}</div>
                                                     </div>
                                                     <div className='button-wrapper'><Link to={`/shopping/${store.slug}/`} className="halcyon-button arrow viewStoreButton"><div>View Store</div></Link></div>

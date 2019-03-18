@@ -509,6 +509,7 @@ footer .fa:hover,footer a:hover{
 footer > .container > .row {
     margin: 0;
 }
+label {display:initial;}
 @media screen and (min-width: 768px) {
     footer {
         background-position: center top 40%; 
