@@ -20,3 +20,13 @@
         margin-bottom: 4.5rem;
     }
 }
+
+@media screen and (min-width:1440px){
+    .image-group-1 > div {width:100%; height:500px;}
+.image-group-3 > div, .image-group-2 > div, .image-group-4 > div {width:100%; height:250px;} 
+}
+
+@media screen and (min-width:1910px){
+    .image-group-1 > div {width:100%; height:600px;}
+.image-group-3 > div, .image-group-2 > div, .image-group-4 > div {width:100%; height:300px;} 
+}
