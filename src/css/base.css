@@ -458,7 +458,7 @@ main.content {
 /* Footer Styles */
 footer{
     position:relative;
-    z-index:2;
+    z-index:4;
     padding: 2rem 0 0;
     background-color:#EDECE2;
     color:#fff;

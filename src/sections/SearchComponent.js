@@ -30,7 +30,7 @@ export default withSiteData(class SearchComponent extends React.Component {
   hideContent() {
     var width = document.body.clientWidth;
     if (width >= 768) {
-      document.getElementById('searchComponent').style.zIndex = '3'
+      document.getElementById('searchComponent').style.zIndex = '4'
       document.getElementById('searchComponent').style.bottom = 0;
       // document.getElementsByClassName('content')[0].style.display = 'none';
     }

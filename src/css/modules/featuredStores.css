@@ -41,6 +41,7 @@
       font-size:1.4rem;
       line-height:1rem;
       width:auto;
+      margin-top:20px;
     }
     #tenantSlider .slick-prev {
       left:0;
