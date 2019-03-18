@@ -193,6 +193,9 @@ body.baby-blue .restaurant-legend .legend-row {
     background-color: #4E5859;
     color: #fff;
 }
+body.baby-blue .restaurant-legend .legend-row {
+    background-color:#CDE2E0;
+}
 body.dark-brown .heading-container,
 body.dark-brown #heroSection .hero-heading,
 body.dark-brown #mobileFloatingNav,

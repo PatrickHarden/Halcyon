@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-static'
 import Slider from "react-slick";
 import helpers from '../../helpers.js'
 // import DiningHero from '../../images/dining-hero.png'
@@ -17,11 +18,11 @@ export default class HeroSlider extends React.Component {
     heroArray = home.acf.hero_slider.map((hero, index) => {
       if (hero.link){
           return <div className='hero-slide' key={index}>
-                    <a href={helpers.convertLink(hero.link.url, 'halcyon')} target={(hero.link.target) ? "_blank" : ""}>
+                    <Link to={helpers.convertLink(hero.link.url, this.props.title)} target={(hero.link.target) ? "_blank" : ""}>
                       <img className='visible-xs' key={hero.mobile_image.link} src={hero.mobile_image.link} />
                       <img className='hidden-xs' key={hero.desktop_image.link} src={hero.desktop_image.link} />
                       <h2 className='hero-heading'>{hero.heading}</h2>
-                    </a>
+                    </Link>
                   </div>
       } else if(!hero.link) {
           return  <div className='hero-slide' key={index}>

@@ -281,17 +281,20 @@ const helpers = {
 
     // Convert url received from wordpress to one that functions within react-static
     convertLink: function (url, title) {
-        if (url.includes(title)) {
+        if (url.includes(title.toLowerCase())) {
             var words = url.split('/');
-            if (words[4] == "") {
+            console.log(words)
+            if ((words[4] == "" || words[4] == null) && words[3] != "") {
                 return words[3]
             } else {
                 if (words[3] == "events") {
                     return "/events/" + words[4]
                 } else if (words[3] == "sales") {
                     return "/sales/" + words[4]
-                } else if (words[3] == "stores") {
-                    return "/stores/" + words[4]
+                } else if (words[3] == "dining") {
+                    return "/dining/" + words[4]
+                }  else if (words[3] == "shopping") {
+                    return "/shopping/" + words[4]
                 } else if (words[3] == "blog") {
                     return "/blogs/" + words[4]
                 }

@@ -79,7 +79,7 @@ export default withRouteData(class Home extends React.Component {
           {(home.yoast_meta.yoast_wpseo_metadesc) ? <meta name="description" content={home.yoast_meta.yoast_wpseo_metadesc} /> : ""}
           {(home.yoast_meta.yoast_wpseo_canonical) ? <link rel="canonical" href={home.yoast_meta.yoast_wpseo_canonical} /> : ""}
         </Head>
-        <HeroSlider home={this.props.home} />
+        <HeroSlider home={this.props.home} title={this.props.title} />
         <div id="searchBar">
           <Container>
             <div id="searchAddress">
