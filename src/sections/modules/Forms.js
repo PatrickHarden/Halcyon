@@ -26,14 +26,16 @@ export default withSiteData(class Forms extends React.Component {
             fieldList: '',
             value: '',
             confirmation: '',
-            newState: ''
+            newState: '',
+            siteURL: ''
         }
     }
 
     componentWillMount() {
         this.setState({
             publicKey: this.props.centerInfo.acf.gravity_forms_public_api_key,
-            privateKey: this.props.centerInfo.acf.gravity_forms_private_api_key
+            privateKey: this.props.centerInfo.acf.gravity_forms_private_api_key,
+            siteURL: this.props.redirectURL.substr(0, this.props.redirectURL.length - 8)
         })
     }
 
@@ -360,7 +362,7 @@ export default withSiteData(class Forms extends React.Component {
     }
 
     handleSubmit(event) {
-        const SiteURL = 'https://halcyon.dev.v3.imaginuitycenters.com/'
+        const SiteURL = this.state.siteURL;
         event.preventDefault();
 
         let component = this;
