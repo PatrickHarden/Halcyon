@@ -433,8 +433,9 @@ main.content {
         font-size: 1.15rem;
     }
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo) {
-        max-width: 85px;
+        max-width: 90px;
         margin: 0 1rem;
+        max-height: 83px;
     }
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item.logo img {
         max-width: 220px;
@@ -580,10 +581,10 @@ label {display:initial;}
 @media screen and (min-width:992px){
     .nav-logo.desktop {display:none;}
 }
-.navbar-nav > div:nth-child(-n+4) {
+.navbar-nav > li:nth-child(-n+5) {
    order:1 !important;
 }
-.logo {order:2;}
-.navbar-nav > div:nth-child(n+6) {
+.ml-auto.navbar-nav > li.logo {order:2 !important;}
+.navbar-nav > li:nth-child(n+5) {
     order:3 !important;
 }

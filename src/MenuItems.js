@@ -22,7 +22,7 @@ export default withSiteData(class MenuList extends React.Component {
 
         return menus.items.map((menu, i) => {
             return (
-                    <div key={i}>
+                    <NavItem key={i}>
                         {(menu.children) ? (
                             <UncontrolledDropdown nav inNavbar>
                                 <DropdownToggle nav caret>
@@ -46,7 +46,7 @@ export default withSiteData(class MenuList extends React.Component {
                             </UncontrolledDropdown>
 
                         ) :
-                            <NavItem>
+                        
                                 <Link to={'/' + menu.object_slug} href={'/' + menu.object_slug} onClick={toggle}  className="nav-link">
                                 {(menu.object_slug == 'hours-directions') ? <span className='nav-icon directions'><svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
 	 viewBox="0 0 162.5 195">
@@ -149,9 +149,9 @@ export default withSiteData(class MenuList extends React.Component {
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 148.34 162.64"><path class="cls-1" d="M118,160.89a3.16,3.16,0,0,1-1.3.28L6,161.1a3.14,3.14,0,0,1-3.16-3.16L2.87,5.39A3.16,3.16,0,0,1,6,2.23l110.78.06A3.16,3.16,0,0,1,120,5.43l.07,12.2-6.33,0,0-9L9.2,8.56,9.12,154.78l104.47.06L114,83.89l6.33,0L119.89,158A3.16,3.16,0,0,1,118,160.89Z"/><rect class="cls-1" x="26.01" y="32.22" width="71.71" height="6.33"/><rect class="cls-1" x="50.87" y="44.21" width="6.33" height="56.1" transform="matrix(0, -1, 1, 0, -18.48, 125.96)"/><rect class="cls-1" x="46.32" y="66.91" width="6.33" height="47.02" transform="translate(-41.21 139.4) rotate(-89.68)"/><rect class="cls-1" x="25.97" y="105.28" width="38.51" height="6.33" transform="translate(-0.12 0.05) rotate(-0.06)"/><rect class="cls-1" x="25.96" y="124.38" width="40.38" height="6.33"/><path class="cls-1" d="M82.5,124.16c-2.8,1.27-7.9,3.13-10.58,1.43-4.78-3.06-4.6-17.35-.78-23.73C74.66,96,118.36,20,118.8,19.25a3.16,3.16,0,0,1,4.32-1.17l17,9.74a3.17,3.17,0,0,1,1.17,4.32C139.53,35.24,97.83,108,93.62,115,90.67,119.93,85.39,122.86,82.5,124.16Zm-7.17-4.28a19,19,0,0,0,4.57-1.49c3.76-1.7,6.78-4.12,8.29-6.63,3.72-6.23,38.21-66.36,46.05-80l-11.52-6.6c-8,13.94-42.94,74.61-46.14,80C74.08,109.27,74.36,117.2,75.33,119.88Z"/><path class="cls-1" d="M135.37,30.28a3.17,3.17,0,0,1-4.06-4.45l4.56-8.06-1-1-5,8.3a3.16,3.16,0,1,1-5.42-3.26L131.64,9.9a3.16,3.16,0,0,1,5-.54l5.42,5.77a3.16,3.16,0,0,1,.45,3.72L136.82,29A3.2,3.2,0,0,1,135.37,30.28Z"/><path class="cls-1" d="M124.6,78.32a3.43,3.43,0,0,1-1,.27l-4.37.41a3.16,3.16,0,1,1-.6-6.3l2.74-.26,18.51-32.28-4-8.32a3.15,3.15,0,0,1,1.49-4.22l.06,0a3.16,3.16,0,0,1,4.16,1.52l4.69,9.82a3.18,3.18,0,0,1-.12,2.94L126,77A3.2,3.2,0,0,1,124.6,78.32Z"/><path class="cls-1" d="M106.45,87.88a3.16,3.16,0,0,1-2.88-.13L88.49,79.1a3.16,3.16,0,0,1,3.15-5.49l15.08,8.65a3.16,3.16,0,0,1-.27,5.62Z"/><path class="cls-1" d="M72.73,129.4a3.13,3.13,0,0,1-3-.18,3.17,3.17,0,0,1-1-4.35l2.19-3.6a3.17,3.17,0,0,1,5.41,3.3l-2.2,3.6A3.18,3.18,0,0,1,72.73,129.4Z"/></svg>
 </span> : ""}
                                 {ReactHtmlParser(menu.title)}</Link>
-                            </NavItem>
+                           
                         }                     
-                    </div>
+                 </NavItem>
             )
         })
 
