@@ -16,7 +16,7 @@
 }
 #searchComponent .panel {page-break-inside: avoid;box-shadow:none;}
 
-@media screen and (max-width:767px) {
+@media screen and (max-width:991px) {
     #searchComponent {display:none; position:absolute; top:0px !important; right: 0; left:0; bottom:0;background-color:#fff; z-index:4;}
     #searchComponent .search-bar {top:80px; border:solid 1px #333}
     #theResults {top:80px; position:relative;}
