@@ -35,7 +35,7 @@ export default withRouteData(class Post extends React.Component {
         {(post.acf.desktop_image) ?
           <div id="heroSection">
             <img className="hidden-xs" src={post.acf.desktop_image.url} alt={post.acf.desktop_image.alt} />
-            <img className="visible-xs" src={post.acf.mobile_image.url} alt={post.acf.mobile_image.alt} />
+            <img className="visible-xs" src={post.acf.mobile_image.url} alt={post.acf.mobile_image.alt + ' mobile'} />
             {post.acf.additional_content &&
             <div className='button-container hidden-xs'>
               {post.acf.button_1 &&

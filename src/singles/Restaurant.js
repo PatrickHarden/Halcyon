@@ -155,7 +155,7 @@ export default withRouteData(class Page extends React.Component {
                 <div>
                     <div id="heroSection">
                         {(restaurant.acf.hero_image_desktop) ? <img className="hidden-xs hero-image" src={restaurant.acf.hero_image_desktop.url} alt={restaurant.acf.hero_image_desktop.alt} /> : ""}
-                        {(restaurant.acf.hero_image_mobile) ? <img className="visible-xs hero-image" src={restaurant.acf.hero_image_mobile.url} alt={restaurant.acf.hero_image_mobile.alt} /> : ""}
+                        {(restaurant.acf.hero_image_mobile) ? <img className="visible-xs hero-image" src={restaurant.acf.hero_image_mobile.url} alt={restaurant.acf.hero_image_mobile.alt + ' mobile'} /> : ""}
                         <div className="store-container">
                             <div className="logo-wrapper">
                                 {(restaurant.acf.logo) ? <img className="logo" src={restaurant.acf.logo} alt={restaurant.title.rendered + ' logo'} /> : ""}

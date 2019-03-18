@@ -154,7 +154,7 @@ export default withRouteData(class Page extends React.Component {
         <div>
           <div id="heroSection">
             {(retailer.acf.hero_image_desktop) ? <img className="hidden-xs hero-image" src={retailer.acf.hero_image_desktop.url} alt={retailer.acf.hero_image_desktop.alt} /> : ""}
-            {(retailer.acf.hero_image_mobile) ? <img className="visible-xs hero-image" src={retailer.acf.hero_image_mobile.url} alt={retailer.acf.hero_image_mobile.alt} /> : ""}
+            {(retailer.acf.hero_image_mobile) ? <img className="visible-xs hero-image" src={retailer.acf.hero_image_mobile.url} alt={retailer.acf.hero_image_mobile.alt + ' mobile'} /> : ""}
             <div className="store-container">
               <div className="logo-wrapper">
                 {(retailer.acf.logo) ? <img className="logo" src={retailer.acf.logo} alt={retailer.title.rendered + ' logo'} /> : ""}

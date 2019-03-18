@@ -54,8 +54,8 @@ export default class HeroSlider extends React.Component {
     return (
       <div id="heroContainer">
         <div id="initialHeroImage">
-          <img className='hidden-xs' src={this.props.home[0].acf.hero_slider[0].desktop_image.url} />
-          <img className="visible-xs" src={this.props.home[0].acf.hero_slider[0].mobile_image.url} />
+          <img className='hidden-xs' src={this.props.home[0].acf.hero_slider[0].desktop_image.url} alt={this.props.home[0].acf.hero_slider[0].desktop_image.alt} />
+          <img className="visible-xs" src={this.props.home[0].acf.hero_slider[0].mobile_image.url} alt={this.props.home[0].acf.hero_slider[0].mobile_image.alt + ' mobile'} />
         </div>
         <div className='hero-slider-wrapper' id="fadeHeroIn">
           <Slider className='hero-slider' {...settings}>
