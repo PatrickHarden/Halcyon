@@ -30,21 +30,21 @@ export default withSiteData(class SearchComponent extends React.Component {
   hideContent() {
     var width = document.body.clientWidth;
     if (width >= 768) {
-      document.getElementById('theFooter').style.display = 'none'
-      document.getElementsByClassName('content')[0].style.display = 'none';
+      document.getElementById('searchComponent').style.zIndex = '2'
+      // document.getElementsByClassName('content')[0].style.display = 'none';
     }
   }
 
   showContent() {
     var width = document.body.clientWidth;
     var foot = document.getElementById('theFooter')
-    theContent = document.getElementsByClassName('content')[0]
+    theContent = document.getElementById('searchComponent')
     if (width >= 768) {
       if (theContent == undefined || theContent == null || foot == undefined || foot == null) {
         return
       } else {
-        theContent.style.display = '';
-        foot.style.display = ''
+        theContent.style.zIndex = 'initial';
+        // foot.style.display = ''
       }
     }
   }
