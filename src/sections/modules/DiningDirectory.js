@@ -91,15 +91,15 @@ export default withSiteData(class DiningDirectory extends React.Component {
                             <h2>{this.props.section.heading}</h2>
                             <div className='restaurant-legend hidden-xs'>
                                 <div className='legend-row'>
-                                    <div className='legend-icon'><img src={BarIcon} className="barIcon icon" /></div>
+                                    <div className='legend-icon'><img src={BarIcon} alt="Bar Icon" className="barIcon icon" /></div>
                                     <h2>Bar</h2>
                                 </div>
                                 <div className='legend-row'>
-                                    <div className='legend-icon'><img src={RestaurantIcon} className="diningIcon icon" /></div>
+                                    <div className='legend-icon'><img src={RestaurantIcon} alt="Restaurant Icon" className="diningIcon icon" /></div>
                                     <h2>Restaurant</h2>
                                 </div>
                                 <div className='legend-row'>
-                                    <div className='legend-icon'><img src={FoodHallIcon} className="foodHallIcon icon" /></div>
+                                    <div className='legend-icon'><img src={FoodHallIcon} alt="Food Hall Icon" className="foodHallIcon icon" /></div>
                                     <h2>Food Hall</h2>
                                 </div>
                             </div>
@@ -108,13 +108,13 @@ export default withSiteData(class DiningDirectory extends React.Component {
                 <div className='restaurant-legend visible-xs'>
                     <div className='legend-row'>
                         <Container>
-                            <div className='legend-icon'><img src={BarIcon} className="barIcon icon" /></div>
+                            <div className='legend-icon'><img src={BarIcon} alt="Bar Icon" className="barIcon icon" /></div>
                             <h2>Bar</h2>
                         </Container>
                     </div>
                     <div className='legend-row'>
                         <Container>
-                            <div className='legend-icon'><img src={RestaurantIcon} className="diningIcon icon" /></div>
+                            <div className='legend-icon'><img src={RestaurantIcon} alt="Restaurant Icon" className="diningIcon icon" /></div>
                             <h2>Restaurant</h2>
                         </Container>
                     </div>

@@ -33,9 +33,14 @@ export default withRouteData(class Page extends React.Component {
             {(event.yoast_meta.yoast_wpseo_title) ? <title>{event.yoast_meta.yoast_wpseo_title}</title> : <title>{event.title.rendered}</title>}
             {(event.yoast_meta.yoast_wpseo_metadesc) ? <meta name="description" content={event.yoast_meta.yoast_wpseo_metadesc} /> : <meta name="description" content={metaDescription} />}
             {(event.yoast_meta.yoast_wpseo_canonical) ? <link rel="canonical" href={event.yoast_meta.yoast_wpseo_canonical} /> : <link rel="canonical" href={siteRoot} />}
+            <meta property="og:title" content={event.title.rendered} />
+          <meta property="og:url" content={this.props.siteRoot + '/events/' + event.slug} />
+          {event.acf.desktop_image && <meta property="og:image" content={event.acf.desktop_image.url} /> }
+          {event.yoast_meta.yoast_wpseo_metadesc && <meta property="og:description" content={event.yoast_meta.yoast_wpseo_metadesc} />}
           </Head>
           {(event.acf.desktop_image) ?
           <div id="heroSection">
+          {console.log(event)}
             <img className="hidden-xs" src={event.acf.desktop_image.url} alt={event.acf.desktop_image.alt} />
             <img className="visible-xs" src={event.acf.mobile_image.url} alt={event.acf.mobile_image.alt + ' mobile'} />
             {event.acf.additional_content &&
