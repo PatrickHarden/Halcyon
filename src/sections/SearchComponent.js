@@ -31,6 +31,7 @@ export default withSiteData(class SearchComponent extends React.Component {
     var width = document.body.clientWidth;
     if (width >= 768) {
       document.getElementById('searchComponent').style.zIndex = '2'
+      document.getElementById('searchComponent').style.bottom = 0
       // document.getElementsByClassName('content')[0].style.display = 'none';
     }
   }
@@ -44,6 +45,7 @@ export default withSiteData(class SearchComponent extends React.Component {
         return
       } else {
         theContent.style.zIndex = 'initial';
+        theContent.style.bottom = 'initial'
         // foot.style.display = ''
       }
     }
