@@ -85,7 +85,7 @@ var isContrast = false;
                         <Collapse isOpen={this.state.isOpen} navbar>
                             <Nav className="ml-auto" navbar>
                             <MenuList toggle={this.toggle} />
-                            <NavItem className='mobile logo' href="/"><Link to='/'><img src={navLogo} /></Link></NavItem> 
+                            <NavItem className='mobile logo' href="/"><Link to='/' alt="Halcyon Home"><img src={navLogo} alt="Halcyon Logo" /></Link></NavItem> 
                             </Nav>
                         </Collapse>
                     </div>
