@@ -153,8 +153,8 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                             </Dropdown>
                         </div>
                         <div className='search'>
-                            <label for="search shopping">
-                            <input className='search-bar' placeholder="Search" value={this.state.search} onChange={event => this.handleSearch(event.target.value)} />
+                            <label for="search-shopping">
+                            <input className='search-bar' id="search-shopping" placeholder="Search" value={this.state.search} onChange={event => this.handleSearch(event.target.value)} />
                             </label>
                             <FontAwesomeIcon icon={faSearch} className='search-icon' />
                         </div>

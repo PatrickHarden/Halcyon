@@ -34,7 +34,7 @@
     "react-dom": "^16.0.0",
     "react-google-tag-manager": "^2.2.1",
     "react-gtm-module": "^2.0.4",
-    "react-helmet": "^5.2.0",
+    "react-helmet": "4.0.0",
     "react-hot-loader": "^4.0.0-beta.21",
     "react-html-parser": "^2.0.2",
     "react-juicer-feed": "^0.0.2-alpha",
