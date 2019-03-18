@@ -46,7 +46,7 @@ export default withSiteData(class contentWithFeaturedSale extends React.Componen
             <Container className='contentWithFeaturedImage'>
                 <Row className={(this.props.section.display_options == 'content-left-image-right') ? 'content-left' : 'content-right'}>
                     <Col sm={6} lg={7} className='image-column'>
-                        <img src={targetSale[0].acf.featured_image} />
+                        <img src={targetSale[0].acf.featured_image} alt="Featured Sale" />
                     </Col>
                     <Col sm={6} lg={5} className='content-column' style={styles}>
                         {targetSale[0].title.rendered &&

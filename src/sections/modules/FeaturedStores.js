@@ -20,7 +20,7 @@ function SampleNextArrow(props) {
     <div
       className={className}
       onClick={onClick}
-      ><img src={rightArrow} />{getNextTitle()}</div>
+      ><img src={rightArrow} alt="Next Arrow" />{getNextTitle()}</div>
   );
 }
 
@@ -30,7 +30,7 @@ function SamplePrevArrow(props) {
     <div
       className={className}
       onClick={onClick}
-    ><img src={leftArrow} />{getPrevTitle()}</div>
+    ><img src={leftArrow} alt="Previous Arrow" />{getPrevTitle()}</div>
   );
 }
 

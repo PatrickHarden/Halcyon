@@ -129,7 +129,7 @@ export default class EventsCalendar extends React.Component {
                <div>{moment(event.start, 'YYYY-MM-DD').format('MMM DD')} - {moment(event.end, 'YYYYMMDD').format('MMM DD')}</div>
             }
             {event.eventImage && 
-            <img src={event.eventImage} /> }
+            <img src={event.eventImage} alt={event.title.rendered} /> }
             {event.eventContent && 
             <div>{ReactHtmlParser(event.eventContent)}</div> }
           </div>

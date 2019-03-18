@@ -204,7 +204,7 @@ export default withRouteData(class Page extends React.Component {
                   </div>
                 }
                 <div className='hours'>
-                  Today's Hours: {todaysHours} <img src={DownArrow} id="hourPopover" type="button" onClick={this.toggle} />
+                  Today's Hours: {todaysHours} <img src={DownArrow} alt="down arrow" id="hourPopover" type="button" onClick={this.toggle} />
                 </div>
               </div>
               <div>
@@ -231,7 +231,7 @@ export default withRouteData(class Page extends React.Component {
               <div className="moreSales">
                 <Link to="/sales-offers">
                   <span className="viewAll">View All</span>
-                  <img src={RightArrow} />
+                  <img src={RightArrow} alt="right arrow" />
                 </Link>
               </div>
             </Container>

@@ -40,8 +40,8 @@ export default withSiteData(class FeaturedEvents extends React.Component {
                         return <div className="featuredEvent">
                             <Link to={'/events/' + store.slug}>
                                 {(store.acf.featured_image)?
-                                <img src={store.acf.featured_image} className="featuredEventImage" /> :
-                                <img src="https://halcyon.dev.v3.imaginuitycenters.com/wp-content/uploads/sites/31/2019/01/572x310.png" className="featuredEventImage" />}                              
+                                <img src={store.acf.featured_image} alt={store.title.rendered} className="featuredEventImage" /> :
+                                <img src="https://halcyon.dev.v3.imaginuitycenters.com/wp-content/uploads/sites/31/2019/01/572x310.png" alt="placeholder event image" className="featuredEventImage" />}                              
                                 <div className="eventOverlay">
                                 <h4>{store.title.rendered}</h4>
                                 <div>{ReactHtmlParser(this.compressText(store.acf.post_copy))}</div>
@@ -56,7 +56,7 @@ export default withSiteData(class FeaturedEvents extends React.Component {
                 if (store.acf.featured_image){
                 return <div className="featuredEvent">
                     <Link to={'/events/' + store.slug}>
-                        <img src={store.acf.featured_image} className="featuredEventImage" />
+                        <img src={store.acf.featured_image} alt={store.title.rendered} className="featuredEventImage" />
                         <div className="eventOverlay">
                         <h4>{store.title.rendered}</h4>
                         <div>{ReactHtmlParser(this.compressText(store.acf.post_copy))}</div>

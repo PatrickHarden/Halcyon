@@ -1,7 +1,5 @@
 import React from 'react'
 import { withSiteData, Head } from 'react-static'
-import Navigation from '../Nav';
-
 
 export default withSiteData(class SiteHeader extends React.Component {
 
@@ -30,7 +28,6 @@ export default withSiteData(class SiteHeader extends React.Component {
                         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
                         {(options.acf.favicon) ? <link rel="shortcut icon" type="image/png" href={options.acf.favicon.url}/> : ""}
                     </Head>
-                    {/* <Navigation /> */}
                 </header>
                 </div>
             )

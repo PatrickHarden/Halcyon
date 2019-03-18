@@ -120,8 +120,8 @@ export default withSiteData(class EventsDirectory extends React.Component {
                             <div className={(this.state.list) ? "" : ""}>
                                 <FontAwesomeIcon icon={faSearch} className="icon" />
                             </div>
-                            <div className="eventControl" onClick={this.toggleList}><img src={ListIcon} /></div>
-                            <div className="eventControl" onClick={this.toggleCalendar}><img src={CalendarIcon} /></div>
+                            <div className="eventControl" onClick={this.toggleList}><img src={ListIcon} alt="List Toggle Icon" /></div>
+                            <div className="eventControl" onClick={this.toggleCalendar}><img src={CalendarIcon} alt="Calendar Toggle Icon" /></div>
                         </div>
                     </Container>
                 </div>

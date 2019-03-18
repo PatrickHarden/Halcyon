@@ -120,7 +120,7 @@ export default withSiteData(class DiningDirectory extends React.Component {
                     </div>
                     <div className='legend-row'>
                         <Container>
-                            <div className='legend-icon'><img src={FoodHallIcon} className="foodHallIcon icon" /></div>
+                            <div className='legend-icon'><img src={FoodHallIcon} alt="Food Hall Icon" className="foodHallIcon icon" /></div>
                             <h2>Food Hall</h2>
                         </Container>
                     </div>

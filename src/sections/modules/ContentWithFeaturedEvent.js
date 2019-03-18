@@ -45,7 +45,7 @@ export default withSiteData(class contentWithFeaturedEvent extends React.Compone
             <Container className='contentWithFeaturedImage'>
                 <Row className={(this.props.section.display_options == 'content-left-image-right') ? 'content-left' : 'content-right'}>
                     <Col sm={6} lg={7} className='image-column'>
-                        <img src={targetSale[0].acf.featured_image} />
+                        <img src={targetSale[0].acf.featured_image} alt={targetSale[0].title.rendered}/>
                     </Col>
                     <Col sm={6} lg={5} className='content-column' style={styles}>
                         {targetSale[0].title.rendered &&

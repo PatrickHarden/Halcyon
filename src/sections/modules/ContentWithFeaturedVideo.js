@@ -49,7 +49,7 @@ export default withSiteData(class ContentWithFeaturedVideo extends React.Compone
                         <div className='videoWrapper'>
                             <span className="play" onClick={((e) => this.disappear(e))}></span>
                             {this.props.section.image_overlay &&
-                                <img className="imageOverlay" src={this.props.section.image_overlay} />}
+                                <img className="imageOverlay" src={this.props.section.image_overlay} alt="Video Image Overlay" />}
                             {this.state.iframe}
                         </div>
                     </Col>
