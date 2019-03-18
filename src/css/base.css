@@ -375,6 +375,8 @@ main.content {
         margin: 0 1rem;
         padding: 0 1rem;
         position: relative;
+        max-height:83px;
+        top:-4px;
     }
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo) img {
         max-height: 40px;
@@ -435,7 +437,7 @@ main.content {
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo) {
         max-width: 90px;
         margin: 0 1rem;
-        max-height: 83px;
+        max-height: 86px;
     }
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item.logo img {
         max-width: 220px;
@@ -577,6 +579,7 @@ label {display:initial;}
 @media screen and (max-width:991px){
     .nav-logo.desktop {display:block;}
     .logo.mobile {display:none;}
+    .nav-item {width:100%;}
 }
 @media screen and (min-width:992px){
     .nav-logo.desktop {display:none;}
@@ -588,3 +591,4 @@ label {display:initial;}
 .navbar-nav > li:nth-child(n+5) {
     order:3 !important;
 }
+/* .nav-item > a {top:-3px; max-height: 81px;} */
