@@ -144,7 +144,7 @@ export default withSiteData(class Forms extends React.Component {
                                     data-name={field.label}
                                 >
                                     <div className="row">
-                                        <Col xs={12}>
+                                        <div className="col-xs-12">
                                             <b>{field.label + (field.isRequired ? '*' : '')}</b>
                                             {field.inputs.map(function (choice) {
                                                 return (
@@ -162,7 +162,7 @@ export default withSiteData(class Forms extends React.Component {
                                                     </div>
                                                 );
                                             })}
-                                        </Col>
+                                        </div>
                                     </div>
                                 </div>
                             );
@@ -174,15 +174,15 @@ export default withSiteData(class Forms extends React.Component {
                                     data-name={field.label}
                                 >
                                     <div className="row">
-                                        <Col xs={12}>
+                                        <div className='col-xs-12'>
                                             <b>{field.label}</b>
                                             {field.choices.map(function (choice) {
+                                            
                                                 return (
                                                     <div className="radio">
-                                                        <label for={field.label}>
+                                                        <label>
                                                             <input
                                                                 type="radio"
-                                                                id={field.id}
                                                                 name={field.label}
                                                                 value={choice.value}
                                                                 onChange={component.handleInputChange}
@@ -193,7 +193,7 @@ export default withSiteData(class Forms extends React.Component {
                                                     </div>
                                                 );
                                             })}
-                                        </Col>
+                                        </div>
                                     </div>
                                 </div>
                             );
@@ -466,7 +466,7 @@ export default withSiteData(class Forms extends React.Component {
                 <Container>
                     <Row>
                         {this.props.section.blurb &&
-                            <Container><Col sm={12} className='blurb'>{ReactHtmlParser(this.props.section.blurb)}</Col></Container>
+                            <Container><Row><Col sm={12} className='blurb'>{ReactHtmlParser(this.props.section.blurb)}</Col></Row></Container>
                         }
                         <form onSubmit={this.handleSubmit} className="gform">
                             <div id="formFields">
