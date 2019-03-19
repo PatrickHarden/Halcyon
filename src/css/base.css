@@ -384,7 +384,7 @@ nav .container {
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo) {
         max-width: 80px;
         margin: 0 1rem;
-        padding: 0 .5rem;
+        padding: 0 .25rem;
         position: relative;
         max-height:83px;
         top:-4px;
