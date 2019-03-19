@@ -46,7 +46,9 @@ export default class HeroSlider extends React.Component {
     var settings = {
       dots: true,
       infinite: true,
-      speed: 500,
+      autoplay: true,
+      autoplaySpeed: 5000,
+      speed: 800,
       slidesToShow: 1,
       slidesToScroll: 1,
       arrows: false,

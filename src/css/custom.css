@@ -333,6 +333,9 @@ body.dark-brown .restaurant-legend .legend-row {
     #heroSection .hero-container .hero-content h2 {
         font-size: 3rem;
     }
+    #searchBar .container a {
+        font-size: 1.4rem;
+    }
 }
 
 @media screen and (max-width:767px){
