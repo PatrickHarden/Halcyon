@@ -252,10 +252,13 @@ nav .container {
     position: fixed;
     left: 0px;
     background:#fff;
-    top: 40px;
-    padding: 4rem 0 0;
+    top: 52px;
+    padding: 2.8rem 0 0;
     z-index: 1;
     box-shadow: rgba(0, 0, 0, 0.28) 0px 3px 3px;
+    border-top: 2px solid rgba(0,0,0,.2);
+    max-height: 87vh;
+    overflow-y: auto;
 }
 .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav {
     list-style: none;
@@ -435,6 +438,9 @@ nav .container {
     }
     .navRow .nav-inner .navbar-collapse.collapse.show {
         overflow: visible !important;
+    }
+    .navWrapper .navRow .nav-inner .navbar-collapse {
+        border-top: none;
     }
     #searchComponent {
         display: block !important;
