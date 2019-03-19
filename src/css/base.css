@@ -338,9 +338,6 @@ nav .container {
     fill:#323e48;
 }
 
-main.content {
-    padding-top: 82px;
-}
 @media screen and (min-width: 992px) {
     .navWrapper .navRow .nav-inner .navbar-collapse {
         top: 0;
@@ -425,9 +422,6 @@ main.content {
         top: -9px;
         left: 0;
     }
-    main.content {
-        padding-top: 46px;
-    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -442,19 +436,10 @@ main.content {
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item.logo img {
         max-width: 220px;
     }
-    main.content {
-        padding-top: 52px;
-    }
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo):hover .nav-icon:before {
         height: 14px;
         width: 85px;
         top: -14px;
-    }
-}
-
-@media screen and (max-width:991px){
-    main.content {
-        padding-top: 52px !important;
     }
 }
 
