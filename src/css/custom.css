@@ -5,11 +5,19 @@ form input[type=date].form-control {color:rgba(0,0,0,0.4)}
 .rbc-month-row {min-height:120px;}
 #thisTarget h1 {display:none}
 .social-feed-container {margin-bottom:60px;}
-.social-feed-container h2 {font-family:'Flama'; color:#8F1838;}
+.social-feed-container h2 {font-family:'Flama',sans-serif; color:#8F1838;}
 .eventCount {column-count: 3}
 .mT {margin-top:90px;margin-bottom:30px;}
 .date-ball > span {position:relative; top:-3px;}
-#socialHeader {display:flex; justify-content: space-between;align-items:baseline; padding:0 0 0 1rem;position:relative;z-index:1;padding:0 60px;}
+#socialHeader {
+    display:flex; 
+    justify-content: space-between;
+    align-items:baseline;
+    position:relative;
+    z-index:1;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 #socialHeader .social-icon{
     background: #8F1838;
     padding: 1rem;
@@ -30,9 +38,17 @@ form input[type=date].form-control {color:rgba(0,0,0,0.4)}
 #socialHeader .social-icon .icon {
     transition: .3s;
 }
-#socialHeader .social-icon:hover .icon {transform:scale(1.1)}
-#socialHeader > div:nth-of-type(2) {display:flex;}
-#socialHeader > div:nth-of-type(2) > .social-icon:nth-of-type(3) {margin-right:0;}
+#socialHeader .social-icon:hover .icon {
+    transform:scale(1.1);
+}
+#socialHeader > div:nth-of-type(2) {
+    display:flex;
+    width: 100%;
+    justify-content: center;
+}
+#socialHeader > div:nth-of-type(2) > .social-icon:nth-of-type(3) {
+    margin-right:0;
+}
 
 .hero-slider-wrapper {position:absolute; top:0;left:0;right:0;bottom:0;z-index:0; opacity:0;}
 #heroContainer {position:relative;overflow: hidden;}
@@ -305,6 +321,18 @@ body.dark-brown .restaurant-legend .legend-row {
         width: 100%;
         border: 0;
     }
+    #socialHeader {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+    #socialHeader > div:nth-of-type(2) {
+        width: auto;
+        justify-content: flex-end;
+        margin-right: 60px;
+    }
+    .social-feed-container h2 {
+        margin-left: 60px;
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -343,7 +371,6 @@ body.dark-brown .restaurant-legend .legend-row {
 }
 
 @media screen and (max-width:767px){
-    #socialHeader > div:nth-of-type(2) {display:none}
     .eventCount {column-count: 1}
 }
 .rbc-toolbar > span:nth-of-type(3){display:none;}
