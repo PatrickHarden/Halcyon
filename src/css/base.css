@@ -266,6 +266,7 @@ nav .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0;
 }
 
 .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item {
@@ -361,6 +362,8 @@ nav .container {
         flex-wrap: wrap;
         justify-content: center;
         font-size: 1rem;
+        padding-top: 15px;
+        padding-bottom: 15px;
     }
     
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav > div:nth-child(1n+4) {
@@ -422,6 +425,12 @@ nav .container {
         top: -9px;
         left: 0;
     }
+    .navRow .nav-inner .navbar-collapse.collapse.show {
+        overflow: visible !important;
+    }
+    #searchComponent {
+        display: block !important;
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -440,6 +449,9 @@ nav .container {
         height: 14px;
         width: 85px;
         top: -14px;
+    }
+    #searchComponent .search-bar {
+        width: 220px;
     }
 }
 

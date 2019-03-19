@@ -128,7 +128,7 @@ export default withSiteData(class DiningDirectory extends React.Component {
                 <Container className='controls-container'>
                     <div className='search'>
                         <label for="search-dining" className="sr-only">Search through the restaurants</label>
-                        <input className='search-bar' type="submit" id="search-dining" title="search dining" placeholder="Search..." value={this.state.search} onChange={event => this.handleSearch(event.target.value)} />
+                        <input className='search-bar' type="text" id="search-dining" title="search dining" placeholder="Search..." value={this.state.search} onChange={event => this.handleSearch(event.target.value)} />
                         <FontAwesomeIcon icon={faSearch} className='search-icon' />
                     </div>
                 </Container>
@@ -167,7 +167,7 @@ export default withSiteData(class DiningDirectory extends React.Component {
                                                     }
                                                 </div>
                                                 {(store.acf.street_address) ? <a className='visible-xs' href={"//maps.google.com/?q=" + store.acf.street_address} alt="google maps link" target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon' /></a> : ""}
-                                                {(store.acf.phone_number) ? <a className='visible-xs' href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} alt="store phone number" className='icon' /></a> : ""}
+                                                {(store.acf.phone_number) ? <a className='visible-xs' href={'tel:'+store.acf.phone_number}><FontAwesomeIcon icon={faPhone} alt="store phone number" className='icon' /></a> : ""}
                                             </div>
                                             <div className='button-wrapper'>
                                                 <Link to={`/dining/${store.slug}/`} className="halcyon-button arrow">View Details</Link>
@@ -213,7 +213,7 @@ export default withSiteData(class DiningDirectory extends React.Component {
                                                         }
                                                     </div>
                                                     {(store.acf.street_address) ? <a className='visible-xs' href={"//maps.google.com/?q=" + store.acf.street_address} alt="google maps link" target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon' /></a> : ""}
-                                                    {(store.acf.phone_number) ? <a className='visible-xs' href={store.acf.phone_number}><FontAwesomeIcon icon={faPhone} alt="store phone number" className='icon' /></a> : ""}
+                                                    {(store.acf.phone_number) ? <a className='visible-xs' href={'tel:'+store.acf.phone_number}><FontAwesomeIcon icon={faPhone} alt="store phone number" className='icon' /></a> : ""}
                                                 </div>
                                                 <div className='button-wrapper'>
                                                     <Link to={`/dining/${store.slug}/`} className="halcyon-button arrow">View Details</Link>

@@ -154,7 +154,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                         </div>
                         <div className='search'>
                             <label for="search-shopping" className="sr-only">Search through the retailers</label>
-                            <input className='search-bar' type="submit" id="search-shopping" placeholder="Search" title="search shopping" value={this.state.search} onChange={event => this.handleSearch(event.target.value)} />
+                            <input className='search-bar' type="text" id="search-shopping" placeholder="Search" title="search shopping" value={this.state.search} onChange={event => this.handleSearch(event.target.value)} />
                             <FontAwesomeIcon icon={faSearch} className='search-icon' />
                         </div>
                     </div>
@@ -167,7 +167,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                                             <LinkContainer to={`/shopping/${store.slug}/`} className='store-title-wrap'><Link to={`/shopping/${store.slug}/`}><h4 className='store-title'>{(store.title.rendered) ? <span>{ReactHtmlParser(store.title.rendered)}</span> : null}</h4></Link></LinkContainer>
                                             <div className='red-text'>{(store.acf.flags) ? <div>{store.acf.flags[0] + '!'}</div> : ""}{(this.isSale(store)) ? <div>Offer Available</div> : ""}</div>
                                             <div className='center-container'>
-                                                <div className='store-phone'>{(store.acf.phone_number) ? <a href={store.acf.phone_number} alt="store phone number"><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
+                                                <div className='store-phone'>{(store.acf.phone_number) ? <a href={'tel:'+store.acf.phone_number} alt="store phone number"><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
                                                 <div className='store-directions'>{(store.acf.street_address) ? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank" alt="google maps link"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon visible-xs' /><img src={MapIconDesktop} alt="Map Icon" className="hidden-xs icon" /></a> : ""}</div>
                                                 <div className='hours'>{helpers.getHours(store, globalHours, globalHolidayHours)}</div>
                                             </div>
@@ -182,7 +182,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                                                     <div className='store-title-wrap'><Link to={`/shopping/${store.slug}/`}><h4 className='store-title'>{(store.title.rendered) ? <span>{ReactHtmlParser(store.title.rendered)}</span> : null}</h4></Link></div>
                                                     <div className='red-text'>{(store.acf.flags) ? <div>{store.acf.flags[0] + '!'}</div> : ""}{(this.isSale(store)) ? <div>Offer Available</div> : ""}</div>
                                                     <div className='center-container'>
-                                                        <div className='store-phone'>{(store.acf.phone_number) ? <a href={store.acf.phone_number} alt="store phone number"><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
+                                                        <div className='store-phone'>{(store.acf.phone_number) ? <a href={'tel:'+store.acf.phone_number} alt="store phone number"><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
                                                         <div className='store-directions'>{(store.acf.street_address) ? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank" alt="google maps link"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon visible-xs' /><img src={MapIconDesktop} alt="Map Icon"  className="hidden-xs icon" /></a> : ""}</div>
                                                         <div className='hours'>{helpers.getHours(store, globalHours, globalHolidayHours)}</div>
                                                     </div>
@@ -196,7 +196,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                                                 <div className='store-title-wrap'><Link to={`/shopping/${store.slug}/`}><h4 className='store-title'>{(store.title.rendered) ? <span>{ReactHtmlParser(store.title.rendered)}</span> : null}</h4></Link></div>
                                                 <div className='red-text'>{(store.acf.flags) ? <div>{store.acf.flags[0] + '!'}</div> : ""}{(this.isSale(store)) ? <div>Offer Available</div> : ""}</div>
                                                 <div className='center-container'>
-                                                    <div className='store-phone'>{(store.acf.phone_number) ? <a href={store.acf.phone_number} alt="store phone number"><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
+                                                    <div className='store-phone'>{(store.acf.phone_number) ? <a href={'tel:'+store.acf.phone_number} alt="store phone number"><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
                                                     <div className='store-directions'>{(store.acf.street_address) ? <a href={'https://maps.google.com/?q=' + store.acf.street_address} alt="google maps link" target="_blank"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon visible-xs' /><img src={MapIconDesktop} alt="Map Icon"  className="hidden-xs icon" /></a> : ""}</div>
                                                     <div className='hours'>{helpers.getHours(store, globalHours, globalHolidayHours)}</div>
                                                 </div>
@@ -210,7 +210,7 @@ export default withSiteData(class ShoppingDirectory extends React.Component {
                                                     <div className='store-title-wrap'><Link to={`/shopping/${store.slug}/`}><h4 className='store-title'>{(store.title.rendered) ? <span>{ReactHtmlParser(store.title.rendered)}</span> : null}</h4></Link></div>
                                                     <div className='red-text'>{(store.acf.flags) ? <div>{store.acf.flags[0] + '!'}</div> : ""}{(this.isSale(store)) ? <div>Offer Available</div> : ""}</div>
                                                     <div className='center-container'>
-                                                        <div className='store-phone'>{(store.acf.phone_number) ? <a href={store.acf.phone_number} alt="store phone number"><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
+                                                        <div className='store-phone'>{(store.acf.phone_number) ? <a href={'tel:'+store.acf.phone_number} alt="store phone number"><FontAwesomeIcon icon={faPhone} className='icon visible-xs' /><div className='hidden-xs'>{store.acf.phone_number}</div></a> : null}</div>
                                                         <div className='store-directions'>{(store.acf.street_address) ? <a href={'https://maps.google.com/?q=' + store.acf.street_address} target="_blank" alt="google maps link"><FontAwesomeIcon icon={faMapMarkerAlt} className='icon visible-xs' /><img src={MapIconDesktop} alt="Map Icon"  className="hidden-xs icon" /></a> : ""}</div>
                                                         <div className='hours'>{helpers.getHours(store, globalHours, globalHolidayHours)}</div>
                                                     </div>

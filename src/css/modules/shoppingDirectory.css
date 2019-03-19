@@ -38,6 +38,7 @@
     border-bottom: 3px solid #4E5859;
     font-family: 'Flama',sans-serif;
     font-size: 1.4rem;
+    background: transparent;
 }
 
 .shoppingDirectory .controls-container .search {
