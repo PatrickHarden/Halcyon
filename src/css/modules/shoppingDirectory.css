@@ -68,6 +68,7 @@
     -webkit-appearance: none;
     border: none;
     border-radius: 20px;
+    background: transparent;
 }
 /* Rows */
 .shoppingDirectory .shoppingRows {
