@@ -9,6 +9,7 @@
     display:block;
     width:100%; 
     float:left;
+    margin: 1rem 0;
 }
 .formModule form .form-control {
     border: 0;

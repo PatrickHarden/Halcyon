@@ -69,7 +69,7 @@ img {
     margin: 1rem auto;
     background: #4E5859;
     color: #fff;
-    padding: .5rem 2rem 7px;
+    padding: .5rem 2rem;
     border-radius: 20px;
     text-transform: uppercase;
     font-size: 1.4rem;
@@ -159,6 +159,7 @@ img {
     }
     .halcyon-button {
         font-size: 1.6rem;
+        padding: .5rem 2rem 7px;
     }
 }
 
@@ -325,6 +326,12 @@ nav .container {
     stroke-width:3;
     stroke-miterlimit:10;
 }
+.navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-link .contact-us .st0 {
+    fill: #58595B;
+    stroke: #FFFFFF;
+    stroke-width: 5;
+    stroke-miterlimit: 10;
+}
 /* CMX Colors */
 .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-icon.cmx .cls-1{
     fill:#cc5c22;
@@ -364,6 +371,7 @@ nav .container {
         font-size: 1rem;
         padding-top: 15px;
         padding-bottom: 15px;
+        line-height: 1.6;
     }
     
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav > div:nth-child(1n+4) {
@@ -371,9 +379,9 @@ nav .container {
     }
 
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo) {
-        max-width: 70px;
+        max-width: 80px;
         margin: 0 1rem;
-        padding: 0 1rem;
+        padding: 0 .5rem;
         position: relative;
         max-height:83px;
         top:-4px;
