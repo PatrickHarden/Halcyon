@@ -24,13 +24,13 @@ export default withSiteData(class SocialFeed extends React.Component {
                         </div>
                         <div>
                             <a class="social-icon" href={this.props.centerInfo.acf.facebook_url} target="_blank">
-                                <FontAwesomeIcon icon={faFacebookF} className='search-icon' />
+                                <FontAwesomeIcon icon={faFacebookF} className='icon' />
                             </a>
                             <a class="social-icon" href={this.props.centerInfo.acf.twitter_url} target="_blank">
-                                <FontAwesomeIcon icon={faTwitter} className='search-icon' />
+                                <FontAwesomeIcon icon={faTwitter} className='icon' />
                             </a>
                             <a class="social-icon" href={this.props.centerInfo.acf.instagram_url} target="_blank">
-                                <FontAwesomeIcon icon={faInstagram} className='search-icon' />
+                                <FontAwesomeIcon icon={faInstagram} className='icon' />
                             </a>
                         </div>
                     </div>

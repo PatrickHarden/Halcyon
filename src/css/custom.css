@@ -24,10 +24,13 @@ form input[type=date].form-control {color:rgba(0,0,0,0.4)}
     height: 50px;
     margin-right: 1rem;
     color:#fff;
-    font-size:23px;
+    font-size:2.3rem;
     transition:.2s ease all;
 }
-#socialHeader .social-icon:hover {transform:scale(1.1)}
+#socialHeader .social-icon .icon {
+    transition: .3s;
+}
+#socialHeader .social-icon:hover .icon {transform:scale(1.1)}
 #socialHeader > div:nth-of-type(2) {display:flex;}
 #socialHeader > div:nth-of-type(2) > .social-icon:nth-of-type(3) {margin-right:0;}
 
