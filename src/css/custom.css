@@ -18,7 +18,7 @@ form input[type=date].form-control {color:rgba(0,0,0,0.4)}
     justify-content: center;
     flex-wrap: wrap;
 }
-#socialHeader .social-icon{
+.social-feed-container .social-icon{
     background: #8F1838;
     padding: 1rem;
     border-radius: 50%;
@@ -35,19 +35,22 @@ form input[type=date].form-control {color:rgba(0,0,0,0.4)}
     font-size:2.3rem;
     transition:.2s ease all;
 }
-#socialHeader .social-icon .icon {
+.social-feed-container .social-icon .icon {
     transition: .3s;
 }
-#socialHeader .social-icon:hover .icon {
+.social-feed-container .social-icon:hover .icon {
     transform:scale(1.1);
 }
-#socialHeader > div:nth-of-type(2) {
+.social-feed-container .social-wrapper {
     display:flex;
     width: 100%;
     justify-content: center;
 }
-#socialHeader > div:nth-of-type(2) > .social-icon:nth-of-type(3) {
+.social-feed-container .social-wrapper > .social-icon:nth-of-type(3) {
     margin-right:0;
+}
+.social-feed-container .social-wrapper.visible-xs {
+    display: flex !important;
 }
 
 .hero-slider-wrapper {position:absolute; top:0;left:0;right:0;bottom:0;z-index:0; opacity:0;}
@@ -245,7 +248,7 @@ body.dark-brown .restaurant-legend .legend-row {
     text-transform: uppercase;
 }
 #heroSection .hero-heading h1 {
-    font-family: 'freight-text-pro', serif;
+    font-family: 'Sony', serif;
     opacity: 1;
     margin: 1rem 0 0;
     padding: 1rem;
@@ -325,13 +328,16 @@ body.dark-brown .restaurant-legend .legend-row {
         flex-wrap: nowrap;
         justify-content: space-between;
     }
-    #socialHeader > div:nth-of-type(2) {
+    #socialHeader .social-wrapper {
         width: auto;
         justify-content: flex-end;
         margin-right: 60px;
     }
     .social-feed-container h2 {
         margin-left: 60px;
+    }
+    .social-feed-container .social-wrapper.visible-xs {
+        display: none !important;
     }
 }
 

@@ -31,7 +31,7 @@ export default class TintSocialFeed extends Component{
                     className="tintup"
                     data-id={this.props.optionsData.acf.data_id}
                     data-columns=""
-                    data-mobilescroll="true"
+                    data-mobilescroll="false"
                     data-infinitescroll="true"
                     data-personalization-id={this.props.optionsData.acf.personalization_id}
                     style={{'height':'350px','width':'100%'}}

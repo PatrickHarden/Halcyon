@@ -410,6 +410,9 @@ nav .container {
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo):hover .nav-icon.sign-up svg path {
         stroke: #fff;
     }
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo):hover .nav-icon.contact-us .st0 {
+        stroke: transparent;
+    }
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo):hover {
         background: #8F1838;
     }
