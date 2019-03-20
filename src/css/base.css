@@ -293,6 +293,20 @@ nav .container {
     height: 40px;
     max-width: 78px;
 }
+
+.navWrapper .eyeball {
+    font-size: 2.75rem;
+    color: #4F4B48;
+    display: flex;
+}
+.navWrapper .eyeball.active .eye-slash,
+.navWrapper .eyeball:not(.active) .eye {
+    display: none;
+}
+.navWrapper .eyeball.active .eye,
+.navWrapper .eyeball:not(.active) .eye-slash {
+    display: block;
+}
 /* Nav Icon styles */
 	
 .nav-icon.directions .st0{
