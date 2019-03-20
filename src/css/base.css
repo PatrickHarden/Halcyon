@@ -505,7 +505,7 @@ footer .footer-nav .nav-link {
     padding: 0 0 1.5rem;
     font-family: 'Flama', sans-serif;
     font-size: 1.2rem;
-    display: block;
+    display:inline-block;
 }
 .sociallinks{
     text-align:right
@@ -548,7 +548,6 @@ label {display:initial;}
     }
     .navbar {min-height:80px;}
 }
-/* Visibility Classes */
 
 @media screen and (max-width: 767px) {
     .hidden-xs {
@@ -556,6 +555,10 @@ label {display:initial;}
     }
     main.content {
         padding-top: 52px;
+    }
+    /*make room for the sticky footer */
+    body:not(.home) #theFooter {
+        padding-bottom: 55px;
     }
 }
 

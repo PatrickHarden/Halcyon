@@ -1,6 +1,6 @@
 import React from 'react'
 import { withSiteData } from 'react-static'
-import EmailIcon from '../images/emailIcon.png'
+import EmailIcon from '../images/email-icon-white.png'
 import LocationIcon from '../images/locationIcon.png'
 import PhoneIcon from '../images/phoneIcon.png'
 import '../css/components/mobileFloatingNav.css'
