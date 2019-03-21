@@ -16,7 +16,7 @@ export default withSiteData(class SiteHeader extends React.Component {
 
         return (
             <div id="mobileFloatingNav">
-                <a href={options.acf.google_map_directions_url} target='_blank'><img src={LocationIcon} alt="Location Icon" /></a>
+                <a href={options.acf.google_map_directions_url + '+' + this.props.property_options.acf.city + '+' + this.props.property_options.acf.state} target='_blank'><img src={LocationIcon} alt="Location Icon" /></a>
                 <a href={'mailto:' + options.acf.email}><img src={EmailIcon} alt="Email Icon" /></a>
                 <a href={'tel:' + options.acf.phone}><img src={PhoneIcon} alt="Phone Icon" /></a>
             </div>
