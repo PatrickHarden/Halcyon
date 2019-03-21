@@ -357,11 +357,21 @@ nav .container {
     stroke: #fff;
     fill: #58595b;
 }
-
 .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-link .nav-icon.contact-us .cls-2 {
     stroke: #58595b;
     fill: #58595b;
 }
+.navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-link .nav-icon.sign-up .cls-1 {
+    fill: none;
+    stroke: #595959;
+    stroke-miterlimit:10;
+    stroke-width:8px;
+    transition:.3s;
+}
+.navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-link .nav-icon.sign-up .cls-2 {
+    fill: #595959;
+}
+
 /* CMX Colors */
 .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-icon.cmx .cls-1{
     fill:#cc5c22;
@@ -457,6 +467,13 @@ nav .container {
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:hover .nav-link .nav-icon.contact-us .cls-2 {
         fill: #fff;
         stroke: #fff;
+    }
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:hover .nav-link .nav-icon.sign-up .cls-1{
+        stroke: #fff;
+    }
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:hover .nav-link .nav-icon.sign-up .cls-2 {
+        fill: #fff;
+        stroke: #fff;  
     }
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo):hover .nav-link:after {
         content: '';
