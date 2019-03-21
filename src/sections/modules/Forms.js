@@ -61,12 +61,12 @@ export default withSiteData(class Forms extends React.Component {
                                         {field.inputs.map(function (input) {
                                             if (!input.isHidden) {
                                                 return (
-                                                    <label for={input.id}
+                                                    <label for={input.id.replace('.','')}
                                                         className="col-xs-12 col-sm-6">
                                                         <span className="sr-only test">{input.label}</span>
                                                         <input
                                                             type="text"
-                                                            id={field.id}
+                                                            id={input.id.replace('.','')}
                                                             className={"form-control" + (field.cssClass ? ' ' + field.cssClass : '')}
                                                             placeholder={input.label + (field.isRequired ? '*' : '')}
                                                             name={input.label + input.id}
