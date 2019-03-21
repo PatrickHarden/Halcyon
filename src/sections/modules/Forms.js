@@ -66,7 +66,7 @@ export default withSiteData(class Forms extends React.Component {
                                                         <span className="sr-only test">{input.label}</span>
                                                         <input
                                                             type="text"
-                                                            id={input.id}
+                                                            id={field.id}
                                                             className={"form-control" + (field.cssClass ? ' ' + field.cssClass : '')}
                                                             placeholder={input.label + (field.isRequired ? '*' : '')}
                                                             name={input.label + input.id}
@@ -74,6 +74,7 @@ export default withSiteData(class Forms extends React.Component {
                                                             onChange={component.handleInputChange}
                                                             required={input.isRequired}
                                                         />
+                                                
                                                     </label>
                                                 );
                                             }
@@ -184,6 +185,7 @@ export default withSiteData(class Forms extends React.Component {
                                                             <input
                                                                 type="radio"
                                                                 name={field.label}
+                                                                id={field.id}
                                                                 value={choice.value}
                                                                 onChange={component.handleInputChange}
                                                                 required={field.isRequired}
