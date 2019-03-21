@@ -63,7 +63,7 @@ export default withSiteData(class Forms extends React.Component {
                                                 return (
                                                     <label for={input.id}
                                                         className="col-xs-12 col-sm-6">
-                                                        <span className="sr-only">{input.label}</span>
+                                                        <span className="sr-only test">{input.label}</span>
                                                         <input
                                                             type="text"
                                                             id={input.id}
@@ -373,7 +373,7 @@ export default withSiteData(class Forms extends React.Component {
         // Build the gForms submission object
         let entry = {
             "input_values": {
-
+                
             }
         };
 
