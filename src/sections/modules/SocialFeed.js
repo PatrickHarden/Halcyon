@@ -23,13 +23,13 @@ export default withSiteData(class SocialFeed extends React.Component {
                                 <h2>{ReactHtmlParser(this.props.section.heading)}</h2>}
                         </div>
                         <div className='social-wrapper hidden-xs'>
-                            <a class="social-icon" href={this.props.centerInfo.acf.facebook_url} target="_blank">
+                            <a className="social-icon" href={this.props.centerInfo.acf.facebook_url} target="_blank">
                                 <FontAwesomeIcon icon={faFacebookF} className='icon' />
                             </a>
-                            <a class="social-icon" href={this.props.centerInfo.acf.twitter_url} target="_blank">
+                            <a className="social-icon" href={this.props.centerInfo.acf.twitter_url} target="_blank">
                                 <FontAwesomeIcon icon={faTwitter} className='icon' />
                             </a>
-                            <a class="social-icon" href={this.props.centerInfo.acf.instagram_url} target="_blank">
+                            <a className="social-icon" href={this.props.centerInfo.acf.instagram_url} target="_blank">
                                 <FontAwesomeIcon icon={faInstagram} className='icon' />
                             </a>
                         </div>
@@ -38,14 +38,14 @@ export default withSiteData(class SocialFeed extends React.Component {
                         {/* <JuicerFeed feedId='imaginuity-ba275954-4d89-4453-8ef8-80e94361aeb4' /> */}
                         <TintSocialFeed optionsData={this.props.centerInfo} />
                     </div>
-                    <div class='social-wrapper visible-xs'>
-                        <a class="social-icon" href={this.props.centerInfo.acf.facebook_url} target="_blank">
+                    <div className='social-wrapper visible-xs'>
+                        <a className="social-icon" href={this.props.centerInfo.acf.facebook_url} target="_blank">
                             <FontAwesomeIcon icon={faFacebookF} className='icon' />
                         </a>
-                        <a class="social-icon" href={this.props.centerInfo.acf.twitter_url} target="_blank">
+                        <a className="social-icon" href={this.props.centerInfo.acf.twitter_url} target="_blank">
                             <FontAwesomeIcon icon={faTwitter} className='icon' />
                         </a>
-                        <a class="social-icon" href={this.props.centerInfo.acf.instagram_url} target="_blank">
+                        <a className="social-icon" href={this.props.centerInfo.acf.instagram_url} target="_blank">
                             <FontAwesomeIcon icon={faInstagram} className='icon' />
                         </a>
                     </div>

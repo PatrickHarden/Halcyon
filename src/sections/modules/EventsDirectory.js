@@ -158,7 +158,7 @@ export default withSiteData(class EventsDirectory extends React.Component {
                                         <LinkContainer to={'/events/' + event.slug}><Link to={'/events/' + event.slug} className="halcyon-button arrow">See Event Details</Link></LinkContainer>
                                     </div>
                                 ))}
-                                <div class="loadmore-button" id="loadMore" onClick={this.loadMore}><FontAwesomeIcon icon={faPlus} className='icon' />Load More</div>
+                                <div className="loadmore-button" id="loadMore" onClick={this.loadMore}><FontAwesomeIcon icon={faPlus} className='icon' />Load More</div>
                             </div>
                             :
                             <div className="eventContainer">

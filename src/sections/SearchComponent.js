@@ -64,11 +64,11 @@ export default withSiteData(class SearchComponent extends React.Component {
       if (page.title.rendered.toLowerCase().includes(this.state.term.toLowerCase())) {
         return (
           <div key={index}>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <Link onClick={this.clearSearch} to={`/${page.slug}`}><h3 class="panel-title">{(page.title.rendered) ? <div>{ReactHtmlParser(page.title.rendered)}</div> : ""}</h3></Link>
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <Link onClick={this.clearSearch} to={`/${page.slug}`}><h3 className="panel-title">{(page.title.rendered) ? <div>{ReactHtmlParser(page.title.rendered)}</div> : ""}</h3></Link>
               </div>
-              <div class="panel-body">
+              <div className="panel-body">
                 {page.acf.content &&
                   <div>{ReactHtmlParser(helpers.compressText(page.acf.content, 250))}</div>}
                 {page.content.rendered &&
@@ -90,11 +90,11 @@ export default withSiteData(class SearchComponent extends React.Component {
       if (event.title.rendered.toLowerCase().includes(this.state.term.toLowerCase())) {
         return (
           <div key={index}>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <Link onClick={this.clearSearch} to={`/events/${event.slug}/`}><h3 class="panel-title">{(event.title.rendered) ? <div>{ReactHtmlParser(event.title.rendered)}</div> : ""}</h3></Link>
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <Link onClick={this.clearSearch} to={`/events/${event.slug}/`}><h3 className="panel-title">{(event.title.rendered) ? <div>{ReactHtmlParser(event.title.rendered)}</div> : ""}</h3></Link>
               </div>
-              <div class="panel-body">
+              <div className="panel-body">
                 <div>{ReactHtmlParser(helpers.compressText(event.acf.post_copy, 250))}</div>
                 <div><small>{event.acf.start_date} - {event.acf.end_date}</small></div>
               </div>
@@ -112,11 +112,11 @@ export default withSiteData(class SearchComponent extends React.Component {
     retailers = this.props.stores.map((store, index) => {
       if (store.title.rendered.toLowerCase().includes(this.state.term.toLowerCase()) && store.acf.store_type == "retailer") {
         return (<div key={index}>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <Link onClick={this.clearSearch} to={`/shopping/${store.slug}/`}><h3 class="panel-title">{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : ""}</h3></Link>
+          <div className="panel panel-default">
+            <div className="panel-heading">
+              <Link onClick={this.clearSearch} to={`/shopping/${store.slug}/`}><h3 className="panel-title">{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : ""}</h3></Link>
             </div>
-            <div class="panel-body">
+            <div className="panel-body">
               <div>{ReactHtmlParser(helpers.compressText(store.acf.store_copy, 250))}</div>
             </div>
           </div>
@@ -133,11 +133,11 @@ export default withSiteData(class SearchComponent extends React.Component {
     restaurants = this.props.stores.map((store, index) => {
       if (store.title.rendered.toLowerCase().includes(this.state.term.toLowerCase()) && store.acf.store_type == "restaurant") {
         return (<div key={index}>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <Link onClick={this.clearSearch} to={`/shopping/${store.slug}/`}><h3 class="panel-title">{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : ""}</h3></Link>
+          <div className="panel panel-default">
+            <div className="panel-heading">
+              <Link onClick={this.clearSearch} to={`/shopping/${store.slug}/`}><h3 className="panel-title">{(store.title.rendered) ? <div>{ReactHtmlParser(store.title.rendered)}</div> : ""}</h3></Link>
             </div>
-            <div class="panel-body">
+            <div className="panel-body">
               <div>{ReactHtmlParser(helpers.compressText(store.acf.store_copy, 250))}</div>
             </div>
           </div>
@@ -154,11 +154,11 @@ export default withSiteData(class SearchComponent extends React.Component {
     sales = this.props.sales.map((sale, index) => {
       if (sale.title.rendered.toLowerCase().includes(this.state.term.toLowerCase())) {
         return (<div key={index}>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <Link onClick={this.clearSearch} to={`/sales/${sale.slug}/`}><h3 class="panel-title">{(sale.title.rendered) ? <div>{ReactHtmlParser(sale.title.rendered)}</div> : ""}</h3></Link>
+          <div className="panel panel-default">
+            <div className="panel-heading">
+              <Link onClick={this.clearSearch} to={`/sales/${sale.slug}/`}><h3 className="panel-title">{(sale.title.rendered) ? <div>{ReactHtmlParser(sale.title.rendered)}</div> : ""}</h3></Link>
             </div>
-            <div class="panel-body">
+            <div className="panel-body">
               {sale.acf.post_copy && <div>{ReactHtmlParser(helpers.compressText(sale.acf.post_copy, 250))}</div>}
             </div>
           </div>
