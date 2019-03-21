@@ -346,6 +346,22 @@ nav .container {
     stroke-width: 5;
     stroke-miterlimit: 10;
 }
+.navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-link .nav-icon.living .cls-1,
+.navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-link .nav-icon.leasing .cls-1 {
+    fill: #58595b;
+    stroke:#58595b;
+    stroke-miterlimit:10;
+}
+.navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-link .nav-icon.contact-us .cls-1 {
+    stroke-width: 3;
+    stroke: #fff;
+    fill: #58595b;
+}
+
+.navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-link .nav-icon.contact-us .cls-2 {
+    stroke: #58595b;
+    fill: #58595b;
+}
 /* CMX Colors */
 .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-icon.cmx .cls-1{
     fill:#cc5c22;
@@ -434,7 +450,14 @@ nav .container {
         color: #fff;
         text-decoration: none;
     }
-    
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:hover .nav-link .nav-icon.leasing .cls-1 {
+        fill: #fff;
+        stroke: #fff;
+    }
+    .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:hover .nav-link .nav-icon.contact-us .cls-2 {
+        fill: #fff;
+        stroke: #fff;
+    }
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item:not(.logo):hover .nav-link:after {
         content: '';
         width: 100%;
