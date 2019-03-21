@@ -86,7 +86,7 @@
         order: 2;
     }
     .contentWithFeaturedVideo .column-wrap.content-left .content-column {
-        padding: 2rem 2rem 2rem 0;
+        padding: 2rem;
     }
     .contentWithFeaturedVideo .image-column .videoWrapper {
         border-radius: 0;

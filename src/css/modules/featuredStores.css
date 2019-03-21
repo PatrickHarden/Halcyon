@@ -76,7 +76,7 @@
     #tenantSlider .store .content-wrapper {
         width: 60%;
         float: right;
-        padding: 3rem 0;
+        padding: 3rem 2rem 3rem 0;
         background: #EDECE2;
     }
     #tenantSlider .store .content-wrapper .inner-wrapper {
