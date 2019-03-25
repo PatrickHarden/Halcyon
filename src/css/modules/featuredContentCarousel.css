@@ -30,7 +30,9 @@
     left: 1rem;
     z-index: 1;
 }
-
+.featuredContentCarousel .carousel .slick-slide > div > div:focus {
+    outline: none;
+}
 @media screen and (min-width: 768px) {
     .featuredContentCarousel .carousel .slick-slide {
         text-align: left;
