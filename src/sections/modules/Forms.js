@@ -53,31 +53,32 @@ export default withSiteData(class Forms extends React.Component {
                         case 'address':
                             return (
                                 <div
-                                    className={"col-xs-12 form-group" + (field.size == 'large' ? ' col-sm-12' : '') + (field.size == 'medium' ? ' col-sm-6' : '') + (field.size == 'small' ? ' col-sm-4' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
+                                    className={"col-xs-12 form-group" + (field.size == 'large' ? ' col-sm-12' : '') + (field.size == 'medium' ? ' col-sm-6' : '') + (field.size == 'small' ? ' col-sm-3' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
                                     id={"group-" + field.id}
                                     data-name={field.label}
                                 >
                                     <Row>
-                                        {field.inputs.map(function (input) {
-                                            if (!input.isHidden) {
-                                                return (
-                                                    <label for={input.id}
-                                                        className="col-xs-12 col-sm-6">
-                                                        <span className="sr-only test">{input.label}</span>
-                                                        <input
-                                                            type="text"
-                                                            id={input.id}
-                                                            className={"form-control" + (field.cssClass ? ' ' + field.cssClass : '')}
-                                                            placeholder={input.label + (field.isRequired ? '*' : '')}
-                                                            name={input.label + input.id}
-                                                            value={component.state[input.id]}
-                                                            onChange={component.handleInputChange}
-                                                            required={input.isRequired}
-                                                        />
-                                                
-                                                    </label>
-                                                );
-                                            }
+                                        {field.inputs.map(function (input, i) {
+                                                if (!input.isHidden) {
+                                                    return (
+                                                        <label for={input.id}
+                                                            className="col-xs-12 col-sm-6">
+                                                            <span className="sr-only test">{input.label}</span>
+                                                            <input
+                                                                type="text"
+                                                                id={input.id}
+                                                                className={"form-control" + (field.cssClass ? ' ' + field.cssClass : '')}
+                                                                placeholder={input.label + (field.isRequired ? '*' : '')}
+                                                                name={input.label}
+                                                                value={component.state[input.id]}
+                                                                onChange={component.handleInputChange}
+                                                                required={input.isRequired}
+                                                            />
+
+                                                        </label>
+                                                    );
+                                                }
+                                           
                                         })}
                                     </Row>
                                 </div>
@@ -85,7 +86,7 @@ export default withSiteData(class Forms extends React.Component {
                         case 'textarea':
                             return (
                                 <div
-                                    className={"col-xs-12 form-group" + (field.size == 'large' ? ' col-sm-12' : '') + (field.size == 'medium' ? ' col-sm-6' : '') + (field.size == 'small' ? ' col-sm-4' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
+                                    className={"col-xs-12 form-group" + (field.size == 'large' ? ' col-sm-12' : '') + (field.size == 'medium' ? ' col-sm-6' : '') + (field.size == 'small' ? ' col-sm-3' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
                                     id={"group-" + field.id}
                                     data-name={field.label}
                                 >
@@ -108,7 +109,7 @@ export default withSiteData(class Forms extends React.Component {
                         case 'select':
                             return (
                                 <div
-                                    className={"col-xs-12 form-group" + (field.size == 'large' ? ' col-sm-12' : '') + (field.size == 'medium' ? ' col-sm-6' : '') + (field.size == 'small' ? ' col-sm-4' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
+                                    className={"col-xs-12 form-group" + (field.size == 'large' ? ' col-sm-12' : '') + (field.size == 'medium' ? ' col-sm-6' : '') + (field.size == 'small' ? ' col-sm-3' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
                                     id={"group-" + field.id}
                                     data-name={field.label}
                                 >
@@ -140,7 +141,7 @@ export default withSiteData(class Forms extends React.Component {
                         case 'checkbox':
                             return (
                                 <div
-                                    className={"col-xs-12 form-group checkbox-group" + (field.size == 'large' ? ' col-sm-12' : '') + (field.size == 'medium' ? ' col-sm-6' : '') + (field.size == 'small' ? ' col-sm-4' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
+                                    className={"col-xs-12 form-group checkbox-group" + (field.size == 'large' ? ' col-sm-12' : '') + (field.size == 'medium' ? ' col-sm-6' : '') + (field.size == 'small' ? ' col-sm-3' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
                                     id={"group-" + field.id}
                                     data-name={field.label}
                                 >
@@ -170,7 +171,7 @@ export default withSiteData(class Forms extends React.Component {
                         case 'radio':
                             return (
                                 <div
-                                    className={"col-xs-12 form-group" + (field.size == 'large' ? ' col-sm-12' : '') + (field.size == 'medium' ? ' col-sm-6' : '') + (field.size == 'small' ? ' col-sm-4' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
+                                    className={"col-xs-12 form-group" + (field.size == 'large' ? ' col-sm-12' : '') + (field.size == 'medium' ? ' col-sm-6' : '') + (field.size == 'small' ? ' col-sm-3' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
                                     id={"group-" + field.id}
                                     data-name={field.label}
                                 >
@@ -178,7 +179,7 @@ export default withSiteData(class Forms extends React.Component {
                                         <div className='col-xs-12'>
                                             <b>{field.label}</b>
                                             {field.choices.map(function (choice) {
-                                            
+
                                                 return (
                                                     <div className="radio">
                                                         <label>
@@ -202,7 +203,7 @@ export default withSiteData(class Forms extends React.Component {
                         case 'html':
                             return (
                                 <div
-                                    className={"col-xs-12 form-group" + (field.size == 'large' ? ' col-sm-12' : '') + (field.size == 'medium' ? ' col-sm-6' : '') + (field.size == 'small' ? ' col-sm-4' : '') + ' type-' + field.type}
+                                    className={"col-xs-12 form-group" + (field.size == 'large' ? ' col-sm-12' : '') + (field.size == 'medium' ? ' col-sm-6' : '') + (field.size == 'small' ? ' col-sm-3' : '') + ' type-' + field.type}
                                     id={"group-" + field.id}
                                     data-name={field.label}
                                 >
@@ -216,7 +217,7 @@ export default withSiteData(class Forms extends React.Component {
                         case 'time':
                             return (
                                 <div
-                                    className={"col-xs-12 form-group" + (field.size == 'large' ? ' col-sm-12' : '') + (field.size == 'medium' ? ' col-sm-6' : '') + (field.size == 'small' ? ' col-sm-4' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
+                                    className={"col-xs-12 form-group" + (field.size == 'large' ? ' col-sm-12' : '') + (field.size == 'medium' ? ' col-sm-6' : '') + (field.size == 'small' ? ' col-sm-3' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
                                     id={"group-" + field.id}
                                     data-name={field.label}
                                 >
@@ -239,7 +240,7 @@ export default withSiteData(class Forms extends React.Component {
                         default:
                             return (
                                 <div
-                                    className={"col-xs-12 form-group" + (field.size == 'large' ? ' col-sm-12' : '') + (field.size == 'medium' ? ' col-sm-6' : '') + (field.size == 'small' ? ' col-sm-4' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
+                                    className={"col-xs-12 form-group" + (field.size == 'large' ? ' col-sm-12' : '') + (field.size == 'medium' ? ' col-sm-6' : '') + (field.size == 'small' ? ' col-sm-3' : '') + (field.isRequired ? ' required' : '') + ' type-' + field.type}
                                     id={"group-" + field.id}
                                     data-name={field.label}
                                 >
@@ -354,12 +355,12 @@ export default withSiteData(class Forms extends React.Component {
         // if (test.length && test.is('#' + field)){
         //        return datePick;
         // } else {
-            if (field.includes('.')) {
-                var test = field.substr(0, field.indexOf('.'))
-                return $('#' + test).val()
-            } else {
-                return $('#' + field).val()
-            }
+        if (field.includes('.')) {
+            var test = field.substr(0, field.indexOf('.'))
+            return $('#' + test).val()
+        } else {
+            return $('#' + field).val()
+        }
         // }
     }
 
@@ -375,7 +376,7 @@ export default withSiteData(class Forms extends React.Component {
         // Build the gForms submission object
         let entry = {
             "input_values": {
-                
+
             }
         };
 
@@ -389,8 +390,8 @@ export default withSiteData(class Forms extends React.Component {
         // https://halcyon.dev.v3.imaginuitycenters.com//gravityformsapi/forms/1/submissions?api_key=04f7c94448&signature=iLGqNMR87NBoMMDpbXZnvGC1rTI%3D&expires=1551811223
 
         let entry_json = JSON.stringify(entry);
-        console.log(entry)
-        debugger;
+        // console.log(entry)
+        // debugger;
         if (!document.getElementById("honeypot").value) {
             $.ajax({
                 url: gformURL,
@@ -406,7 +407,7 @@ export default withSiteData(class Forms extends React.Component {
                             $('#gform-' + component.props.gformID + ' .confirmation').removeClass('hidden');
                             $('#gform-' + component.props.gformID + ' .fields').fadeOut();
                             $('.gform .error').addClass('hidden');
-                            $('.gform ').replaceWith('<div className="confirmation col-xs-12"><p className="bg-success">Thanks for contacting us! We will get in touch with you shortly.</p></div>');
+                            $('.gform ').replaceWith('<div class="confirmation col-xs-12"><p class="bg-success">Thanks for contacting us! We will get in touch with you shortly.</p></div>');
                         }
                         else if (!data.response.is_valid) {
                             $('.validation-error').remove();
@@ -449,7 +450,7 @@ export default withSiteData(class Forms extends React.Component {
         // Create state variable that holds the value of a corresponding input ID
         let newState = {};
         newState[id] = value;
-        if (target.type == "date"){
+        if (target.type == "date") {
             datePick = newState[id]
             console.log(datePick)
         }
