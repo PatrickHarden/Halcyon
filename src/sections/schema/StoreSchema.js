@@ -1,7 +1,8 @@
 let React = require('react');
-// let ReactRouter = require('react-router');
+let ReactRouter = require('react-router');
 let $ = require('jquery');
-// import {JSONLD, Generic} from 'react-structured-data';
+import {JSONLD, Generic} from 'react-structured-data';
+var createReactClass = require('create-react-class');
 
 let moment = require('moment');
 let momentRange = require('moment-range/dist/moment-range.js');
@@ -33,7 +34,7 @@ let SiteURL = window.location.protocol + '//' + document.location.hostname;
 let Stores = SiteURL + '/wp-json/wp/v2/stores';
 let PropertyOptions = SiteURL + '/wp-json/acf/v3/options/property_options';
 
-let StoreSchema = React.createClass({
+let StoreSchema = createReactClass({
     getInitialState: function () {
         return {
             storeID: this.props.storeID,
@@ -74,8 +75,8 @@ let StoreSchema = React.createClass({
             let startDate = data['acf']['standard_hours'][0]['start_date'];
             let endDate = data['acf']['standard_hours'][0]['end_date'];
             let monday_closed = data['acf']['standard_hours'][0]['monday_closed'];
-            let monday_open = data['acf']['standard_hours'][0]['monday_open'];
-            let monday_close = data['acf']['standard_hours'][0]['monday_close'];
+            let monday_open = this.state.monday_open;
+            let monday_close = this.state.monday_close;
             let tuesday_closed = data['acf']['standard_hours'][0]['tuesday_closed'];
             let tuesday_open = data['acf']['standard_hours'][0]['tuesday_open'];
             let tuesday_close = data['acf']['standard_hours'][0]['tuesday_close'];
@@ -177,7 +178,7 @@ let StoreSchema = React.createClass({
                         sameAs: formatSameAs(this.props.facebook, this.props.twitter, this.props.instagram, this.props.website, this.props.pinterest),
                         location: this.props.siteName
                     }}>
-                        <Generic type="address" jasonldtype="PostalAddress" schema={{
+                        <Generic type="address" jsonldtype="PostalAddress" schema={{
                             addressLocality: this.props.city,
                             addressRegion: this.props.state,
                             postalCode: this.props.zip,

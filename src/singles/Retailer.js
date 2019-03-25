@@ -16,6 +16,7 @@ import DownArrow from '../images/downArrrow.png'
 import PhoneIcon from '../images/phone-icon.png'
 import RightArrow from '../images/rightArrow.png'
 import Navigation from '../Nav.js'
+import StoreSchema from '../sections/schema/StoreSchema.js'
 //
 var weeksHours;
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -144,6 +145,26 @@ export default withRouteData(class Page extends React.Component {
 
     return (
       <section>
+        {/* <StoreSchema
+          centerName={"Halcyon"}
+          storeName={retailer.title.rendered}
+          restaurantMenu={retailer.acf.restaurant_menu ? retailer.acf.restaurant_menu : false}
+          address_1={retailer.acf.address_1}
+          address_2={retailer.acf.address_2}
+          city={this.props.property_options.acf.city}
+          props={this.props.property_options.props}
+          zip={this.props.property_options.acf.zip}
+          description={retailer.acf.store_copy}
+          telephone={retailer.acf.phone_number}
+          logo={retailer.acf.logo}
+          facebook={retailer.acf.facebook}
+          instagram={retailer.acf.instagram}
+          twitter={retailer.acf.twitter}
+          website={retailer.acf.website}
+          pinterest={retailer.acf.pinterest}
+          customHours={retailer.acf.alternate_hours ? retailer.acf.alternate_hours : false}
+          storeID={retailer.id}
+        /> */}
         <Navigation />
         <Head>
           <body className={'single-blog light-green blog-id-' + retailer.id + ' ' + retailer.slug} />

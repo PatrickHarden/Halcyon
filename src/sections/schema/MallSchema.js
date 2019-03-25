@@ -1,6 +1,8 @@
 var React = require('react');
 var $ = require('jquery');
-// import {JSONLD, Generic} from 'react-structured-data';
+var createReactClass = require('create-react-class');
+
+import {JSONLD, Generic} from 'react-structured-data';
 
 {/* <MallSchema siteName={this.state.siteName} propertyOptions={this.state.optionsData}/> */}
 
@@ -8,7 +10,7 @@ let moment = require('moment');
 let momentRange = require('moment-range/dist/moment-range.js');
 moment = momentRange.extendMoment(moment);
 
-var MallSchema = React.createClass({
+var MallSchema = createReactClass({
     getInitialState: function () {
         return {
             propertyOptions: this.props.propertyOptions,

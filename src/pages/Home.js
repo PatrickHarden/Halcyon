@@ -9,7 +9,7 @@ import HeroSlider from '../sections/homepage/HeroSlider';
 import ModuleController from '../sections/modules/ModuleController.js'
 import helpers from '../helpers.js'
 import Navigation from '../Nav.js'
-
+import MallSchema from '../sections/schema/MallSchema.js';
 var featuredStores = [];
 
 export default withRouteData(class Home extends React.Component {
@@ -72,7 +72,8 @@ export default withRouteData(class Home extends React.Component {
 
     return (
       <article id="home">
-      <Navigation />
+        <MallSchema siteName={home.yoast_meta.yoast_wpseo_title} propertyOptions={this.props.property_options} />
+        <Navigation />
         <Head>
           <body className={'home ' + home.acf.global_page_color} />
           {(home.yoast_meta.yoast_wpseo_title) ? <title>{home.yoast_meta.yoast_wpseo_title}</title> : ""}
