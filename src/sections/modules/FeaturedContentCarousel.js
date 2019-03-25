@@ -29,7 +29,7 @@ export default withSiteData(class FeaturedContentCarousel extends React.Componen
                             <div className='content-wrap'>
                                 {(slide.heading) ? <h4>{ReactHtmlParser(slide.heading)}</h4> : ""}
                                 {(slide.blurb) ? <p>{ReactHtmlParser(slide.blurb)}</p> : ""}
-                                {(slide.button) ? <Link target={(slide.button.target) ? "_blank" : ""} className="halcyon-button" to={helpers.convertLink(slide.button.url, this.props.title.toLowerCase())}>{(slide.button.title) ? <div>{ReactHtmlParser(slide.button.title)}</div>: <div>{helpers.getTitleFromUrl(slide.button.url, this.props.title.toLowerCase())}</div>}</Link> : ""} 
+                                {(slide.button) ? <Link target={(slide.button.target) ? "_blank" : ""} className="halcyon-button" to={slide.button.url}>{(slide.button.title) ? <div>{ReactHtmlParser(slide.button.title)}</div>: <div>{helpers.getTitleFromUrl(slide.button.url, this.props.title.toLowerCase())}</div>}</Link> : ""} 
                             </div>
                         </div>
                     </div>
