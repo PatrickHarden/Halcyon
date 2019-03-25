@@ -397,7 +397,9 @@ nav .container {
 .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-icon.cmx .cls-4{
     fill:#323e48;
 }
+.single-blog main.content {
 
+}
 @media screen and (min-width: 992px) {
     .navWrapper .navRow .nav-inner .navbar-collapse {
         top: 0;
@@ -622,9 +624,7 @@ label {display:initial;}
     .hidden-xs {
         display: none;
     }
-    main.content {
-        padding-top: 52px;
-    }
+   
     /*make room for the sticky footer */
     body:not(.home) #theFooter {
         padding-bottom: 55px;
@@ -647,6 +647,9 @@ label {display:initial;}
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav {width:100%;}
 }
 @media screen and (max-width:991) {
+    main.content {
+        padding-top: 52px;
+    }
     .navWrapper .navRow .nav-inner .navbar-collapse .navbar-nav .nav-item.logo {display:none;}
 }
 
@@ -656,6 +659,12 @@ label {display:initial;}
         height: auto!important;
         padding-bottom: 0;
         overflow: visible!important;
+    }
+    .single-blog main.content {
+        padding-top: 75px;
+    }
+    body:not(.home) #searchComponent {
+        top: 50px;
     }
 }
 
