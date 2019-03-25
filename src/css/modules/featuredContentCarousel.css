@@ -62,7 +62,7 @@
         display: flex;
         align-items: center;
         height: 100%;
-        background: #fff;
+        background: rgba(255,255,255,.8);
         padding: 2rem;
     }
     .featuredContentCarousel .carousel .slide .left img {
@@ -75,5 +75,11 @@
         transform: translateX(-50%);
     }
     
+}
+
+@media screen and (min-width: 1200px) {
+    .featuredContentCarousel .carousel .slide .right .inner-wrapper {
+        padding: 4rem 6rem;
+    }
 }
 

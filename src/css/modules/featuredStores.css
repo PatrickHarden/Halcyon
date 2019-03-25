@@ -97,4 +97,7 @@
     #tenantSlider .slick-prev, #tenantSlider .slick-next {
       font-size: 1.8rem;
     }
+    #tenantSlider .store .content-wrapper .inner-wrapper {
+      padding: 4rem 6rem;
+    }
   }

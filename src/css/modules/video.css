@@ -76,7 +76,7 @@
         padding: 2rem 0 2rem 2rem;
     }
     .contentWithFeaturedVideo .column-wrap .content-column .inner-wrapper {
-        background: #fff;
+        background: rgba(255,255,255,.8);
         padding: 2rem;
         height: 100%;
         display: flex;
@@ -90,5 +90,11 @@
     }
     .contentWithFeaturedVideo .image-column .videoWrapper {
         border-radius: 0;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .contentWithFeaturedVideo .column-wrap .content-column .inner-wrapper {
+        padding: 4rem 6rem;
     }
 }
