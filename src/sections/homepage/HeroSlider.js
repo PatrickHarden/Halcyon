@@ -19,15 +19,15 @@ export default class HeroSlider extends React.Component {
       if (hero.link){
           return <div className='hero-slide' key={index}>
                     <Link to={helpers.convertLink(hero.link.url, this.props.title)} target={(hero.link.target) ? "_blank" : ""}>
-                      <img className='visible-xs' key={hero.mobile_image.url} src={hero.mobile_image.url} alt={hero.mobile_image.alt + " mobile"} />
-                      <img className='hidden-xs' key={hero.desktop_image.url} src={hero.desktop_image.url} alt={hero.desktop_image.alt} />
+                      <img className='visible-mobile' key={hero.mobile_image.url} src={hero.mobile_image.url} alt={hero.mobile_image.alt + " mobile"} />
+                      <img className='hidden-mobile' key={hero.desktop_image.url} src={hero.desktop_image.url} alt={hero.desktop_image.alt} />
                       <h2 className='hero-heading'>{hero.heading}</h2>
                     </Link>
                   </div>
       } else if(!hero.link) {
           return  <div className='hero-slide' key={index}>
-                    <img className='visible-xs' key={hero.mobile_image.url} src={hero.mobile_image.url} alt={hero.mobile_image.alt + " mobile"} />
-                    <img className='hidden-xs' key={hero.desktop_image.url} src={hero.desktop_image.url} alt={hero.desktop_image.alt} />
+                    <img className='visible-mobile' key={hero.mobile_image.url} src={hero.mobile_image.url} alt={hero.mobile_image.alt + " mobile"} />
+                    <img className='hidden-mobile' key={hero.desktop_image.url} src={hero.desktop_image.url} alt={hero.desktop_image.alt} />
                     <h2 className='hero-heading'>{hero.heading}</h2>
                    </div>
       } else {
@@ -56,8 +56,8 @@ export default class HeroSlider extends React.Component {
     return (
       <div id="heroContainer">
         <div id="initialHeroImage">
-          <img className='hidden-xs' src={this.props.home[0].acf.hero_slider[0].desktop_image.url} alt={this.props.home[0].acf.hero_slider[0].desktop_image.alt} />
-          <img className="visible-xs" src={this.props.home[0].acf.hero_slider[0].mobile_image.url} alt={this.props.home[0].acf.hero_slider[0].mobile_image.alt + ' mobile'} />
+          <img className='hidden-mobile' src={this.props.home[0].acf.hero_slider[0].desktop_image.url} alt={this.props.home[0].acf.hero_slider[0].desktop_image.alt} />
+          <img className="visible-mobile" src={this.props.home[0].acf.hero_slider[0].mobile_image.url} alt={this.props.home[0].acf.hero_slider[0].mobile_image.alt + ' mobile'} />
         </div>
         <div className='hero-slider-wrapper' id="fadeHeroIn">
           <Slider className='hero-slider' {...settings}>

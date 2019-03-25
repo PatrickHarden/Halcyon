@@ -170,6 +170,27 @@ header {position:relative; z-index:5000;}
     position: relative;
 }
 
+/* Hero Height change */
+
+img.visible-mobile {
+    display: block !important;
+}
+
+img.hidden-mobile {
+    display:none !important;
+}
+
+@media screen and (min-width:575px){
+    img.visible-mobile {
+        display: none !important;
+    }
+
+    img.hidden-mobile {
+        display:block !important;
+    }
+
+}
+
 /* Module Header Styles */
 .heading-container {
     height: 54px;
