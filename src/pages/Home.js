@@ -69,55 +69,58 @@ export default withRouteData(class Home extends React.Component {
   render() {
 
     const home = this.props.home[0];
-
-    return (
-      <article id="home">
-        <MallSchema siteName={home.yoast_meta.yoast_wpseo_title} propertyOptions={this.props.property_options} />
-        <Navigation />
-        <Head>
-          <body className={'home ' + home.acf.global_page_color} />
-          {(home.yoast_meta.yoast_wpseo_title) ? <title>{home.yoast_meta.yoast_wpseo_title}</title> : ""}
-          {(home.yoast_meta.yoast_wpseo_metadesc) ? <meta name="description" content={home.yoast_meta.yoast_wpseo_metadesc} /> : ""}
-          {(home.yoast_meta.yoast_wpseo_canonical) ? <link rel="canonical" href={home.yoast_meta.yoast_wpseo_canonical} /> : ""}
-        </Head>
-        <HeroSlider home={this.props.home} title={this.props.title} />
-        <div id="searchBar">
-          <Container>
-            <div id="searchAddress">
-              <a href={'//maps.google.com/?q=' + this.props.property_options.acf.address_1 + '+' + this.props.property_options.acf.city + '+' + this.props.property_options.acf.state} target='_blank'>
-                <FontAwesomeIcon icon={faMapMarkerAlt} className='icon' />
-                <div className='visible-sm'>Directions</div>
-                <div className='hidden-xs hidden-sm'>{(this.props.property_options.acf.address_1) ? <p>{this.props.property_options.acf.address_1} {(this.props.property_options.acf.address_2) ? <span>{this.props.property_options.acf.address_2}</span> : ""} </p> : ""} </div>
-              </a>
-            </div>
-            <div id="searchEmail">
-              <a href={'mailto:' + this.props.property_options.acf.email}>
-                <FontAwesomeIcon icon={faEnvelope} className='icon' />
-                <div className='hidden-xs'>{this.props.property_options.acf.email}</div>
-              </a>
-            </div>
-            <div id="searchPhone">
-              <a href={'tel:' + this.props.property_options.acf.phone}>
-                <FontAwesomeIcon icon={faPhone} className='icon' />
-                <div className='hidden-xs'>{this.props.property_options.acf.phone}</div>
-              </a>
-            </div>
-          </Container>
-        </div>
-        <div id="results">
-          <div>
-            <Container className='top-cta'>
-              <h1>{home.acf.title_h1}</h1>
-              <div>{ReactHtmlParser(home.acf.content_area)}</div>
-              {(home.acf.button) ? <Link className="halcyon-button" target={(home.acf.button.target) ? "_blank" : ""} to={helpers.convertLink(home.acf.button.url, this.props.title.toLowerCase())} target={home.acf.button.target}>{ReactHtmlParser(home.acf.button.title)}</Link> : ""}
+    if (typeof document == 'undefined' || typeof window == 'undefined') {
+      return null
+    } else {
+      return (
+        <article id="home">
+          <MallSchema siteName={home.yoast_meta.yoast_wpseo_title} propertyOptions={this.props.property_options} />
+          <Navigation />
+          <Head>
+            <body className={'home ' + home.acf.global_page_color} />
+            {(home.yoast_meta.yoast_wpseo_title) ? <title>{home.yoast_meta.yoast_wpseo_title}</title> : ""}
+            {(home.yoast_meta.yoast_wpseo_metadesc) ? <meta name="description" content={home.yoast_meta.yoast_wpseo_metadesc} /> : ""}
+            {(home.yoast_meta.yoast_wpseo_canonical) ? <link rel="canonical" href={home.yoast_meta.yoast_wpseo_canonical} /> : ""}
+          </Head>
+          <HeroSlider home={this.props.home} title={this.props.title} />
+          <div id="searchBar">
+            <Container>
+              <div id="searchAddress">
+                <a href={'//maps.google.com/?q=' + this.props.property_options.acf.address_1 + '+' + this.props.property_options.acf.city + '+' + this.props.property_options.acf.state} target='_blank'>
+                  <FontAwesomeIcon icon={faMapMarkerAlt} className='icon' />
+                  <div className='visible-sm'>Directions</div>
+                  <div className='hidden-xs hidden-sm'>{(this.props.property_options.acf.address_1) ? <p>{this.props.property_options.acf.address_1} {(this.props.property_options.acf.address_2) ? <span>{this.props.property_options.acf.address_2}</span> : ""} </p> : ""} </div>
+                </a>
+              </div>
+              <div id="searchEmail">
+                <a href={'mailto:' + this.props.property_options.acf.email}>
+                  <FontAwesomeIcon icon={faEnvelope} className='icon' />
+                  <div className='hidden-xs'>{this.props.property_options.acf.email}</div>
+                </a>
+              </div>
+              <div id="searchPhone">
+                <a href={'tel:' + this.props.property_options.acf.phone}>
+                  <FontAwesomeIcon icon={faPhone} className='icon' />
+                  <div className='hidden-xs'>{this.props.property_options.acf.phone}</div>
+                </a>
+              </div>
             </Container>
-            {(home.acf.layout) ?
+          </div>
+          <div id="results">
+            <div>
+              <Container className='top-cta'>
+                <h1>{home.acf.title_h1}</h1>
+                <div>{ReactHtmlParser(home.acf.content_area)}</div>
+                {(home.acf.button) ? <Link className="halcyon-button" target={(home.acf.button.target) ? "_blank" : ""} to={helpers.convertLink(home.acf.button.url, this.props.title.toLowerCase())} target={home.acf.button.target}>{ReactHtmlParser(home.acf.button.title)}</Link> : ""}
+              </Container>
+              {/* {(home.acf.layout) ?
               <div>
                 <ModuleController page={home} />
-              </div> : ""}
+              </div> : ""} */}
+            </div>
           </div>
-        </div>
-      </article>
-    )
+        </article>
+      )
+    }
   }
 })
