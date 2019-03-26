@@ -113,10 +113,10 @@ export default withRouteData(class Home extends React.Component {
                 <div>{ReactHtmlParser(home.acf.content_area)}</div>
                 {(home.acf.button) ? <Link className="halcyon-button" target={(home.acf.button.target) ? "_blank" : ""} to={helpers.convertLink(home.acf.button.url, this.props.title.toLowerCase())} target={home.acf.button.target}>{ReactHtmlParser(home.acf.button.title)}</Link> : ""}
               </Container>
-              {/* {(home.acf.layout) ?
+              {(home.acf.layout) ?
               <div>
                 <ModuleController page={home} />
-              </div> : ""} */}
+              </div> : ""}
             </div>
           </div>
         </article>
