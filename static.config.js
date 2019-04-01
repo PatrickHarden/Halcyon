@@ -54,7 +54,7 @@ export default {
     let theStoreCount = moreStores['x-wp-totalpages']
     let storeCount = 2;
     while (storeCount <= theStoreCount) {
-      var { data: moreStores2 } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100&page=' + x)
+      var { data: moreStores2 } = await axios.get(baseURL + '/wp-json/wp/v2/stores?per_page=100&page=' + storeCount)
       if (moreStores2) {
         for (var i = 0; i < moreStores2.length; i++) {
           stores.push(moreStores2[i])
@@ -67,7 +67,7 @@ export default {
     let theSaleCount = moreSales['x-wp-totalpages']
     let saleCount = 2;
     while (saleCount <= theSaleCount) {
-      var { data: moreSales2 } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100&page=' + x)
+      var { data: moreSales2 } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100&page=' + saleCount)
       if (moreSales2) {
         for (var i = 0; i < moreSales2.length; i++) {
           sales.push(moreSales2[i])
@@ -80,7 +80,7 @@ export default {
     let thePageCount = morePages['x-wp-totalpages']
     let pageCount = 2;
     while (pageCount <= thePageCount) {
-      var { data: morePages2 } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100&page=' + x)
+      var { data: morePages2 } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100&page=' + pageCount)
       if (morePages2) {
         for (var i = 0; i < morePages2.length; i++) {
           pages.push(morePages2[i])
@@ -93,7 +93,7 @@ export default {
     let thePostCount = morePosts['x-wp-totalpages']
     let postCount = 2;
     while (postCount <= thePostCount) {
-      var { data: morePosts2 } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100&page=' + x)
+      var { data: morePosts2 } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100&page=' + postCount)
       if (morePosts2) {
         for (var i = 0; i < morePosts2.length; i++) {
           posts.push(morePosts2[i])
@@ -139,7 +139,7 @@ export default {
 
     // Checks json header to see if there's more than one page, then pulls more data if there is. Wordpress has 100 limit via url
     const { headers: eventHeaders } = await axios.get(baseURL + '/wp-json/wp/v2/events?per_page=100')
-    const { headers: storeHeaders } = await axios.get(baseURL + '/wp-json/wp/v2/stores/')
+    const { headers: storeHeaders } = await axios.get(baseURL + '/wp-json/wp/v2/stores?per_page=100')
     const { headers: pageHeaders } = await axios.get(baseURL + '/index.php/wp-json/wp/v2/pages?per_page=100')
     const { headers: postHeaders } = await axios.get(baseURL + '/index.php/wp-json/wp/v2/posts?per_page=100')
     const { headers: saleHeaders } = await axios.get(baseURL + '/wp-json/wp/v2/sales?per_page=100')
@@ -159,7 +159,7 @@ export default {
     let counter = storeHeaders['x-wp-totalpages']
     let xy = 2;
     while (xy <= counter) {
-      var { data: moreStores } = await axios.get(baseURL + '/wp-json/wp/v2/stores?per_page=100&page=' + x)
+      var { data: moreStores } = await axios.get(baseURL + '/wp-json/wp/v2/stores?per_page=100&page=' + xy)
       if (moreStores) {
         for (var i = 0; i < moreStores.length; i++) {
           stores.push(moreStores[i])
@@ -170,7 +170,7 @@ export default {
     let counter2 = pageHeaders['x-wp-totalpages']
     let xyz = 2;
     while (xyz <= counter2) {
-      var { data: morePages } = await axios.get(baseURL + '/wp-json/wp/v2/pages?per_page=100&page=' + x)
+      var { data: morePages } = await axios.get(baseURL + '/wp-json/wp/v2/pages?per_page=100&page=' + xyz)
       if (morePages) {
         for (var i = 0; i < morePages.length; i++) {
           pages.push(morePages[i])
@@ -181,7 +181,7 @@ export default {
     let counter3 = postHeaders['x-wp-totalpages']
     let xyzq = 2;
     while (xyzq <= counter3) {
-      var { data: morePosts } = await axios.get(baseURL + '/wp-json/wp/v2/posts?per_page=100&page=' + x)
+      var { data: morePosts } = await axios.get(baseURL + '/wp-json/wp/v2/posts?per_page=100&page=' + xyzq)
       if (morePosts) {
         for (var i = 0; i < morePosts.length; i++) {
           posts.push(morePosts[i])
@@ -192,7 +192,7 @@ export default {
     let counter4 = saleHeaders['x-wp-totalpages']
     let xyzqx = 2;
     while (xyzqx <= counter4) {
-      var { data: moreSales } = await axios.get(baseURL + '/wp-json/wp/v2/sales?per_page=100&page=' + x)
+      var { data: moreSales } = await axios.get(baseURL + '/wp-json/wp/v2/sales?per_page=100&page=' + xyzqx)
       if (moreSales) {
         for (var i = 0; i < moreSales.length; i++) {
           sales.push(moreSales[i])
@@ -280,22 +280,19 @@ export default {
       {
         path: '/shopping',
         component: 'src/pages/Stores',
-        children: retailers.map(retailer => ({
-          path: `/${retailer.slug}`,
-          component: 'src/singles/Retailer',
-          getData: () => ({
-            retailer, siteRoot, title, metaDescription, property_options, sales
-          }),
-        })),
       },
       {
         path: '/dining',
         component: 'src/pages/Dining',
-        children: restaurants.map(restaurant => ({
-          path: `/${restaurant.slug}`,
-          component: 'src/singles/Restaurant',
+      },
+      {
+        path: '/stores',
+        component: 'src/pages/Stores',
+        children: stores.map(retailer => ({
+          path: `/${retailer.slug}`,
+          component: 'src/singles/Retailer',
           getData: () => ({
-            restaurant, siteRoot, title, metaDescription, property_options, sales
+            retailer, siteRoot, title, metaDescription, property_options, sales
           }),
         })),
       },

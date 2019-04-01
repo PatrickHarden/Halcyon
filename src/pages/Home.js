@@ -74,7 +74,6 @@ export default withRouteData(class Home extends React.Component {
     } else {
       return (
         <article id="home">
-          <MallSchema siteName={home.yoast_meta.yoast_wpseo_title} propertyOptions={this.props.property_options} />
           <Navigation />
           <Head>
             <body className={'home ' + home.acf.global_page_color} />
